@@ -1,36 +1,71 @@
 ---
 import Section from '../layout/Section.astro';
 import SectionHeading from '../brand/SectionHeading.astro';
-import ProductCard from '../core/ProductCard.astro';
+import Icon from '../Icon.astro';
 import { TECHNOLOGIES } from '../../lib/site';
 ---
 
-<Section id="technologiak" surface="white">
+<Section id="technologiak" surface="subtle">
   <SectionHeading
     overline="Technológiák"
-    title="Milyen feladatot kell megoldani?"
-    lead="Az ECOTEQ több technológiai területet kapcsol össze, mert az ipari anyagáramok sokszor nem egyetlen gépen múlnak. Egy daráló után jöhet szárítás; a brikettáláshoz vagy pelletáláshoz előkészített frakció kell."
+    title="Technológiai kapuk"
+    lead="Nyolc technológiai irány — válasszon a feladat alapján, és lépjen tovább a részletekhez."
   />
 
   <div class="grid">
     {TECHNOLOGIES.map((t) => (
-      <ProductCard
-        image={t.image}
-        imageAlt={t.name}
-        title={t.name}
-        description={t.blurb}
-        cta="Áttekintés"
-        href={`/technologiak/${t.slug}/`}
-      />
+      <a class="tcard" href={`/technologiak/${t.slug}/`}>
+        <div class="media">
+          {t.image ? (
+            <img src={t.image} alt={t.name} loading="lazy" decoding="async" />
+          ) : (
+            <div class="placeholder" aria-hidden="true"></div>
+          )}
+          <div class="wash" aria-hidden="true"></div>
+          <span class="tag">{t.name}</span>
+        </div>
+        <div class="body">
+          <h3>{t.task}</h3>
+          <span class="arr" aria-hidden="true"><Icon name="arrow-right" size={18} /></span>
+        </div>
+      </a>
     ))}
   </div>
 </Section>
 
 <style>
-  .grid {
-    margin-top: var(--space-7);
-    display: grid;
-    gap: var(--space-5);
-    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  .grid { margin-top: var(--space-7); display: grid; gap: var(--space-5); grid-template-columns: 1fr; }
+  @media (min-width: 600px) { .grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1000px) { .grid { grid-template-columns: repeat(4, 1fr); } }
+
+  .tcard {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow var(--dur-base) var(--ease-standard), transform var(--dur-base) var(--ease-standard), border-color var(--dur-base) var(--ease-standard);
+  }
+  .tcard:hover { box-shadow: var(--shadow-md); border-color: var(--color-border-strong); transform: translateY(-3px); }
+
+  .media { position: relative; aspect-ratio: 4 / 3; overflow: hidden; }
+  .media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-slow) var(--ease-out); }
+  .placeholder { position: absolute; inset: 0; background: repeating-linear-gradient(115deg, #2a3a4a 0 22px, #243341 22px 44px); }
+  .tcard:hover .media img { transform: scale(1.05); }
+  .wash { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(28,52,73,0.05) 0%, rgba(28,52,73,0.55) 100%); }
+  .tag { position: absolute; left: 14px; bottom: 14px; font-size: var(--fs-xs); font-weight: var(--fw-bold); letter-spacing: var(--ls-overline); text-transform: uppercase; color: #fff; background: rgba(255,255,255,0.14); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.4); border-radius: var(--radius-pill); padding: 5px 12px; backdrop-filter: blur(2px); }
+
+  .body { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); padding: var(--space-5); }
+  .body h3 { margin: 0; font-size: var(--fs-h4); font-weight: var(--fw-bold); color: var(--color-text); line-height: var(--lh-snug); }
+  .arr { color: var(--color-accent); flex: none; display: inline-flex; transition: transform var(--dur-base) var(--ease-standard); }
+  .tcard:hover .arr { transform: translateX(4px); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tcard, .media img, .arr { transition: none; }
+    .tcard:hover { transform: none; }
+    .tcard:hover .media img { transform: none; }
   }
 </style>

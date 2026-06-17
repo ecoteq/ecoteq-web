@@ -6,16 +6,16 @@ import { CTA } from '../../lib/site';
 
 const pillars = [
   {
-    title: 'A feladatból indulunk ki',
-    text: 'Nem katalógusból választunk gépet. Az anyag, a mennyiség, a cél és az üzemi körülmények határozzák meg a technológiai irányt.',
+    title: 'Anyag és mennyiség',
+    text: 'Milyen anyag keletkezik, milyen formában, nedvességgel és mennyiségben? Innen indul minden döntés.',
   },
   {
-    title: 'Az egész anyagutat nézzük',
-    text: 'Adagolás, előkészítés, frakció, nedvesség, anyagmozgatás, vezérlés, telepítés és szervizháttér — együtt ad működő rendszert.',
+    title: 'Technológiai irány',
+    text: 'Darálás, szárítás, brikettálás, pelletálás, elszívás vagy ezek kombinációja — a feladathoz illesztve.',
   },
   {
-    title: 'Kiszámítható folyamat',
-    text: 'Az anyagból rendezett, tervezhető és üzletileg értelmezhető folyamatot építünk, nem önmagában álló gépet.',
+    title: 'Működő rendszer és támogatás',
+    text: 'Adagolás, anyagmozgatás, telepítés, szerviz és bővíthetőség, hogy a rendszer az üzemben is működjön.',
   },
 ];
 ---
@@ -24,33 +24,42 @@ const pillars = [
   <SectionHeading
     tone="dark"
     overline="ECOTEQ szemlélet"
-    title="Egy gép ritkán oldja meg önmagában a teljes üzemi problémát"
-    lead="Az ipari hulladék és biomassza kezelése akkor működik jól, ha az anyag útja végig van gondolva. A gép fontos, de önmagában nem elég — kell hozzá megfelelő előkészítés, anyagmozgatás, vezérlés és szervizháttér."
+    title="Nem gépet választunk először. Anyagot, célt és üzemi realitást tisztázunk"
+    lead="Az ipari hulladék és biomassza kezelése akkor működik jól, ha az anyag útja végig van gondolva — a gép csak ezután jön."
   />
 
   <div class="pillars">
-    {pillars.map((p) => (
+    {pillars.map((p, i) => (
       <div class="pillar">
-        <span class="rule" aria-hidden="true"></span>
+        <span class="num">{String(i + 1).padStart(2, '0')}</span>
         <h3>{p.title}</h3>
         <p>{p.text}</p>
       </div>
     ))}
   </div>
 
-  <Button href={CTA.primary.href}>Konzultációt kérek a rendszerirányról</Button>
+  <Button variant="outline-light" href={CTA.primary.href}>Konzultációt kérek a rendszerirányról</Button>
 </Section>
 
 <style>
   .pillars {
-    margin: var(--space-7) 0 var(--space-7);
+    margin: var(--space-8) 0;
     display: grid;
-    gap: var(--space-6);
+    gap: var(--space-6) var(--space-7);
     grid-template-columns: 1fr;
   }
   @media (min-width: 768px) { .pillars { grid-template-columns: repeat(3, 1fr); } }
 
-  .rule { display: block; width: 40px; height: 4px; border-radius: var(--radius-pill); background: var(--color-accent); margin-bottom: var(--space-4); }
+  .num {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: var(--fw-extrabold);
+    font-size: var(--fs-h2);
+    line-height: 1;
+    letter-spacing: var(--ls-display);
+    color: var(--ecoteq-green);
+    margin-bottom: var(--space-4);
+  }
   .pillar h3 { margin: 0 0 var(--space-2); font-size: var(--fs-h3); font-weight: var(--fw-bold); color: var(--ecoteq-white); }
   .pillar p { margin: 0; color: rgba(255, 255, 255, 0.78); line-height: var(--lh-body); }
 </style>

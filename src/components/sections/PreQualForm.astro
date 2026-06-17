@@ -3,9 +3,6 @@ import Section from '../layout/Section.astro';
 import SectionHeading from '../brand/SectionHeading.astro';
 import Input from '../forms/Input.astro';
 import Button from '../core/Button.astro';
-import { TECHNOLOGIES, CONTACT } from '../../lib/site';
-
-const interests = [...TECHNOLOGIES.map((t) => t.name), 'Nem tudom még'];
 ---
 
 <Section id="ajanlatkeres" surface="subtle">
@@ -38,34 +35,7 @@ const interests = [...TECHNOLOGIES.map((t) => t.name), 'Nem tudom még'];
       <Input label="Milyen anyagot kell kezelni?" name="anyag" required placeholder="pl. faforgács, raklap, nedves apríték" />
       <Input label="Mi a cél?" name="cel" required placeholder="pl. brikett, térfogatcsökkentés, szárítás" />
 
-      <button type="button" class="more-toggle" aria-expanded="false" aria-controls="more-fields">
-        További részletek megadása <span class="opt">(nem kötelező)</span>
-      </button>
-
-      <div class="more" id="more-fields" hidden>
-        <Input label="Cég" name="ceg" />
-        <div class="row2">
-          <Input label="Nedvességtartalom (ha ismert)" name="nedvesseg" />
-          <Input label="Telepítés helye" name="hely" />
-        </div>
-
-        <fieldset class="interests">
-          <legend>Érdeklődési irány</legend>
-          <div class="chips">
-            {interests.map((i) => (
-              <label class="chip"><input type="checkbox" name="irany" value={i} /><span>{i}</span></label>
-            ))}
-          </div>
-        </fieldset>
-
-        <label class="field">
-          <span class="label">Rövid leírás / megjegyzés</span>
-          <textarea name="megjegyzes" rows="4" placeholder="Bármi, ami segít megérteni a feladatot."></textarea>
-        </label>
-        <p class="filehint">Fotót vagy anyagmintát a visszajelzés után is küldhet — az előminősítéshez nem szükséges.</p>
-      </div>
-
-      <Button type="submit" class="submit">Elküldöm a projekt adatait</Button>
+      <Button type="submit" class="submit">Elküldöm az alapadatokat</Button>
       <p class="form-msg" role="status" aria-live="polite"></p>
     </form>
   </div>
@@ -74,17 +44,8 @@ const interests = [...TECHNOLOGIES.map((t) => t.name), 'Nem tudom még'];
 <script>
   const form = document.getElementById('prequal');
   if (form instanceof HTMLFormElement) {
-    const toggle = form.querySelector<HTMLButtonElement>('.more-toggle');
-    const more = form.querySelector<HTMLElement>('.more');
     const msg = form.querySelector<HTMLParagraphElement>('.form-msg');
     const submit = form.querySelector<HTMLButtonElement>('button[type="submit"]');
-
-    toggle?.addEventListener('click', () => {
-      const willOpen = more?.hasAttribute('hidden') ?? false;
-      if (willOpen) more?.removeAttribute('hidden');
-      else more?.setAttribute('hidden', '');
-      toggle.setAttribute('aria-expanded', String(willOpen));
-    });
 
     const setMsg = (text: string, state: string) => {
       if (msg) { msg.textContent = text; msg.dataset.state = state; }
@@ -94,7 +55,6 @@ const interests = [...TECHNOLOGIES.map((t) => t.name), 'Nem tudom még'];
       e.preventDefault();
       const fd = new FormData(form);
       const payload: Record<string, unknown> = Object.fromEntries(fd.entries());
-      payload.irany = fd.getAll('irany');
       delete (payload as Record<string, unknown>)['']; // safety
 
       if (!payload.nev || !payload.email || !payload.anyag || !payload.cel) {

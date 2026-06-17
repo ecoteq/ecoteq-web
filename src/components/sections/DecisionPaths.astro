@@ -1,0 +1,71 @@
+---
+import Section from '../layout/Section.astro';
+import Icon from '../Icon.astro';
+
+const paths = [
+  {
+    icon: 'help-circle',
+    title: 'Anyagom van, nem tudom, mit kezdjek vele',
+    text: 'Írja le az anyagot, a mennyiséget és a célt — segítünk eldönteni, milyen technológiai irány reális.',
+    cta: 'Leírom a feladatot',
+    href: '#ajanlatkeres',
+  },
+  {
+    icon: 'compass',
+    title: 'Konkrét technológiát keresek',
+    text: 'Ha már tudja, melyik irány érdekli, induljon a technológiai kapuktól, és nézze meg a részleteket.',
+    cta: 'Technológiai kapuk',
+    href: '#technologiak',
+  },
+  {
+    icon: 'layers',
+    title: 'Komplett rendszert vagy beruházást tervezek',
+    text: 'Több gépből álló anyagáramot tervezünk az anyag fogadásától a végtermékig — rendszerként.',
+    cta: 'Rendszerirányt kérek',
+    href: '#ajanlatkeres',
+  },
+];
+---
+
+<Section surface="white">
+  <div class="grid">
+    {paths.map((p) => (
+      <a class="path" href={p.href}>
+        <span class="ic"><Icon name={p.icon} size={26} /></span>
+        <h3>{p.title}</h3>
+        <p>{p.text}</p>
+        <span class="cta">{p.cta} <Icon name="arrow-right" size={16} class="arr" /></span>
+      </a>
+    ))}
+  </div>
+</Section>
+
+<style>
+  .grid { display: grid; gap: var(--space-5); grid-template-columns: 1fr; }
+  @media (min-width: 860px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+
+  .path {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-6);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow var(--dur-base) var(--ease-standard), transform var(--dur-base) var(--ease-standard), border-color var(--dur-base) var(--ease-standard);
+  }
+  .path:hover { box-shadow: var(--shadow-md); border-color: var(--color-border-strong); transform: translateY(-2px); }
+
+  .ic { width: 52px; height: 52px; border-radius: var(--radius-md); background: var(--color-bg-subtle); color: var(--color-accent); display: grid; place-items: center; margin-bottom: var(--space-2); }
+  .path:hover .ic { background: var(--color-accent-tint); }
+
+  .path h3 { margin: 0; font-size: var(--fs-h3); font-weight: var(--fw-bold); color: var(--color-text); line-height: var(--lh-heading); }
+  .path p { margin: 0; font-size: var(--fs-body); color: var(--color-text-secondary); line-height: var(--lh-body); }
+  .cta { margin-top: auto; padding-top: var(--space-3); display: inline-flex; align-items: center; gap: 8px; color: var(--color-accent-text); font-weight: var(--fw-bold); font-size: var(--fs-sm); }
+  .arr { transition: transform var(--dur-fast) var(--ease-standard); }
+  .path:hover .arr { transform: translateX(4px); }
+
+  @media (prefers-reduced-motion: reduce) { .path, .arr { transition: none; } .path:hover { transform: none; } }
+</style>

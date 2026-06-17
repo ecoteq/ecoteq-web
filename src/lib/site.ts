@@ -43,6 +43,8 @@ export const SOLUTIONS: Solution[] = [
 export type Technology = {
   slug: string;
   name: string;
+  /** Task-driven card title for the homepage technology gateway grid. */
+  task: string;
   blurb: string;
   image?: string;
 };
@@ -52,6 +54,7 @@ export const TECHNOLOGIES: Technology[] = [
   {
     slug: 'ipari-daralas',
     name: 'Ipari darálás',
+    task: 'Térfogatcsökkentés és anyag-előkészítés',
     blurb:
       'Fa, raklap, műanyag, csomagolóanyag vagy vegyes ipari hulladék térfogatcsökkentésére és további feldolgozásra való előkészítésére.',
     image: '/ds/photos/shredder.png',
@@ -59,6 +62,7 @@ export const TECHNOLOGIES: Technology[] = [
   {
     slug: 'brikettalas',
     name: 'Brikettálás',
+    task: 'Mellékanyagból tömör, értékesíthető brikett',
     blurb:
       'Forgács, por, apríték és más száraz mellékanyag tömörítése kezelhető, tárolható vagy értékesíthető briketté.',
     image: '/ds/photos/briquetting-line.png',
@@ -66,6 +70,7 @@ export const TECHNOLOGIES: Technology[] = [
   {
     slug: 'pelletalas',
     name: 'Pelletálás',
+    task: 'Egységes pellet energetikára vagy értékesítésre',
     blurb:
       'Biomassza és faipari alapanyagok előkészítése és tömörítése egységes pellet formába, energetikai vagy értékesítési célra.',
     image: '/ds/photos/pelletizing-line.png',
@@ -73,6 +78,7 @@ export const TECHNOLOGIES: Technology[] = [
   {
     slug: 'biomassza-szaritas',
     name: 'Biomassza-szárítás',
+    task: 'Nedves anyag kezelhető állapotba hozása',
     blurb:
       'Nedves apríték, biomassza vagy mellékanyag nedvességtartalmának csökkentése további feldolgozáshoz vagy energetikai felhasználáshoz.',
     image: '/ds/photos/biomass-belt-dryer.png',
@@ -80,6 +86,7 @@ export const TECHNOLOGIES: Technology[] = [
   {
     slug: 'vakuumszaritas',
     name: 'Vákuumszárítás',
+    task: 'Faanyag kontrollált, gyors szárítása',
     blurb:
       'Faanyag kontrollált, gyorsabb és kíméletesebb szárítása olyan üzemeknek, ahol a minőség és a ciklusidő is számít.',
     image: '/ds/photos/vacuum-kiln.png',
@@ -87,6 +94,7 @@ export const TECHNOLOGIES: Technology[] = [
   {
     slug: 'vakuumimpregnalas',
     name: 'Vákuumimpregnálás',
+    task: 'Faanyag védelme és ipari kezelése',
     blurb:
       'Faanyag védelme, kezelése és impregnálása ipari felhasználásra, kontrollált technológiai környezetben.',
     image: '/ds/photos/vacuum-kiln.png',
@@ -94,6 +102,7 @@ export const TECHNOLOGIES: Technology[] = [
   {
     slug: 'elszivas-porlevalasztas',
     name: 'Elszívás és porleválasztás',
+    task: 'Tisztább, biztonságosabb üzemi levegő',
     blurb:
       'Por, forgács és technológiai levegő kezelése faipari és ipari üzemekben, a tisztább és biztonságosabb működésért.',
     image: '/ds/photos/service-installation.png',
@@ -101,6 +110,7 @@ export const TECHNOLOGIES: Technology[] = [
   {
     slug: 'anyagmozgas-rendszerelemek',
     name: 'Anyagmozgatás és rendszerelemek',
+    task: 'Stabil anyagáram és rendszerelemek',
     blurb:
       'Felhordók, szállítószalagok, adagolók, mágnesek, szeparátorok és kiegészítő rendszerelemek a stabil anyagáramhoz.',
   },
