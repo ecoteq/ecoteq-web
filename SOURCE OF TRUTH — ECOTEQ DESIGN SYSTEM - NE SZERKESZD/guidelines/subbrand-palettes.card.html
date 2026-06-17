@@ -1,0 +1,60 @@
+<!-- @dsCard group="07 · Sub-brands" viewport="1240x300" name="Sub-brand palettes" subtitle="One system, re-skinned per micro-site via data-brand — master + 7 sub-brands" -->
+<!DOCTYPE html><html lang="hu"><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css">
+<style>
+  body{margin:0;font-family:var(--font-sans);background:var(--gray-50);padding:22px;color:var(--color-text)}
+  .wrap{display:grid;grid-template-columns:repeat(8,1fr);gap:7px}
+  .panel{background:#fff;border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden}
+  .head{display:flex;align-items:center;gap:8px;padding:12px 14px;border-bottom:1px solid var(--color-border)}
+  .dot{width:10px;height:10px;border-radius:50%;flex:none}
+  .nm{font-size:12px;font-weight:800;letter-spacing:-.01em}
+  .nm small{font-weight:600;color:var(--color-text-muted)}
+  .body{padding:14px}
+  .swatches{display:flex;gap:6px;margin-bottom:12px}
+  .sw{flex:1;height:34px;border-radius:var(--radius-sm);display:flex;align-items:flex-end;padding:3px 5px;font-size:8px;font-weight:700;color:#fff}
+  .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../_ds_bundle.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { Button, Tag } = window.ECOTEQDesignSystem_fc88f8;
+    const Arrow = () => <svg viewBox="0 0 24 24" width="100%" height="100%" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>;
+    function Panel({ brand, name, host, tag }){
+      return (
+        <div className="panel" data-brand={brand}>
+          <div className="head">
+            <span className="dot" style={{background:'var(--ecoteq-green)'}}></span>
+            <span className="nm">{name}{host && <small> · {host}</small>}</span>
+          </div>
+          <div className="body">
+            <div className="swatches">
+              <div className="sw" style={{background:'var(--ecoteq-navy)'}}>PRIMARY</div>
+              <div className="sw" style={{background:'var(--ecoteq-green)',color:'var(--color-on-accent)'}}>ACCENT</div>
+              <div className="sw" style={{background:'var(--green-100)',color:'var(--green-700)'}}>TINT</div>
+            </div>
+            <div className="row">
+              <Button variant="primary" size="sm" iconRight={<Arrow/>}>Ajánlat</Button>
+              <Tag>{tag}</Tag>
+            </div>
+          </div>
+        </div>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById('root')).render(
+      <div className="wrap">
+        <Panel brand={undefined} name="ECOTEQ" host="master" tag="Master"/>
+        <Panel brand="brikettalo" name="brikettalo" host=".hu" tag="Brikettálás"/>
+        <Panel brand="pelletgyarto" name="pelletgyarto" host=".hu" tag="Pellet"/>
+        <Panel brand="porlevalaszto" name="porlevalaszto" host=".hu" tag="Elszívás"/>
+        <Panel brand="iparidaralo" name="iparidaralo" host=".hu" tag="Darálás"/>
+        <Panel brand="raklapdaralo" name="raklapdaralo" host=".hu" tag="Raklap"/>
+        <Panel brand="vakuum" name="vakuumszarito" host=".hu" tag="Vákuum"/>
+        <Panel brand="dobszarito" name="dobszarito" host=".hu" tag="Szárítás"/>
+      </div>
+    );
+  </script>
+</body></html>

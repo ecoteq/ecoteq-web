@@ -1,0 +1,85 @@
+/* porlevalaszto.hu — ECOTEQ sub-brand theme  (AL-KO Extraction line, light+dark)
+   VERSION A — white-led art direction.
+
+   Colors unchanged and validated; the differentiation from iparidaralo is the
+   TREATMENT, documented here and enforced in the page/hero recipe (see the CD
+   instruction that ships with this file).
+
+   ── Palette (validated) ────────────────────────────────────────────────────
+   • Accent — AL-KO red #e3001b (H357). White CTA label 4.90 AA; reads as text on
+     white (4.90) so overline/links/rule use it directly in light mode.
+   • Primary — cool near-black anthracite #1e2227 (white text 16:1).
+   • Neutrals — crisp COOL white (#ffffff / #f4f5f6), minimal and airy.
+
+   ── Why white-led (the iparidaralo separation) ─────────────────────────────
+   porlevalaszto and iparidaralo share the red accent family (AL-KO red ≈ ISVE
+   red) AND a near-identical dark primary. If porlevalaszto is rendered with the
+   default dark photo-overlay hero, the two lines read as twins. So porlevalaszto
+   commits to AL-KO's actual identity: a WHITE-DOMINANT page with the signature
+   hero = photo + a solid RED panel (white text), dark used only sparingly
+   (thin StatBlock band + footer). Result: porlevalaszto = the clean, white
+   extraction line; iparidaralo = the dark, heavy shredder line. Same red,
+   opposite character.
+
+     Hero      → light section: photo + solid red (--color-accent) panel, white
+                 text + primary CTA. NOT --overlay-navy-side over a dark photo.
+     Page      → white-dominant, generous whitespace, accent ≤10%.
+     Dark area → only the StatBlock strip and footer use --color-feature-deep.
+     Headlines → anthracite on white; overline + .eco-rule red.
+
+   Apply via [data-brand="porlevalaszto"]; compose with [data-mode="dark"]. */
+
+[data-brand="porlevalaszto"] {
+  /* ---- Brand core ---- */
+  --ecoteq-navy: #1e2227;        /* primary — cool near-black anthracite */
+  --ecoteq-green: #e3001b;       /* accent — AL-KO red */
+  --ecoteq-white: #ffffff;
+
+  --color-on-accent: #ffffff;    /* white label on the red CTA (4.90 AA) */
+
+  /* Primary (anthracite) ramp */
+  --navy-900: #121417;
+  --navy-800: #181a1d;
+  --navy-700: #1e2227;           /* = brand primary */
+  --navy-600: #3a4047;
+  --navy-500: #565d66;
+
+  /* Accent (red) ramp */
+  --green-700: #9e0512;          /* pressed */
+  --green-600: #c00016;          /* deep / hover-dark (6.46 on white) */
+  --green-500: #e3001b;          /* = brand accent (AL-KO red) */
+  --green-400: #f5333f;          /* bright tint / dark-mode accent text */
+  --green-100: #fbdadd;          /* tint surface */
+
+  --color-focus: #c00016;
+  --color-accent-text: #e3001b;  /* red reads on white as text (4.90 AA) */
+
+  /* Crisp cool-white neutral canvas — minimal, airy (AL-KO character) */
+  --color-bg:         #ffffff;
+  --color-bg-subtle:  #f4f5f6;
+  --color-surface:    #ffffff;
+  --color-surface-alt:#f4f5f6;
+  --color-border:     #e3e5e8;
+  --color-border-strong: #cdd1d6;
+  --color-divider:    #eef0f2;
+  --color-header-bg:  rgba(255,255,255,0.85);
+
+  /* Photo washes (anthracite rgb 30,34,39). In white-led layout the HERO uses a
+     red panel, not these — these remain for sub-page photo captions only. */
+  --overlay-navy: linear-gradient(180deg, rgba(30,34,39,0.28) 0%, rgba(30,34,39,0.78) 100%); /* @kind other */
+  --overlay-navy-side: linear-gradient(90deg, rgba(30,34,39,0.90) 0%, rgba(30,34,39,0.34) 60%, rgba(30,34,39,0) 100%); /* @kind other */
+
+  /* Keep danger off the red accent */
+  --color-danger: #8a1410;
+  --color-warning: #c0820f;
+}
+
+/* ---- Dark mode (composes with [data-mode="dark"]) ----
+   Global dark layer supplies the dark canvas. Red as TEXT on dark is weak
+   (#e3001b on #1e2227 = 3.26), so accent-text brightens; the CTA fill keeps the
+   AL-KO red with a white label. In dark, the page is dark-dominant (the white-led
+   rule applies to LIGHT mode); the red panel hero still works on the dark canvas. */
+[data-brand="porlevalaszto"][data-mode="dark"] {
+  --color-accent-text: #f5333f;  /* brighter red reads as text on the dark canvas */
+  --color-focus: #f5333f;
+}

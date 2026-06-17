@@ -1,0 +1,122 @@
+/* iparidaralo.hu — ECOTEQ sub-brand theme  (FINALIZED, brand-grounded, light+dark)
+   ONLY the brand colors + accent change; everything else is inherited.
+
+   Grounding (sampled from the live site + the actual ISVE machines + logo):
+     • Primary  — graphite/anthracite steel. Machine bodies sample ~#48-#60 grey;
+                  #2b2f33 is kept as the deep brand graphite for feature bands.
+     • Accent   — the ISVE brand red. The logo red samples #d71a20 (H358, true red),
+                  and the live iparidaralo.hu CTA red samples ~#f82f30 (brighter).
+     • Hopper stripe on the machines is this same red.
+
+   Accent decision — use the ISVE LOGO red #d71a20 as the working accent:
+     - It is the canonical brand-mark red (true red, H358).
+     - It carries a white CTA label at NORMAL size:  #d71a20 + #fff = 5.17 (AA ✓).
+       (The live site's brighter #f82f30 + #fff = 3.86 only large-AA — i.e. this
+        theme also FIXES an accessibility gap on the current site.)
+     - True-red H358 sits 29° from the brikettalo orange — cleaner separation than
+       the earlier orange-leaning #c52e1d (H6, 21°).
+   The brighter site red #f82f30 is kept as the bright tint (--green-400) and reused
+   as the dark-mode CTA fill, where a brighter red is needed to pop on near-black.
+
+   Apply via [data-brand="iparidaralo"]; compose with [data-mode="dark"].
+   raklapdaralo.hu (pallet shredding) is a content variant of the SAME shredding
+   DS, so both selectors share these scopes verbatim — one source of truth. */
+
+[data-brand="iparidaralo"],
+[data-brand="raklapdaralo"] {
+  /* ---- Brand core ---- */
+  --ecoteq-navy: #2b2f33;        /* primary — graphite steel */
+  --ecoteq-green: #d71a20;       /* accent — ISVE brand red (true red, AA-safe CTA) */
+  --ecoteq-white: #ffffff;
+
+  /* On-accent: white label on the red CTA (5.17:1 = AA ✓ at normal size) */
+  --color-on-accent: #ffffff;
+
+  /* Primary (graphite) ramp */
+  --navy-900: #15171a;
+  --navy-800: #1f2226;
+  --navy-700: #2b2f33;           /* = brand primary (deep feature graphite) */
+  --navy-600: #4c5258;           /* = machine body mid-graphite */
+  --navy-500: #5f656b;
+
+  /* Accent (red) ramp — true-red H358, semantic accent at 500 = ISVE logo red */
+  --green-700: #a8141a;          /* pressed */
+  --green-600: #bd1419;          /* deep (6.4:1 on white) */
+  --green-500: #d71a20;          /* = brand accent (ISVE logo red, AA-safe) */
+  --green-400: #f82f30;          /* bright site red — identity tint / dark CTA / glow */
+  --green-100: #fbd9d8;          /* tint surface */
+
+  /* Photo washes re-tinted to graphite (rgb 43,47,51) */
+  --overlay-navy: linear-gradient(180deg, rgba(43,47,51,0.30) 0%, rgba(43,47,51,0.82) 100%); /* @kind other */
+  --overlay-navy-side: linear-gradient(90deg, rgba(43,47,51,0.93) 0%, rgba(43,47,51,0.38) 60%, rgba(43,47,51,0) 100%); /* @kind other */
+
+  /* Push danger off the red accent so they don't collide */
+  --color-danger: #7c1d12;
+
+  /* ---- Semantic aliases MUST be re-declared in-scope ----
+     CSS resolves :root aliases once and inherits the resolved value down;
+     overriding the brand core here does NOT retroactively change them.
+     (--color-success intentionally NOT redeclared, so it stays green.) */
+  --color-surface-dark:  var(--ecoteq-navy);
+  --color-text:          var(--ecoteq-navy);
+  --color-accent:        var(--ecoteq-green);
+  --color-accent-hover:  var(--green-600);
+  --color-accent-active: var(--green-700);
+  --color-accent-tint:   var(--green-100);
+  --color-accent-text:   var(--color-accent);   /* re-resolve to red (avoid late-binding to master green) */
+  --color-accent-ring:   rgba(215, 26, 32, 0.20);   /* focus glow, accent-tinted */
+  --color-primary:       var(--ecoteq-navy);
+  --color-primary-hover: var(--navy-600);
+  --color-primary-active:var(--navy-800);
+  --color-info:          var(--navy-500);
+  --color-focus:         var(--green-400);
+  --shadow-accent:       0 8px 22px rgba(215, 26, 32, 0.30);  /* red CTA lift */
+}
+
+/* ---- Dark mode (composes with [data-mode="dark"]) ----
+   On the near-black graphite canvas the deep logo-red would sink, so the CTA
+   lifts to the brighter site red #f82f30 (pops: 3.9 on canvas, 4.6 on deep;
+   white label 3.86 = large-AA, so keep CTA labels bold ≥16px). Danger lifted
+   to stay legible and distinct from the pure-red accent. */
+[data-brand="iparidaralo"][data-mode="dark"],
+[data-brand="raklapdaralo"][data-mode="dark"] {
+  --ecoteq-green: #f82f30;       /* CTA fill — bright red pops on dark */
+  --green-500: #f82f30;
+  --green-600: #d71a20;          /* pressed = the light-mode logo red */
+  --green-400: #ff5a52;          /* hover-light */
+  --color-on-accent: #ffffff;
+  --color-danger: #f0876f;       /* lifted; lighter+pinker than the pure-red accent */
+
+  /* Near-black graphite canvas (machine-steel neutral) */
+  --color-bg:            #1c1e20;
+  --color-bg-subtle:     #222427;
+  --color-surface:       #2a2d30;   /* card / housing grey */
+  --color-surface-alt:   #323539;
+  --color-surface-dark:  #141618;
+
+  --color-feature:       #1a1c1e;
+  --color-feature-deep:  #101113;
+  --color-feature-raised:#2a2d30;
+
+  --color-header-bg:     rgba(28,30,32,0.86);
+  --color-text-inverse:  #1c1e20;
+
+  /* Text & borders flip for legibility on the dark canvas */
+  --color-text:           #f3f3f2;
+  --color-text-secondary: #c0c0bf;
+  --color-text-muted:     #8a8a8a;
+  --color-border:         #45484b;
+  --color-border-strong:  #595c5f;
+  --color-divider:        #3a3d40;
+  --color-accent-tint:    #3a1d1d;   /* dim red tint that reads on dark */
+
+  /* Graphite photo wash (matches the canvas) */
+  --overlay-navy: linear-gradient(180deg, rgba(16,17,19,0.50) 0%, rgba(16,17,19,0.90) 100%); /* @kind other */
+  --overlay-navy-side: linear-gradient(90deg, rgba(16,17,19,0.95) 0%, rgba(16,17,19,0.68) 55%, rgba(16,17,19,0.42) 100%); /* @kind other */
+
+  /* Lifted neutral-graphite chips */
+  --color-primary:       #44484c;
+  --color-primary-hover: #4f5358;
+  --color-primary-active:#383b3e;
+  --shadow-accent:       0 8px 22px rgba(248, 47, 48, 0.34);
+}

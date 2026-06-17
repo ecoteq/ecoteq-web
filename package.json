@@ -1,0 +1,17 @@
+{
+  "name": "ecoteq-web",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "sync:ds": "node scripts/sync-ds.mjs",
+    "dev": "npm run sync:ds && astro dev",
+    "build": "npm run sync:ds && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/vercel": "^10.0.8",
+    "astro": "^6.4.7"
+  }
+}

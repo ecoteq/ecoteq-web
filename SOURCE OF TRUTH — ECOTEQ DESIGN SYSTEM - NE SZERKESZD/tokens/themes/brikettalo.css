@@ -1,0 +1,110 @@
+/* brikettalo.hu — ECOTEQ sub-brand theme  (VÉGLEGES)
+   ONLY the brand core + accent change; minden más öröklődik.
+
+   PALETTA-INDOKLÁS (fotó- és márka-alapú, két beszállító fölött):
+   A brikettalo.hu ernyőmárka a CFNielsen AS (mechanikus présgépek),
+   a Prodeco S.R.L. (kisüzemi hidraulikus présgépek) és a RUF (hidraulikus)
+   gépei fölött. A közös szín-DNS a beszállítói ökoszisztémában a KÉK + NARANCS:
+     - Prodeco saját logója = narancs (#f33500) + azúrkék (#008fd8) orbit;
+     - kék ipari motorok mindkét gyártó sorain;
+     - CFNielsen kábelláncok kékje + a BP5510 "10" kék részlete;
+     - Euromagnet / Parker "Hyperchill plus" narancs komponensek.
+   A brikettalo nem másolja egyik beszállító festését sem (ECOTEQ-márka-először):
+   a közös kék+narancs DNS-t emeli ECOTEQ-szintre egy MÉLYEBB, prémium kobalttal.
+
+   Mély kobalt elsődleges + meleg narancs accent. A narancs hue (H27) szándékosan
+   a foglalt piros (iparidaralo H7) és borostyán (vakuum H42) KÖZÖTT ül.
+   Alkalmazás: [data-brand="brikettalo"] egy wrapperre (pl. <html>).
+   pelletgyarto.hu (pelletálás) örökli ezt a DS-t — mindkét selector osztja
+   ezeket a scope-okat szó szerint, egy forrásból. */
+
+[data-brand="brikettalo"],
+[data-brand="pelletgyarto"] {
+  /* ---- Brand core ---- */
+  --ecoteq-navy: #003a85;        /* primary — mély kobalt (fehér szöveg 10.8:1) */
+  --ecoteq-green: #f5862b;       /* accent — meleg narancs (H27, optimális elválás) */
+  --ecoteq-white: #ffffff;
+
+  /* Primary (cobalt) ramp */
+  --navy-900: #00204a;
+  --navy-800: #002a60;
+  --navy-700: #003a85;           /* = brand primary */
+  --navy-600: #0a4ea3;
+  --navy-500: #1f63bd;
+
+  /* Accent (orange) ramp */
+  --green-700: #c25e10;          /* pressed */
+  --green-600: #e0701a;
+  --green-500: #f5862b;          /* = brand accent */
+  --green-400: #ff9f4d;          /* hover-light / glow */
+  --green-100: #fde7d2;          /* tint surface */
+
+  /* JAVÍTÁS: a narancson SÖTÉT szöveg kell (fehér 2.52:1 — bukik; navy 5.09:1 — AA ✓).
+     A rendszer alap --color-on-accent: #fff-jét itt felül kell írni, ahogy a vakuumnál is. */
+  --color-on-accent: #1c3449;
+
+  /* Photo washes re-tinted to cobalt (rgb 0,42,96) */
+  --overlay-navy: linear-gradient(180deg, rgba(0,42,96,0.32) 0%, rgba(0,42,96,0.82) 100%); /* @kind other */
+  --overlay-navy-side: linear-gradient(90deg, rgba(0,42,96,0.93) 0%, rgba(0,42,96,0.38) 60%, rgba(0,42,96,0) 100%); /* @kind other */
+
+  /* Nudge warning off the orange accent so they don't collide */
+  --color-warning: #b8860b;
+
+  /* ---- Semantic aliases MUST be re-declared in-scope ----
+     CSS resolves :root aliases once at :root and inherits the resolved value
+     down; overriding the brand core in this scope does NOT retroactively change
+     them. Re-declaring forces re-resolution against the cobalt/orange values.
+     (--color-success is intentionally NOT redeclared, so it stays green.) */
+  --color-surface-dark:  var(--ecoteq-navy);
+  --color-text:          var(--ecoteq-navy);
+  --color-accent:        var(--ecoteq-green);
+  --color-accent-hover:  var(--green-600);
+  --color-accent-active: var(--green-700);
+  --color-accent-tint:   var(--green-100);
+  --color-accent-text:   var(--color-accent);   /* re-resolve to orange (avoid late-binding to master green) */
+  --color-accent-ring:   rgba(245, 134, 43, 0.20);   /* focus glow, accent-tinted */
+  --color-primary:       var(--ecoteq-navy);
+  --color-primary-hover: var(--navy-600);
+  --color-primary-active:var(--navy-800);
+  --color-info:          var(--navy-500);
+  --color-focus:         var(--green-400);
+  --shadow-accent:       0 8px 22px rgba(245, 134, 43, 0.32);  /* orange CTA lift */
+}
+
+/* Dark mode for brikettalo: neutral CF Nielsen press grey (#262626–#363636)
+   instead of the global cool graphite. Higher specificity than [data-mode="dark"],
+   so it overrides the canvas/surfaces while the cobalt+orange brand core stays. */
+[data-brand="brikettalo"][data-mode="dark"],
+[data-brand="pelletgyarto"][data-mode="dark"] {
+  --color-bg:            #2b2b2b;   /* CF Nielsen mid grey */
+  --color-bg-subtle:     #303030;
+  --color-surface:       #363636;   /* lighter housing grey */
+  --color-surface-alt:   #3e3e3e;
+  --color-surface-dark:  #1f1f1f;
+
+  --color-feature:       #232323;
+  --color-feature-deep:  #1a1a1a;
+  --color-feature-raised:#363636;
+
+  --color-header-bg:     rgba(43,43,43,0.86);
+  --color-text-inverse:  #2b2b2b;
+
+  /* Text & borders must flip for legibility on the dark canvas
+     (cobalt body text on #2b2b2b would fail contrast). */
+  --color-text:           #f4f4f3;   /* near-white headings/body */
+  --color-text-secondary: #c2c2c1;
+  --color-text-muted:     #8c8c8c;
+  --color-border:         #4a4a4a;
+  --color-border-strong:  #5e5e5e;
+  --color-divider:        #404040;
+  --color-accent-tint:    #3a2a18;   /* dim orange tint that reads on dark */
+
+  /* Neutral-grey photo wash (matches the canvas) */
+  --overlay-navy: linear-gradient(180deg, rgba(24,24,24,0.50) 0%, rgba(24,24,24,0.90) 100%); /* @kind other */
+  --overlay-navy-side: linear-gradient(90deg, rgba(24,24,24,0.95) 0%, rgba(24,24,24,0.68) 55%, rgba(24,24,24,0.42) 100%); /* @kind other */
+
+  /* Lifted neutral-grey chips */
+  --color-primary:       #444444;
+  --color-primary-hover: #4f4f4f;
+  --color-primary-active:#383838;
+}

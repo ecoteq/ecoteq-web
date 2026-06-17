@@ -1,0 +1,82 @@
+/* dobszarito.hu — ECOTEQ sub-brand theme  (NEW, built light+dark together)
+   Biomass drum/belt drying — "water evaporation, heat, vapour, lightness".
+
+   Grounding + rationale:
+     • The machines are galvanized steel (cool blue-grey, sampled H200–212),
+       blue fan/motor housings, warm-tan biomass, open sky. The cool elements
+       are STEEL + BLUE; the warm is only the material.
+     • The sibling accents already occupy the whole warm range — red
+       (iparidaralo), orange (brikettalo), amber (vakuum) — and pure cobalt is
+       brikettalo's, navy is the master's. The concept leads with "#water
+       evaporation / vapour / lightness", which is cool and airy.
+     • So dobszarito takes the one open, concept-true lane: a galvanized-STEEL
+       blue-grey primary + a STEAM-TEAL accent (H178), sitting cleanly between
+       cobalt (35°), navy (29°) and green (39°). Fire/heat lives in the
+       photography (steam plumes, golden hour, glowing biomass) and copy, not
+       in the palette.
+
+   Light+dark notes (checked together):
+     • Teal, like vakuum's amber, wants DARK text on the CTA fill
+       (#12a8a3 + #0c2b2c = 5.12 AA; white on teal fails). on-accent is dark.
+     • Bright teal as TEXT/RULE on the cool light canvas is weak, so accent-text
+       deepens to petrol #0a6e72 on light (5.54 AA); in dark it reverts to the
+       bright teal (5.12). Uses the same --color-accent-text routing as vakuum.
+     • Light neutrals are a COOL airy off-white (#f2f6f7) — the "vapour/
+       lightness" identity, and a deliberate contrast to vakuum's warm cream.
+
+   Apply via [data-brand="dobszarito"]; compose with [data-mode="dark"]. */
+
+[data-brand="dobszarito"] {
+  /* ---- Brand core ---- */
+  --ecoteq-navy: #313f45;        /* primary — galvanized steel blue-grey */
+  --ecoteq-green: #12a8a3;       /* accent — steam teal (CTA fills) */
+  --ecoteq-white: #ffffff;
+
+  /* Primary (steel) ramp */
+  --navy-900: #1c262b;
+  --navy-800: #232f35;
+  --navy-700: #313f45;           /* = brand primary */
+  --navy-600: #44555d;
+  --navy-500: #5a6e77;
+
+  /* Accent (teal) ramp */
+  --green-700: #0a6e72;          /* deep petrol — accent TEXT/rule on light (5.54 AA) */
+  --green-600: #0e8a87;          /* pressed / hover-dark */
+  --green-500: #12a8a3;          /* = brand accent (CTA fill, dark label 5.12 AA) */
+  --green-400: #3fc6bd;          /* hover-light / glow / bright tint */
+  --green-100: #d9f2ef;          /* tint surface */
+
+  /* Teal needs DARK text on it */
+  --color-on-accent: #0c2b2c;
+  --color-focus: #0e8a87;
+
+  /* Accent used as TEXT/RULE/LINK — deepened so it reads on the cool canvas */
+  --color-accent-text: #0a6e72;
+
+  /* Cool airy neutral canvas (light mode only; dark layer overrides) */
+  --color-bg:         #f2f6f7;
+  --color-bg-subtle:  #e8eef0;
+  --color-surface:    #ffffff;
+  --color-surface-alt:#f2f6f7;
+  --color-border:     #d8e1e3;
+  --color-border-strong: #c2cdd0;
+  --color-divider:    #e2e9ea;
+  --color-header-bg:  rgba(242,246,247,0.85);
+
+  /* Photo washes re-tinted to the steel primary (rgb 49,63,69) */
+  --overlay-navy: linear-gradient(180deg, rgba(49,63,69,0.30) 0%, rgba(49,63,69,0.82) 100%); /* @kind other */
+  --overlay-navy-side: linear-gradient(90deg, rgba(49,63,69,0.93) 0%, rgba(49,63,69,0.38) 60%, rgba(49,63,69,0) 100%); /* @kind other */
+
+  /* Status: warning legible on the cool canvas; danger stays the default red
+     (no collision with a teal accent) */
+  --color-warning: #c0820f;
+}
+
+/* ---- Dark mode (composes with [data-mode="dark"]) ----
+   Global dark layer supplies the cool steel-dark canvas. We only revert the
+   accent-text to the bright teal (the deep petrol would sink on dark). CTA
+   fill, dark on-accent label and the teal identity carry over unchanged. */
+[data-brand="dobszarito"][data-mode="dark"] {
+  --color-accent-text: #3fc6bd;  /* bright teal reads on the dark canvas (5.1+) */
+  --color-focus: #3fc6bd;
+}

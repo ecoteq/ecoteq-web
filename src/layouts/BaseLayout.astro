@@ -1,0 +1,28 @@
+---
+import '../ds/styles.css';
+import { ALLOW_INDEXING, SITE_NAME } from '../config';
+
+interface Props {
+  title: string;
+  description?: string;
+  /** Sub-brand key (e.g. "brikettalo") -> sets data-brand for re-skinning. */
+  brand?: string;
+}
+
+const { title, description, brand } = Astro.props;
+---
+
+<!doctype html>
+<html lang="hu" data-brand={brand}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} · {SITE_NAME}</title>
+    {description && <meta name="description" content={description} />}
+    {!ALLOW_INDEXING && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="icon" href="/ds/logo-mark-green.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

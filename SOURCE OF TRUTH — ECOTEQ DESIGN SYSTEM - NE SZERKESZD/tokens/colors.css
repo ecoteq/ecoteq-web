@@ -1,0 +1,72 @@
+/* ECOTEQ — Color tokens
+   Sourced from the implemented ECOTEQ design system (ecoteq-ds.pdf).
+   Navy + green on a clean neutral gray scale. */
+:root {
+  /* ---- Brand core ---- */
+  --ecoteq-navy: #1c3449;        /* primary brand — dark surfaces, headings */
+  --ecoteq-green: #43ad4d;       /* accent — CTAs, highlights, active states */
+  --ecoteq-white: #ffffff;
+
+  /* Navy ramp (derived for depth/hover) */
+  --navy-900: #0f2030;
+  --navy-800: #16293a;
+  --navy-700: #1c3449;           /* = brand navy */
+  --navy-600: #284867;
+  --navy-500: #355d82;
+
+  /* Green ramp */
+  --green-700: #2f8a38;          /* pressed / hover-dark */
+  --green-600: #3a9d43;
+  --green-500: #43ad4d;          /* = brand green */
+  --green-400: #5cbf64;          /* hover-light / glow */
+  --green-100: #e4f4e5;          /* tint surface */
+
+  /* ---- Neutral gray scale ---- */
+  --gray-0:  #ffffff;
+  --gray-50: #f6f6f5;
+  --gray-100:#eeeded;            /* light surface */
+  --gray-200:#d9d9d9;            /* borders / dividers */
+  --gray-400:#9a9a9c;
+  --gray-600:#6c6c6e;
+  --gray-700:#4d4d4f;            /* secondary text */
+  --gray-900:#262627;
+
+  /* ---- Semantic aliases ---- */
+  --color-bg:            var(--gray-0);
+  --color-bg-subtle:     var(--gray-100);
+  --color-surface:       var(--gray-0);
+  --color-surface-alt:   var(--gray-100);
+  --color-surface-dark:  var(--ecoteq-navy);
+
+  --color-text:          var(--ecoteq-navy);   /* default body/heading on light */
+  --color-text-secondary:var(--gray-700);
+  --color-text-muted:    var(--gray-400);
+  --color-text-inverse:  var(--ecoteq-white);
+
+  --color-border:        var(--gray-200);
+  --color-border-strong: var(--gray-400);
+  --color-divider:       var(--gray-200);
+
+  --color-accent:        var(--ecoteq-green);
+  --color-accent-hover:  var(--green-600);
+  --color-accent-active: var(--green-700);
+  --color-accent-tint:   var(--green-100);
+  /* Accent used as TEXT/RULE/LINK. Defaults to the accent; brands/dark may
+     deepen or brighten it independently of the accent FILL for contrast. */
+  --color-accent-text:   var(--color-accent);
+  --color-on-accent:     var(--ecoteq-white);
+  --color-accent-ring:   rgba(67, 173, 77, 0.18);  /* focus glow, accent-tinted */
+
+  --color-primary:       var(--ecoteq-navy);
+  --color-primary-hover: var(--navy-600);
+  --color-primary-active:var(--navy-800);
+
+  /* Status (engineered from the palette) */
+  --color-success: var(--ecoteq-green);
+  --color-warning: #d98a1f;
+  --color-danger:  #c0392b;
+  --color-info:    var(--navy-500);
+
+  /* Focus ring */
+  --color-focus: var(--green-400);
+}

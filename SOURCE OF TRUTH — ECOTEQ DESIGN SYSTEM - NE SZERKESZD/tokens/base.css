@@ -1,0 +1,81 @@
+/* ECOTEQ — base element styles + a few utility helpers.
+   Kept minimal; tokens do the heavy lifting. */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--color-text);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--color-text);
+  margin: 0 0 0.4em;
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-heading);
+  font-weight: var(--fw-extrabold);
+}
+h1 { font-size: var(--fs-h1); line-height: var(--lh-tight); letter-spacing: var(--ls-display); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); font-weight: var(--fw-bold); }
+h4 { font-size: var(--fs-h4); font-weight: var(--fw-bold); }
+
+p { margin: 0 0 1em; }
+a { color: var(--color-accent-text); text-decoration: none; }
+a:hover { color: var(--color-accent-hover); }
+
+/* ---- Helper classes ---- */
+
+/* All-caps tracked label, often paired with a short green rule */
+.eco-overline {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-overline);
+  text-transform: uppercase;
+  color: var(--color-accent-text);
+}
+
+/* The signature short green accent rule */
+.eco-rule {
+  display: inline-block;
+  width: 40px;
+  height: 4px;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent-text);
+}
+
+/* Display hero text */
+.eco-display {
+  font-family: var(--font-display);
+  font-weight: var(--fw-extrabold);
+  font-size: var(--fs-display);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-display);
+}
+
+/* Navy photo overlay wrapper */
+.eco-photo {
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+}
+.eco-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--overlay-navy);
+}
+.eco-photo > * { position: relative; z-index: 1; }
+
+:focus-visible {
+  outline: var(--border-width-strong) solid var(--color-focus);
+  outline-offset: 2px;
+}

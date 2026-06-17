@@ -1,0 +1,97 @@
+/* porlevalaszto.hu — ECOTEQ sub-brand theme  (NEW, AL-KO-modeled, light+dark)
+   Dust & chip EXTRACTION technology — the AL-KO Extraction Technology line.
+
+   Brief: model porlevalaszto.hu on AL-KO's identity — crisp white, generous
+   whitespace, a bold red accent, energy-efficiency / "Made in Germany" tone —
+   but rendered inside the ECOTEQ design system (Fustat, ECOTEQ components and
+   logo), not as a clone of AL-KO's site.
+
+   Palette decisions:
+     • Accent — AL-KO red, sampled #e3001b (H357). Carries a white CTA label at
+       normal size (4.90 AA) and pops on both white and dark. Red on white also
+       reads as TEXT (4.90), so overline / links / rule use it directly — no
+       deepening needed in light mode (dark mode brightens it, see below).
+     • Primary — a cool near-black anthracite #1e2227 (white text 16:1). Cooler
+       and darker than iparidaralo's warmer graphite #2b2f33.
+     • Neutrals — crisp COOL white (#ffffff / #f4f5f6), minimal and airy. This,
+       plus a white-dominant / low-dark-area treatment, is what separates
+       porlevalaszto from iparidaralo: both are red-accented, but iparidaralo is
+       graphite-heavy and dark, porlevalaszto is white-led, clean and minimal.
+
+   NOTE on the shared red: porlevalaszto and iparidaralo share the red accent
+   family (AL-KO red ≈ ISVE red). They are differentiated by primary + treatment
+   (airy-white-minimal vs. graphite-heavy). If full separation is ever wanted,
+   shift this accent — but red is AL-KO's signature and porlevalaszto IS the
+   AL-KO line, so keeping it is the on-brand choice.
+
+   Apply via [data-brand="porlevalaszto"]; compose with [data-mode="dark"]. */
+
+[data-brand="porlevalaszto"] {
+  /* ---- Brand core ---- */
+  --ecoteq-navy: #1e2227;        /* primary — cool near-black anthracite */
+  --ecoteq-green: #e3001b;       /* accent — AL-KO red */
+  --ecoteq-white: #ffffff;
+
+  /* On-accent: white label on the red CTA (4.90 AA) */
+  --color-on-accent: #ffffff;
+
+  /* Primary (anthracite) ramp */
+  --navy-900: #121417;
+  --navy-800: #181a1d;
+  --navy-700: #1e2227;           /* = brand primary */
+  --navy-600: #3a4047;
+  --navy-500: #565d66;
+
+  /* Accent (red) ramp */
+  --green-700: #9e0512;          /* pressed */
+  --green-600: #c00016;          /* deep / hover-dark (6.46 on white) */
+  --green-500: #e3001b;          /* = brand accent (AL-KO red) */
+  --green-400: #f5333f;          /* bright tint / glow / dark-mode accent text */
+  --green-100: #fbdadd;          /* tint surface */
+
+  --color-focus: #c00016;
+  /* Red reads on white as text (4.90 AA), so accent-text = the accent in light */
+  --color-accent-text: #e3001b;
+
+  /* ---- Semantic aliases re-declared in-scope (re-resolve to AL-KO red;
+     avoid late-binding to the master green). ---- */
+  --color-surface-dark:  var(--ecoteq-navy);
+  --color-text:          var(--ecoteq-navy);
+  --color-accent:        var(--ecoteq-green);
+  --color-accent-hover:  var(--green-600);
+  --color-accent-active: var(--green-700);
+  --color-accent-tint:   var(--green-100);
+  --color-accent-ring:   rgba(227, 0, 27, 0.20);
+  --color-primary:       var(--ecoteq-navy);
+  --color-primary-hover: var(--navy-600);
+  --color-primary-active:var(--navy-800);
+  --color-info:          var(--navy-500);
+  --shadow-accent:       0 8px 22px rgba(227, 0, 27, 0.28);
+
+  /* Crisp cool-white neutral canvas — minimal, airy (AL-KO character) */
+  --color-bg:         #ffffff;
+  --color-bg-subtle:  #f4f5f6;
+  --color-surface:    #ffffff;
+  --color-surface-alt:#f4f5f6;
+  --color-border:     #e3e5e8;
+  --color-border-strong: #cdd1d6;
+  --color-divider:    #eef0f2;
+  --color-header-bg:  rgba(255,255,255,0.85);
+
+  /* Photo washes re-tinted to the anthracite primary (rgb 30,34,39) */
+  --overlay-navy: linear-gradient(180deg, rgba(30,34,39,0.30) 0%, rgba(30,34,39,0.82) 100%); /* @kind other */
+  --overlay-navy-side: linear-gradient(90deg, rgba(30,34,39,0.92) 0%, rgba(30,34,39,0.38) 60%, rgba(30,34,39,0) 100%); /* @kind other */
+
+  /* Push danger off the red accent so they don't collide */
+  --color-danger: #8a1410;
+  --color-warning: #c0820f;
+}
+
+/* ---- Dark mode (composes with [data-mode="dark"]) ----
+   Global dark layer supplies the dark canvas. Red as TEXT on dark is weak
+   (#e3001b on #1e2227 = 3.26), so accent-text brightens; the CTA fill keeps the
+   AL-KO red with a white label. */
+[data-brand="porlevalaszto"][data-mode="dark"] {
+  --color-accent-text: #f5333f;  /* brighter red reads as text on the dark canvas */
+  --color-focus: #f5333f;
+}

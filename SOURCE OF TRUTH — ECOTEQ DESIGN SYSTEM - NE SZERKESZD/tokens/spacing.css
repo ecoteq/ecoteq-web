@@ -1,0 +1,49 @@
+/* ECOTEQ — Spacing, radii, shadows, motion
+   8px base grid; generous, "breathing" engineered layouts. */
+:root {
+  /* Spacing scale (8px base) */
+  --space-0: 0;
+  --space-1: 0.25rem;  /* 4 */
+  --space-2: 0.5rem;   /* 8 */
+  --space-3: 0.75rem;  /* 12 */
+  --space-4: 1rem;     /* 16 */
+  --space-5: 1.5rem;   /* 24 */
+  --space-6: 2rem;     /* 32 */
+  --space-7: 3rem;     /* 48 */
+  --space-8: 4rem;     /* 64 */
+  --space-9: 6rem;     /* 96 */
+  --space-10: 8rem;    /* 128 */
+
+  /* Radii — capsule CTAs are the signature; cards are gently rounded */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-xl: 22px;
+  --radius-pill: 999px;   /* signature CTA / contact / tag shape */
+
+  /* Borders */
+  --border-width: 1px;
+  --border-width-strong: 2px;
+
+  /* Shadows — restrained, cool-toned (navy-based) */
+  --shadow-xs: 0 1px 2px rgba(28, 52, 73, 0.06);
+  --shadow-sm: 0 2px 8px rgba(28, 52, 73, 0.08);
+  --shadow-md: 0 8px 24px rgba(28, 52, 73, 0.10);
+  --shadow-lg: 0 18px 48px rgba(28, 52, 73, 0.16);
+  --shadow-accent: 0 8px 22px rgba(67, 173, 77, 0.32);   /* green CTA lift */
+
+  /* Image overlay — industrial photos always sit under a navy wash */
+  --overlay-navy: linear-gradient(180deg, rgba(28,52,73,0.30) 0%, rgba(28,52,73,0.78) 100%); /* @kind other */
+  --overlay-navy-side: linear-gradient(90deg, rgba(28,52,73,0.92) 0%, rgba(28,52,73,0.35) 60%, rgba(28,52,73,0) 100%); /* @kind other */
+
+  /* Motion */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); /* @kind other */
+  --dur-fast: 120ms;  /* @kind other */
+  --dur-base: 200ms;  /* @kind other */
+  --dur-slow: 360ms;  /* @kind other */
+
+  /* Layout */
+  --container-max: 1200px; /* @kind spacing */
+  --sidebar-w: 92px;       /* @kind spacing */
+}

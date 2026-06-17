@@ -1,0 +1,50 @@
+/* ECOTEQ — GLOBAL dark layer.
+   Default dark canvas for ANY surface with [data-mode="dark"] — used by the
+   master brand and by sub-brands that don't ship their own dark canvas
+   (e.g. vakuum). Sub-brands that DO want a bespoke dark canvas
+   (brikettalo, iparidaralo) declare it under [data-brand="x"][data-mode="dark"]
+   (specificity 0,2,0), which beats this layer (0,1,0).
+
+   IMPORT ORDER: this file MUST be @imported AFTER every theme file, so that on
+   equal specificity it overrides a sub-brand's LIGHT neutrals (e.g. vakuum's
+   cream canvas) when data-mode="dark" is set.
+
+   Cool neutral slate — sits well under both the master navy (#1c3449) and the
+   vakuum charcoal-slate (#1c1f22) primaries. */
+
+[data-mode="dark"] {
+  --color-bg:            #14181c;
+  --color-bg-subtle:     #1a1f24;
+  --color-surface:       #1f262c;   /* card surface */
+  --color-surface-alt:   #262e35;
+  --color-surface-dark:  #0f1316;   /* deepest band / rail */
+
+  --color-feature:       #161b20;
+  --color-feature-deep:  #0d1013;
+  --color-feature-raised:#1f262c;
+
+  --color-header-bg:     rgba(20,24,28,0.86);
+  --color-text-inverse:  #14181c;
+
+  /* Text & borders flip for legibility on the dark canvas */
+  --color-text:           #f1f3f5;
+  --color-text-secondary: #bcc3c9;
+  --color-text-muted:     #868d94;
+  --color-border:         #333b42;
+  --color-border-strong:  #47515a;
+  --color-divider:        #2a323a;
+
+  /* Accent text/rule reverts to the bright accent fill (deep accent-text would
+     sink on dark); accent tint becomes a dim wash of whatever accent is active. */
+  --color-accent-text:   var(--color-accent);
+  --color-accent-tint:   color-mix(in srgb, var(--color-accent) 20%, #14181c);
+
+  /* Neutral-dark photo wash */
+  --overlay-navy: linear-gradient(180deg, rgba(8,10,12,0.50) 0%, rgba(8,10,12,0.90) 100%); /* @kind other */
+  --overlay-navy-side: linear-gradient(90deg, rgba(8,10,12,0.95) 0%, rgba(8,10,12,0.68) 55%, rgba(8,10,12,0.42) 100%); /* @kind other */
+
+  /* Lifted neutral chips */
+  --color-primary:       #3c454d;
+  --color-primary-hover: #47515a;
+  --color-primary-active:#323a41;
+}

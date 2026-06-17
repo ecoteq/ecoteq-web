@@ -1,0 +1,146 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const brandColors = [
+  { name: '--ecoteq-navy', val: '#1c3449' },
+  { name: '--ecoteq-green', val: '#43ad4d' },
+  { name: '--gray-100', val: '#eeeded' },
+  { name: '--gray-200', val: '#d9d9d9' },
+  { name: '--gray-700', val: '#4d4d4f' },
+];
+
+const greenRamp = ['--green-700', '--green-600', '--green-500', '--green-400', '--green-100'];
+const navyRamp = ['--navy-900', '--navy-800', '--navy-700', '--navy-600', '--navy-500'];
+
+const typeScale = [
+  { tag: 'display', token: '--fs-display', label: 'Display 72' },
+  { tag: 'h1', token: '--fs-h1', label: 'H1 48' },
+  { tag: 'h2', token: '--fs-h2', label: 'H2 36' },
+  { tag: 'h3', token: '--fs-h3', label: 'H3 24' },
+  { tag: 'body', token: '--fs-body', label: 'Body 16' },
+];
+
+const spaces = ['--space-2', '--space-4', '--space-5', '--space-6', '--space-7', '--space-8'];
+const radii = ['--radius-sm', '--radius-md', '--radius-lg', '--radius-xl', '--radius-pill'];
+const shadows = ['--shadow-sm', '--shadow-md', '--shadow-lg', '--shadow-accent'];
+const weights = [200, 300, 400, 500, 600, 700, 800];
+---
+
+<BaseLayout title="Styleguide" description="ECOTEQ design system — token proof page.">
+  <main class="sg">
+    <header class="sg-head">
+      <p class="eco-overline">ECOTEQ DESIGN SYSTEM</p>
+      <h1>Styleguide — token bizonyíték</h1>
+      <p class="sg-lead">
+        Ez az oldal kizárólag a design system tokenjeit használja (szín, tipográfia,
+        térköz, radius, árnyék). Ha minden helyesen jelenik meg, a DS élesben működik Astro alatt.
+      </p>
+    </header>
+
+    <section class="sg-block">
+      <h2>Brand &amp; neutrals</h2>
+      <div class="swatches">
+        {brandColors.map((c) => (
+          <div class="swatch">
+            <div class="chip" style={`background:var(${c.name})`}></div>
+            <code>{c.name}</code>
+            <span>{c.val}</span>
+          </div>
+        ))}
+      </div>
+      <h3>Green ramp</h3>
+      <div class="ramp">{greenRamp.map((t) => <div class="ramp-cell" style={`background:var(${t})`}><span>{t}</span></div>)}</div>
+      <h3>Navy ramp</h3>
+      <div class="ramp">{navyRamp.map((t) => <div class="ramp-cell dark" style={`background:var(${t})`}><span>{t}</span></div>)}</div>
+    </section>
+
+    <section class="sg-block">
+      <h2>Typography — Fustat</h2>
+      {typeScale.map((t) => (
+        <div class="type-row" style={`font-size:var(${t.token})`}>
+          <span class="type-label">{t.label}</span>
+          Árvíztűrő tükörfúrógép — ŐŰÁÉÍ
+        </div>
+      ))}
+      <h3>Weights 200 → 800</h3>
+      <div class="weights">
+        {weights.map((w) => <span style={`font-weight:${w}`}>Aa {w}</span>)}
+      </div>
+    </section>
+
+    <section class="sg-block">
+      <h2>Spacing (8px grid)</h2>
+      <div class="spacing">
+        {spaces.map((s) => (
+          <div class="space-row"><div class="space-bar" style={`width:var(${s})`}></div><code>{s}</code></div>
+        ))}
+      </div>
+    </section>
+
+    <section class="sg-block">
+      <h2>Radii &amp; shadows</h2>
+      <div class="boxes">
+        {radii.map((r) => <div class="box" style={`border-radius:var(${r})`}><code>{r}</code></div>)}
+      </div>
+      <div class="boxes">
+        {shadows.map((s) => <div class="box shadow" style={`box-shadow:var(${s})`}><code>{s}</code></div>)}
+      </div>
+    </section>
+
+    <section class="sg-block">
+      <h2>Signature elements</h2>
+      <div class="cta-row">
+        <button class="cta">AJÁNLATOT KÉREK</button>
+        <span class="pill">Brikettáló</span>
+        <span class="rule"></span>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .sg { max-width: var(--container-max); margin-inline: auto; padding: var(--space-8) var(--space-5); }
+  .sg-head { margin-bottom: var(--space-8); }
+  .sg-lead { font-size: var(--fs-lg); color: var(--color-text-secondary); max-width: 70ch; }
+  .sg-block { padding-block: var(--space-7); border-top: var(--border-width) solid var(--color-border); }
+  .sg-block h3 { margin-top: var(--space-6); }
+
+  .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: var(--space-4); }
+  .swatch { display: flex; flex-direction: column; gap: var(--space-1); }
+  .chip { height: 72px; border-radius: var(--radius-md); border: var(--border-width) solid var(--color-border); }
+  .swatch code { font-size: var(--fs-sm); }
+  .swatch span { font-size: var(--fs-xs); color: var(--color-text-muted); }
+
+  .ramp { display: flex; border-radius: var(--radius-md); overflow: hidden; margin-top: var(--space-3); }
+  .ramp-cell { flex: 1; height: 64px; display: flex; align-items: flex-end; padding: var(--space-2); }
+  .ramp-cell span { font-size: 10px; color: var(--ecoteq-navy); }
+  .ramp-cell.dark span { color: #fff; }
+
+  .type-row { display: flex; align-items: baseline; gap: var(--space-4); font-family: var(--font-display);
+    font-weight: var(--fw-extrabold); letter-spacing: var(--ls-heading); line-height: var(--lh-heading);
+    margin-bottom: var(--space-3); }
+  .type-label { font-family: var(--font-sans); font-size: var(--fs-xs); font-weight: var(--fw-bold);
+    color: var(--color-text-muted); width: 92px; flex: none; letter-spacing: var(--ls-overline); }
+  .weights { display: flex; flex-wrap: wrap; gap: var(--space-5); font-size: var(--fs-h3); }
+
+  .spacing { display: flex; flex-direction: column; gap: var(--space-3); }
+  .space-row { display: flex; align-items: center; gap: var(--space-4); }
+  .space-bar { height: 16px; background: var(--color-accent); border-radius: var(--radius-sm); }
+
+  .boxes { display: flex; flex-wrap: wrap; gap: var(--space-5); margin-top: var(--space-4); }
+  .box { width: 120px; height: 80px; background: var(--color-surface); border: var(--border-width) solid var(--color-border);
+    display: grid; place-items: center; }
+  .box.shadow { border: none; }
+  .box code { font-size: var(--fs-xs); }
+
+  .cta-row { display: flex; align-items: center; gap: var(--space-5); flex-wrap: wrap; }
+  .cta { font-family: var(--font-sans); font-weight: var(--fw-bold); letter-spacing: var(--ls-overline);
+    color: var(--color-on-accent); background: var(--color-accent); border: none; border-radius: var(--radius-pill);
+    padding: var(--space-3) var(--space-6); box-shadow: var(--shadow-accent); cursor: pointer;
+    transition: background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out); }
+  .cta:hover { background: var(--color-accent-hover); transform: translateY(-1px); }
+  .cta:active { background: var(--color-accent-active); transform: none; }
+  .pill { border: var(--border-width) solid var(--color-border-strong); border-radius: var(--radius-pill);
+    padding: var(--space-2) var(--space-4); font-size: var(--fs-sm); }
+  .rule { display: inline-block; width: 40px; height: 4px; background: var(--color-accent); border-radius: var(--radius-pill); }
+</style>
