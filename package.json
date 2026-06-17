@@ -8,10 +8,14 @@
     "dev": "npm run sync:ds && astro dev",
     "build": "npm run sync:ds && astro build",
     "preview": "astro preview",
+    "shot": "node scripts/shot.mjs",
     "astro": "astro"
   },
   "dependencies": {
     "@astrojs/vercel": "^10.0.8",
     "astro": "^6.4.7"
+  },
+  "devDependencies": {
+    "playwright": "^1.61.0"
   }
 }

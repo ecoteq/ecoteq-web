@@ -18,3 +18,6 @@ public/ds/
 # os
 .DS_Store
 Thumbs.db
+
+# dev screenshots
+.shots/
