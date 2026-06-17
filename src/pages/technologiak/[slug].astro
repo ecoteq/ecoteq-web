@@ -50,7 +50,7 @@ const FORM_CTA = { label: 'Elküldöm a projekt adatait', href: '/#ajanlatkeres'
     <div class="grid cards3">
       {t.fit.items.map((i) => (
         <article class="card">
-          <span class="rule" aria-hidden="true"></span>
+          <span class="ic" aria-hidden="true"><Icon name="check" size={18} /></span>
           <h3>{i.title}</h3>
           <p>{i.text}</p>
         </article>
@@ -204,7 +204,7 @@ const FORM_CTA = { label: 'Elküldöm a projekt adatait', href: '/#ajanlatkeres'
   @media (min-width: 720px) { .cards3 { grid-template-columns: repeat(3, 1fr); } .cards2 { grid-template-columns: 1fr 1fr; } }
 
   .card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-5); }
-  .card .rule { display: block; width: 36px; height: 4px; border-radius: var(--radius-pill); background: var(--color-accent); margin-bottom: var(--space-3); }
+  .card .ic { display: grid; place-items: center; width: 38px; height: 38px; border-radius: var(--radius-pill); background: var(--color-accent-tint); color: var(--green-700); margin-bottom: var(--space-4); }
   .card h3 { margin: 0 0 6px; font-size: var(--fs-h4); font-weight: var(--fw-bold); color: var(--color-text); }
   .card p { margin: 0; font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: var(--lh-snug); }
 
