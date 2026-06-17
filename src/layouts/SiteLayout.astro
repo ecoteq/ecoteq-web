@@ -8,14 +8,16 @@ interface Props {
   title: string;
   description?: string;
   brand?: string;
+  /** Keep the header solid from the top (for pages without a dark hero). */
+  solidHeader?: boolean;
 }
-const { title, description, brand } = Astro.props;
+const { title, description, brand, solidHeader = false } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description} brand={brand}>
   <BrandRail />
   <div class="shell">
-    <SiteHeader />
+    <SiteHeader solid={solidHeader} />
     <main><slot /></main>
     <SiteFooter />
   </div>

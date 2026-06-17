@@ -1,6 +1,7 @@
 ---
 import Logo from '../brand/Logo.astro';
 import Button from '../core/Button.astro';
+import Icon from '../Icon.astro';
 import { CONTACT, CTA, TECHNOLOGIES } from '../../lib/site';
 
 const solutions = [
@@ -19,6 +20,12 @@ const company = [
   { label: 'Kapcsolat', href: '#kapcsolat' },
   { label: 'Ajánlatkérés', href: CTA.primary.href },
 ];
+const legal = [
+  { label: 'Adatvédelmi tájékoztató', href: '/adatvedelmi-tajekoztato', icon: 'shield-check' },
+  { label: 'Cookie-tájékoztató', href: '/cookie-tajekoztato', icon: 'cookie' },
+  { label: 'Felhasználási feltételek', href: '/felhasznalasi-feltetelek', icon: 'file-text' },
+  { label: 'Impresszum', href: '/impresszum', icon: 'info' },
+];
 const year = 2026;
 ---
 
@@ -34,6 +41,12 @@ const year = 2026;
           porleválasztás és anyagmozgatás.
         </p>
         <Button href={CTA.primary.href} size="sm">{CTA.primary.label}</Button>
+        <address class="contact">
+          <span>{CONTACT.company}</span>
+          <span>{CONTACT.address}</span>
+          <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+          <a href={CONTACT.phoneHref}>{CONTACT.phone}</a>
+        </address>
       </div>
 
       <nav class="cols" aria-label="Lábléc navigáció">
@@ -50,20 +63,15 @@ const year = 2026;
           <ul>{company.map((c) => <li><a href={c.href}>{c.label}</a></li>)}</ul>
         </div>
         <div class="col">
-          <h3>Kapcsolat</h3>
-          <address>
-            <span>{CONTACT.company}</span>
-            <span>{CONTACT.address}</span>
-            <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
-            <a href={CONTACT.phoneHref}>{CONTACT.phone}</a>
-          </address>
+          <h3>Jogi</h3>
+          <ul>{legal.map((l) => <li><a class="ic-link" href={l.href}><Icon name={l.icon} size={15} />{l.label}</a></li>)}</ul>
         </div>
       </nav>
     </div>
 
     <div class="bottom">
       <span>© {year} {CONTACT.company}. Minden jog fenntartva.</span>
-      <span class="legal"><a href="#">Adatkezelés</a> · <a href="#">Impresszum</a></span>
+      <span class="legal"><a href="/adatvedelmi-tajekoztato">Adatvédelmi tájékoztató</a> · <a href="/impresszum">Impresszum</a></span>
     </div>
   </div>
 </footer>
@@ -96,6 +104,11 @@ const year = 2026;
 
   address { font-style: normal; display: flex; flex-direction: column; gap: 8px; font-size: var(--fs-sm); }
   address span { color: rgba(255, 255, 255, 0.78); }
+  .contact { margin-top: var(--space-5); }
+
+  .ic-link { display: inline-flex; align-items: center; gap: 9px; }
+  .ic-link :global(.icon) { color: rgba(255, 255, 255, 0.42); flex: none; transition: color var(--dur-fast) var(--ease-standard); }
+  .ic-link:hover :global(.icon) { color: var(--color-accent); }
 
   .bottom {
     margin-top: var(--space-7);

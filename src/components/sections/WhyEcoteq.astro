@@ -6,11 +6,11 @@ import Icon from '../Icon.astro';
 import { CTA } from '../../lib/site';
 
 const values = [
-  { title: 'Rendszerszemlélet', text: 'Nem csak gépet nézünk, hanem anyagáramot, kiszolgálást, helyigényt, üzemórát és kiegészítő technológiákat.' },
-  { title: 'Ipari fókusz', text: 'Faipari, biomassza, hulladékkezelési és gyártóipari feladatokra keresünk reális megoldást.' },
-  { title: 'Magyar támogatás', text: 'Az egyeztetés, előminősítés, projektkövetés és szervizkommunikáció magyar nyelven, hazai szakértői háttérrel történik.' },
-  { title: 'Európai gyártói háttér', text: 'A technológiai irányhoz illeszkedő európai gyártók és rendszerelemek közül választunk.' },
-  { title: 'Üzleti realitás', text: 'Figyelembe vesszük az üzemórát, mennyiséget, energiaigényt, karbantartást, megtérülési logikát és a kockázatokat is.' },
+  { icon: 'layers', title: 'Rendszerszemlélet', text: 'Nem csak gépet nézünk, hanem anyagáramot, kiszolgálást, helyigényt, üzemórát és kiegészítő technológiákat.' },
+  { icon: 'factory', title: 'Ipari fókusz', text: 'Faipari, biomassza, hulladékkezelési és gyártóipari feladatokra keresünk reális megoldást.' },
+  { icon: 'map-pin', title: 'Magyar támogatás', text: 'Az egyeztetés, előminősítés, projektkövetés és szervizkommunikáció magyar nyelven, hazai szakértői háttérrel történik.' },
+  { icon: 'globe', title: 'Európai gyártói háttér', text: 'A technológiai irányhoz illeszkedő európai gyártók és rendszerelemek közül választunk.' },
+  { icon: 'trending-up', title: 'Üzleti realitás', text: 'Figyelembe vesszük az üzemórát, mennyiséget, energiaigényt, karbantartást, megtérülési logikát és a kockázatokat is.' },
 ];
 ---
 
@@ -24,7 +24,7 @@ const values = [
   <div class="grid">
     {values.map((v) => (
       <div class="value">
-        <span class="ic"><Icon name="check" size={18} /></span>
+        <span class="ic"><Icon name={v.icon} size={20} /></span>
         <div>
           <h3>{v.title}</h3>
           <p>{v.text}</p>

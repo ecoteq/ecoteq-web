@@ -4,13 +4,17 @@ import Button from '../core/Button.astro';
 import { NAV, CTA } from '../../lib/site';
 
 /**
- * Top sticky header — the real navigation. Transparent over the hero, solid on
- * scroll. On desktop it sits right of the brand rail; below 1024px it carries the
- * logo + a hamburger menu (the rail is gone).
+ * Top sticky header — the real navigation. Transparent over a dark hero, solid on
+ * scroll. On content pages without a dark hero, pass `solid` to keep it always solid
+ * (otherwise white nav text would be invisible on a light page top).
  */
+interface Props {
+  solid?: boolean;
+}
+const { solid = false } = Astro.props;
 ---
 
-<header class="site-header" id="site-header" data-transparent>
+<header class="site-header" id="site-header" data-transparent={solid ? undefined : ''} data-solid={solid ? '' : undefined}>
   <div class="bar">
     <a class="brand" href="/" aria-label="ECOTEQ – Kezdőlap">
       <Logo tone="white" size={24} class="brand-light" />
@@ -45,12 +49,14 @@ import { NAV, CTA } from '../../lib/site';
     const burger = header.querySelector<HTMLButtonElement>('.burger');
     const menu = document.getElementById('mobile-menu');
 
-    const onScroll = () => {
-      if (window.scrollY > 24) header.removeAttribute('data-transparent');
-      else header.setAttribute('data-transparent', '');
-    };
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
+    if (!header.hasAttribute('data-solid')) {
+      const onScroll = () => {
+        if (window.scrollY > 24) header.removeAttribute('data-transparent');
+        else header.setAttribute('data-transparent', '');
+      };
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }
 
     const closeMenu = () => {
       header.removeAttribute('data-open');

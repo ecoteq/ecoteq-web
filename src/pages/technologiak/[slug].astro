@@ -30,6 +30,28 @@ const FIT_ICONS: Record<string, string[]> = {
   'anyagmozgas-rendszerelemek': ['repeat', 'route', 'magnet', 'boxes', 'layers'],
 };
 const fitIcons = FIT_ICONS[t.slug] ?? [];
+
+// Themed icon for a decision factor, picked from its title.
+function factorIcon(title: string): string {
+  const s = title.toLowerCase();
+  if (/nedvesség|szárít|kezelőanyag/.test(s)) return 'droplets';
+  if (/méret|szemcse|vastagság|hossz|forma|frakció/.test(s)) return 'ruler';
+  if (/mennyiség|kapacitás|üzemóra|ütem|fokozat/.test(s)) return 'gauge';
+  if (/hőforrás|energia|fűt/.test(s)) return 'flame';
+  if (/fafaj/.test(s)) return 'trees';
+  if (/szennyez|idegenanyag|fém|mágnes|gépvéd/.test(s)) return 'magnet';
+  if (/por|emisszió|levegő|zaj/.test(s)) return 'wind';
+  if (/minőség|védelem|biztonság|robban|atex|szabályoz/.test(s)) return 'shield';
+  if (/bővít/.test(s)) return 'trending-up';
+  if (/üzleti|beruház|gazdaság|realitás/.test(s)) return 'banknote';
+  if (/hely|telepít|környezet/.test(s)) return 'map-pin';
+  if (/cél|végtermék|kimenet|útvonal|szint/.test(s)) return 'route';
+  if (/adagolás|automatizál|vezérlés|kiszolgál|ciklus/.test(s)) return 'settings';
+  if (/szűr|leválaszt/.test(s)) return 'filter';
+  if (/gép|kapcsolódó/.test(s)) return 'factory';
+  if (/anyag/.test(s)) return 'boxes';
+  return 'settings';
+}
 ---
 
 <SiteLayout title={t.metaTitle} description={t.metaDescription}>
@@ -78,8 +100,11 @@ const fitIcons = FIT_ICONS[t.slug] ?? [];
       {t.problems.cards.map((c) => (
         <article class="pcard">
           <h3>{c.problem}</h3>
-          <p class="lbl">Miért gond?</p><p>{c.why}</p>
-          <p class="lbl">Technológiai válasz</p><p>{c.answer}</p>
+          <p class="why">{c.why}</p>
+          <div class="solution">
+            <span class="sic"><Icon name="lightbulb" size={18} /></span>
+            <p><strong>Technológiai válasz:</strong> {c.answer}</p>
+          </div>
         </article>
       ))}
     </div>
@@ -110,7 +135,7 @@ const fitIcons = FIT_ICONS[t.slug] ?? [];
     <SectionHeading overline="Döntés előtt" title={t.decisionFactors.h2} lead={t.decisionFactors.intro} />
     <div class="grid cards2 tight">
       {t.decisionFactors.factors.map((f) => (
-        <div class="factor"><span class="ic"><Icon name="check" size={16} /></span><div><h3>{f.title}</h3><p>{f.text}</p></div></div>
+        <div class="factor"><span class="ic"><Icon name={factorIcon(f.title)} size={18} /></span><div><h3>{f.title}</h3><p>{f.text}</p></div></div>
       ))}
     </div>
   </Section>
@@ -157,7 +182,7 @@ const fitIcons = FIT_ICONS[t.slug] ?? [];
       <SectionHeading overline="Előminősítés" title={t.preQual.h2} lead={t.preQual.body} />
       <div class="prequal-data">
         <p class="lbl">Hasznos, ha tudjuk:</p>
-        <ul>{t.preQual.fields.map((f) => <li><Icon name="check" size={15} />{f}</li>)}</ul>
+        <ul>{t.preQual.fields.map((f) => <li><Icon name="chevron-right" size={15} />{f}</li>)}</ul>
         <Button href={FORM_CTA.href}>{FORM_CTA.label}</Button>
         <p class="micro">A beérkező megkereséseket munkanapokon előszűrjük, és jellemzően 24 órán belül visszajelzünk a következő lépésről.</p>
       </div>
@@ -221,10 +246,13 @@ const fitIcons = FIT_ICONS[t.slug] ?? [];
   .card h3 { margin: 0 0 6px; font-size: var(--fs-h4); font-weight: var(--fw-bold); color: var(--color-text); }
   .card p { margin: 0; font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: var(--lh-snug); }
 
-  .pcard { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-6); }
-  .pcard h3 { margin: 0 0 var(--space-3); font-size: var(--fs-h4); font-weight: var(--fw-bold); color: var(--color-text); }
-  .pcard .lbl { margin: var(--space-3) 0 2px; font-size: var(--fs-xs); font-weight: var(--fw-bold); letter-spacing: var(--ls-overline); text-transform: uppercase; color: var(--color-accent-text); }
-  .pcard p { margin: 0; font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: var(--lh-snug); }
+  .pcard { display: flex; flex-direction: column; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-6); }
+  .pcard h3 { margin: 0 0 var(--space-2); font-size: var(--fs-h4); font-weight: var(--fw-bold); color: var(--color-text); }
+  .pcard .why { margin: 0 0 var(--space-4); font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: var(--lh-snug); }
+  .pcard .solution { margin-top: auto; display: flex; gap: var(--space-3); align-items: flex-start; background: var(--color-accent-tint); border: 1px solid var(--color-accent-ring); border-radius: var(--radius-md); padding: var(--space-4); }
+  .pcard .sic { flex: none; color: var(--green-700); display: inline-flex; margin-top: 1px; }
+  .pcard .solution p { margin: 0; font-size: var(--fs-sm); color: var(--color-text); line-height: var(--lh-snug); }
+  .pcard .solution strong { color: var(--green-700); font-weight: var(--fw-bold); }
 
   /* Materials matrix */
   .matrix { margin-top: var(--space-7); display: grid; gap: var(--space-5); grid-template-columns: 1fr; }
