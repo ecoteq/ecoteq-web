@@ -1,5 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import {
+  Button, IconButton, Tag, Badge, Card, ProductCard, StatBlock,
+  Logo, Overline, SectionHeading, ContactPill, Input, Select,
+} from '../components';
 
 const brandColors = [
   { name: '--ecoteq-navy', val: '#1c3449' },
@@ -95,6 +100,122 @@ const weights = [200, 300, 400, 500, 600, 700, 800];
         <span class="rule"></span>
       </div>
     </section>
+
+    <!-- ============ COMPONENTS ============ -->
+    <section class="sg-block">
+      <h2>Komponensek — Logo &amp; Overline</h2>
+      <div class="demo">
+        <Logo tone="navy" size={34} />
+        <Logo tone="green" size={34} showWordmark={false} />
+      </div>
+      <div class="demo" style="margin-top: var(--space-5);">
+        <Overline>Megoldások</Overline>
+        <Overline rule={false} color="var(--color-text-muted)">2026</Overline>
+      </div>
+    </section>
+
+    <section class="sg-block">
+      <h2>SectionHeading</h2>
+      <SectionHeading
+        overline="Megoldások"
+        title="Ipari hulladékból érték"
+        lead="A darálástól a brikettálásig — tervezhető, üzemeltethető, szervizelhető rendszerek."
+      />
+    </section>
+
+    <section class="sg-block">
+      <h2>Buttons</h2>
+      <div class="demo">
+        <Button variant="primary">Ajánlatot kérek</Button>
+        <Button variant="secondary"><Icon slot="icon-right" name="arrow-right" />Részletek</Button>
+        <Button variant="ghost" size="sm">Mégse</Button>
+        <Button variant="primary" pill={false} size="lg">Letöltés<Icon slot="icon-left" name="download" /></Button>
+      </div>
+      <div class="demo" style="margin-top: var(--space-5);">
+        <IconButton label="Menü"><Icon name="menu" /></IconButton>
+        <IconButton variant="solid" pill label="Tovább"><Icon name="arrow-right" /></IconButton>
+        <IconButton label="Bezárás"><Icon name="x" /></IconButton>
+      </div>
+    </section>
+
+    <section class="sg-block">
+      <h2>Tags &amp; Badges</h2>
+      <div class="demo">
+        <Tag>Ipari darálás</Tag>
+        <Tag variant="navy">Brikettálás</Tag>
+        <Tag variant="subtle" uppercase={false}>Biomassza</Tag>
+      </div>
+      <div class="demo" style="margin-top: var(--space-5);">
+        <Badge status="success">Raktáron</Badge>
+        <Badge status="warning">Előrendelés</Badge>
+        <Badge status="info">Szerviz</Badge>
+        <Badge status="danger">Elfogyott</Badge>
+      </div>
+    </section>
+
+    <section class="sg-block">
+      <h2>StatBlocks</h2>
+      <div class="demo" style="gap: var(--space-8);">
+        <StatBlock value="15" suffix="+" label="év mérnöki tapasztalat" />
+        <StatBlock value="200" suffix="+" label="telepített rendszer" />
+        <StatBlock value="98" suffix="%" label="szerviz elérhetőség" />
+      </div>
+    </section>
+
+    <section class="sg-block">
+      <h2>Cards &amp; ProductCards</h2>
+      <div class="grid">
+        <Card interactive>
+          <h3 style="margin:0 0 var(--space-2);">Tanácsadás</h3>
+          <p style="margin:0; color:var(--color-text-secondary); font-size:var(--fs-sm);">
+            Szakértői támogatás a technológiaválasztástól a beruházási stratégiáig.
+          </p>
+        </Card>
+        <ProductCard
+          category="Brikettálás"
+          title="Brikettáló rendszerek"
+          description="Automata gépsorok faforgácshoz, biomasszához vagy ipari hulladékhoz."
+          cta="Részletek"
+        />
+        <ProductCard
+          category="Darálás"
+          title="Ipari hulladékdarálók"
+          description="Fém, fa, műanyag, papír vagy raklap aprítása egyedi megoldásokkal."
+          cta="Részletek"
+        />
+      </div>
+    </section>
+
+    <section class="sg-block">
+      <h2>Form elemek</h2>
+      <div class="grid" style="max-width: 720px;">
+        <Input label="Név" placeholder="Az Ön neve" />
+        <Input label="E-mail" type="email" placeholder="nev@ceg.hu"><Icon slot="icon" name="mail" /></Input>
+        <Input label="Telefon" error="Kötelező mező" />
+        <Select label="Kategória" options={['Összes', 'Darálás', 'Brikettálás', 'Szárítás']} />
+      </div>
+    </section>
+
+    <!-- Dark panel: outline-light variants, ContactPill, white logo -->
+    <section class="sg-block">
+      <h2>Sötét háttéren (navy)</h2>
+      <div class="dark-panel">
+        <Logo tone="white" size={32} />
+        <div class="demo" style="margin-top: var(--space-6);">
+          <Button variant="outline-light">Kapcsolat</Button>
+          <Tag variant="outline-light">Referencia</Tag>
+          <IconButton variant="outline-light" label="Menü"><Icon name="menu" /></IconButton>
+        </div>
+        <div class="demo" style="margin-top: var(--space-6);">
+          <ContactPill href="mailto:info@ecoteq.hu"><Icon slot="icon" name="mail" />info@ecoteq.hu</ContactPill>
+          <ContactPill href="tel:+3614301556"><Icon slot="icon" name="phone" />+36 1 430-1556</ContactPill>
+        </div>
+        <div class="demo" style="margin-top: var(--space-7); gap: var(--space-8);">
+          <StatBlock value="15" suffix="+" label="év tapasztalat" tone="dark" />
+          <StatBlock value="98" suffix="%" label="elérhetőség" tone="dark" />
+        </div>
+      </div>
+    </section>
   </main>
 </BaseLayout>
 
@@ -143,4 +264,8 @@ const weights = [200, 300, 400, 500, 600, 700, 800];
   .pill { border: var(--border-width) solid var(--color-border-strong); border-radius: var(--radius-pill);
     padding: var(--space-2) var(--space-4); font-size: var(--fs-sm); }
   .rule { display: inline-block; width: 40px; height: 4px; background: var(--color-accent); border-radius: var(--radius-pill); }
+
+  .demo { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--space-5); margin-top: var(--space-4); }
+  .dark-panel { background: var(--ecoteq-navy); border-radius: var(--radius-lg); padding: var(--space-7); margin-top: var(--space-4); }
 </style>

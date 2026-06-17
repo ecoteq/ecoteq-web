@@ -1,0 +1,43 @@
+---
+import Overline from './Overline.astro';
+
+/** Section heading block: overline + display heading + optional lead paragraph. */
+interface Props {
+  overline?: string;
+  title: string;
+  lead?: string;
+  align?: 'left' | 'center';
+  tone?: 'light' | 'dark';
+  as?: 'h1' | 'h2' | 'h3';
+  class?: string;
+  [key: string]: unknown;
+}
+
+const { overline, title, lead, align = 'left', tone = 'light', as = 'h2', class: className, ...rest } = Astro.props;
+const Heading = as;
+---
+
+<header class:list={['sh', className]} data-align={align} data-tone={tone} {...rest}>
+  {overline && <Overline>{overline}</Overline>}
+  <Heading class="sh-title">{title}</Heading>
+  {lead && <p class="sh-lead">{lead}</p>}
+</header>
+
+<style>
+  .sh { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; text-align: left; max-width: 640px; }
+  .sh[data-align='center'] { align-items: center; text-align: center; margin-inline: auto; }
+
+  .sh-title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: var(--fw-extrabold);
+    font-size: var(--fs-h2);
+    line-height: var(--lh-heading);
+    letter-spacing: var(--ls-heading);
+    color: var(--color-text);
+  }
+  .sh-lead { margin: 0; font-size: var(--fs-lg); line-height: var(--lh-body); color: var(--color-text-secondary); }
+
+  .sh[data-tone='dark'] .sh-title { color: var(--ecoteq-white); }
+  .sh[data-tone='dark'] .sh-lead { color: rgba(255, 255, 255, 0.78); }
+</style>

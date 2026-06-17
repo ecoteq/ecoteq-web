@@ -1,0 +1,68 @@
+---
+/** Native select styled to match Input — used by the product filters. */
+type Option = string | { value: string; label: string };
+
+interface Props {
+  label?: string;
+  hint?: string;
+  options?: Option[];
+  id?: string;
+  name?: string;
+  required?: boolean;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const { label, hint, options = [], id, class: className, ...rest } = Astro.props;
+const slug = label ? String(label).toLowerCase().replace(/\s+/g, '-') : 'field';
+const selId = id ?? `sel-${slug}`;
+const normalized = options.map((o) => (typeof o === 'string' ? { value: o, label: o } : o));
+const hasSlot = Astro.slots.has('default');
+---
+
+<div class:list={['field', className]}>
+  {label && <label class="label" for={selId}>{label}</label>}
+  <div class="control">
+    <select id={selId} class="select" {...rest}>
+      {hasSlot ? <slot /> : normalized.map((o) => <option value={o.value}>{o.label}</option>)}
+    </select>
+    <span class="chevron" aria-hidden="true">▾</span>
+  </div>
+  {hint && <span class="msg">{hint}</span>}
+</div>
+
+<style>
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .label { font-size: var(--fs-sm); font-weight: var(--fw-semibold); color: var(--ecoteq-navy); }
+  .control { position: relative; }
+  .select {
+    width: 100%;
+    box-sizing: border-box;
+    appearance: none;
+    -webkit-appearance: none;
+    font-family: var(--font-sans);
+    font-size: 15px;
+    color: var(--ecoteq-navy);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 12px 40px 12px 14px;
+    cursor: pointer;
+    transition:
+      border-color var(--dur-base) var(--ease-standard),
+      box-shadow var(--dur-base) var(--ease-standard);
+  }
+  .select:focus { outline: none; border-color: var(--color-accent); box-shadow: 0 0 0 3px var(--color-accent-ring); }
+  .chevron {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--color-text-secondary);
+    font-size: 12px;
+  }
+  .msg { font-size: var(--fs-xs); color: var(--color-text-secondary); }
+
+  @media (prefers-reduced-motion: reduce) { .select { transition: none; } }
+</style>

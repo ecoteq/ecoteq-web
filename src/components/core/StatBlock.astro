@@ -1,0 +1,44 @@
+---
+/** Big metric block — ExtraBold figure + label, with optional green accent rule. */
+interface Props {
+  value: string | number;
+  label: string;
+  suffix?: string;
+  tone?: 'light' | 'dark';
+  rule?: boolean;
+  align?: 'left' | 'center';
+  class?: string;
+  [key: string]: unknown;
+}
+
+const { value, label, suffix, tone = 'light', rule = true, align = 'left', class: className, ...rest } = Astro.props;
+---
+
+<div class:list={['stat', className]} data-tone={tone} data-align={align} {...rest}>
+  {rule && <span class="rule" aria-hidden="true"></span>}
+  <div class="figure">
+    <span class="value">{value}</span>
+    {suffix && <span class="suffix">{suffix}</span>}
+  </div>
+  <span class="label">{label}</span>
+</div>
+
+<style>
+  .stat { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; text-align: left; }
+  .stat[data-align='center'] { align-items: center; text-align: center; }
+
+  .rule { width: 32px; height: 4px; border-radius: var(--radius-pill); background: var(--color-accent); }
+  .figure { display: flex; align-items: baseline; gap: 4px; line-height: 1; }
+  .value {
+    font-family: var(--font-display);
+    font-weight: var(--fw-extrabold);
+    font-size: 44px;
+    letter-spacing: var(--ls-display);
+    color: var(--color-text);
+  }
+  .suffix { font-family: var(--font-display); font-weight: var(--fw-bold); font-size: 22px; color: var(--color-accent); }
+  .label { font-size: var(--fs-sm); color: var(--color-text-secondary); }
+
+  .stat[data-tone='dark'] .value { color: var(--ecoteq-white); }
+  .stat[data-tone='dark'] .label { color: rgba(255, 255, 255, 0.7); }
+</style>

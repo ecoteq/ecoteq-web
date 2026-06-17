@@ -1,0 +1,30 @@
+---
+/** All-caps tracked label, optionally led by the signature short green rule. */
+interface Props {
+  rule?: boolean;
+  color?: string;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const { rule = true, color = 'var(--color-accent-text, var(--color-accent))', class: className, ...rest } = Astro.props;
+---
+
+<span class:list={['overline', className]} style={`--overline-color:${color}`} {...rest}>
+  {rule && <span class="rule" aria-hidden="true"></span>}
+  <slot />
+</span>
+
+<style>
+  .overline {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-bold);
+    letter-spacing: var(--ls-overline);
+    text-transform: uppercase;
+    color: var(--overline-color);
+  }
+  .rule { width: 28px; height: 3px; border-radius: var(--radius-pill); background: currentColor; flex: none; }
+</style>
