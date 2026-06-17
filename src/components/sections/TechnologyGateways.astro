@@ -1,0 +1,36 @@
+---
+import Section from '../layout/Section.astro';
+import SectionHeading from '../brand/SectionHeading.astro';
+import ProductCard from '../core/ProductCard.astro';
+import { TECHNOLOGIES } from '../../lib/site';
+---
+
+<Section id="technologiak" surface="white">
+  <SectionHeading
+    overline="Technológiák"
+    title="Milyen feladatot kell megoldani?"
+    lead="Az ECOTEQ több technológiai területet kapcsol össze, mert az ipari anyagáramok sokszor nem egyetlen gépen múlnak. Egy daráló után jöhet szárítás; a brikettáláshoz vagy pelletáláshoz előkészített frakció kell."
+  />
+
+  <div class="grid">
+    {TECHNOLOGIES.map((t) => (
+      <ProductCard
+        image={t.image}
+        imageAlt={t.name}
+        title={t.name}
+        description={t.blurb}
+        cta="Áttekintés"
+        href={`/technologiak/${t.slug}/`}
+      />
+    ))}
+  </div>
+</Section>
+
+<style>
+  .grid {
+    margin-top: var(--space-7);
+    display: grid;
+    gap: var(--space-5);
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  }
+</style>

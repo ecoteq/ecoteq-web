@@ -1,0 +1,56 @@
+---
+import Section from '../layout/Section.astro';
+import SectionHeading from '../brand/SectionHeading.astro';
+import Button from '../core/Button.astro';
+import { CTA } from '../../lib/site';
+
+const pillars = [
+  {
+    title: 'A feladatból indulunk ki',
+    text: 'Nem katalógusból választunk gépet. Az anyag, a mennyiség, a cél és az üzemi körülmények határozzák meg a technológiai irányt.',
+  },
+  {
+    title: 'Az egész anyagutat nézzük',
+    text: 'Adagolás, előkészítés, frakció, nedvesség, anyagmozgatás, vezérlés, telepítés és szervizháttér — együtt ad működő rendszert.',
+  },
+  {
+    title: 'Kiszámítható folyamat',
+    text: 'Az anyagból rendezett, tervezhető és üzletileg értelmezhető folyamatot építünk, nem önmagában álló gépet.',
+  },
+];
+---
+
+<Section surface="navy">
+  <SectionHeading
+    tone="dark"
+    overline="ECOTEQ szemlélet"
+    title="Egy gép ritkán oldja meg önmagában a teljes üzemi problémát."
+    lead="Az ipari hulladék és biomassza kezelése akkor működik jól, ha az anyag útja végig van gondolva. A gép fontos, de önmagában nem elég — kell hozzá megfelelő előkészítés, anyagmozgatás, vezérlés és szervizháttér."
+  />
+
+  <div class="pillars">
+    {pillars.map((p) => (
+      <div class="pillar">
+        <span class="rule" aria-hidden="true"></span>
+        <h3>{p.title}</h3>
+        <p>{p.text}</p>
+      </div>
+    ))}
+  </div>
+
+  <Button href={CTA.primary.href}>Konzultációt kérek a rendszerirányról</Button>
+</Section>
+
+<style>
+  .pillars {
+    margin: var(--space-7) 0 var(--space-7);
+    display: grid;
+    gap: var(--space-6);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 768px) { .pillars { grid-template-columns: repeat(3, 1fr); } }
+
+  .rule { display: block; width: 40px; height: 4px; border-radius: var(--radius-pill); background: var(--color-accent); margin-bottom: var(--space-4); }
+  .pillar h3 { margin: 0 0 var(--space-2); font-size: var(--fs-h3); font-weight: var(--fw-bold); color: var(--ecoteq-white); }
+  .pillar p { margin: 0; color: rgba(255, 255, 255, 0.78); line-height: var(--lh-body); }
+</style>

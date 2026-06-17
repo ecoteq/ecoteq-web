@@ -1,0 +1,66 @@
+---
+import Section from '../layout/Section.astro';
+import SectionHeading from '../brand/SectionHeading.astro';
+import Button from '../core/Button.astro';
+import Icon from '../Icon.astro';
+import { CTA } from '../../lib/site';
+
+const values = [
+  { title: 'Rendszerszemlélet', text: 'Nem csak gépet nézünk, hanem anyagáramot, kiszolgálást, helyigényt, üzemórát és kiegészítő technológiákat.' },
+  { title: 'Ipari fókusz', text: 'Faipari, biomassza, hulladékkezelési és gyártóipari feladatokra keresünk reális megoldást.' },
+  { title: 'Magyar támogatás', text: 'Az egyeztetés, előminősítés, projektkövetés és szervizkommunikáció magyar nyelven, hazai szakértői háttérrel történik.' },
+  { title: 'Európai gyártói háttér', text: 'A technológiai irányhoz illeszkedő európai gyártók és rendszerelemek közül választunk.' },
+  { title: 'Üzleti realitás', text: 'Figyelembe vesszük az üzemórát, mennyiséget, energiaigényt, karbantartást, megtérülési logikát és a kockázatokat is.' },
+];
+---
+
+<Section id="miert-ecoteq" surface="subtle">
+  <SectionHeading
+    overline="Miért ECOTEQ"
+    title="Olyan partner kell, aki nem csak a gépet látja, hanem az egész üzemi feladatot."
+    lead="Egy ipari daráló, brikettáló, szárító vagy elszívó rendszer kiválasztása nem egyszerű beszerzési tétel. Hatással van az anyagáramra, a munkaidőre, a tárolásra, a logisztikára, az energiafelhasználásra, a karbantartásra és a későbbi bővítési lehetőségekre."
+  />
+
+  <div class="grid">
+    {values.map((v) => (
+      <div class="value">
+        <span class="ic"><Icon name="check" size={18} /></span>
+        <div>
+          <h3>{v.title}</h3>
+          <p>{v.text}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <div class="cta-wrap">
+    <Button href={CTA.primary.href}>Konzultációt kérek</Button>
+  </div>
+</Section>
+
+<style>
+  .grid {
+    margin-top: var(--space-7);
+    display: grid;
+    gap: var(--space-5);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 680px) { .grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1000px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+
+  .value { display: flex; gap: var(--space-3); align-items: flex-start; }
+  .ic {
+    flex: none;
+    width: 34px;
+    height: 34px;
+    border-radius: var(--radius-pill);
+    background: var(--color-accent-tint);
+    color: var(--green-700);
+    display: grid;
+    place-items: center;
+  }
+  .value h3 { margin: 0 0 4px; font-size: var(--fs-h4); font-weight: var(--fw-bold); color: var(--color-text); }
+  .value p { margin: 0; font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: var(--lh-snug); }
+
+  .cta-wrap { margin-top: var(--space-8); }
+</style>

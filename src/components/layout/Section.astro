@@ -1,0 +1,23 @@
+---
+/** Consistent section wrapper — vertical rhythm + container + surface alternation. */
+interface Props {
+  id?: string;
+  surface?: 'white' | 'subtle' | 'navy';
+  class?: string;
+}
+const { id, surface = 'white', class: className } = Astro.props;
+---
+
+<section id={id} class:list={['section', className]} data-surface={surface}>
+  <div class="container">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .section { padding-block: clamp(var(--space-8), 8vw, var(--space-10)); }
+  .section[data-surface='white'] { background: var(--color-bg); }
+  .section[data-surface='subtle'] { background: var(--color-bg-subtle); }
+  .section[data-surface='navy'] { background: var(--ecoteq-navy); color: var(--color-text-inverse); }
+  .container { max-width: var(--container-max); margin-inline: auto; padding-inline: clamp(16px, 4vw, 40px); }
+</style>

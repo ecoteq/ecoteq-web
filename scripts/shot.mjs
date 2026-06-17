@@ -1,5 +1,4 @@
-// Dev screenshot helper — captures the local site at several viewports so the
-// agent can visually QA the design. Output: .shots/ (git-ignored). Not for prod.
+// Dev screenshot helper — visual QA of the local site. Output: .shots/ (git-ignored).
 import { chromium } from 'playwright';
 import { mkdirSync } from 'node:fs';
 
@@ -9,23 +8,28 @@ mkdirSync(out, { recursive: true });
 
 const browser = await chromium.launch();
 
-async function shot(name, width, height, { scrollY = 0, fullPage = false } = {}) {
-  const page = await browser.newPage({ viewport: { width, height }, deviceScaleFactor: 1 });
-  await page.goto(base, { waitUntil: 'networkidle' });
-  await page.waitForTimeout(500);
-  if (scrollY) {
-    await page.evaluate((y) => window.scrollTo(0, y), scrollY);
-    await page.waitForTimeout(500);
-  }
-  await page.screenshot({ path: `${out}/${name}.png`, fullPage });
-  await page.close();
-  console.log(`✓ ${name}`);
+// Per-section desktop captures.
+const page = await browser.newPage({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1 });
+await page.goto(base, { waitUntil: 'networkidle' });
+await page.waitForTimeout(500);
+const sections = await page.locator('main > *').all();
+let i = 0;
+for (const s of sections) {
+  i += 1;
+  await s.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(150);
+  await s.screenshot({ path: `${out}/sec-${String(i).padStart(2, '0')}.png` });
+  console.log(`✓ sec-${String(i).padStart(2, '0')}`);
 }
+await page.close();
 
-await shot('desktop-hero', 1440, 900);
-await shot('desktop-scrolled', 1440, 900, { scrollY: 320 });
-await shot('mobile-hero', 390, 844);
-await shot('desktop-full', 1440, 900, { fullPage: true });
+// Mobile full page.
+const m = await browser.newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 1 });
+await m.goto(base, { waitUntil: 'networkidle' });
+await m.waitForTimeout(500);
+await m.screenshot({ path: `${out}/mobile-full.png`, fullPage: true });
+console.log('✓ mobile-full');
+await m.close();
 
 await browser.close();
 console.log('done');

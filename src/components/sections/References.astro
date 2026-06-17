@@ -1,0 +1,89 @@
+---
+import Section from '../layout/Section.astro';
+import SectionHeading from '../brand/SectionHeading.astro';
+import Button from '../core/Button.astro';
+
+const refs = [
+  {
+    title: 'Faipari mellékanyag kezelése',
+    rows: [
+      ['Anyag', 'forgács, por, apríték'],
+      ['Technológia', 'darálás, elszívás, brikettálás vagy ezek kombinációja'],
+      ['Eredmény', 'rendezettebb anyagkezelés, jobb tárolhatóság, hasznosítható mellékanyag'],
+    ],
+  },
+  {
+    title: 'Biomassza előkészítése',
+    rows: [
+      ['Anyag', 'apríték, fűrészpor, biomassza'],
+      ['Technológia', 'szárítás, darálás, anyagmozgatás, brikettálás vagy pelletálás'],
+      ['Eredmény', 'kezelhetőbb és jobban tervezhető alapanyag további feldolgozáshoz'],
+    ],
+  },
+  {
+    title: 'Ipari hulladék térfogatcsökkentése',
+    rows: [
+      ['Anyag', 'raklap, csomagolóanyag, műanyag vagy vegyes ipari hulladék'],
+      ['Technológia', 'ipari darálás, szeparálás, anyagmozgatás'],
+      ['Eredmény', 'kisebb térfogat, átláthatóbb hulladékkezelés, jobb üzemi rend'],
+    ],
+  },
+];
+---
+
+<Section id="referenciak" surface="white">
+  <SectionHeading
+    overline="Referenciák"
+    title="Megvalósított ipari rendszerek, valós üzemi feladatokra."
+    lead="Az ipari technológiai döntésnél a bizalom nem szlogeneken múlik. Fontos látni, hogy a partner ért-e hasonló anyagokhoz, hasonló üzemekhez és hasonló beruházási helyzetekhez."
+  />
+
+  <div class="grid">
+    {refs.map((r) => (
+      <article class="ref">
+        <h3>{r.title}</h3>
+        <dl>
+          {r.rows.map(([k, v]) => (
+            <div class="row"><dt>{k}</dt><dd>{v}</dd></div>
+          ))}
+        </dl>
+      </article>
+    ))}
+  </div>
+
+  <div class="cta-wrap">
+    <Button variant="secondary" href="#referenciak">Megnézem a referenciákat</Button>
+  </div>
+</Section>
+
+<style>
+  .grid {
+    margin-top: var(--space-7);
+    display: grid;
+    gap: var(--space-5);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 720px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+
+  .ref {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: var(--space-6);
+  }
+  .ref h3 {
+    margin: 0 0 var(--space-4);
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+    font-size: var(--fs-h4);
+    font-weight: var(--fw-bold);
+    color: var(--color-text);
+  }
+  dl { margin: 0; display: flex; flex-direction: column; gap: var(--space-3); }
+  .row { display: flex; flex-direction: column; gap: 2px; }
+  dt { font-size: var(--fs-xs); font-weight: var(--fw-bold); letter-spacing: var(--ls-overline); text-transform: uppercase; color: var(--color-accent-text); }
+  dd { margin: 0; font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: var(--lh-snug); }
+
+  .cta-wrap { margin-top: var(--space-7); }
+</style>
