@@ -29,16 +29,15 @@ export const NAV: NavItem[] = [
 /** "Megoldások" mega-menu — problem/operational-task based entries.
     Dedicated /megoldasok/[slug]/ pages come in a later phase; for now they deep-link
     into the homepage solutions section. */
-export type Solution = { label: string; href: string; blurb: string; tech: string[] };
+export type Solution = { label: string; href: string; blurb: string; icon: string };
 export const SOLUTIONS: Solution[] = [
-  { label: 'Faipari hulladék kezelése', href: '/#megoldasok', blurb: 'Forgács, por, apríték és fahulladék rendezett kezelése.', tech: ['Darálás', 'Elszívás', 'Brikettálás'] },
-  { label: 'Raklap és csomagolóanyag darálása', href: '/#megoldasok', blurb: 'Térfogatcsökkentés és anyag-előkészítés aprítással.', tech: ['Darálás', 'Anyagmozgatás'] },
-  { label: 'Forgács, por és apríték hasznosítása', href: '/#megoldasok', blurb: 'Laza mellékanyagból kezelhető, értékesíthető termék.', tech: ['Brikettálás', 'Pelletálás'] },
-  { label: 'Nedves biomassza előkészítése', href: '/#megoldasok', blurb: 'Nedvességcsökkentés további feldolgozáshoz.', tech: ['Szárítás', 'Darálás'] },
-  { label: 'Faanyag szárítása és kezelése', href: '/#megoldasok', blurb: 'Kontrollált vákuumszárítás és -impregnálás.', tech: ['Vákuumszárítás', 'Vákuumimpregnálás'] },
-  { label: 'Ipari por és elszívási problémák', href: '/#megoldasok', blurb: 'Tisztább, biztonságosabb üzemi levegő.', tech: ['Elszívás', 'Porleválasztás'] },
-  { label: 'Komplett anyagáram-rendszerek', href: '/#megoldasok', blurb: 'Adagolás, szállítás, leválasztás, tárolás egyben.', tech: ['Anyagmozgatás'] },
-  { label: 'Nem tudom, milyen technológia kell', href: '/#ajanlatkeres', blurb: 'Írja le az anyagot és a célt — segítünk irányt választani.', tech: [] },
+  { label: 'Faipari hulladék kezelése', href: '/#megoldasok', blurb: 'Forgács, por, apríték és fahulladék rendezett kezelése.', icon: 'trees' },
+  { label: 'Raklap és csomagolóanyag darálása', href: '/#megoldasok', blurb: 'Térfogatcsökkentés és anyag-előkészítés aprítással.', icon: 'package' },
+  { label: 'Forgács, por és apríték hasznosítása', href: '/#megoldasok', blurb: 'Laza mellékanyagból kezelhető, értékesíthető termék.', icon: 'recycle' },
+  { label: 'Nedves biomassza előkészítése', href: '/#megoldasok', blurb: 'Nedvességcsökkentés további feldolgozáshoz.', icon: 'droplets' },
+  { label: 'Faanyag szárítása és kezelése', href: '/#megoldasok', blurb: 'Kontrollált vákuumszárítás és -impregnálás.', icon: 'thermometer' },
+  { label: 'Ipari por és elszívási problémák', href: '/#megoldasok', blurb: 'Tisztább, biztonságosabb üzemi levegő.', icon: 'wind' },
+  { label: 'Komplett anyagáram-rendszerek', href: '/#megoldasok', blurb: 'Adagolás, szállítás, leválasztás, tárolás egyben.', icon: 'route' },
 ];
 
 export type Technology = {
