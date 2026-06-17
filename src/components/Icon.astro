@@ -6,7 +6,8 @@
 type IconName =
   | 'mail' | 'phone' | 'map-pin'
   | 'arrow-right' | 'arrow-up-right' | 'chevron-down'
-  | 'download' | 'filter' | 'menu' | 'x' | 'check';
+  | 'download' | 'filter' | 'menu' | 'x' | 'check'
+  | 'calendar' | 'globe' | 'layers';
 
 interface Props {
   name: IconName;
@@ -31,6 +32,9 @@ const paths: Record<IconName, string> = {
   menu: '<line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/>',
   x: '<path d="M18 6 6 18"/><path d="m6 6 12 12"/>',
   check: '<path d="M20 6 9 17l-5-5"/>',
+  calendar: '<path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/>',
+  globe: '<circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>',
+  layers: '<path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m6.08 9.5-3.48 1.59a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.91a1 1 0 0 0 0-1.83L17.92 9.5"/><path d="m6.08 14.5-3.48 1.59a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.91a1 1 0 0 0 0-1.83l-3.48-1.59"/>',
 };
 
 const dim = size != null ? (typeof size === 'number' ? `${size}px` : size) : undefined;

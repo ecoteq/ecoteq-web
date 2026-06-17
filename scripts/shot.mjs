@@ -8,25 +8,48 @@ mkdirSync(out, { recursive: true });
 
 const browser = await chromium.launch();
 
-// Per-section desktop captures.
-const page = await browser.newPage({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1 });
-await page.goto(base, { waitUntil: 'networkidle' });
-await page.waitForTimeout(500);
-const sections = await page.locator('main > *').all();
-let i = 0;
-for (const s of sections) {
-  i += 1;
-  await s.scrollIntoViewIfNeeded();
-  await page.waitForTimeout(150);
-  await s.screenshot({ path: `${out}/sec-${String(i).padStart(2, '0')}.png` });
-  console.log(`✓ sec-${String(i).padStart(2, '0')}`);
+async function open(width, height) {
+  const p = await browser.newPage({ viewport: { width, height }, deviceScaleFactor: 1 });
+  await p.goto(base, { waitUntil: 'load' });
+  // Trigger lazy images + settle layout by scrolling through the whole page.
+  await p.evaluate(async () => {
+    const step = window.innerHeight;
+    for (let y = 0; y < document.body.scrollHeight; y += step) {
+      window.scrollTo(0, y);
+      await new Promise((r) => setTimeout(r, 120));
+    }
+    window.scrollTo(0, 0);
+  });
+  await p.waitForTimeout(400);
+  return p;
 }
-await page.close();
 
-// Mobile full page.
-const m = await browser.newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 1 });
-await m.goto(base, { waitUntil: 'networkidle' });
-await m.waitForTimeout(500);
+const d = await open(1440, 900);
+await d.evaluate(() => window.scrollTo(0, 0));
+await d.waitForTimeout(200);
+await d.screenshot({ path: `${out}/desktop-hero.png` });
+console.log('✓ desktop-hero');
+await d.screenshot({ path: `${out}/desktop-full.png`, fullPage: true });
+console.log('✓ desktop-full');
+
+async function captureAnchor(p, name, id) {
+  await p.evaluate((i) => {
+    const el = document.getElementById(i);
+    if (el) el.scrollIntoView({ block: 'start' });
+    window.scrollBy(0, -90); // clear the fixed header
+  }, id);
+  await p.waitForTimeout(350);
+  await p.screenshot({ path: `${out}/${name}.png` });
+  console.log(`✓ ${name}`);
+}
+await captureAnchor(d, 'desktop-form', 'ajanlatkeres');
+await d.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+await d.waitForTimeout(350);
+await d.screenshot({ path: `${out}/desktop-bottom.png` });
+console.log('✓ desktop-bottom');
+await d.close();
+
+const m = await open(390, 844);
 await m.screenshot({ path: `${out}/mobile-full.png`, fullPage: true });
 console.log('✓ mobile-full');
 await m.close();
