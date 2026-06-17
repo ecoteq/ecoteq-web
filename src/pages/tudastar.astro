@@ -1,0 +1,186 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import Section from '../components/layout/Section.astro';
+import SectionHeading from '../components/brand/SectionHeading.astro';
+import Button from '../components/core/Button.astro';
+import Icon from '../components/Icon.astro';
+
+const articles = [
+  {
+    icon: 'ruler',
+    title: '„Mekkora daráló kell faipari hulladékhoz?”',
+    summary: 'Anyag, méret, frakció és kapacitás alapján gondoljuk végig a választást.',
+  },
+  {
+    icon: 'flame',
+    title: '„Mikor éri meg brikettálni?”',
+    summary: 'Anyagmennyiség, nedvesség, üzemóra és cél alapján mérlegelhető a megtérülés.',
+  },
+  {
+    icon: 'droplets',
+    title: '„Miért fontos a nedvesség brikettálás és pelletálás előtt?”',
+    summary: 'A nedvességtartalom hatása a tömörítésre és az üzembiztonságra.',
+  },
+  {
+    icon: 'gauge',
+    title: '„Mikor lehet jó választás a vákuumszárító?”',
+    summary: 'Ciklusidő, minőség és tervezhetőség szempontjából vizsgálva.',
+  },
+  {
+    icon: 'shuffle',
+    title: '„Darálás, brikettálás, pelletálás — mi a különbség?”',
+    summary: 'A három eljárás döntési alapjai röviden, érthetően.',
+  },
+  {
+    icon: 'layers',
+    title: '„Hogyan épül fel egy működő anyagáram-rendszer?”',
+    summary: 'Gép, adagolás, kihordás és vezérlés egy összehangolt egészben.',
+  },
+];
+---
+<SiteLayout
+  title="Tudástár"
+  description="Rövid, gyakorlatias anyagok ipari anyagfeldolgozásról: darálás, brikettálás, pelletálás és szárítás — döntéstámogatás beruházás előtt."
+  solidHeader
+>
+  <Section surface="subtle">
+    <nav class="crumb" aria-label="Útvonal"><a href="/">Főoldal</a> <span>/</span> <span class="here">Tudástár</span></nav>
+    <SectionHeading
+      overline="Tudástár"
+      title="Tudás, amivel magabiztosabb döntést hoz"
+      lead="A jó beruházási döntéshez nem kell mindent tudni a gépekről, de néhány alapfogalom sok félreértést megelőz. Rövid, gyakorlatias anyagok."
+      as="h1"
+    />
+  </Section>
+
+  <Section surface="white">
+    <ul class="grid" role="list">
+      {articles.map((a) => (
+        <li class="card">
+          <span class="badge">Hamarosan</span>
+          <span class="card-ic" aria-hidden="true"><Icon name={a.icon} size={22} /></span>
+          <h2 class="card-title">{a.title}</h2>
+          <p class="card-sum">{a.summary}</p>
+          <a class="card-link" href="#" aria-disabled="true">
+            Elolvasom
+            <Icon name="arrow-right" size={16} />
+          </a>
+        </li>
+      ))}
+    </ul>
+  </Section>
+
+  <Section surface="navy">
+    <div class="cta">
+      <SectionHeading
+        title="Ha addig is kérdése van, kérjen technológiai irányt"
+        lead="Írja le röviden az anyagát és a célját — visszajelzünk, milyen technológiai irány lehet reális az Ön esetében."
+        tone="dark"
+        align="center"
+      />
+      <Button href="/#ajanlatkeres" variant="primary">
+        Technológiai irányt kérek
+        <Icon name="arrow-right" size={18} slot="icon-right" />
+      </Button>
+    </div>
+  </Section>
+</SiteLayout>
+
+<style>
+  .crumb{display:flex;gap:8px;align-items:center;font-size:var(--fs-sm);color:var(--color-text-muted);margin-bottom:var(--space-5)} .crumb a{color:var(--color-text-secondary);text-decoration:none} .crumb .here{color:var(--color-text)}
+
+  .grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: clamp(16px, 2.4vw, 24px);
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: clamp(20px, 2.4vw, 28px);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition:
+      transform var(--dur-base) var(--ease-standard),
+      box-shadow var(--dur-base) var(--ease-standard),
+      border-color var(--dur-base) var(--ease-standard);
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-accent);
+  }
+
+  .badge {
+    align-self: flex-start;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: var(--fw-bold);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-accent-active);
+    background: var(--color-accent-tint);
+    padding: 4px 10px;
+    border-radius: var(--radius-pill);
+  }
+
+  .card-ic {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    background: var(--color-bg-subtle);
+    color: var(--ecoteq-navy);
+  }
+
+  .card-title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-lg);
+    line-height: var(--lh-heading);
+    color: var(--color-text);
+  }
+
+  .card-sum {
+    margin: 0;
+    font-size: var(--fs-base);
+    line-height: var(--lh-body);
+    color: var(--color-text-secondary);
+  }
+
+  .card-link {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-sm);
+    color: var(--color-accent-active);
+    text-decoration: none;
+  }
+  .card-link:hover { gap: 9px; }
+
+  .cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(24px, 3vw, 32px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card { transition: none; }
+    .card:hover { transform: none; }
+    .card-link:hover { gap: 6px; }
+  }
+</style>

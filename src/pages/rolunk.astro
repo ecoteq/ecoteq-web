@@ -1,0 +1,161 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import Section from '../components/layout/Section.astro';
+import SectionHeading from '../components/brand/SectionHeading.astro';
+import Button from '../components/core/Button.astro';
+import Icon from '../components/Icon.astro';
+
+const pillars = [
+  {
+    icon: 'route',
+    title: 'A feladatból indulunk ki',
+    text: 'Nem egy gépet ajánlunk, hanem a megoldandó feladatot értjük meg először: milyen anyag keletkezik, milyen mennyiségben, és mi a vele kapcsolatos üzleti cél. A technológia ezután következik.',
+  },
+  {
+    icon: 'layers',
+    title: 'Az egész anyagutat nézzük',
+    text: 'Az anyag útját a keletkezéstől a hasznosításig egységben kezeljük. A darálás, szárítás, tömörítés és anyagmozgatás nem külön gépek, hanem egy összehangolt folyamat lépései.',
+  },
+  {
+    icon: 'shield',
+    title: 'Kiszámítható, üzletileg vállalható folyamat',
+    text: 'Olyan rendszert tervezünk, amely a napi üzemben is megbízhatóan működik. A cél nem a látványos egyedi megoldás, hanem a stabil, fenntartható és üzletileg értelmezhető eredmény.',
+  },
+];
+
+const partners = [
+  { name: 'ISVE', focus: 'ipari darálás és aprítás' },
+  { name: 'Prodeco', focus: 'pelletálási technológia' },
+  { name: 'CF Nielsen', focus: 'brikettáló rendszerek' },
+  { name: 'AL-KO', focus: 'elszívás és porelszívás' },
+];
+---
+
+<SiteLayout
+  title="Rólunk"
+  description="Az ECOTEQ rendszerben gondolkodó ipari technológiai partner: az anyagból működő, üzletileg vállalható folyamatot épít, nem gépet ad el."
+  solidHeader
+>
+  <Section surface="subtle">
+    <nav class="crumb" aria-label="Útvonal"><a href="/">Főoldal</a> <span>/</span> <span class="here">Rólunk</span></nav>
+    <SectionHeading
+      overline="Rólunk"
+      title="Rendszerben gondolkodó ipari technológiai partner"
+      lead="Az ECOTEQ nem gépet ad el, hanem az anyagból működő, üzletileg értelmezhető folyamatot épít. A feladatot értjük meg előbb, és a technológiát ehhez illesztjük."
+      as="h1"
+    />
+    <div class="cta"><Button href="/#ajanlatkeres">Technológiai irányt kérek</Button></div>
+  </Section>
+
+  <Section surface="white">
+    <SectionHeading
+      overline="Megközelítés"
+      title="Rendszerintegrátor, nem gépforgalmazó"
+      lead="A legtöbb ipari hulladék- és melléktermék-probléma nem egyetlen gép kérdése, hanem egy folyamaté."
+    />
+    <div class="prose">
+      <p>
+        Az ipari üzemekben keletkező faforgács, fűrészpor, fólia, papír vagy egyéb
+        melléktermék önmagában csak költség és logisztikai teher. Üzletileg akkor válik
+        értelmezhetővé, ha az anyag útját a keletkezéstől a hasznosításig egységes
+        folyamatként kezeljük.
+      </p>
+      <p>
+        Ezért nem termékkatalógusból dolgozunk. A feladat, az adottságok és a célok
+        feltérképezése után állítjuk össze azt a technológiai sort, amely az adott
+        üzemben valóban működőképes. A felelősségünk a teljes folyamatra terjed ki,
+        nem csak egy-egy berendezésre.
+      </p>
+    </div>
+    <!-- TODO: valós üzemi referenciafotó vagy folyamatábra -->
+  </Section>
+
+  <Section surface="subtle">
+    <SectionHeading
+      overline="Hogyan gondolkodunk"
+      title="Három elv, amely minden projektet vezet"
+      align="center"
+    />
+    <ul class="pillars" role="list">
+      {pillars.map((p) => (
+        <li class="card">
+          <span class="card-ic" aria-hidden="true"><Icon name={p.icon} size={24} /></span>
+          <h3 class="card-title">{p.title}</h3>
+          <p class="card-text">{p.text}</p>
+        </li>
+      ))}
+    </ul>
+  </Section>
+
+  <Section surface="white">
+    <div class="split">
+      <div class="split-lead">
+        <SectionHeading
+          overline="Gyártói háttér"
+          title="Elismert európai gyártók, a feladathoz illesztve"
+          lead="Európai partnergyártókkal dolgozunk, és mindig a feladathoz illő technológiát választjuk — nem a márkanevet toljuk."
+        />
+        <div class="prose">
+          <p>
+            A megfelelő gyártó kiválasztása szakmai döntés, nem értékesítési cél. Az adott
+            anyaghoz, kapacitáshoz és üzemi környezethez igazítjuk, hogy melyik gyártó
+            technológiája a leginkább megfelelő. Így a végeredmény nem egy márka köré épül,
+            hanem a feladat köré.
+          </p>
+        </div>
+      </div>
+      <ul class="partners" role="list">
+        {partners.map((m) => (
+          <li class="partner">
+            <span class="partner-ic" aria-hidden="true"><Icon name="factory" size={20} /></span>
+            <span class="partner-body">
+              <span class="partner-name">{m.name}</span>
+              <span class="partner-focus">{m.focus}</span>
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </Section>
+
+  <Section surface="navy">
+    <div class="closing">
+      <SectionHeading
+        tone="dark"
+        title="Beszéljünk a feladatról, mielőtt gépről beszélnénk"
+        lead="Mondja el, milyen anyaggal és milyen céllal dolgozik. Megnézzük az egész anyagutat, és olyan technológiai irányt javaslunk, amely üzletileg is vállalható."
+      />
+      <div class="cta"><Button href="/#ajanlatkeres">Technológiai irányt kérek</Button></div>
+    </div>
+  </Section>
+</SiteLayout>
+
+<style>
+  .crumb{display:flex;gap:8px;align-items:center;font-size:var(--fs-sm);color:var(--color-text-muted);margin-bottom:var(--space-5)}
+  .crumb a{color:var(--color-text-secondary);text-decoration:none}
+  .crumb a:hover{color:var(--color-accent)}
+  .crumb .here{color:var(--color-text)}
+  .cta{margin-top:var(--space-6)}
+
+  .prose{max-width:64ch;margin-top:var(--space-5);display:flex;flex-direction:column;gap:var(--space-4)}
+  .prose p{margin:0;font-size:var(--fs-lg);line-height:var(--lh-body);color:var(--color-text-secondary)}
+
+  /* pillar card grid */
+  .pillars{list-style:none;margin:var(--space-8) 0 0;padding:0;display:grid;gap:var(--space-5);grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+  .card{display:flex;flex-direction:column;gap:var(--space-3);padding:var(--space-6);background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius-lg)}
+  .card-ic{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:var(--radius-md);background:var(--color-accent-tint);color:var(--color-accent)}
+  .card-title{margin:0;font-family:var(--font-display);font-weight:var(--fw-bold);font-size:var(--fs-h3);line-height:var(--lh-heading);color:var(--color-text)}
+  .card-text{margin:0;font-size:var(--fs-base);line-height:var(--lh-body);color:var(--color-text-secondary)}
+
+  /* manufacturer split */
+  .split{display:grid;gap:var(--space-8);grid-template-columns:1fr}
+  @media (min-width:900px){.split{grid-template-columns:1.1fr 0.9fr;align-items:start;gap:var(--space-9)}}
+  .partners{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--space-3)}
+  .partner{display:flex;align-items:center;gap:var(--space-4);padding:var(--space-4) var(--space-5);background:var(--color-bg-subtle);border:1px solid var(--color-border);border-radius:var(--radius-md)}
+  .partner-ic{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;flex:none;border-radius:var(--radius-md);background:var(--color-bg);color:var(--color-accent);border:1px solid var(--color-border)}
+  .partner-body{display:flex;flex-direction:column;gap:2px}
+  .partner-name{font-family:var(--font-display);font-weight:var(--fw-bold);font-size:var(--fs-lg);color:var(--color-text)}
+  .partner-focus{font-size:var(--fs-sm);color:var(--color-text-muted)}
+
+  .closing{display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-2)}
+</style>

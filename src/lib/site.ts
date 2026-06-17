@@ -14,17 +14,32 @@ export const CTA = {
   form: { label: 'Elküldöm a projekt adatait', href: '#ajanlatkeres' },
 } as const;
 
-/** Top sticky navigation (7 items). Anchors resolve to homepage sections for now;
-    Szerviz/Rólunk get dedicated pages in a later phase. */
-export const NAV = [
-  { label: 'Megoldások', href: '#megoldasok' },
-  { label: 'Technológiák', href: '#technologiak' },
-  { label: 'Referenciák', href: '#referenciak' },
-  { label: 'Szerviz és alkatrész', href: '#szerviz' },
-  { label: 'Rólunk', href: '#miert-ecoteq' },
-  { label: 'Tudástár', href: '#tudastar' },
-  { label: 'Kapcsolat', href: '#kapcsolat' },
-] as const;
+/** Top sticky navigation (7 items). Megoldások + Technológiák open mega-menus. */
+export type NavItem = { label: string; href?: string; mega?: 'solutions' | 'technologies' };
+export const NAV: NavItem[] = [
+  { label: 'Megoldások', mega: 'solutions' },
+  { label: 'Technológiák', mega: 'technologies' },
+  { label: 'Referenciák', href: '/referenciak/' },
+  { label: 'Szerviz és alkatrész', href: '/szerviz-es-alkatresz/' },
+  { label: 'Rólunk', href: '/rolunk/' },
+  { label: 'Tudástár', href: '/tudastar/' },
+  { label: 'Kapcsolat', href: '/kapcsolat/' },
+];
+
+/** "Megoldások" mega-menu — problem/operational-task based entries.
+    Dedicated /megoldasok/[slug]/ pages come in a later phase; for now they deep-link
+    into the homepage solutions section. */
+export type Solution = { label: string; href: string; blurb: string; tech: string[] };
+export const SOLUTIONS: Solution[] = [
+  { label: 'Faipari hulladék kezelése', href: '/#megoldasok', blurb: 'Forgács, por, apríték és fahulladék rendezett kezelése.', tech: ['Darálás', 'Elszívás', 'Brikettálás'] },
+  { label: 'Raklap és csomagolóanyag darálása', href: '/#megoldasok', blurb: 'Térfogatcsökkentés és anyag-előkészítés aprítással.', tech: ['Darálás', 'Anyagmozgatás'] },
+  { label: 'Forgács, por és apríték hasznosítása', href: '/#megoldasok', blurb: 'Laza mellékanyagból kezelhető, értékesíthető termék.', tech: ['Brikettálás', 'Pelletálás'] },
+  { label: 'Nedves biomassza előkészítése', href: '/#megoldasok', blurb: 'Nedvességcsökkentés további feldolgozáshoz.', tech: ['Szárítás', 'Darálás'] },
+  { label: 'Faanyag szárítása és kezelése', href: '/#megoldasok', blurb: 'Kontrollált vákuumszárítás és -impregnálás.', tech: ['Vákuumszárítás', 'Vákuumimpregnálás'] },
+  { label: 'Ipari por és elszívási problémák', href: '/#megoldasok', blurb: 'Tisztább, biztonságosabb üzemi levegő.', tech: ['Elszívás', 'Porleválasztás'] },
+  { label: 'Komplett anyagáram-rendszerek', href: '/#megoldasok', blurb: 'Adagolás, szállítás, leválasztás, tárolás egyben.', tech: ['Anyagmozgatás'] },
+  { label: 'Nem tudom, milyen technológia kell', href: '/#ajanlatkeres', blurb: 'Írja le az anyagot és a célt — segítünk irányt választani.', tech: [] },
+];
 
 export type Technology = {
   slug: string;

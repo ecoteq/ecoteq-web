@@ -1,0 +1,197 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import Section from '../components/layout/Section.astro';
+import SectionHeading from '../components/brand/SectionHeading.astro';
+import Button from '../components/core/Button.astro';
+import Icon from '../components/Icon.astro';
+
+const services = [
+  {
+    icon: 'truck',
+    title: 'Telepítés és betanítás',
+    body: 'A berendezést a helyszínen üzembe helyezzük, és a kezelőszemélyzetet a biztonságos, hatékony működtetésre betanítjuk.',
+  },
+  {
+    icon: 'wrench',
+    title: 'Szerviz és karbantartás',
+    body: 'Tervezett karbantartás és igény szerinti javítás, hogy a technológia hosszú távon megbízhatóan üzemeljen.',
+  },
+  {
+    icon: 'package',
+    title: 'Alkatrész-ellátás',
+    body: 'A kopó- és cserealkatrészek beszerzését a képviselt gyártókon keresztül biztosítjuk a berendezés teljes élettartama alatt.',
+  },
+  {
+    icon: 'phone',
+    title: 'Távdiagnosztika és támogatás',
+    body: 'Üzemeltetési kérdésekben szakmai támogatást nyújtunk, és a hibajelenségek beazonosításában távolról is segítünk.',
+  },
+  {
+    icon: 'lightbulb',
+    title: 'Üzemeltetési tanácsadás',
+    body: 'A folyamat finomhangolásában, az anyagáramok és a kapacitás optimalizálásában mérnöki tapasztalattal állunk Ön mellett.',
+  },
+  {
+    icon: 'trending-up',
+    title: 'Bővítés és korszerűsítés',
+    body: 'A meglévő technológia bővítését és korszerűsítését is támogatjuk, ahogy az üzem igényei idővel változnak.',
+  },
+];
+
+const requestPoints = [
+  'a berendezés típusa és — ha ismert — gyári azonosítója,',
+  'az üzem és a felhasználás jellege (mit, milyen mennyiségben dolgoz fel),',
+  'a tapasztalt hibajelenség vagy az igényelt szolgáltatás rövid leírása,',
+  'kapcsolattartó és elérhetőség a visszajelzéshez.',
+];
+---
+<SiteLayout
+  title="Szerviz és alkatrész"
+  description="ECOTEQ szerviz, alkatrész-ellátás és szakmai támogatás — a berendezés átadása után is mellettünk áll a hosszú távú, megbízható üzemeltetésben."
+  solidHeader
+>
+  <Section surface="subtle">
+    <nav class="crumb" aria-label="Útvonal"><a href="/">Főoldal</a> <span>/</span> <span class="here">Szerviz és alkatrész</span></nav>
+    <SectionHeading
+      overline="Szerviz és alkatrész"
+      title="A megbízható üzemeltetés a gép átadása után kezdődik"
+      lead="Az ECOTEQ munkája nem a berendezés átadásával ér véget. A hosszú távú, biztonságos üzemeltetéshez szerviz, alkatrész-ellátás és folyamatos szakmai támogatás is kell — mindezt egy kézben, az átadás utáni évekre is."
+      as="h1"
+    />
+    <div class="cta">
+      <Button href="/#ajanlatkeres">Technológiai irányt kérek</Button>
+      <Button href="/kapcsolat/" variant="ghost">Kapcsolatfelvétel</Button>
+    </div>
+  </Section>
+
+  <Section surface="white">
+    <SectionHeading
+      overline="Amit biztosítunk"
+      title="Teljes körű háttér az üzemeltetéshez"
+      lead="A telepítéstől a későbbi korszerűsítésig egyetlen partnerrel intézhető minden, ami a folyamatos és hatékony működéshez kell."
+    />
+    <ul class="grid" role="list">
+      {services.map((s) => (
+        <li class="card">
+          <span class="card-ic" aria-hidden="true"><Icon name={s.icon} size={24} /></span>
+          <h3 class="card-title">{s.title}</h3>
+          <p class="card-body">{s.body}</p>
+        </li>
+      ))}
+    </ul>
+  </Section>
+
+  <Section surface="subtle">
+    <div class="how">
+      <div class="how-text">
+        <SectionHeading
+          overline="Hogyan kérhető"
+          title="Szerviz vagy alkatrész igénylése"
+          lead="A leggyorsabb ügyintézés érdekében néhány alapadattal pontosan be tudjuk azonosítani a berendezést és a feladatot. Vegye fel velünk a kapcsolatot, vagy küldje el igényét az űrlapon keresztül."
+        />
+        <div class="how-cta">
+          <Button href="/kapcsolat/">Kapcsolatfelvétel</Button>
+          <Button href="/#ajanlatkeres" variant="ghost">Technológiai irányt kérek</Button>
+        </div>
+      </div>
+      <aside class="panel" aria-label="Mit érdemes megadni">
+        <p class="panel-label">Mit érdemes megadni</p>
+        <ul class="panel-list" role="list">
+          {requestPoints.map((p) => (
+            <li>
+              <span class="panel-ic" aria-hidden="true"><Icon name="check" size={18} /></span>
+              <span>{p}</span>
+            </li>
+          ))}
+        </ul>
+        <p class="panel-note">
+          {/* TODO: confirm preferred service contact channel / hours before publishing */}
+          A beérkező megkereséseket munkatársaink a megadott elérhetőségen veszik fel Önnel.
+        </p>
+      </aside>
+    </div>
+  </Section>
+
+  <Section surface="navy">
+    <div class="close">
+      <SectionHeading
+        overline="Hosszú távú partnerség"
+        title="Beszéljünk az üzemeltetésről"
+        lead="Mondja el, milyen berendezést üzemeltet, vagy mit tervez — a megfelelő technológiai irány és a hozzá tartozó hosszú távú támogatás megtervezésében segítünk."
+        tone="dark"
+        align="center"
+      />
+      <div class="close-cta">
+        <Button href="/#ajanlatkeres">Technológiai irányt kérek</Button>
+        <Button href="/kapcsolat/" variant="outline-light">Kapcsolatfelvétel</Button>
+      </div>
+    </div>
+  </Section>
+</SiteLayout>
+
+<style>
+  .crumb{display:flex;gap:8px;align-items:center;font-size:var(--fs-sm);color:var(--color-text-muted);margin-bottom:var(--space-5)}
+  .crumb a{color:var(--color-text-secondary);text-decoration:none}
+  .crumb a:hover{color:var(--color-accent)}
+  .crumb .here{color:var(--color-text)}
+  .cta{margin-top:var(--space-6);display:flex;flex-wrap:wrap;gap:var(--space-3)}
+
+  /* Service grid */
+  .grid{
+    list-style:none;margin:var(--space-7) 0 0;padding:0;
+    display:grid;gap:var(--space-4);
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  }
+  .card{
+    background:var(--color-surface);
+    border:var(--border-width) solid var(--color-border);
+    border-radius:var(--radius-lg);
+    padding:var(--space-5);
+    box-shadow:var(--shadow-xs);
+    transition:box-shadow var(--dur-base) var(--ease-standard),border-color var(--dur-base) var(--ease-standard);
+  }
+  .card:hover{box-shadow:var(--shadow-sm);border-color:var(--color-border-strong)}
+  .card-ic{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:48px;height:48px;border-radius:var(--radius-md);
+    background:var(--color-accent-tint);color:var(--color-accent);
+    margin-bottom:var(--space-4);
+  }
+  .card-title{
+    margin:0 0 var(--space-2);
+    font-family:var(--font-display);font-weight:var(--fw-bold);
+    font-size:var(--fs-lg);line-height:var(--lh-heading);color:var(--color-text);
+  }
+  .card-body{margin:0;font-size:var(--fs-base);line-height:var(--lh-body);color:var(--color-text-secondary)}
+
+  /* How section */
+  .how{display:grid;gap:var(--space-7);align-items:start}
+  @media (min-width:880px){.how{grid-template-columns:1.1fr 0.9fr;gap:var(--space-8)}}
+  .how-cta{margin-top:var(--space-6);display:flex;flex-wrap:wrap;gap:var(--space-3)}
+
+  .panel{
+    background:var(--color-surface);
+    border:var(--border-width) solid var(--color-border);
+    border-radius:var(--radius-lg);
+    padding:var(--space-6);
+    box-shadow:var(--shadow-sm);
+  }
+  .panel-label{
+    margin:0 0 var(--space-4);
+    font-family:var(--font-sans);font-weight:var(--fw-bold);
+    font-size:var(--fs-sm);letter-spacing:0.06em;text-transform:uppercase;
+    color:var(--color-accent);
+  }
+  .panel-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--space-3)}
+  .panel-list li{display:flex;gap:var(--space-3);align-items:flex-start;font-size:var(--fs-base);line-height:var(--lh-body);color:var(--color-text-secondary)}
+  .panel-ic{display:inline-flex;flex:none;color:var(--color-accent);margin-top:2px}
+  .panel-note{
+    margin:var(--space-5) 0 0;padding-top:var(--space-4);
+    border-top:var(--border-width) solid var(--color-border);
+    font-size:var(--fs-sm);line-height:var(--lh-body);color:var(--color-text-muted);
+  }
+
+  /* Closing CTA */
+  .close{display:flex;flex-direction:column;align-items:center}
+  .close-cta{margin-top:var(--space-6);display:flex;flex-wrap:wrap;justify-content:center;gap:var(--space-3)}
+</style>

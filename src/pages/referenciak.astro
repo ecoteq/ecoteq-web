@@ -1,0 +1,185 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import Section from '../components/layout/Section.astro';
+import SectionHeading from '../components/brand/SectionHeading.astro';
+import Button from '../components/core/Button.astro';
+import Icon from '../components/Icon.astro';
+
+const projects = [
+  {
+    icon: 'trees',
+    title: 'Faipari mellékanyag kezelése',
+    rows: [
+      { label: 'Anyag', value: 'forgács, por, apríték' },
+      { label: 'Technológia', value: 'darálás, elszívás, brikettálás vagy ezek kombinációja' },
+      { label: 'Eredmény', value: 'rendezettebb anyagkezelés, jobb tárolhatóság, hasznosítható mellékanyag' },
+    ],
+  },
+  {
+    icon: 'flame',
+    title: 'Biomassza előkészítése',
+    rows: [
+      { label: 'Anyag', value: 'apríték, fűrészpor, biomassza' },
+      { label: 'Technológia', value: 'szárítás, darálás, anyagmozgatás, brikettálás vagy pelletálás' },
+      { label: 'Eredmény', value: 'kezelhetőbb, jobban tervezhető alapanyag' },
+    ],
+  },
+  {
+    icon: 'recycle',
+    title: 'Ipari hulladék térfogatcsökkentése',
+    rows: [
+      { label: 'Anyag', value: 'raklap, csomagolóanyag, műanyag vagy vegyes ipari hulladék' },
+      { label: 'Technológia', value: 'ipari darálás, szeparálás, anyagmozgatás' },
+      { label: 'Eredmény', value: 'kisebb térfogat, átláthatóbb hulladékkezelés, jobb üzemi rend' },
+    ],
+  },
+];
+---
+
+<SiteLayout
+  title="Referenciák"
+  description="Megvalósított ipari rendszereink iparág és technológia szerint — anonimizált, kategóriaszintű projektek és a bizalom alapja az ECOTEQ-nél."
+  solidHeader
+>
+  <Section surface="subtle">
+    <nav class="crumb" aria-label="Útvonal"><a href="/">Főoldal</a> <span>/</span> <span class="here">Referenciák</span></nav>
+    <SectionHeading
+      overline="Referenciák"
+      title="Megvalósított ipari rendszerek, iparág és technológia szerint"
+      lead="Az ipari technológiai döntésnél a bizalom nem szlogeneken múlik — fontos látni, hogy a partner ért-e hasonló anyagokhoz, üzemekhez és beruházási helyzetekhez."
+      as="h1"
+    />
+  </Section>
+
+  <Section surface="white">
+    <SectionHeading
+      overline="Projektpéldák"
+      title="Kategóriaszintű projektek"
+      lead="A lenti példák anonimizált, kategóriaszintű bemutatások — a jellemző anyagot, az alkalmazott technológiát és az elért eredményt mutatják be, valós ügyfélnevek nélkül."
+    />
+    <div class="cards">
+      {projects.map((p) => (
+        <article class="card">
+          <span class="card-ic" aria-hidden="true"><Icon name={p.icon} size={22} /></span>
+          <h3 class="card-title">{p.title}</h3>
+          <dl class="card-rows">
+            {p.rows.map((r) => (
+              <div class="card-row">
+                <dt>{r.label}</dt>
+                <dd>{r.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </article>
+      ))}
+    </div>
+  </Section>
+
+  <Section surface="subtle">
+    <SectionHeading
+      overline="Logófal"
+      title="Ügyfeleink és partnereink"
+      lead="Valós, ellenőrzött ügyféllogókat és referenciákat csak a megbízó kifejezett jóváhagyását követően jelenítünk meg. Addig a helyét semleges helykitöltők jelzik."
+    />
+    <!-- TODO: valós, engedélyezett ügyféllogók -->
+    <div class="logos" aria-hidden="true">
+      {Array.from({ length: 8 }).map(() => (
+        <div class="logo-ph"></div>
+      ))}
+    </div>
+    <p class="note">
+      <span class="note-ic" aria-hidden="true"><Icon name="shield-check" size={18} /></span>
+      Csak valós, ellenőrzött referenciákat jelenítünk meg.
+    </p>
+  </Section>
+
+  <Section surface="navy">
+    <SectionHeading
+      overline="Következő lépés"
+      title="Beszéljük át, mi illik az Ön üzeméhez"
+      lead="Mondja el, milyen anyag keletkezik és mi a cél — javaslunk egy reális technológiai irányt, kötelezettség nélkül."
+      tone="dark"
+      align="center"
+    />
+    <div class="cta">
+      <Button href="/#ajanlatkeres">Technológiai irányt kérek</Button>
+    </div>
+  </Section>
+</SiteLayout>
+
+<style>
+  .crumb { display: flex; gap: 8px; align-items: center; font-size: var(--fs-sm); color: var(--color-text-muted); margin-bottom: var(--space-5); }
+  .crumb a { color: var(--color-text-secondary); text-decoration: none; }
+  .crumb .here { color: var(--color-text); }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-5);
+    margin-top: var(--space-7);
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: clamp(var(--space-5), 3vw, var(--space-6));
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+  }
+  .card-ic {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    background: var(--color-accent-tint);
+    color: var(--color-accent-active);
+  }
+  .card-title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-h4, var(--fs-lg));
+    line-height: var(--lh-heading);
+    color: var(--color-text);
+  }
+  .card-rows { margin: 0; display: flex; flex-direction: column; gap: var(--space-3); }
+  .card-row { display: flex; flex-direction: column; gap: 2px; padding-top: var(--space-3); border-top: 1px solid var(--color-border); }
+  .card-row:first-child { padding-top: 0; border-top: none; }
+  .card-row dt {
+    font-size: var(--fs-xs, 12px);
+    font-weight: var(--fw-bold);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-accent-active);
+  }
+  .card-row dd { margin: 0; font-size: var(--fs-sm); line-height: var(--lh-body); color: var(--color-text-secondary); }
+
+  .logos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: var(--space-4);
+    margin-top: var(--space-7);
+  }
+  .logo-ph {
+    height: 72px;
+    border-radius: var(--radius-md);
+    border: 1px dashed var(--color-border);
+    background:
+      repeating-linear-gradient(135deg, var(--color-bg-subtle) 0 10px, var(--color-bg) 10px 20px);
+  }
+  .note {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin: var(--space-6) 0 0;
+    font-size: var(--fs-sm);
+    color: var(--color-text-secondary);
+  }
+  .note-ic { display: inline-flex; color: var(--color-accent-active); }
+
+  .cta { display: flex; justify-content: center; margin-top: var(--space-6); }
+</style>
