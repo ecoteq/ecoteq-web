@@ -1,0 +1,178 @@
+---
+import Logo from '../brand/Logo.astro';
+import Button from '../core/Button.astro';
+import { NAV, CTA } from '../../lib/site';
+
+/**
+ * Top sticky header — the real navigation. Transparent over the hero, solid on
+ * scroll. On desktop it sits right of the brand rail; below 1024px it carries the
+ * logo + a hamburger menu (the rail is gone).
+ */
+---
+
+<header class="site-header" id="site-header" data-transparent>
+  <div class="bar">
+    <a class="brand" href="/" aria-label="ECOTEQ – Kezdőlap">
+      <Logo tone="white" size={24} class="brand-light" />
+      <Logo tone="navy" size={24} class="brand-dark" />
+    </a>
+
+    <nav class="nav" aria-label="Fő navigáció">
+      <ul>
+        {NAV.map((i) => <li><a href={i.href}>{i.label}</a></li>)}
+      </ul>
+    </nav>
+
+    <div class="actions">
+      <Button href={CTA.primary.href} size="sm" class="header-cta">{CTA.primary.label}</Button>
+      <button class="burger" type="button" aria-label="Menü megnyitása" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile" id="mobile-menu" hidden>
+    <ul>
+      {NAV.map((i) => <li><a href={i.href}>{i.label}</a></li>)}
+    </ul>
+    <Button href={CTA.primary.href} class="mobile-cta">{CTA.primary.label}</Button>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('site-header');
+  if (header) {
+    const burger = header.querySelector<HTMLButtonElement>('.burger');
+    const menu = document.getElementById('mobile-menu');
+
+    const onScroll = () => {
+      if (window.scrollY > 24) header.removeAttribute('data-transparent');
+      else header.setAttribute('data-transparent', '');
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    const closeMenu = () => {
+      header.removeAttribute('data-open');
+      burger?.setAttribute('aria-expanded', 'false');
+      if (menu) menu.hidden = true;
+    };
+    burger?.addEventListener('click', () => {
+      const open = header.toggleAttribute('data-open');
+      burger.setAttribute('aria-expanded', String(open));
+      if (menu) menu.hidden = !open;
+    });
+    menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeMenu));
+  }
+</script>
+
+<style>
+  .site-header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 50;
+    background: var(--ecoteq-white);
+    border-bottom: 1px solid var(--color-border);
+    transition: background var(--dur-base) var(--ease-standard), border-color var(--dur-base) var(--ease-standard), box-shadow var(--dur-base) var(--ease-standard);
+  }
+  @media (min-width: 1024px) { .site-header { left: var(--sidebar-w); } }
+
+  .site-header[data-transparent] {
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+  }
+  .site-header:not([data-transparent]) { box-shadow: var(--shadow-sm); }
+
+  .bar {
+    height: var(--header-h);
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: clamp(16px, 4vw, 40px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .brand { display: inline-flex; flex: none; }
+  /* Swap wordmark tone with header state: white over the hero, navy when solid. */
+  .site-header[data-transparent] .brand-light { display: inline-flex; }
+  .site-header[data-transparent] .brand-dark { display: none; }
+  .site-header:not([data-transparent]) .brand-light { display: none; }
+  .site-header:not([data-transparent]) .brand-dark { display: inline-flex; }
+
+  .nav { display: none; }
+  @media (min-width: 1024px) {
+    .nav { display: block; margin-left: auto; }
+    .nav ul { display: flex; gap: 26px; list-style: none; margin: 0; padding: 0; }
+    .nav a {
+      font-size: var(--fs-sm);
+      font-weight: var(--fw-semibold);
+      color: var(--ecoteq-navy);
+      text-decoration: none;
+      transition: color var(--dur-fast) var(--ease-standard);
+    }
+    .nav a:hover { color: var(--color-accent); }
+  }
+
+  .actions { display: flex; align-items: center; gap: 12px; }
+  .header-cta { display: none; }
+  @media (min-width: 1024px) { .header-cta { display: inline-flex; } }
+
+  /* Transparent (over hero) → light text */
+  .site-header[data-transparent] .nav a,
+  .site-header[data-transparent] .burger span { color: var(--ecoteq-white); }
+  .site-header[data-transparent] .burger span { background: var(--ecoteq-white); }
+
+  .burger {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  .burger span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: var(--ecoteq-navy);
+    border-radius: 2px;
+    transition: transform var(--dur-base) var(--ease-standard), opacity var(--dur-fast) var(--ease-standard);
+  }
+  @media (min-width: 1024px) { .burger { display: none; } }
+
+  .site-header[data-open] .burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .site-header[data-open] .burger span:nth-child(2) { opacity: 0; }
+  .site-header[data-open] .burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile {
+    background: var(--ecoteq-white);
+    border-top: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
+    padding: 14px clamp(16px, 4vw, 40px) 22px;
+  }
+  .mobile ul { list-style: none; margin: 0 0 14px; padding: 0; display: flex; flex-direction: column; }
+  .mobile a {
+    display: block;
+    padding: 13px 4px;
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-semibold);
+    color: var(--ecoteq-navy);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .mobile-cta { width: 100%; }
+  @media (min-width: 1024px) { .mobile { display: none; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .site-header, .burger span { transition: none; }
+  }
+</style>

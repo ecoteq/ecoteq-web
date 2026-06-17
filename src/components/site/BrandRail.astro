@@ -1,0 +1,79 @@
+---
+import Logo from '../brand/Logo.astro';
+import Icon from '../Icon.astro';
+import { CONTACT, CTA } from '../../lib/site';
+
+/**
+ * Fixed left navy brand rail — DESKTOP ONLY (≥1024px). A brand/frame element,
+ * NOT primary navigation: logo mark, vertical green primary CTA, contact pills.
+ * Hidden entirely on tablet and mobile.
+ */
+---
+
+<aside class="rail">
+  <a class="rail-logo" href="/" aria-label={`${CONTACT.company} – Kezdőlap`}>
+    <Logo tone="white" size={34} showWordmark={false} />
+  </a>
+
+  <a class="rail-cta" href={CTA.primary.href}>{CTA.primary.label}</a>
+
+  <div class="rail-contact">
+    <a href={`mailto:${CONTACT.email}`} aria-label="E-mail küldése"><Icon name="mail" size={16} /></a>
+    <a href={CONTACT.phoneHref} aria-label="Telefonhívás"><Icon name="phone" size={16} /></a>
+  </div>
+</aside>
+
+<style>
+  .rail { display: none; }
+
+  @media (min-width: 1024px) {
+    .rail {
+      position: fixed;
+      inset: 0 auto 0 0;
+      width: var(--sidebar-w);
+      background: var(--ecoteq-navy);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 0;
+      z-index: 60;
+    }
+  }
+
+  .rail-logo { display: inline-flex; }
+
+  .rail-cta {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+    font-weight: var(--fw-bold);
+    font-size: 12px;
+    letter-spacing: var(--ls-overline);
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 20px 11px;
+    border-radius: var(--radius-pill);
+    box-shadow: var(--shadow-accent);
+    transition: background var(--dur-base) var(--ease-standard);
+  }
+  .rail-cta:hover { background: var(--color-accent-hover); }
+
+  .rail-contact { display: flex; flex-direction: column; gap: 10px; }
+  .rail-contact a {
+    width: 38px;
+    height: 38px;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: var(--ecoteq-white);
+    display: grid;
+    place-items: center;
+    transition: background var(--dur-base) var(--ease-standard), border-color var(--dur-base) var(--ease-standard);
+  }
+  .rail-contact a:hover { background: var(--color-accent); border-color: var(--color-accent); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rail-cta, .rail-contact a { transition: none; }
+  }
+</style>

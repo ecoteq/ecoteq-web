@@ -1,14 +1,30 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import Hero from '../components/site/Hero.astro';
+import SectionHeading from '../components/brand/SectionHeading.astro';
 ---
 
-<BaseLayout title="Kezdőlap" description="ECOTEQ — ipari hulladékfeldolgozó rendszerek kulcsrakészen.">
-  <main style="max-width: var(--container-max); margin-inline: auto; padding: var(--space-9) var(--space-5);">
-    <p class="eco-overline" style="color: var(--color-accent-text);">ECOTEQ · ÚJ WEBOLDAL</p>
-    <h1>Ipari hulladékfeldolgozó rendszerek kulcsrakészen.</h1>
-    <p style="font-size: var(--fs-lg); color: var(--color-text-secondary); max-width: 60ch;">
-      Az új oldal építés alatt. A design system él — nézd meg a
-      <a href="/styleguide">styleguide</a> oldalt a bizonyítékért.
-    </p>
-  </main>
-</BaseLayout>
+<SiteLayout
+  title="Ipari hulladék- és biomassza-feldolgozó rendszerek"
+  description="Az ECOTEQ ipari darálási, szárítási, brikettálási, pelletálási, elszívási és anyagmozgatási rendszerekben segít magyarországi és közép-európai üzemeknek."
+>
+  <Hero />
+
+  <!-- Slice B sections land here: technology gateways, problem-based entry,
+       systems-thinking, references, manufacturers, process, why-ECOTEQ, knowledge,
+       pre-qualification form, closing CTA. -->
+  <section id="technologiak" class="soon">
+    <div class="wrap">
+      <SectionHeading
+        overline="Épül"
+        title="A főoldal következő szekciói hamarosan érkeznek."
+        lead="A keret (bal brand rail, felső navigáció, lábléc) és a hero készen van. A következő körben jönnek a technológiai kapuk, a probléma-alapú belépő, a rendszerszemlélet és a többi szekció."
+      />
+    </div>
+  </section>
+</SiteLayout>
+
+<style>
+  .soon { padding: var(--space-10) clamp(16px, 4vw, 40px); background: var(--color-bg-subtle); }
+  .wrap { max-width: var(--container-max); margin-inline: auto; }
+</style>
