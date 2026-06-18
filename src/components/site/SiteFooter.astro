@@ -37,12 +37,6 @@ const year = 2026;
           Ipari hulladék- és biomassza-feldolgozó rendszerek magyarországi és
           közép-európai üzemeknek.
         </p>
-        <address class="contact">
-          <span>{CONTACT.company}</span>
-          <span>{CONTACT.address}</span>
-          <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
-          <a href={CONTACT.phoneHref}>{CONTACT.phone}</a>
-        </address>
         <nav class="brand-nav" aria-label="ECOTEQ">
           {company.map((c) => <a href={c.href}>{c.label}</a>)}
         </nav>
@@ -95,7 +89,7 @@ const year = 2026;
 
   .about { font-size: var(--fs-sm); line-height: var(--lh-body); margin: var(--space-4) 0 var(--space-5); max-width: 42ch; }
 
-  .brand-nav { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: var(--space-5); }
+  .brand-nav { display: flex; flex-direction: column; gap: 10px; margin-top: var(--space-2); }
   .brand-nav a { color: rgba(255, 255, 255, 0.78); text-decoration: none; font-size: var(--fs-sm); transition: color var(--dur-fast) var(--ease-standard); }
   .brand-nav a:hover { color: var(--color-accent); }
 
