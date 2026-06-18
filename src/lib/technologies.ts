@@ -556,9 +556,9 @@ const vakuumszaritas: TechnologyGateway = {
   },
   heroStats: [
     { value: "kontrollált", suffix: "", label: "Szárítás" },
-    { value: "15", suffix: "+", label: "Év ipari tapasztalat" },
-    { value: "4", suffix: "+", label: "Európai gyártó partner" },
-    { value: "24", suffix: "h", label: "Jellemző visszajelzés" },
+    { value: "tervezhető", suffix: "", label: "Gyártás" },
+    { value: "rövidebb", suffix: "", label: "Ciklusidő" },
+    { value: "kevesebb", suffix: "", label: "Selejt" },
   ],
   fit: {
     h2: "Mikor jó irány a vákuumszárítás?",
