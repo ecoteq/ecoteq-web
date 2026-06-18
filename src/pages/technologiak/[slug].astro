@@ -20,6 +20,11 @@ if (!t) return Astro.redirect('/404');
 const QUOTE = { label: 'Technológiai javaslatot kérek', href: quoteHref(slug, 'technologia') };
 const FORM_CTA = { label: 'Elküldöm a projekt adatait', href: quoteHref(slug, 'technologia') };
 
+// Wrap any highlighted words in the H1 with a green accent span (trusted content).
+const h1Html = t.hero.h1Highlights?.length
+  ? t.hero.h1Highlights.reduce((s, w) => s.split(w).join(`<span class="hl">${w}</span>`), t.hero.h1)
+  : null;
+
 // Figurative icon per "Mikor jó irány?" card, by technology + index.
 const FIT_ICONS: Record<string, string[]> = {
   'ipari-daralas': ['shrink', 'route', 'boxes', 'truck', 'settings'],
@@ -71,7 +76,7 @@ function factorIcon(title: string): string {
       </nav>
       <div class="hero-main">
         <Overline class="eyebrow">{t.hero.eyebrow}</Overline>
-        <h1>{t.hero.h1}</h1>
+        {h1Html ? <h1 set:html={h1Html} /> : <h1>{t.hero.h1}</h1>}
         <p class="lead">{t.hero.lead}</p>
       </div>
       <div class="ctas">
@@ -236,6 +241,7 @@ function factorIcon(title: string): string {
   .crumb .here { color: var(--ecoteq-white); }
   .eyebrow { color: var(--ecoteq-green); margin-bottom: var(--space-3); }
   h1 { color: var(--ecoteq-white); font-size: clamp(1.9rem, 1.2rem + 2.6vw, 3.25rem); line-height: var(--lh-tight); letter-spacing: var(--ls-display); max-width: 20ch; margin: 0 0 var(--space-5); }
+  h1 :global(.hl) { color: var(--ecoteq-green); }
   .lead { color: rgba(255,255,255,0.86); font-size: var(--fs-lg); line-height: var(--lh-body); max-width: 62ch; margin: 0; }
   .ctas { display: flex; flex-wrap: wrap; gap: var(--space-4); }
 

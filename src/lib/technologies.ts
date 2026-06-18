@@ -11,6 +11,8 @@ export type TechnologyGateway = {
   hero: {
     eyebrow: string;
     h1: string;
+    /** Words within h1 to render in the brand green accent. */
+    h1Highlights?: string[];
     lead: string;
     secondaryCta?: Cta;
     microcopy: string;
@@ -547,6 +549,7 @@ const vakuumszaritas: TechnologyGateway = {
   hero: {
     eyebrow: "ECOTEQ technológiák · Vákuumszárítás",
     h1: "Vákuumszárító faipari üzemeknek. Ha számít a minőség és az idő",
+    h1Highlights: ["minőség", "idő"],
     lead: "Az ECOTEQ segít eldönteni, hogy az Ön faanyagára, mennyiségére és gyártási céljára reális-e a vákuumszárító technológia.",
     secondaryCta: { label: "Részletes vákuumszárító oldal megnyitása", href: "https://vakuumszarito.hu" },
     microcopy: "Nem kell kész gépspecifikációval érkeznie. Elég, ha leírja a fafajt, vastagságot, hosszúságot, induló és cél nedvességet, valamint a havi vagy heti szárítási igényt.",
