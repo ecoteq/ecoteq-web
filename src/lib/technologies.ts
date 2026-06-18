@@ -551,7 +551,7 @@ const vakuumszaritas: TechnologyGateway = {
     h1: "Vákuumszárító faipari üzemeknek. Ha számít a minőség és az idő",
     h1Highlights: ["minőség", "idő"],
     lead: "Az ECOTEQ segít eldönteni, hogy az Ön faanyagára, mennyiségére és gyártási céljára reális-e a vákuumszárító technológia.",
-    secondaryCta: { label: "Részletes vákuumszárító oldal megnyitása", href: "https://vakuumszarito.hu" },
+    secondaryCta: { label: "Megnézem a részletes vákuumszárító oldalt", href: "https://vakuumszarito.hu" },
     microcopy: "Nem kell kész gépspecifikációval érkeznie. Elég, ha leírja a fafajt, vastagságot, hosszúságot, induló és cél nedvességet, valamint a havi vagy heti szárítási igényt.",
     trustPills: ["Kontrollált folyamat", "Tervezhető gyártás", "Rövidebb ciklusidő", "Kevesebb selejt"],
     image: "/photos/vakuumszarito-hero.webp",
@@ -667,7 +667,7 @@ const vakuumszaritas: TechnologyGateway = {
       "A vákuumszárításnál a jó döntés nem a géptípussal vagy a kamramérettel kezdődik. Először azt kell tisztázni, milyen faanyagot kell szárítani, milyen méretben, milyen nedvességről, milyen célra és milyen mennyiségben.",
       "Ha leírja az elképzelését, segítünk eldönteni, hogy a vákuumszárítás reális megoldás-e, és milyen technológiát és kapacitást érdemes vizsgálni.",
     ],
-    secondaryCta: { label: "Részletes vákuumszárító oldal megnyitása", href: "https://vakuumszarito.hu" },
+    secondaryCta: { label: "Megnézem a részletes vákuumszárító oldalt", href: "https://vakuumszarito.hu" },
   },
 };
 
