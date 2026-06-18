@@ -5,6 +5,7 @@ import SectionHeading from '../../components/brand/SectionHeading.astro';
 import Button from '../../components/core/Button.astro';
 import Icon from '../../components/Icon.astro';
 import Overline from '../../components/brand/Overline.astro';
+import HeroStats from '../../components/site/HeroStats.astro';
 import { gatewaySlugs, getGateway } from '../../lib/technologies';
 import { quoteHref } from '../../lib/site';
 
@@ -75,17 +76,10 @@ function factorIcon(title: string): string {
         <Button href={QUOTE.href}>{QUOTE.label}</Button>
         {t.hero.secondaryCta && <Button variant="outline-light" href={t.hero.secondaryCta.href}>{t.hero.secondaryCta.label}</Button>}
       </div>
-      <ul class="herotrust">{t.hero.trustPills.map((p) => {
-        const [lead, ...rest] = p.split(' ');
-        return (
-          <li>
-            <span class="lead">{lead}</span>
-            {rest.length > 0 && <span class="sub">{rest.join(' ')}</span>}
-          </li>
-        );
-      })}</ul>
     </div>
   </section>
+
+  <HeroStats />
 
   <!-- 2. MIKOR JÓ IRÁNY -->
   <Section surface="white">
@@ -239,12 +233,6 @@ function factorIcon(title: string): string {
   h1 { color: var(--ecoteq-white); font-size: clamp(1.9rem, 1.2rem + 2.6vw, 3.25rem); line-height: var(--lh-tight); letter-spacing: var(--ls-display); max-width: 20ch; margin: 0 0 var(--space-4); }
   .lead { color: rgba(255,255,255,0.86); font-size: var(--fs-lg); line-height: var(--lh-body); max-width: 62ch; margin: 0 0 var(--space-5); }
   .ctas { display: flex; flex-wrap: wrap; gap: var(--space-4); }
-  .herotrust { list-style: none; margin: var(--space-7) 0 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: var(--space-5) var(--space-6); }
-  @media (min-width: 560px) { .herotrust { grid-template-columns: repeat(2, 1fr); } }
-  @media (min-width: 860px) { .herotrust { grid-template-columns: repeat(4, 1fr); } }
-  .herotrust li { border-left: 2px solid var(--ecoteq-green); padding-left: var(--space-4); display: flex; flex-direction: column; gap: 6px; }
-  .herotrust .lead { font-family: var(--font-display); font-weight: var(--fw-extrabold); font-size: clamp(2rem, 1.4rem + 2vw, 2.75rem); line-height: 1; letter-spacing: var(--ls-display); color: var(--ecoteq-white); }
-  .herotrust .sub { font-size: var(--fs-xs); font-weight: var(--fw-bold); letter-spacing: var(--ls-overline); text-transform: uppercase; color: rgba(255, 255, 255, 0.62); line-height: var(--lh-snug); }
 
   /* Shared grids */
   .grid { margin-top: var(--space-7); display: grid; gap: var(--space-4); }

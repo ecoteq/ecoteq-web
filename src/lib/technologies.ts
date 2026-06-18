@@ -581,7 +581,7 @@ const vakuumszaritas: TechnologyGateway = {
     goals: ["szárítási ciklusidő csökkentése", "saját gyártási alapanyag előkészítése", "külső szárítástól való függés csökkentése", "minőségi kockázatok mérséklése", "gyártási tervezhetőség javítása", "magasabb értékű faanyag kontrollált kezelése"],
   },
   process: {
-    h2: "Hogyan épülhet fel egy vákuumszárítási rendszer?",
+    h2: "Hogyan épül fel egy vákuumszárítási rendszer?",
     intro: "A vákuumszárító kiválasztása nem csak kamraméret kérdése. A rakodás, energiaellátás, kondenzvíz-kezelés, vezérlés, telepítési hely és későbbi üzemeltetés ugyanúgy része a döntésnek.",
     steps: [
       { title: "Faanyag előminősítése", text: "Fafaj, vastagság, hosszúság, induló nedvesség, cél nedvesség és mennyiség tisztázása." },
