@@ -155,7 +155,7 @@ function factorIcon(title: string): string {
     <div class="role">
       <div class="role-left">
         <div class="role-body">{t.role.body.map((p) => <p>{p}</p>)}</div>
-        <Button class="role-cta" href={QUOTE.href}>{QUOTE.label}</Button>
+        <Button size="sm" class="role-cta" href={QUOTE.href}>{QUOTE.label}</Button>
       </div>
       <div class="role-points">
         {t.role.points.map((p) => (
@@ -296,13 +296,14 @@ function factorIcon(title: string): string {
   @media (min-width: 880px) { .role { grid-template-columns: 0.9fr 1.1fr; gap: var(--space-8); } }
   .role-left { display: flex; flex-direction: column; }
   .role-body p { color: rgba(255,255,255,0.82); line-height: var(--lh-body); margin: 0 0 var(--space-4); }
-  .role-cta { margin-top: auto; align-self: flex-start; }
+  .role-cta { margin-top: auto; align-self: flex-start; box-shadow: none !important; }
   .role-points { display: grid; gap: var(--space-6) var(--space-5); grid-template-columns: 1fr; }
   @media (min-width: 560px) { .role-points { grid-template-columns: 1fr 1fr; } }
-  .role-trust { list-style: none; margin: var(--space-7) 0 0; padding: var(--space-6) 0 0; border-top: 1px solid rgba(255,255,255,0.14); display: flex; flex-wrap: wrap; align-items: center; }
+  .role-trust { list-style: none; margin: var(--space-5) 0 0; padding: var(--space-5) 0 0; border-top: 1px solid rgba(255,255,255,0.14); display: flex; flex-wrap: wrap; align-items: center; }
   .role-trust li { font-size: var(--fs-sm); color: rgba(255,255,255,0.7); }
   .role-trust li:not(:last-child)::after { content: '·'; color: var(--ecoteq-green); margin: 0 14px; font-weight: var(--fw-bold); }
-  .rp .rule { display: block; width: 32px; height: 4px; border-radius: var(--radius-pill); background: var(--color-accent); margin-bottom: 10px; }
+  .rp { align-self: start; }
+  .rp .rule { display: block; width: 32px; height: 4px; border-radius: var(--radius-pill); background: var(--color-accent); margin: 0 0 10px; flex: none; }
   .rp h3 { margin: 0 0 4px; font-size: var(--fs-h4); font-weight: var(--fw-bold); color: #fff; }
   .rp p { margin: 0; font-size: var(--fs-sm); color: rgba(255,255,255,0.72); line-height: var(--lh-snug); }
 
