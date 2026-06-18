@@ -1,0 +1,152 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import Section from '../components/layout/Section.astro';
+import SectionHeading from '../components/brand/SectionHeading.astro';
+import QuoteForm from '../components/forms/QuoteForm.astro';
+import Icon from '../components/Icon.astro';
+import { CONTACT, TECHNOLOGIES } from '../lib/site';
+
+// On-demand so we can read ?tech= and ?source= for prefill + tracking.
+export const prerender = false;
+
+const params = Astro.url.searchParams;
+const techSlug = params.get('tech') ?? undefined;
+const source = params.get('source') ?? 'ajanlatkeres';
+const tech = techSlug ? TECHNOLOGIES.find((t) => t.slug === techSlug) : undefined;
+
+const steps = [
+  {
+    icon: 'mail',
+    title: 'Beérkezés és előszűrés',
+    text: 'Munkanapokon átnézzük az adatokat, és megnézzük, hogy a feladat műszakilag és üzletileg milyen irányba vihető tovább.',
+  },
+  {
+    icon: 'clock',
+    title: 'Visszajelzés 24 órán belül',
+    text: 'Jellemzően 24 órán belül jelentkezünk a következő lépéssel — kérdésekkel vagy egy javasolt technológiai iránnyal.',
+  },
+  {
+    icon: 'compass',
+    title: 'Közös irányválasztás',
+    text: 'Nem automata ajánlatot adunk: a célt és a körülményeket figyelembe véve segítünk megtalálni a reális megoldást.',
+  },
+];
+
+const checklist = [
+  'Milyen anyag keletkezik (faforgács, por, raklap, fólia, vegyes ipari hulladék)?',
+  'Mekkora a napi vagy heti mennyiség, és mennyire ingadozik?',
+  'Mi a cél: térfogatcsökkentés, hasznosítás, értékesítés vagy energetikai felhasználás?',
+  'Hol és milyen üzemi környezetben kell a megoldásnak működnie?',
+];
+---
+
+<SiteLayout
+  title="Technológiai irányt kérek"
+  description="Küldje el a projekt alapadatait, és segítünk reális technológiai irányt választani. Nem automata ajánlat — előbb megnézzük, merre vihető tovább a feladat."
+  solidHeader
+>
+  <Section surface="subtle">
+    <nav class="crumb" aria-label="Útvonal"><a href="/">Főoldal</a> <span>/</span> <span class="here">Ajánlatkérés</span></nav>
+    <SectionHeading
+      overline="Előminősítés"
+      title="Küldje el a projekt alapadatait"
+      lead="Nem kell kész műszaki specifikációval érkeznie. Elég, ha leírja, milyen anyaggal dolgozik, mennyi keletkezik belőle, mit szeretne vele kezdeni, és milyen üzemi körülmények között kellene működnie a rendszernek."
+      as="h1"
+    />
+  </Section>
+
+  <Section surface="white">
+    <div class="layout">
+      <aside class="intro">
+        <div class="steps">
+          <h2 class="block-title">Mi történik a küldés után?</h2>
+          <ol class="steplist" role="list">
+            {steps.map((s) => (
+              <li class="step">
+                <span class="step-ic" aria-hidden="true"><Icon name={s.icon} size={20} /></span>
+                <span class="step-body">
+                  <span class="step-title">{s.title}</span>
+                  <span class="step-text">{s.text}</span>
+                </span>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        <div class="prep">
+          <h2 class="block-title">Mit érdemes előkészíteni?</h2>
+          <ul class="checklist" role="list">
+            {checklist.map((c) => (
+              <li><span class="check-ic" aria-hidden="true"><Icon name="check" size={16} /></span>{c}</li>
+            ))}
+          </ul>
+        </div>
+
+        <p class="direct">
+          Inkább beszélne valakivel? Hívjon: <a href={CONTACT.phoneHref}>{CONTACT.phone}</a>,
+          vagy írjon: <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>.
+        </p>
+      </aside>
+
+      <div class="formwrap">
+        <QuoteForm
+          redirect="/koszonjuk/"
+          source={source}
+          tech={tech?.slug}
+          techLabel={tech?.name}
+          submitLabel="Elküldöm a projekt adatait"
+        />
+        <p class="privacy">
+          A küldéssel hozzájárul, hogy az adatokat a megkeresés feldolgozásához kezeljük.
+          Részletek: <a href="/adatvedelmi-tajekoztato">Adatvédelmi tájékoztató</a>.
+        </p>
+      </div>
+    </div>
+  </Section>
+</SiteLayout>
+
+<style>
+  .crumb { font-size: var(--fs-sm); color: var(--color-text-muted); margin-bottom: var(--space-5); }
+  .crumb a { color: var(--color-text-secondary); text-decoration: none; }
+  .crumb a:hover { color: var(--color-accent-text); }
+  .crumb span { margin-inline: 6px; }
+  .crumb .here { color: var(--ecoteq-navy); margin-inline: 0; }
+
+  .layout { display: grid; gap: var(--space-7); grid-template-columns: 1fr; }
+  @media (min-width: 920px) {
+    .layout { grid-template-columns: 1fr 1.05fr; gap: var(--space-8); align-items: start; }
+  }
+
+  .block-title {
+    font-family: var(--font-display);
+    font-size: var(--fs-md);
+    font-weight: var(--fw-bold);
+    color: var(--ecoteq-navy);
+    margin: 0 0 var(--space-4);
+  }
+
+  .steplist { list-style: none; margin: 0 0 var(--space-7); padding: 0; display: flex; flex-direction: column; gap: var(--space-5); }
+  .step { display: flex; gap: 14px; }
+  .step-ic {
+    display: inline-flex; flex: none;
+    width: 40px; height: 40px;
+    align-items: center; justify-content: center;
+    border-radius: var(--radius-md);
+    background: var(--color-accent-tint);
+    color: var(--color-accent-text);
+  }
+  .step-body { display: flex; flex-direction: column; gap: 3px; }
+  .step-title { font-weight: var(--fw-bold); color: var(--ecoteq-navy); }
+  .step-text { font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: var(--lh-body); }
+
+  .checklist { list-style: none; margin: 0 0 var(--space-7); padding: 0; display: flex; flex-direction: column; gap: 12px; }
+  .checklist li { display: flex; gap: 10px; font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: var(--lh-body); }
+  .check-ic { display: inline-flex; flex: none; margin-top: 2px; color: var(--color-accent); }
+
+  .direct { font-size: var(--fs-sm); color: var(--color-text-secondary); margin: 0; }
+  .direct a { color: var(--color-accent-text); text-decoration: none; font-weight: var(--fw-semibold); }
+  .direct a:hover { text-decoration: underline; }
+
+  .privacy { margin: var(--space-4) 0 0; font-size: var(--fs-xs); color: var(--color-text-muted); }
+  .privacy a { color: var(--color-text-secondary); }
+</style>

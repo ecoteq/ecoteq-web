@@ -116,6 +116,24 @@ export const TECHNOLOGIES: Technology[] = [
   },
 ];
 
-/** Quote/pre-qualification path; a technology key can be passed through. */
-export const quoteHref = (tech?: string) =>
-  tech ? `#ajanlatkeres?tech=${tech}` : '#ajanlatkeres';
+/** Related spoke domains — deep, dedicated technology sites the HUB routes to.
+    Only link these where a real dedicated site exists (per nav architecture 03). */
+export type Spoke = { label: string; href: string; note: string };
+export const SPOKES: Spoke[] = [
+  { label: 'iparidaralo.hu', href: 'https://iparidaralo.hu', note: 'Ipari darálás' },
+  { label: 'brikettalo.hu', href: 'https://brikettalo.hu', note: 'Brikettálás' },
+  { label: 'vakuumszarito.hu', href: 'https://vakuumszarito.hu', note: 'Vákuumszárítás' },
+  { label: 'raklapdaralo.hu', href: 'https://raklapdaralo.hu', note: 'Raklapdarálás' },
+];
+
+/** Canonical pre-qualification funnel page. */
+export const AJANLATKERES = '/ajanlatkeres/';
+
+/** Quote/pre-qualification path; a technology key and source can be passed through. */
+export const quoteHref = (tech?: string, source?: string) => {
+  const q = new URLSearchParams();
+  if (tech) q.set('tech', tech);
+  if (source) q.set('source', source);
+  const qs = q.toString();
+  return qs ? `${AJANLATKERES}?${qs}` : AJANLATKERES;
+};

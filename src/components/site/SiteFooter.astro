@@ -2,24 +2,25 @@
 import Logo from '../brand/Logo.astro';
 import Button from '../core/Button.astro';
 import Icon from '../Icon.astro';
-import { CONTACT, CTA, TECHNOLOGIES } from '../../lib/site';
+import { CONTACT, CTA, TECHNOLOGIES, SPOKES, quoteHref } from '../../lib/site';
 
 const solutions = [
   'Faipari hulladék kezelése',
   'Raklap és csomagolóanyag darálása',
-  'Biomassza előkészítése',
   'Forgács és por hasznosítása',
-  'Nedves anyag szárítása',
-  'Anyagmozgatás és rendszerek',
+  'Nedves biomassza előkészítése',
+  'Faanyag szárítása és kezelése',
+  'Komplett anyagáram-rendszerek',
 ];
 const company = [
-  { label: 'Rólunk', href: '#miert-ecoteq' },
-  { label: 'Referenciák', href: '#referenciak' },
-  { label: 'Szerviz és alkatrész', href: '#szerviz' },
-  { label: 'Tudástár', href: '#tudastar' },
-  { label: 'Kapcsolat', href: '#kapcsolat' },
-  { label: 'Ajánlatkérés', href: CTA.primary.href },
+  { label: 'Rólunk', href: '/rolunk/' },
+  { label: 'Referenciák', href: '/referenciak/' },
+  { label: 'Szerviz és alkatrész', href: '/szerviz-es-alkatresz/' },
+  { label: 'Tudástár', href: '/tudastar/' },
+  { label: 'Kapcsolat', href: '/kapcsolat/' },
+  { label: 'Ajánlatkérés', href: quoteHref(undefined, 'footer') },
 ];
+const footerCta = quoteHref(undefined, 'footer');
 const legal = [
   { label: 'Adatvédelmi tájékoztató', href: '/adatvedelmi-tajekoztato', icon: 'shield-check' },
   { label: 'Cookie-tájékoztató', href: '/cookie-tajekoztato', icon: 'cookie' },
@@ -40,7 +41,7 @@ const year = 2026;
           pelletálás, biomassza-szárítás, vákuumszárítás, vákuumimpregnálás, elszívás,
           porleválasztás és anyagmozgatás.
         </p>
-        <Button href={CTA.primary.href} size="sm">{CTA.primary.label}</Button>
+        <Button href={footerCta} size="sm">{CTA.primary.label}</Button>
         <address class="contact">
           <span>{CONTACT.company}</span>
           <span>{CONTACT.address}</span>
@@ -63,6 +64,17 @@ const year = 2026;
           <ul>{company.map((c) => <li><a href={c.href}>{c.label}</a></li>)}</ul>
         </div>
         <div class="col">
+          <h3>Kapcsolódó oldalak</h3>
+          <ul>{SPOKES.map((s) => (
+            <li>
+              <a class="spoke" href={s.href} target="_blank" rel="noopener">
+                <span class="spoke-host">{s.label}<Icon name="arrow-up-right" size={14} /></span>
+                <span class="spoke-note">{s.note}</span>
+              </a>
+            </li>
+          ))}</ul>
+        </div>
+        <div class="col">
           <h3>Jogi</h3>
           <ul>{legal.map((l) => <li><a class="ic-link" href={l.href}><Icon name={l.icon} size={15} />{l.label}</a></li>)}</ul>
         </div>
@@ -70,7 +82,7 @@ const year = 2026;
     </div>
 
     <div class="bottom">
-      <span>© {year} {CONTACT.company}. Minden jog fenntartva.</span>
+      <span>© {year} {CONTACT.company} Minden jog fenntartva.</span>
       <span class="legal"><a href="/adatvedelmi-tajekoztato">Adatvédelmi tájékoztató</a> · <a href="/impresszum">Impresszum</a></span>
     </div>
   </div>
@@ -82,12 +94,13 @@ const year = 2026;
 
   .top { display: grid; gap: var(--space-7); grid-template-columns: 1fr; }
   @media (min-width: 768px) { .top { grid-template-columns: 1fr 1fr; } }
-  @media (min-width: 1080px) { .top { grid-template-columns: 1.4fr 2.6fr; gap: var(--space-8); } }
+  @media (min-width: 1080px) { .top { grid-template-columns: 1.1fr 3fr; gap: var(--space-8); } }
 
   .about { font-size: var(--fs-sm); line-height: var(--lh-body); margin: var(--space-4) 0 var(--space-5); max-width: 42ch; }
 
   .cols { display: grid; gap: var(--space-6) var(--space-5); grid-template-columns: repeat(2, 1fr); }
-  @media (min-width: 1080px) { .cols { grid-template-columns: repeat(4, 1fr); } }
+  @media (min-width: 680px) { .cols { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 1080px) { .cols { grid-template-columns: repeat(5, 1fr); } }
 
   .col h3 {
     font-family: var(--font-display);
@@ -105,6 +118,12 @@ const year = 2026;
   address { font-style: normal; display: flex; flex-direction: column; gap: 8px; font-size: var(--fs-sm); }
   address span { color: rgba(255, 255, 255, 0.78); }
   .contact { margin-top: var(--space-5); }
+
+  .spoke { display: inline-flex; flex-direction: column; gap: 2px; }
+  .spoke-host { display: inline-flex; align-items: center; gap: 7px; }
+  .spoke-host :global(.icon) { color: rgba(255, 255, 255, 0.42); flex: none; transition: color var(--dur-fast) var(--ease-standard); }
+  .spoke:hover .spoke-host :global(.icon) { color: var(--color-accent); }
+  .spoke-note { font-size: var(--fs-xs); color: rgba(255, 255, 255, 0.5); }
 
   .ic-link { display: inline-flex; align-items: center; gap: 9px; }
   .ic-link :global(.icon) { color: rgba(255, 255, 255, 0.42); flex: none; transition: color var(--dur-fast) var(--ease-standard); }

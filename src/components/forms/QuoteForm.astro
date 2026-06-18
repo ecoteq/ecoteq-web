@@ -1,0 +1,139 @@
+---
+/** Reusable pre-qualification form card + submit logic.
+    Used both inline on the homepage and on the standalone /ajanlatkeres/ page.
+    - `redirect`  → navigate here on success (standalone page) instead of inline message.
+    - `tech` / `techLabel` → preset technology direction (hidden field + visible chip).
+    - `source`    → tracking source passed to the contact endpoint. */
+import Input from './Input.astro';
+import Button from '../core/Button.astro';
+import Icon from '../Icon.astro';
+
+interface Props {
+  redirect?: string;
+  tech?: string;
+  techLabel?: string;
+  source?: string;
+  submitLabel?: string;
+}
+const { redirect, tech, techLabel, source, submitLabel = 'Elküldöm az alapadatokat' } = Astro.props;
+---
+
+<form id="prequal" class="card" novalidate data-redirect={redirect}>
+  <div class="hp" aria-hidden="true">
+    <label>Ezt a mezőt hagyja üresen<input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+  </div>
+
+  {tech && <input type="hidden" name="tech" value={techLabel ?? tech} />}
+  {source && <input type="hidden" name="forras" value={source} />}
+
+  {techLabel && (
+    <p class="preset">
+      <span class="preset-ic" aria-hidden="true"><Icon name="compass" size={16} /></span>
+      Kiválasztott irány: <strong>{techLabel}</strong>
+    </p>
+  )}
+
+  <div class="row2">
+    <Input label="Név" name="nev" required />
+    <Input label="E-mail" name="email" type="email" required />
+  </div>
+  <div class="row2">
+    <Input label="Telefonszám" name="telefon" type="tel" />
+    <Input label="Körülbelüli mennyiség" name="mennyiseg" placeholder="pl. 2 t/nap" />
+  </div>
+  <Input label="Milyen anyagot kell kezelni?" name="anyag" required placeholder="pl. faforgács, raklap, nedves apríték" />
+  <Input label="Mi a cél?" name="cel" required placeholder="pl. brikett, térfogatcsökkentés, szárítás" />
+
+  <Button type="submit" class="submit">{submitLabel}</Button>
+  <p class="form-msg" role="status" aria-live="polite"></p>
+</form>
+
+<script>
+  const form = document.getElementById('prequal');
+  if (form instanceof HTMLFormElement) {
+    const msg = form.querySelector<HTMLParagraphElement>('.form-msg');
+    const submit = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+    const redirect = form.dataset.redirect;
+
+    const setMsg = (text: string, state: string) => {
+      if (msg) { msg.textContent = text; msg.dataset.state = state; }
+    };
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const payload: Record<string, unknown> = Object.fromEntries(fd.entries());
+      delete (payload as Record<string, unknown>)['']; // safety
+
+      if (!payload.nev || !payload.email || !payload.anyag || !payload.cel) {
+        setMsg('Kérjük, töltse ki a kötelező mezőket (név, e-mail, anyag, cél).', 'error');
+        return;
+      }
+
+      if (submit) submit.disabled = true;
+      setMsg('Küldés…', 'pending');
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json().catch(() => ({ ok: false }));
+        if (data.ok) {
+          if (redirect) {
+            window.location.assign(redirect);
+            return;
+          }
+          setMsg('Köszönjük! Munkanapokon előszűrjük a feladatot, és jellemzően 24 órán belül visszajelzünk.', 'success');
+          form.reset();
+        } else if (data.error === 'not_configured') {
+          setMsg('Az űrlap e-mail háttere még beállítás alatt — kérjük, írjon közvetlenül: info@ecoteq.hu', 'error');
+        } else {
+          setMsg('Hiba történt a küldéskor. Kérjük, próbálja újra, vagy írjon: info@ecoteq.hu', 'error');
+        }
+      } catch {
+        setMsg('Hálózati hiba. Kérjük, próbálja újra, vagy írjon: info@ecoteq.hu', 'error');
+      } finally {
+        if (submit) submit.disabled = false;
+      }
+    });
+  }
+</script>
+
+<style>
+  .card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: clamp(var(--space-5), 4vw, var(--space-7));
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .row2 { display: grid; gap: var(--space-4); grid-template-columns: 1fr; }
+  @media (min-width: 540px) { .row2 { grid-template-columns: 1fr 1fr; } }
+
+  .preset {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin: 0;
+    padding: 11px 14px;
+    border-radius: var(--radius-md);
+    background: var(--color-accent-tint);
+    border: 1px solid var(--color-accent-ring);
+    font-size: var(--fs-sm);
+    color: var(--ecoteq-navy);
+  }
+  .preset strong { font-weight: var(--fw-bold); }
+  .preset-ic { display: inline-flex; color: var(--color-accent-text); flex: none; }
+
+  .submit { align-self: flex-start; margin-top: var(--space-2); }
+
+  .form-msg { margin: 0; font-size: var(--fs-sm); min-height: 1.2em; }
+  .form-msg[data-state='success'] { color: var(--green-700); font-weight: var(--fw-semibold); }
+  .form-msg[data-state='error'] { color: var(--color-danger); }
+  .form-msg[data-state='pending'] { color: var(--color-text-secondary); }
+</style>

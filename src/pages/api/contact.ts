@@ -16,7 +16,9 @@ const FIELD_LABELS: Record<string, string> = {
   nedvesseg: 'Nedvesség',
   cel: 'Cél',
   hely: 'Telepítés helye',
+  tech: 'Technológiai irány',
   megjegyzes: 'Megjegyzés',
+  forras: 'Forrás',
 };
 
 export const POST: APIRoute = async ({ request }) => {

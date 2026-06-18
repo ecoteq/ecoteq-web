@@ -6,6 +6,7 @@ import Button from '../../components/core/Button.astro';
 import Icon from '../../components/Icon.astro';
 import Overline from '../../components/brand/Overline.astro';
 import { gatewaySlugs, getGateway } from '../../lib/technologies';
+import { quoteHref } from '../../lib/site';
 
 export function getStaticPaths() {
   return gatewaySlugs().map((slug) => ({ params: { slug } }));
@@ -15,8 +16,8 @@ const { slug } = Astro.params;
 const t = getGateway(slug!);
 if (!t) return Astro.redirect('/404');
 
-const QUOTE = { label: 'Technológiai irányt kérek', href: '/#ajanlatkeres' };
-const FORM_CTA = { label: 'Elküldöm a projekt adatait', href: '/#ajanlatkeres' };
+const QUOTE = { label: 'Technológiai irányt kérek', href: quoteHref(slug, 'technologia') };
+const FORM_CTA = { label: 'Elküldöm a projekt adatait', href: quoteHref(slug, 'technologia') };
 
 // Figurative icon per "Mikor jó irány?" card, by technology + index.
 const FIT_ICONS: Record<string, string[]> = {

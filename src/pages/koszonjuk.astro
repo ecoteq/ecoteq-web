@@ -1,0 +1,119 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import Section from '../components/layout/Section.astro';
+import Button from '../components/core/Button.astro';
+import Icon from '../components/Icon.astro';
+import { CONTACT } from '../lib/site';
+
+const links = [
+  { icon: 'layers', label: 'Technológiák', text: 'Nézze meg a 8 fő technológiai irányt.', href: '/technologiak/ipari-daralas/' },
+  { icon: 'factory', label: 'Referenciák', text: 'Megvalósult rendszerek és üzemi háttér.', href: '/referenciak/' },
+  { icon: 'file-text', label: 'Tudástár', text: 'Szakmai tartalmak a döntés előtt.', href: '/tudastar/' },
+];
+---
+
+<SiteLayout
+  title="Köszönjük a megkeresést"
+  description="Megkaptuk a projekt alapadatait. Munkanapokon előszűrjük a feladatot, és jellemzően 24 órán belül visszajelzünk."
+  solidHeader
+>
+  <Section surface="subtle">
+    <div class="confirm">
+      <span class="badge" aria-hidden="true"><Icon name="check" size={34} /></span>
+      <h1 class="title">Köszönjük — megkaptuk a megkeresését</h1>
+      <p class="lead">
+        Munkanapokon előszűrjük a feladatot, és jellemzően <strong>24 órán belül</strong>
+        visszajelzünk a következő lépésről. A megadott e-mail-címre visszaigazolást is küldtünk.
+      </p>
+      <p class="sub">
+        Sürgős esetben elérhetők vagyunk telefonon:
+        <a href={CONTACT.phoneHref}>{CONTACT.phone}</a> · <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>.
+      </p>
+      <div class="actions">
+        <Button href="/">Vissza a főoldalra</Button>
+      </div>
+    </div>
+  </Section>
+
+  <Section surface="white">
+    <h2 class="block-title">Amíg visszajelzünk, érdemes körülnézni</h2>
+    <div class="cards">
+      {links.map((l) => (
+        <a class="card" href={l.href}>
+          <span class="card-ic" aria-hidden="true"><Icon name={l.icon} size={22} /></span>
+          <span class="card-label">{l.label}</span>
+          <span class="card-text">{l.text}</span>
+          <span class="card-go" aria-hidden="true"><Icon name="arrow-right" size={16} /></span>
+        </a>
+      ))}
+    </div>
+  </Section>
+</SiteLayout>
+
+<style>
+  .confirm { max-width: 60ch; margin-inline: auto; text-align: center; }
+  .badge {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 68px; height: 68px;
+    border-radius: var(--radius-pill);
+    background: var(--color-accent-tint);
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent-ring);
+    margin-bottom: var(--space-5);
+  }
+  .title {
+    font-family: var(--font-display);
+    font-size: clamp(var(--fs-xl), 4vw, var(--fs-2xl));
+    font-weight: var(--fw-bold);
+    color: var(--ecoteq-navy);
+    line-height: var(--lh-tight);
+    margin: 0 0 var(--space-4);
+  }
+  .lead { font-size: var(--fs-lg); color: var(--color-text-secondary); line-height: var(--lh-body); margin: 0 0 var(--space-4); }
+  .lead strong { color: var(--ecoteq-navy); font-weight: var(--fw-bold); }
+  .sub { font-size: var(--fs-sm); color: var(--color-text-muted); margin: 0 0 var(--space-6); }
+  .sub a { color: var(--color-accent-text); text-decoration: none; font-weight: var(--fw-semibold); }
+  .sub a:hover { text-decoration: underline; }
+  .actions { display: flex; justify-content: center; }
+
+  .block-title {
+    font-family: var(--font-display);
+    font-size: var(--fs-md);
+    font-weight: var(--fw-bold);
+    color: var(--ecoteq-navy);
+    margin: 0 0 var(--space-5);
+  }
+  .cards { display: grid; gap: var(--space-4); grid-template-columns: 1fr; }
+  @media (min-width: 720px) { .cards { grid-template-columns: repeat(3, 1fr); } }
+
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: var(--space-5);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    transition: border-color var(--dur-base) var(--ease-standard), box-shadow var(--dur-base) var(--ease-standard), transform var(--dur-base) var(--ease-standard);
+  }
+  .card:hover { border-color: var(--color-accent); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+  .card-ic {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 44px; height: 44px;
+    border-radius: var(--radius-md);
+    background: var(--color-accent-tint);
+    color: var(--color-accent-text);
+    margin-bottom: 6px;
+  }
+  .card-label { font-family: var(--font-display); font-weight: var(--fw-bold); color: var(--ecoteq-navy); }
+  .card-text { font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: var(--lh-body); }
+  .card-go { color: var(--color-accent); margin-top: 8px; transition: transform var(--dur-base) var(--ease-standard); }
+  .card:hover .card-go { transform: translateX(3px); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card, .card-go { transition: none; }
+    .card:hover { transform: none; }
+  }
+</style>

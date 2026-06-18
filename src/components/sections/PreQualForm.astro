@@ -1,8 +1,7 @@
 ---
 import Section from '../layout/Section.astro';
 import SectionHeading from '../brand/SectionHeading.astro';
-import Input from '../forms/Input.astro';
-import Button from '../core/Button.astro';
+import QuoteForm from '../forms/QuoteForm.astro';
 ---
 
 <Section id="ajanlatkeres" surface="subtle">
@@ -19,74 +18,9 @@ import Button from '../core/Button.astro';
       </p>
     </div>
 
-    <form id="prequal" class="card" novalidate>
-      <div class="hp" aria-hidden="true">
-        <label>Ezt a mezőt hagyja üresen<input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
-      </div>
-
-      <div class="row2">
-        <Input label="Név" name="nev" required />
-        <Input label="E-mail" name="email" type="email" required />
-      </div>
-      <div class="row2">
-        <Input label="Telefonszám" name="telefon" type="tel" />
-        <Input label="Körülbelüli mennyiség" name="mennyiseg" placeholder="pl. 2 t/nap" />
-      </div>
-      <Input label="Milyen anyagot kell kezelni?" name="anyag" required placeholder="pl. faforgács, raklap, nedves apríték" />
-      <Input label="Mi a cél?" name="cel" required placeholder="pl. brikett, térfogatcsökkentés, szárítás" />
-
-      <Button type="submit" class="submit">Elküldöm az alapadatokat</Button>
-      <p class="form-msg" role="status" aria-live="polite"></p>
-    </form>
+    <QuoteForm source="homepage" />
   </div>
 </Section>
-
-<script>
-  const form = document.getElementById('prequal');
-  if (form instanceof HTMLFormElement) {
-    const msg = form.querySelector<HTMLParagraphElement>('.form-msg');
-    const submit = form.querySelector<HTMLButtonElement>('button[type="submit"]');
-
-    const setMsg = (text: string, state: string) => {
-      if (msg) { msg.textContent = text; msg.dataset.state = state; }
-    };
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const fd = new FormData(form);
-      const payload: Record<string, unknown> = Object.fromEntries(fd.entries());
-      delete (payload as Record<string, unknown>)['']; // safety
-
-      if (!payload.nev || !payload.email || !payload.anyag || !payload.cel) {
-        setMsg('Kérjük, töltse ki a kötelező mezőket (név, e-mail, anyag, cél).', 'error');
-        return;
-      }
-
-      if (submit) submit.disabled = true;
-      setMsg('Küldés…', 'pending');
-      try {
-        const res = await fetch('/api/contact', {
-          method: 'POST',
-          headers: { 'content-type': 'application/json' },
-          body: JSON.stringify(payload),
-        });
-        const data = await res.json().catch(() => ({ ok: false }));
-        if (data.ok) {
-          setMsg('Köszönjük! Munkanapokon előszűrjük a feladatot, és jellemzően 24 órán belül visszajelzünk.', 'success');
-          form.reset();
-        } else if (data.error === 'not_configured') {
-          setMsg('Az űrlap e-mail háttere még beállítás alatt — kérjük, írjon közvetlenül: info@ecoteq.hu', 'error');
-        } else {
-          setMsg('Hiba történt a küldéskor. Kérjük, próbálja újra, vagy írjon: info@ecoteq.hu', 'error');
-        }
-      } catch {
-        setMsg('Hálózati hiba. Kérjük, próbálja újra, vagy írjon: info@ecoteq.hu', 'error');
-      } finally {
-        if (submit) submit.disabled = false;
-      }
-    });
-  }
-</script>
 
 <style>
   .layout { display: grid; gap: var(--space-7); grid-template-columns: 1fr; }
@@ -96,67 +30,4 @@ import Button from '../core/Button.astro';
   }
 
   .note { margin-top: var(--space-5); font-size: var(--fs-sm); color: var(--color-text-muted); max-width: 50ch; }
-
-  .card {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md);
-    padding: clamp(var(--space-5), 4vw, var(--space-7));
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
-  }
-  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-  .row2 { display: grid; gap: var(--space-4); grid-template-columns: 1fr; }
-  @media (min-width: 540px) { .row2 { grid-template-columns: 1fr 1fr; } }
-
-  .more-toggle {
-    align-self: flex-start;
-    background: transparent;
-    border: none;
-    padding: 4px 0;
-    color: var(--color-accent-text);
-    font-family: var(--font-sans);
-    font-weight: var(--fw-bold);
-    font-size: var(--fs-sm);
-    cursor: pointer;
-  }
-  .more-toggle .opt { color: var(--color-text-muted); font-weight: var(--fw-regular); }
-  .more-toggle:hover { color: var(--color-accent-active); }
-
-  .more { display: flex; flex-direction: column; gap: var(--space-4); }
-
-  .field { display: flex; flex-direction: column; gap: 6px; }
-  .field .label { font-size: var(--fs-sm); font-weight: var(--fw-semibold); color: var(--ecoteq-navy); }
-  textarea {
-    font-family: var(--font-sans);
-    font-size: 15px;
-    color: var(--ecoteq-navy);
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    padding: 12px 14px;
-    resize: vertical;
-    transition: border-color var(--dur-base) var(--ease-standard), box-shadow var(--dur-base) var(--ease-standard);
-  }
-  textarea:focus { outline: none; border-color: var(--color-accent); box-shadow: 0 0 0 3px var(--color-accent-ring); }
-
-  .interests { border: none; margin: 0; padding: 0; }
-  .interests legend { font-size: var(--fs-sm); font-weight: var(--fw-semibold); color: var(--ecoteq-navy); margin-bottom: 8px; padding: 0; }
-  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-  .chip { display: inline-flex; align-items: center; gap: 7px; padding: 7px 13px; border: 1px solid var(--color-border); border-radius: var(--radius-pill); font-size: var(--fs-sm); cursor: pointer; transition: border-color var(--dur-fast) var(--ease-standard), background var(--dur-fast) var(--ease-standard); }
-  .chip input { accent-color: var(--color-accent); }
-  .chip:hover { border-color: var(--color-border-strong); }
-  .chip:has(input:checked) { border-color: var(--color-accent); background: var(--color-accent-tint); }
-
-  .filehint { margin: 0; font-size: var(--fs-xs); color: var(--color-text-muted); }
-  .submit { align-self: flex-start; margin-top: var(--space-2); }
-
-  .form-msg { margin: 0; font-size: var(--fs-sm); min-height: 1.2em; }
-  .form-msg[data-state='success'] { color: var(--green-700); font-weight: var(--fw-semibold); }
-  .form-msg[data-state='error'] { color: var(--color-danger); }
-  .form-msg[data-state='pending'] { color: var(--color-text-secondary); }
-
-  @media (prefers-reduced-motion: reduce) { textarea, .chip { transition: none; } }
 </style>
