@@ -66,7 +66,7 @@ const year = 2026;
     </nav>
 
     <div class="bottom">
-      <Logo tone="white" size={24} />
+      <Logo tone="white" size={22} />
       <nav class="legal" aria-label="Jogi">
         {legal.map((l, i) => (
           <>
@@ -75,9 +75,6 @@ const year = 2026;
           </>
         ))}
       </nav>
-      <button class="totop" type="button" aria-label="Vissza az oldal tetejére" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-        <Icon name="arrow-up" size={20} />
-      </button>
     </div>
   </div>
 </footer>
@@ -112,13 +109,14 @@ const year = 2026;
   .spoke-note { font-size: var(--fs-xs); color: rgba(255, 255, 255, 0.46); }
 
   .bottom {
-    margin-top: var(--space-9);
-    padding-top: var(--space-6);
+    margin-top: var(--space-6);
+    padding-top: var(--space-5);
     border-top: 1px solid rgba(255, 255, 255, 0.14);
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: var(--space-5) var(--space-7);
+    justify-content: space-between;
+    gap: var(--space-4) var(--space-7);
   }
   .bottom :global(.logo) { flex: none; }
 
@@ -127,25 +125,7 @@ const year = 2026;
   .legal a:hover { color: var(--color-accent); }
   .legal .sep { color: var(--ecoteq-green); }
 
-  .totop {
-    margin-left: auto;
-    display: inline-grid;
-    place-items: center;
-    width: 48px;
-    height: 48px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: var(--radius-md);
-    background: transparent;
-    color: rgba(255, 255, 255, 0.85);
-    cursor: pointer;
-    transition: border-color var(--dur-fast) var(--ease-standard), color var(--dur-fast) var(--ease-standard);
-  }
-  .totop:hover { border-color: var(--color-accent); color: var(--color-accent); }
-  .totop :global(.icon) { display: block; }
-
-  .copy { margin: var(--space-5) 0 0; font-size: var(--fs-xs); color: rgba(255, 255, 255, 0.4); }
-
   @media (prefers-reduced-motion: reduce) {
-    .col a, .contact a, .legal a, .totop { transition: none; }
+    .col a, .contact a, .legal a { transition: none; }
   }
 </style>
