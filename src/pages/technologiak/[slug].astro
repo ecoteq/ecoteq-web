@@ -210,7 +210,7 @@ function factorIcon(title: string): string {
       {t.finalCta.body.map((p) => <p>{p}</p>)}
       <div class="ctas">
         <Button href={QUOTE.href}>{QUOTE.label}</Button>
-        {t.finalCta.secondaryCta && <Button variant="ghost" href={t.finalCta.secondaryCta.href}>{t.finalCta.secondaryCta.label}</Button>}
+        {t.finalCta.secondaryCta && <Button variant="outline-light" href={t.finalCta.secondaryCta.href}>{t.finalCta.secondaryCta.label}</Button>}
       </div>
       <p class="micro">Az első lépés nem kötelezettségvállalás, hanem szakmai előminősítés.</p>
     </div>
@@ -316,10 +316,11 @@ function factorIcon(title: string): string {
   details p { margin: 0; padding: 0 0 var(--space-5); font-size: var(--fs-body); color: var(--color-text-secondary); line-height: var(--lh-body); max-width: 70ch; }
 
   /* Closing */
-  .closing { background: var(--color-accent-tint); padding-block: clamp(var(--space-8), 8vw, var(--space-10)); }
+  .closing { background: var(--ecoteq-navy); padding-block: clamp(var(--space-8), 8vw, var(--space-10)); }
   .closing-inner { max-width: 760px; margin-inline: auto; padding-inline: clamp(16px, 4vw, 40px); text-align: center; display: flex; flex-direction: column; align-items: center; gap: var(--space-4); }
-  .closing h2 { margin: 0; font-family: var(--font-display); font-weight: var(--fw-extrabold); font-size: var(--fs-h2); line-height: var(--lh-heading); letter-spacing: var(--ls-heading); color: var(--color-text); max-width: 22ch; }
-  .closing p { margin: 0; font-size: var(--fs-lg); line-height: var(--lh-body); color: var(--color-text-secondary); }
+  .closing h2 { margin: 0; font-family: var(--font-display); font-weight: var(--fw-extrabold); font-size: var(--fs-h2); line-height: var(--lh-heading); letter-spacing: var(--ls-heading); color: var(--ecoteq-white); max-width: 22ch; }
+  .closing p { margin: 0; font-size: var(--fs-lg); line-height: var(--lh-body); color: rgba(255, 255, 255, 0.8); }
+  .closing .micro { color: rgba(255, 255, 255, 0.5); }
   .closing .ctas { justify-content: center; margin-top: var(--space-3); }
 
   @media (prefers-reduced-motion: reduce) {
