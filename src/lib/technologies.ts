@@ -668,7 +668,7 @@ const vakuumszaritas: TechnologyGateway = {
       "Ezek alapján segítünk eldönteni, hogy érdemes-e vákuumszárításban gondolkodni, és ha igen, milyen méretű és kapacitású szárító lehet reális.",
     ],
     cta: "Leírom az anyagot és a célt",
-    microcopy: "Nem baj, ha nem tud minden adatot pontosan. Munkanapokon átnézzük a megkeresést, és visszajelzünk, merre érdemes továbbmenni.",
+    microcopy: "Nem baj, ha nem tud minden adatot pontosan. Átnézzük a megkeresést, és visszajelzünk, merre érdemes továbbmenni.",
     checklist: [
       { title: "Faanyag és méretek", items: ["fafaj", "jellemző hosszúság", "vastagság"] },
       { title: "Nedvesség és mennyiség", items: ["induló nedvesség", "cél nedvesség", "heti vagy havi mennyiség"] },
