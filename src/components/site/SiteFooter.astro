@@ -1,8 +1,7 @@
 ---
 import Logo from '../brand/Logo.astro';
-import Button from '../core/Button.astro';
 import Icon from '../Icon.astro';
-import { CONTACT, CTA, TECHNOLOGIES, SPOKES, quoteHref } from '../../lib/site';
+import { CONTACT, TECHNOLOGIES, SPOKES, quoteHref } from '../../lib/site';
 
 const solutions = [
   'Faipari hulladék kezelése',
@@ -20,7 +19,6 @@ const company = [
   { label: 'Kapcsolat', href: '/kapcsolat/' },
   { label: 'Ajánlatkérés', href: quoteHref(undefined, 'footer') },
 ];
-const footerCta = quoteHref(undefined, 'footer');
 const legal = [
   { label: 'Adatvédelmi tájékoztató', href: '/adatvedelmi-tajekoztato', icon: 'shield-check' },
   { label: 'Cookie-tájékoztató', href: '/cookie-tajekoztato', icon: 'cookie' },
@@ -36,12 +34,9 @@ const year = 2026;
       <div class="brand-col">
         <Logo tone="white" size={30} />
         <p class="about">
-          Az ECOTEQ ipari hulladék- és biomassza-feldolgozó rendszerek tervezésével,
-          értékesítésével és támogatásával foglalkozik: ipari darálás, brikettálás,
-          pelletálás, biomassza-szárítás, vákuumszárítás, vákuumimpregnálás, elszívás,
-          porleválasztás és anyagmozgatás.
+          Ipari hulladék- és biomassza-feldolgozó rendszerek magyarországi és
+          közép-európai üzemeknek.
         </p>
-        <Button href={footerCta} size="sm">{CTA.primary.label}</Button>
         <address class="contact">
           <span>{CONTACT.company}</span>
           <span>{CONTACT.address}</span>
