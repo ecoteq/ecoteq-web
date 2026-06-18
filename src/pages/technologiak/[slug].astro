@@ -219,8 +219,8 @@ function factorIcon(title: string): string {
   <!-- 11. ZÁRÓ CTA -->
   <Section surface="subtle">
     <div class:list={['closing-panel', t.finalCta.checklist && 'has-aside']}>
+      <h2 class="closing-h2">{t.finalCta.h2}</h2>
       <div class="closing-left">
-        <h2>{t.finalCta.h2}</h2>
         {t.finalCta.body.map((p) => <p>{p}</p>)}
         <Button class="closing-cta" href={QUOTE.href}>{t.finalCta.cta ?? QUOTE.label}</Button>
         {t.finalCta.microcopy && <p class="micro">{t.finalCta.microcopy}</p>}
@@ -349,9 +349,9 @@ function factorIcon(title: string): string {
   details p { margin: 0; padding: 0 0 var(--space-5); font-size: var(--fs-body); color: var(--color-text-secondary); line-height: var(--lh-body); max-width: 70ch; }
 
   /* Closing */
-  .closing-panel { background: var(--ecoteq-navy); border-radius: var(--radius-xl); padding: clamp(28px, 4vw, 60px); display: grid; gap: var(--space-7); grid-template-columns: 1fr; }
-  @media (min-width: 880px) { .closing-panel.has-aside { grid-template-columns: 1.15fr 0.85fr; gap: var(--space-8); align-items: start; } }
-  .closing-left h2 { margin: 0 0 var(--space-5); font-family: var(--font-display); font-weight: var(--fw-extrabold); font-size: clamp(1.55rem, 1.1rem + 1.5vw, 2.15rem); line-height: var(--lh-tight); letter-spacing: var(--ls-display); color: var(--ecoteq-white); max-width: 24ch; }
+  .closing-panel { background: var(--ecoteq-navy); border-radius: var(--radius-xl); padding: clamp(28px, 4vw, 60px); display: grid; gap: var(--space-6); grid-template-columns: 1fr; }
+  @media (min-width: 880px) { .closing-panel.has-aside { grid-template-columns: 1.15fr 0.85fr; column-gap: var(--space-8); row-gap: var(--space-6); align-items: start; } .closing-panel.has-aside > .closing-h2 { grid-column: 1 / -1; } }
+  .closing-h2 { margin: 0; font-family: var(--font-display); font-weight: var(--fw-extrabold); font-size: clamp(1.55rem, 1.1rem + 1.5vw, 2.15rem); line-height: var(--lh-tight); letter-spacing: var(--ls-display); color: var(--ecoteq-white); max-width: 28ch; }
   .closing-left > p { margin: 0 0 var(--space-4); font-size: var(--fs-lg); line-height: var(--lh-body); color: rgba(255,255,255,0.82); max-width: 58ch; }
   .closing-cta { margin-top: var(--space-3); }
   .closing-left .micro { margin: var(--space-4) 0 0; font-size: var(--fs-sm); line-height: var(--lh-snug); color: rgba(255,255,255,0.6); max-width: 54ch; }
