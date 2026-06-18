@@ -606,7 +606,7 @@ const vakuumszaritas: TechnologyGateway = {
   },
   decisionFactors: {
     h2: "Mire figyeljen, mielőtt vákuumszárítót választ?",
-    intro: "A vákuumszárító beruházásnál a rossz döntés gyakran onnan ered, hogy csak a kamraméretet vagy az árat nézik. A jó szárítási megoldáshoz a faanyag, a szárítási cél, a kapacitás és az üzemeltethetőségi szempontok együttesen számítanak.",
+    intro: "A vákuumszárító beruházásnál könnyű hibás beruházási döntést hozni, ha csak a kamraméretet vagy az árat nézzük. A jó szárítási megoldáshoz a faanyag, a szárítási cél, a kapacitás és az üzemeltethetőségi szempontok együttesen számítanak.",
     factors: [
       { title: "Fafaj", text: "Másképp viselkedik a tölgy, bükk, kőris vagy más keményfa. A fafaj meghatározza a technológiai óvatosságot és cikluslogikát." },
       { title: "Vastagság és hosszúság", text: "A tipikus méretek alapján kell választani kamrahosszt, rakodási módot és kapacitást." },
