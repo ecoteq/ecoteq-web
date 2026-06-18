@@ -4,12 +4,13 @@
  * short green rule per item). Numbers are intentionally conservative/validatable — swap for
  * confirmed figures when available.
  */
-const stats = [
+const defaultStats = [
   { value: '8', suffix: '', label: 'Technológiai terület' },
   { value: '15', suffix: '+', label: 'Év ipari tapasztalat' },
   { value: '4', suffix: '+', label: 'Európai gyártó partner' },
   { value: '24', suffix: 'h', label: 'Jellemző visszajelzés' },
 ];
+const { stats = defaultStats } = Astro.props;
 ---
 
 <section class="herostats" data-reveal>

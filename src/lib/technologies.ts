@@ -18,6 +18,8 @@ export type TechnologyGateway = {
     image?: string;
     imageAlt?: string;
   };
+  /** Optional override for the stat band below the hero (defaults to homepage stats). */
+  heroStats?: { value: string; suffix?: string; label: string }[];
   fit: { h2: string; intro: string; items: { title: string; text: string }[] };
   problems: { h2: string; intro: string; cards: { problem: string; why: string; answer: string }[] };
   materials: { h2: string; intro: string; materials: string[]; industries: string[]; goals: string[] };
@@ -552,6 +554,12 @@ const vakuumszaritas: TechnologyGateway = {
     image: "/ds/photos/vacuum-kiln.png",
     imageAlt: "Vákuumszárító berendezés",
   },
+  heroStats: [
+    { value: "kontrollált", suffix: "", label: "Szárítás" },
+    { value: "15", suffix: "+", label: "Év ipari tapasztalat" },
+    { value: "4", suffix: "+", label: "Európai gyártó partner" },
+    { value: "24", suffix: "h", label: "Jellemző visszajelzés" },
+  ],
   fit: {
     h2: "Mikor jó irány a vákuumszárítás?",
     intro: "A vákuumszárítás nem minden faipari üzemnek ugyanazt jelenti. Más a helyzet egy asztalosüzemnél, más egy fűrészüzemnél, más értékes keményfa esetén, és más akkor, ha a cél saját gyártáshoz szükséges gyorsabb, kiszámíthatóbb alapanyag-előkészítés.",
