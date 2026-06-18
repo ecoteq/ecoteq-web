@@ -9,7 +9,7 @@ export const CONTACT = {
 } as const;
 
 export const CTA = {
-  primary: { label: 'Technológiai irányt kérek', href: '#ajanlatkeres' },
+  primary: { label: 'Technológiai javaslatot kérek', href: '#ajanlatkeres' },
   secondary: { label: 'Megnézem a megoldásokat', href: '#megoldasok' },
   form: { label: 'Elküldöm a projekt adatait', href: '#ajanlatkeres' },
 } as const;

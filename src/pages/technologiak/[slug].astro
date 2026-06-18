@@ -17,7 +17,7 @@ const { slug } = Astro.params;
 const t = getGateway(slug!);
 if (!t) return Astro.redirect('/404');
 
-const QUOTE = { label: 'Technológiai irányt kérek', href: quoteHref(slug, 'technologia') };
+const QUOTE = { label: 'Technológiai javaslatot kérek', href: quoteHref(slug, 'technologia') };
 const FORM_CTA = { label: 'Elküldöm a projekt adatait', href: quoteHref(slug, 'technologia') };
 
 // Figurative icon per "Mikor jó irány?" card, by technology + index.
