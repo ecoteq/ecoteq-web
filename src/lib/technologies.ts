@@ -24,7 +24,7 @@ export type TechnologyGateway = {
   heroStats?: { value: string; suffix?: string; label: string }[];
   fit: { h2: string; intro: string; items: { title: string; text: string }[] };
   problems: { h2: string; intro: string; cards: { problem: string; why: string; answer: string }[] };
-  materials: { h2: string; intro: string; materials: string[]; industries: string[]; goals: string[] };
+  materials: { h2: string; intro: string; materials: string[]; industries: string[]; goals: string[]; note?: string };
   process: { h2: string; intro: string; steps: { title: string; text: string }[] };
   decisionFactors: { h2: string; intro: string; factors: { title: string; text: string }[] };
   role: { h2: string; body: string[]; points: { title: string; text: string }[]; trust?: string[] };
@@ -586,11 +586,12 @@ const vakuumszaritas: TechnologyGateway = {
     ],
   },
   materials: {
-    h2: "Milyen faanyagoknál és helyzetekben merül fel?",
+    h2: "Milyen anyagoknál és helyzetekben merül fel a vákuumos szárítás?",
     intro: "A vákuumszárításnál a fafaj, vastagság, hosszúság, induló nedvesség, cél nedvesség és végfelhasználás együtt határozza meg, hogy milyen gépméret és technológiai megoldás lehet reális.",
     materials: ["keményfa", "tölgy", "bükk", "kőris", "akác külön vizsgálattal", "értékesebb lombos faanyagok", "fűrészáru", "asztalosipari alapanyag", "nyílászáró- és bútoripari faanyag"],
     industries: ["asztalosüzemek", "bútorgyártás", "nyílászárógyártás", "fűrészüzemek", "fatelepek", "faanyag-kereskedelem", "egyedi faipari gyártás"],
     goals: ["szárítási ciklusidő csökkentése", "saját gyártási alapanyag előkészítése", "külső szárítástól való függés csökkentése", "minőségi kockázatok mérséklése", "gyártási tervezhetőség javítása", "magasabb értékű faanyag kontrollált kezelése"],
+    note: "Ha nem biztos benne, hogy az Ön faanyaga vagy gyártási helyzete ide tartozik, elég, ha elküldi az alapadatokat. Segítünk eldönteni, érdemes-e vákuumszárításban gondolkodni.",
   },
   process: {
     h2: "Hogyan épül fel egy vákuumszárítási rendszer?",
@@ -659,6 +660,7 @@ const vakuumszaritas: TechnologyGateway = {
       { q: "Mekkora kamra kell?", a: "A jellemző faanyag-hossz, vastagság, mennyiség és termelési ritmus alapján lehet meghatározni." },
       { q: "Gyorsabb, mint a hagyományos szárítás?", a: "Bizonyos anyagoknál és céloknál rövidebb ciklusok érhetők el, de konkrét időt csak anyagadatok és technológiai egyeztetés alapján szabad ígérni." },
       { q: "Tudnak konkrét gépet ajánlani?", a: "Igen, de először a fafajt, méretet, mennyiséget, induló és cél nedvességet kell tisztázni." },
+      { q: "Mi történik, ha nem biztos, hogy a vákuumszárítás a jó irány?", a: "Akkor is érdemes elküldeni az alapadatokat. Ha nem vákuumszárító a reális megoldás, azt is megmondjuk." },
     ],
   },
   finalCta: {

@@ -88,22 +88,8 @@ function factorIcon(title: string): string {
 
   <HeroStats stats={t.heroStats} />
 
-  <!-- 2. MIKOR JÓ IRÁNY -->
+  <!-- 2. PROBLÉMA -->
   <Section surface="white">
-    <SectionHeading overline="Mikor jó megoldás" title={t.fit.h2} lead={t.fit.intro} />
-    <div class="grid cards3">
-      {t.fit.items.map((i, idx) => (
-        <article class="card">
-          <span class="ic" aria-hidden="true"><Icon name={fitIcons[idx] ?? 'shrink'} size={22} /></span>
-          <h3>{i.title}</h3>
-          <p>{i.text}</p>
-        </article>
-      ))}
-    </div>
-  </Section>
-
-  <!-- 3. PROBLÉMA -->
-  <Section surface="subtle">
     <SectionHeading overline="Üzemi probléma" title={t.problems.h2} lead={t.problems.intro} />
     <div class="grid cards2">
       {t.problems.cards.map((c) => (
@@ -119,6 +105,20 @@ function factorIcon(title: string): string {
     </div>
   </Section>
 
+  <!-- 3. MIKOR JÓ MEGOLDÁS -->
+  <Section surface="subtle">
+    <SectionHeading overline="Mikor jó megoldás" title={t.fit.h2} lead={t.fit.intro} />
+    <div class="grid cards3">
+      {t.fit.items.map((i, idx) => (
+        <article class="card">
+          <span class="ic" aria-hidden="true"><Icon name={fitIcons[idx] ?? 'shrink'} size={22} /></span>
+          <h3>{i.title}</h3>
+          <p>{i.text}</p>
+        </article>
+      ))}
+    </div>
+  </Section>
+
   <!-- 4. ANYAGOK -->
   <Section surface="white">
     <SectionHeading overline="Anyagok és alkalmazások" title={t.materials.h2} lead={t.materials.intro} />
@@ -127,6 +127,12 @@ function factorIcon(title: string): string {
       <div><h3>Iparágak</h3><ul>{t.materials.industries.map((m) => <li>{m}</li>)}</ul></div>
       <div><h3>Elérhető célok</h3><ul>{t.materials.goals.map((m) => <li>{m}</li>)}</ul></div>
     </div>
+    {t.materials.note && (
+      <a class="matrix-note" href={QUOTE.href}>
+        <span>{t.materials.note}</span>
+        <Icon name="arrow-right" size={18} />
+      </a>
+    )}
   </Section>
 
   <!-- 5. RENDSZERFELÉPÍTÉS -->
@@ -287,6 +293,9 @@ function factorIcon(title: string): string {
   .matrix h3 { margin: 0 0 var(--space-3); padding-bottom: var(--space-3); border-bottom: 1px solid var(--color-border); font-size: var(--fs-xs); font-weight: var(--fw-bold); letter-spacing: var(--ls-overline); text-transform: uppercase; color: var(--color-accent-text); }
   .matrix ul { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
   .matrix li { font-size: var(--fs-sm); color: var(--color-text-secondary); background: var(--color-bg-subtle); border: 1px solid var(--color-border); border-radius: var(--radius-pill); padding: 6px 13px; }
+  .matrix-note { margin-top: var(--space-6); display: flex; align-items: center; gap: var(--space-5); justify-content: space-between; background: var(--color-accent-tint); border: 1px solid var(--color-accent-ring); border-radius: var(--radius-lg); padding: var(--space-5); color: var(--color-text); text-decoration: none; font-size: var(--fs-base); line-height: var(--lh-snug); transition: border-color var(--dur-fast) var(--ease-standard); }
+  .matrix-note :global(.icon) { color: var(--green-700); flex: none; }
+  .matrix-note:hover { border-color: var(--color-accent); }
 
   /* Steps */
   .steps { margin-top: var(--space-7); padding: 0; list-style: none; display: grid; gap: var(--space-5); grid-template-columns: 1fr; }
