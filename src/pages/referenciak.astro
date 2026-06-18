@@ -4,6 +4,7 @@ import Section from '../components/layout/Section.astro';
 import SectionHeading from '../components/brand/SectionHeading.astro';
 import Button from '../components/core/Button.astro';
 import Icon from '../components/Icon.astro';
+import { quoteHref } from '../lib/site';
 
 const projects = [
   {
@@ -42,7 +43,7 @@ const projects = [
   solidHeader
 >
   <Section surface="subtle">
-    <nav class="crumb" aria-label="Útvonal"><a href="/">Főoldal</a> <span>/</span> <span class="here">Referenciák</span></nav>
+    <nav class="crumb" aria-label="Útvonal"><a href="/">Főoldal</a> <span aria-hidden="true">/</span> <span class="here">Referenciák</span></nav>
     <SectionHeading
       overline="Referenciák"
       title="Megvalósított ipari rendszerek, iparág és technológia szerint"
@@ -102,14 +103,15 @@ const projects = [
       align="center"
     />
     <div class="cta">
-      <Button href="/#ajanlatkeres">Technológiai javaslatot kérek</Button>
+      <Button href={quoteHref(undefined, 'referenciak')}>Technológiai javaslatot kérek</Button>
     </div>
   </Section>
 </SiteLayout>
 
 <style>
-  .crumb { display: flex; gap: 8px; align-items: center; font-size: var(--fs-sm); color: var(--color-text-muted); margin-bottom: var(--space-5); }
+  .crumb { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: var(--fs-sm); color: var(--color-text-muted); margin-bottom: var(--space-5); }
   .crumb a { color: var(--color-text-secondary); text-decoration: none; }
+  .crumb a:hover { color: var(--color-accent); }
   .crumb .here { color: var(--color-text); }
 
   .cards {

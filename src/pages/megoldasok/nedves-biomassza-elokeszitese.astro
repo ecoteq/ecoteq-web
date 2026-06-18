@@ -4,6 +4,7 @@ import Section from '../../components/layout/Section.astro';
 import SectionHeading from '../../components/brand/SectionHeading.astro';
 import Button from '../../components/core/Button.astro';
 import Icon from '../../components/Icon.astro';
+import { quoteHref } from '../../lib/site';
 
 const situations = [
   {
@@ -54,8 +55,8 @@ const technologies = [
 >
   <Section surface="subtle">
     <nav class="crumb" aria-label="Útvonal">
-      <a href="/">Főoldal</a> <span>/</span>
-      <a href="/#megoldasok">Megoldások</a> <span>/</span>
+      <a href="/">Főoldal</a> <span aria-hidden="true">/</span>
+      <a href="/#megoldasok">Megoldások</a> <span aria-hidden="true">/</span>
       <span class="here">Nedves biomassza előkészítése</span>
     </nav>
     <SectionHeading
@@ -65,7 +66,7 @@ const technologies = [
       as="h1"
     />
     <div class="cta">
-      <Button href="/#ajanlatkeres">Technológiai javaslatot kérek</Button>
+      <Button href={quoteHref('biomassza-szaritas','megoldas')}>Technológiai javaslatot kérek</Button>
     </div>
   </Section>
 
@@ -111,7 +112,7 @@ const technologies = [
         title="Beszéljük át a nedves alapanyag útját"
         lead="Ossza meg a bemeneti és a cél nedvességet, a mennyiséget és a rendelkezésre álló hőforrást – ezek alapján meghatározzuk a megfelelő szárítási és előkészítési irányt."
       />
-      <Button href="/#ajanlatkeres">Technológiai javaslatot kérek</Button>
+      <Button href={quoteHref('biomassza-szaritas','megoldas')}>Technológiai javaslatot kérek</Button>
     </div>
   </Section>
 </SiteLayout>
@@ -127,7 +128,7 @@ const technologies = [
   @media (min-width: 720px) { .grid { grid-template-columns: repeat(3, 1fr); } }
 
   .card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-5); }
-  .card .ic { display: grid; place-items: center; width: 46px; height: 46px; border-radius: var(--radius-md); background: var(--color-bg-subtle); color: var(--color-accent); margin-bottom: var(--space-4); }
+  .card .ic { display: grid; place-items: center; width: 46px; height: 46px; border-radius: var(--radius-md); background: var(--color-accent-tint); color: var(--color-accent-active); margin-bottom: var(--space-4); }
   .card h3 { margin: 0 0 6px; font-size: var(--fs-h4); font-weight: var(--fw-bold); color: var(--color-text); }
   .card p { margin: 0; font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: var(--lh-snug); }
 
@@ -136,6 +137,8 @@ const technologies = [
   .rel { display: flex; flex-direction: column; gap: 6px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-5); text-decoration: none; color: inherit; transition: box-shadow var(--dur-base) var(--ease-standard), transform var(--dur-base) var(--ease-standard); }
   .rel:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
   .rel h3 { margin: 0; display: inline-flex; align-items: center; gap: 8px; font-size: var(--fs-h4); font-weight: var(--fw-bold); color: var(--color-accent-text); }
+  .rel h3 :global(svg) { transition: transform var(--dur-base) var(--ease-standard); }
+  .rel:hover h3 :global(svg) { transform: translateX(3px); }
   .rel p { margin: 0; font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: var(--lh-snug); }
 
   .closing { display: flex; flex-direction: column; align-items: center; gap: var(--space-6); }
@@ -143,5 +146,7 @@ const technologies = [
   @media (prefers-reduced-motion: reduce) {
     .rel { transition: none; }
     .rel:hover { transform: none; }
+    .rel h3 :global(svg) { transition: none; }
+    .rel:hover h3 :global(svg) { transform: none; }
   }
 </style>

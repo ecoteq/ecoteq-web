@@ -4,6 +4,7 @@ import Section from '../../components/layout/Section.astro';
 import SectionHeading from '../../components/brand/SectionHeading.astro';
 import Button from '../../components/core/Button.astro';
 import Icon from '../../components/Icon.astro';
+import { quoteHref } from '../../lib/site';
 
 const situations = [
   {
@@ -51,8 +52,8 @@ const directions = [
 >
   <Section surface="subtle">
     <nav class="crumb" aria-label="Útvonal">
-      <a href="/">Főoldal</a> <span>/</span>
-      <a href="/#megoldasok">Megoldások</a> <span>/</span>
+      <a href="/">Főoldal</a> <span aria-hidden="true">/</span>
+      <a href="/#megoldasok">Megoldások</a> <span aria-hidden="true">/</span>
       <span class="here">Faanyag szárítása és kezelése</span>
     </nav>
     <SectionHeading
@@ -62,7 +63,7 @@ const directions = [
       as="h1"
     />
     <div class="cta">
-      <Button href="/#ajanlatkeres">Technológiai javaslatot kérek</Button>
+      <Button href={quoteHref('vakuumszaritas', 'megoldas')}>Technológiai javaslatot kérek</Button>
     </div>
   </Section>
 
@@ -115,11 +116,12 @@ const directions = [
   <Section surface="navy">
     <SectionHeading
       tone="dark"
+      overline="Következő lépés"
       title="Beszéljük át a faanyag szárítását és kezelését"
       lead="Mondja el, milyen fafajjal, mérettel, nedvességtartalommal és mennyiséggel dolgozik, és közösen meghatározzuk, hogy a vákuumszárítás és a vákuumimpregnálás milyen iránya illik a folyamataihoz."
     />
     <div class="cta">
-      <Button href="/#ajanlatkeres">Technológiai javaslatot kérek</Button>
+      <Button href={quoteHref('vakuumszaritas', 'megoldas')}>Technológiai javaslatot kérek</Button>
     </div>
   </Section>
 </SiteLayout>

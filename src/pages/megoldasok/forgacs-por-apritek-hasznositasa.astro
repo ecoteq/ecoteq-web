@@ -4,6 +4,7 @@ import Section from '../../components/layout/Section.astro';
 import SectionHeading from '../../components/brand/SectionHeading.astro';
 import Button from '../../components/core/Button.astro';
 import Icon from '../../components/Icon.astro';
+import { quoteHref } from '../../lib/site';
 
 const situations = [
   {
@@ -30,7 +31,7 @@ const situations = [
 
 const technologies = [
   {
-    icon: 'package',
+    icon: 'flame',
     label: 'Brikettálás',
     text: 'A száraz mellékanyag tömörítése briketté',
     href: '/technologiak/brikettalas/',
@@ -55,14 +56,14 @@ const technologies = [
   solidHeader
 >
   <Section surface="subtle">
-    <nav class="crumb" aria-label="Útvonal"><a href="/">Főoldal</a> <span>/</span> <a href="/#megoldasok">Megoldások</a> <span>/</span> <span class="here">Forgács, por és apríték hasznosítása</span></nav>
+    <nav class="crumb" aria-label="Útvonal"><a href="/">Főoldal</a> <span aria-hidden="true">/</span> <a href="/#megoldasok">Megoldások</a> <span aria-hidden="true">/</span> <span class="here">Forgács, por és apríték hasznosítása</span></nav>
     <SectionHeading
       overline="Megoldás"
       title="Laza forgácsból, porból és aprítékból értékes termék"
-      lead="A fűrészpor, a forgács és az apríték önmagában nagy térfogatú melléktermék. Megfelelő nedvességtartalom és előkészítés mellett azonban tömörített, jól kezelhető termékké — saját fűtőanyaggá vagy értékesíthető brikketté, illetve pelletté — alakítható."
+      lead="A fűrészpor, a forgács és az apríték önmagában nagy térfogatú melléktermék. Megfelelő nedvességtartalom és előkészítés mellett azonban tömörített, jól kezelhető termékké — saját fűtőanyaggá vagy értékesíthető briketté, illetve pelletté — alakítható."
       as="h1"
     />
-    <div class="cta"><Button href="/#ajanlatkeres">Technológiai javaslatot kérek</Button></div>
+    <div class="cta"><Button href={quoteHref('brikettalas','megoldas')}>Technológiai javaslatot kérek</Button></div>
   </Section>
 
   <Section surface="white">
@@ -104,12 +105,12 @@ const technologies = [
     <div class="close">
       <SectionHeading
         overline="Beszéljünk a melléktermékről"
-        title="Nézzük meg, mi készülhet az Ön mellékterméből"
+        title="Nézzük meg, mi készülhet az Ön melléktermékéből"
         lead="Mondja el, milyen forgács, por vagy apríték keletkezik az üzemében, és milyen mennyiségben — a megfelelő technológiai irány meghatározásában segítünk."
         tone="dark"
         align="center"
       />
-      <div class="close-cta"><Button href="/#ajanlatkeres">Technológiai javaslatot kérek</Button></div>
+      <div class="close-cta"><Button href={quoteHref('brikettalas','megoldas')}>Technológiai javaslatot kérek</Button></div>
     </div>
   </Section>
 </SiteLayout>
@@ -137,7 +138,7 @@ const technologies = [
   .card-ic{
     display:inline-flex;align-items:center;justify-content:center;
     width:48px;height:48px;border-radius:var(--radius-md);
-    background:var(--color-accent-tint);color:var(--color-accent);
+    background:var(--color-accent-tint);color:var(--color-accent-active);
     margin-bottom:var(--space-4);
   }
   .card-title{
@@ -166,7 +167,7 @@ const technologies = [
   .tech-ic{
     display:inline-flex;align-items:center;justify-content:center;
     width:46px;height:46px;border-radius:var(--radius-md);
-    background:var(--color-accent-tint);color:var(--color-accent);
+    background:var(--color-accent-tint);color:var(--color-accent-active);
     margin-bottom:var(--space-4);
   }
   .tech-title{
@@ -174,6 +175,8 @@ const technologies = [
     font-family:var(--font-display);font-weight:var(--fw-bold);
     font-size:var(--fs-lg);line-height:var(--lh-heading);color:var(--color-accent-text);
   }
+  .tech-title :global(svg){transition:transform var(--dur-base) var(--ease-standard)}
+  .tech:hover .tech-title :global(svg){transform:translateX(3px)}
   .tech-text{margin:0;font-size:var(--fs-sm);line-height:var(--lh-snug);color:var(--color-text-secondary)}
   .note{margin:var(--space-6) 0 0;max-width:72ch;font-size:var(--fs-sm);line-height:var(--lh-body);color:var(--color-text-muted)}
 
@@ -184,5 +187,7 @@ const technologies = [
   @media (prefers-reduced-motion: reduce){
     .tech{transition:none}
     .tech:hover{transform:none}
+    .tech-title :global(svg){transition:none}
+    .tech:hover .tech-title :global(svg){transform:none}
   }
 </style>

@@ -1,5 +1,6 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
+import { CTA } from '../lib/site';
 import Hero from '../components/site/Hero.astro';
 import HeroStats from '../components/site/HeroStats.astro';
 import DecisionPaths from '../components/sections/DecisionPaths.astro';
@@ -13,6 +14,7 @@ import PreQualForm from '../components/sections/PreQualForm.astro';
 <SiteLayout
   title="Ipari hulladék- és biomassza-feldolgozó rendszerek"
   description="Az ECOTEQ ipari darálási, szárítási, brikettálási, pelletálási és elszívási rendszerekben segít magyarországi és közép-európai üzemeknek — reális technológiai iránnyal."
+  headerCta={{ label: CTA.primary.label, href: '#ajanlatkeres' }}
 >
   <Hero />
   <HeroStats />

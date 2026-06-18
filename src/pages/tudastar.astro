@@ -4,6 +4,7 @@ import Section from '../components/layout/Section.astro';
 import SectionHeading from '../components/brand/SectionHeading.astro';
 import Button from '../components/core/Button.astro';
 import Icon from '../components/Icon.astro';
+import { quoteHref } from '../lib/site';
 
 const articles = [
   {
@@ -44,7 +45,7 @@ const articles = [
   solidHeader
 >
   <Section surface="subtle">
-    <nav class="crumb" aria-label="Útvonal"><a href="/">Főoldal</a> <span>/</span> <span class="here">Tudástár</span></nav>
+    <nav class="crumb" aria-label="Útvonal"><a href="/">Főoldal</a> <span aria-hidden="true">/</span> <span class="here">Tudástár</span></nav>
     <SectionHeading
       overline="Tudástár"
       title="Tudás, amivel magabiztosabb döntést hoz"
@@ -73,12 +74,12 @@ const articles = [
   <Section surface="navy">
     <div class="cta">
       <SectionHeading
-        title="Ha addig is kérdése van, kérjen technológiai irányt"
+        title="Ha addig is kérdése van, kérjen technológiai javaslatot"
         lead="Írja le röviden az anyagát és a célját — visszajelzünk, milyen technológiai irány lehet reális az Ön esetében."
         tone="dark"
         align="center"
       />
-      <Button href="/#ajanlatkeres" variant="primary">
+      <Button href={quoteHref(undefined, 'tudastar')} variant="primary">
         Technológiai javaslatot kérek
         <Icon name="arrow-right" size={18} slot="icon-right" />
       </Button>
@@ -87,7 +88,7 @@ const articles = [
 </SiteLayout>
 
 <style>
-  .crumb{display:flex;gap:8px;align-items:center;font-size:var(--fs-sm);color:var(--color-text-muted);margin-bottom:var(--space-5)} .crumb a{color:var(--color-text-secondary);text-decoration:none} .crumb .here{color:var(--color-text)}
+  .crumb{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:var(--fs-sm);color:var(--color-text-muted);margin-bottom:var(--space-5)} .crumb a{color:var(--color-text-secondary);text-decoration:none} .crumb a:hover{color:var(--color-accent)} .crumb .here{color:var(--color-text)}
 
   .grid {
     list-style: none;
@@ -139,8 +140,8 @@ const articles = [
     width: 44px;
     height: 44px;
     border-radius: var(--radius-md);
-    background: var(--color-bg-subtle);
-    color: var(--ecoteq-navy);
+    background: var(--color-accent-tint);
+    color: var(--color-accent-active);
   }
 
   .card-title {

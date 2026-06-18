@@ -4,7 +4,7 @@ import Section from '../components/layout/Section.astro';
 import SectionHeading from '../components/brand/SectionHeading.astro';
 import Button from '../components/core/Button.astro';
 import Icon from '../components/Icon.astro';
-import { CONTACT } from '../lib/site';
+import { CONTACT, quoteHref } from '../lib/site';
 
 const checklist = [
   { label: 'Anyag', text: 'Milyen anyag keletkezik (faforgács, por, fólia, vegyes ipari hulladék)?' },
@@ -20,7 +20,7 @@ const checklist = [
   solidHeader
 >
   <Section surface="subtle">
-    <nav class="crumb" aria-label="Útvonal"><a href="/">Főoldal</a> <span>/</span> <span class="here">Kapcsolat</span></nav>
+    <nav class="crumb" aria-label="Útvonal"><a href="/">Főoldal</a> <span aria-hidden="true">/</span> <span class="here">Kapcsolat</span></nav>
     <SectionHeading
       overline="Kapcsolat"
       title="Vegye fel velünk a kapcsolatot"
@@ -72,7 +72,7 @@ const checklist = [
             </li>
           ))}
         </ul>
-        <div class="cta"><Button href="/#ajanlatkeres">Technológiai javaslatot kérek</Button></div>
+        <div class="cta"><Button href={quoteHref(undefined, 'kapcsolat')}>Technológiai javaslatot kérek</Button></div>
       </div>
     </div>
   </Section>
@@ -84,13 +84,13 @@ const checklist = [
         title="Beszéljünk a feladatról, mielőtt gépről beszélnénk"
         lead="Mondja el, milyen anyaggal és milyen céllal dolgozik. Megnézzük az egész anyagutat, és olyan technológiai irányt javaslunk, amely üzletileg is vállalható."
       />
-      <div class="cta"><Button href="/#ajanlatkeres">Technológiai javaslatot kérek</Button></div>
+      <div class="cta"><Button href={quoteHref(undefined, 'kapcsolat')}>Technológiai javaslatot kérek</Button></div>
     </div>
   </Section>
 </SiteLayout>
 
 <style>
-  .crumb{display:flex;gap:8px;align-items:center;font-size:var(--fs-sm);color:var(--color-text-muted);margin-bottom:var(--space-5)}
+  .crumb{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:var(--fs-sm);color:var(--color-text-muted);margin-bottom:var(--space-5)}
   .crumb a{color:var(--color-text-secondary);text-decoration:none}
   .crumb a:hover{color:var(--color-accent)}
   .crumb .here{color:var(--color-text)}

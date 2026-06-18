@@ -4,6 +4,7 @@ import Section from '../components/layout/Section.astro';
 import SectionHeading from '../components/brand/SectionHeading.astro';
 import Button from '../components/core/Button.astro';
 import Icon from '../components/Icon.astro';
+import { quoteHref } from '../lib/site';
 
 const services = [
   {
@@ -51,7 +52,7 @@ const requestPoints = [
   solidHeader
 >
   <Section surface="subtle">
-    <nav class="crumb" aria-label="Útvonal"><a href="/">Főoldal</a> <span>/</span> <span class="here">Szerviz és alkatrész</span></nav>
+    <nav class="crumb" aria-label="Útvonal"><a href="/">Főoldal</a> <span aria-hidden="true">/</span> <span class="here">Szerviz és alkatrész</span></nav>
     <SectionHeading
       overline="Szerviz és alkatrész"
       title="A megbízható üzemeltetés a gép átadása után kezdődik"
@@ -59,7 +60,7 @@ const requestPoints = [
       as="h1"
     />
     <div class="cta">
-      <Button href="/#ajanlatkeres">Technológiai javaslatot kérek</Button>
+      <Button href={quoteHref(undefined, 'szerviz')}>Technológiai javaslatot kérek</Button>
       <Button href="/kapcsolat/" variant="ghost">Kapcsolatfelvétel</Button>
     </div>
   </Section>
@@ -91,7 +92,7 @@ const requestPoints = [
         />
         <div class="how-cta">
           <Button href="/kapcsolat/">Kapcsolatfelvétel</Button>
-          <Button href="/#ajanlatkeres" variant="ghost">Technológiai javaslatot kérek</Button>
+          <Button href={quoteHref(undefined, 'szerviz')} variant="ghost">Technológiai javaslatot kérek</Button>
         </div>
       </div>
       <aside class="panel" aria-label="Mit érdemes megadni">
@@ -122,7 +123,7 @@ const requestPoints = [
         align="center"
       />
       <div class="close-cta">
-        <Button href="/#ajanlatkeres">Technológiai javaslatot kérek</Button>
+        <Button href={quoteHref(undefined, 'szerviz')}>Technológiai javaslatot kérek</Button>
         <Button href="/kapcsolat/" variant="outline-light">Kapcsolatfelvétel</Button>
       </div>
     </div>
@@ -130,7 +131,7 @@ const requestPoints = [
 </SiteLayout>
 
 <style>
-  .crumb{display:flex;gap:8px;align-items:center;font-size:var(--fs-sm);color:var(--color-text-muted);margin-bottom:var(--space-5)}
+  .crumb{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:var(--fs-sm);color:var(--color-text-muted);margin-bottom:var(--space-5)}
   .crumb a{color:var(--color-text-secondary);text-decoration:none}
   .crumb a:hover{color:var(--color-accent)}
   .crumb .here{color:var(--color-text)}
@@ -194,4 +195,6 @@ const requestPoints = [
   /* Closing CTA */
   .close{display:flex;flex-direction:column;align-items:center}
   .close-cta{margin-top:var(--space-6);display:flex;flex-wrap:wrap;justify-content:center;gap:var(--space-3)}
+
+  @media (prefers-reduced-motion: reduce){ .card{ transition:none } }
 </style>

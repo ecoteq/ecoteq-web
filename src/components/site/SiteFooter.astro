@@ -1,16 +1,8 @@
 ---
 import Logo from '../brand/Logo.astro';
 import Icon from '../Icon.astro';
-import { CONTACT, TECHNOLOGIES, SPOKES, quoteHref } from '../../lib/site';
+import { CONTACT, TECHNOLOGIES, SOLUTIONS, SPOKES, quoteHref } from '../../lib/site';
 
-const solutions = [
-  'Faipari hulladék kezelése',
-  'Raklap és csomagolóanyag darálása',
-  'Forgács és por hasznosítása',
-  'Nedves biomassza előkészítése',
-  'Faanyag szárítása és kezelése',
-  'Komplett anyagáram-rendszerek',
-];
 const company = [
   { label: 'Rólunk', href: '/rolunk/' },
   { label: 'Referenciák', href: '/referenciak/' },
@@ -20,10 +12,10 @@ const company = [
   { label: 'Ajánlatkérés', href: quoteHref(undefined, 'footer') },
 ];
 const legal = [
-  { label: 'Adatvédelmi tájékoztató', href: '/adatvedelmi-tajekoztato' },
-  { label: 'Cookie-tájékoztató', href: '/cookie-tajekoztato' },
-  { label: 'Felhasználási feltételek', href: '/felhasznalasi-feltetelek' },
-  { label: 'Impresszum', href: '/impresszum' },
+  { label: 'Adatvédelmi tájékoztató', href: '/adatvedelmi-tajekoztato/' },
+  { label: 'Cookie-tájékoztató', href: '/cookie-tajekoztato/' },
+  { label: 'Felhasználási feltételek', href: '/felhasznalasi-feltetelek/' },
+  { label: 'Impresszum', href: '/impresszum/' },
 ];
 const year = 2026;
 ---
@@ -33,7 +25,7 @@ const year = 2026;
     <nav class="cols" aria-label="Lábléc navigáció">
       <div class="col">
         <h3>Megoldások</h3>
-        <ul>{solutions.map((s) => <li><a href="#megoldasok">{s}</a></li>)}</ul>
+        <ul>{SOLUTIONS.map((s) => <li><a href={s.href}>{s.label}</a></li>)}</ul>
       </div>
       <div class="col">
         <h3>Technológiák</h3>

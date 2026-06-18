@@ -2,7 +2,7 @@
 import Logo from '../brand/Logo.astro';
 import Button from '../core/Button.astro';
 import Icon from '../Icon.astro';
-import { NAV, CTA, SOLUTIONS, TECHNOLOGIES } from '../../lib/site';
+import { NAV, CTA, SOLUTIONS, TECHNOLOGIES, quoteHref } from '../../lib/site';
 
 /**
  * Top sticky header — the real navigation, with Megoldások + Technológiák mega-menus.
@@ -14,7 +14,7 @@ interface Props {
   /** Optional per-page override for the header CTA. */
   cta?: { label: string; href: string };
 }
-const { solid = false, cta = { label: CTA.primary.label, href: CTA.primary.href } } = Astro.props;
+const { solid = false, cta = { label: CTA.primary.label, href: quoteHref(undefined, 'header') } } = Astro.props;
 
 const TECH_ICONS: Record<string, string> = {
   'ipari-daralas': 'shrink',
@@ -57,7 +57,7 @@ const TECH_ICONS: Record<string, string> = {
                       </a></li>
                     ))}
                     {i.mega === 'solutions' && (
-                      <li><a class="mega-panel" href="/#ajanlatkeres">
+                      <li><a class="mega-panel" href={quoteHref(undefined, 'mega')}>
                         <span class="p-ic"><Icon name="help-circle" size={22} /></span>
                         <span class="p-title">Nem tudom, milyen technológia kell<Icon name="arrow-right" size={14} class="m-arrow" /></span>
                         <span class="p-text">Írja le az anyagot és a célt — segítünk irányt választani.</span>

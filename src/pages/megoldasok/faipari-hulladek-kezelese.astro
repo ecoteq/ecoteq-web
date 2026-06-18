@@ -4,6 +4,7 @@ import Section from '../../components/layout/Section.astro';
 import SectionHeading from '../../components/brand/SectionHeading.astro';
 import Button from '../../components/core/Button.astro';
 import Icon from '../../components/Icon.astro';
+import { quoteHref } from '../../lib/site';
 
 const situations = [
   {
@@ -57,8 +58,8 @@ const directions = [
 >
   <Section surface="subtle">
     <nav class="crumb" aria-label="Útvonal">
-      <a href="/">Főoldal</a> <span>/</span>
-      <a href="/#megoldasok">Megoldások</a> <span>/</span>
+      <a href="/">Főoldal</a> <span aria-hidden="true">/</span>
+      <a href="/#megoldasok">Megoldások</a> <span aria-hidden="true">/</span>
       <span class="here">Faipari hulladék kezelése</span>
     </nav>
     <SectionHeading
@@ -68,7 +69,7 @@ const directions = [
       as="h1"
     />
     <div class="cta">
-      <Button href="/#ajanlatkeres">Technológiai javaslatot kérek</Button>
+      <Button href={quoteHref('ipari-daralas', 'megoldas')}>Technológiai javaslatot kérek</Button>
     </div>
   </Section>
 
@@ -121,11 +122,12 @@ const directions = [
   <Section surface="navy">
     <SectionHeading
       tone="dark"
+      overline="Következő lépés"
       title="Beszéljük át a faipari hulladék útját"
       lead="Mondja el, milyen anyag keletkezik az üzemében, és közösen meghatározzuk, hogy a darálás, az elszívás és a brikettálás milyen kombinációja illik a folyamataihoz."
     />
     <div class="cta">
-      <Button href="/#ajanlatkeres">Technológiai javaslatot kérek</Button>
+      <Button href={quoteHref('ipari-daralas', 'megoldas')}>Technológiai javaslatot kérek</Button>
     </div>
   </Section>
 </SiteLayout>
