@@ -650,7 +650,7 @@ const vakuumszaritas: TechnologyGateway = {
   preQual: {
     h2: "Küldje el az alapadatokat, és segítünk eldönteni, reális-e a vákuumszárító technológia",
     body: "Nem kell kész műszaki specifikációval érkeznie. Első körben tisztázzuk, milyen faanyagot, milyen méretben, milyen nedvességről milyen célra és milyen mennyiségben szeretne szárítani.",
-    fields: ["fafaj", "vastagság", "hosszúság", "keményfa", "tölgy", "bükk", "kőris", "nedvesség", "cél nedvesség", "induló nedvesség", "ciklusidő", "kamraméret", "kapacitás", "mennyiség", "rakodás", "targoncaút", "betáp", "energia", "alaprajz", "telepítés", "kezelhetőség", "vezérlés", "karbantartás", "szerviz", "alkatrész", "betanítás", "repedés", "vetemedés", "minőség", "készlet", "átfutás", "saját szárítás", "külső szárítás", "bérszárítás", "megtérülés", "beruházási keret", "pályázat", "bővíthetőség", "több műszak", "zaj", "fotó", "videó"],
+    fields: ["fafaj", "vastagság", "hosszúság", "keményfa", "tölgy", "bükk", "kőris", "nedvesség", "cél nedvesség", "induló nedvesség", "ciklusidő", "kamraméret", "kapacitás", "mennyiség", "rakodás", "targoncaút", "betáp", "energia", "alaprajz", "telepítés", "kezelhetőség", "vezérlés", "karbantartás", "szerviz", "alkatrész", "betanítás", "repedés", "vetemedés", "minőség", "készlet", "átfutás", "saját szárítás", "külső szárítás", "bérszárítás", "megtérülés", "beruházási keret", "pályázat", "bővíthetőség", "több műszak", "fotó", "videó"],
   },
   faq: {
     h2: "Gyakori kérdések a vákuumszárítás kapcsán",
