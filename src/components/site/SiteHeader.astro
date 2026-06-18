@@ -11,8 +11,10 @@ import { NAV, CTA, SOLUTIONS, TECHNOLOGIES } from '../../lib/site';
  */
 interface Props {
   solid?: boolean;
+  /** Optional per-page override for the header CTA. */
+  cta?: { label: string; href: string };
 }
-const { solid = false } = Astro.props;
+const { solid = false, cta = { label: CTA.primary.label, href: CTA.primary.href } } = Astro.props;
 
 const TECH_ICONS: Record<string, string> = {
   'ipari-daralas': 'shrink',
@@ -79,7 +81,7 @@ const TECH_ICONS: Record<string, string> = {
     </nav>
 
     <div class="actions">
-      <Button href={CTA.primary.href} size="sm" class="header-cta">{CTA.primary.label}</Button>
+      <Button href={cta.href} size="sm" class="header-cta">{cta.label}</Button>
       <button class="burger" type="button" aria-label="Menü megnyitása" aria-expanded="false" aria-controls="mobile-menu">
         <span></span><span></span><span></span>
       </button>
@@ -104,7 +106,7 @@ const TECH_ICONS: Record<string, string> = {
         )
       )}
     </ul>
-    <Button href={CTA.primary.href} class="mobile-cta">{CTA.primary.label}</Button>
+    <Button href={cta.href} class="mobile-cta">{cta.label}</Button>
   </div>
 </header>
 
@@ -176,7 +178,7 @@ const TECH_ICONS: Record<string, string> = {
     border-bottom: 1px solid var(--color-border);
     transition: background var(--dur-base) var(--ease-standard), border-color var(--dur-base) var(--ease-standard), box-shadow var(--dur-base) var(--ease-standard);
   }
-  @media (min-width: 1024px) { .site-header { left: var(--sidebar-w); } }
+  @media (min-width: 1280px) { .site-header { left: var(--sidebar-w); } }
 
   .site-header[data-transparent] { background: transparent; border-color: transparent; box-shadow: none; }
   .site-header:not([data-transparent]) { box-shadow: var(--shadow-sm); }
@@ -197,6 +199,13 @@ const TECH_ICONS: Record<string, string> = {
   .site-header[data-transparent] .brand-dark { display: none; }
   .site-header:not([data-transparent]) .brand-light { display: none; }
   .site-header:not([data-transparent]) .brand-dark { display: inline-flex; }
+
+  /* Rail-visible breakpoint: the rail's mark is the home link, so hide the
+     header logo entirely (stable, breakpoint-based — no scroll swap). */
+  @media (min-width: 1280px) {
+    .brand { display: none; }
+    .bar .nav { margin-left: 0; }
+  }
 
   .nav { display: none; }
   @media (min-width: 1024px) {

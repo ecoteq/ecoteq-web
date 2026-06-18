@@ -61,7 +61,7 @@ function factorIcon(title: string): string {
 }
 ---
 
-<SiteLayout title={t.metaTitle} description={t.metaDescription}>
+<SiteLayout title={t.metaTitle} description={t.metaDescription} headerCta={{ label: 'Leírom az anyagot és a célt', href: quoteHref(slug, 'header') }}>
   <!-- HERO -->
   <section class="hero">
     {t.hero.image && (
@@ -365,7 +365,7 @@ function factorIcon(title: string): string {
   @media (min-width: 560px) { .role-points { grid-template-columns: 1fr 1fr; } }
   .role-trust { list-style: none; margin: var(--space-5) 0 0; padding: var(--space-5) 0 0; border-top: 1px solid rgba(255,255,255,0.14); display: flex; flex-wrap: wrap; align-items: center; }
   .role-trust li { font-size: var(--fs-sm); color: rgba(255,255,255,0.7); }
-  .role-trust li:not(:last-child)::after { content: '·'; color: var(--ecoteq-green); margin: 0 14px; font-weight: var(--fw-bold); }
+  .role-trust li:not(:last-child)::after { content: '|'; color: var(--ecoteq-green); margin: 0 14px; font-weight: var(--fw-bold); }
   .rp { align-self: start; }
   .rp .rule { display: block; width: 32px; height: 4px; border-radius: var(--radius-pill); background: var(--color-accent); margin: 0 0 10px; flex: none; }
   .rp h3 { margin: 0 0 4px; font-size: var(--fs-h4); font-weight: var(--fw-bold); color: #fff; }

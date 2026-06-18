@@ -11,14 +11,16 @@ interface Props {
   brand?: string;
   /** Keep the header solid from the top (for pages without a dark hero). */
   solidHeader?: boolean;
+  /** Optional per-page override for the top-nav CTA. */
+  headerCta?: { label: string; href: string };
 }
-const { title, description, brand, solidHeader = false } = Astro.props;
+const { title, description, brand, solidHeader = false, headerCta } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description} brand={brand}>
   <BrandRail />
   <div class="shell">
-    <SiteHeader solid={solidHeader} />
+    <SiteHeader solid={solidHeader} cta={headerCta} />
     <main><slot /></main>
     <SiteFooter />
   </div>
@@ -49,7 +51,7 @@ const { title, description, brand, solidHeader = false } = Astro.props;
   }
 
   .shell main { padding-top: var(--header-h); }
-  @media (min-width: 1024px) {
+  @media (min-width: 1280px) {
     .shell { padding-left: var(--sidebar-w); }
   }
 

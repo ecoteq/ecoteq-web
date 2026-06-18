@@ -8,6 +8,13 @@ export const CONTACT = {
   address: '1037 Budapest, Csillaghegyi út 19–21.',
 } as const;
 
+/** Social profiles (rail). Replace the placeholder URLs with the real ones. */
+export const SOCIAL = [
+  { label: 'Instagram', href: 'https://www.instagram.com/', icon: 'instagram' },
+  { label: 'Facebook', href: 'https://www.facebook.com/', icon: 'facebook' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/', icon: 'linkedin' },
+] as const;
+
 export const CTA = {
   primary: { label: 'Technológiai javaslatot kérek', href: '#ajanlatkeres' },
   secondary: { label: 'Megnézem a megoldásokat', href: '#megoldasok' },

@@ -1,32 +1,47 @@
 ---
 import Logo from '../brand/Logo.astro';
 import Icon from '../Icon.astro';
-import { CONTACT, CTA } from '../../lib/site';
+import { CONTACT, quoteHref, SOCIAL } from '../../lib/site';
 
 /**
- * Fixed left navy brand rail — DESKTOP ONLY (≥1024px). A brand/frame element,
- * NOT primary navigation: logo mark, vertical green primary CTA, contact pills.
- * Hidden entirely on tablet and mobile.
+ * Fixed left navy brand / utility rail — DESKTOP ONLY (≥1280px). A brand frame,
+ * NOT navigation: home mark (home link), one restrained green pre-qualification
+ * CTA, and quiet contact icons. No menu icons, no dashboard feel. Hidden on
+ * tablet and mobile.
  */
+const PREQUAL_HREF = quoteHref(undefined, 'rail');
 ---
 
 <aside class="rail">
-  <a class="rail-logo" href="/" aria-label={`${CONTACT.company} – Kezdőlap`}>
+  <a class="rail-logo" href="/" aria-label="ECOTEQ főoldal">
     <Logo tone="white" size={34} showWordmark={false} />
   </a>
 
-  <a class="rail-cta" href={CTA.primary.href}>{CTA.primary.label}</a>
-
-  <div class="rail-contact">
-    <a href={`mailto:${CONTACT.email}`} aria-label="E-mail küldése"><Icon name="mail" size={16} /></a>
-    <a href={CONTACT.phoneHref} aria-label="Telefonhívás"><Icon name="phone" size={16} /></a>
+  <div class="rail-bottom">
+    <a
+      class="rail-cta"
+      href={PREQUAL_HREF}
+      aria-label="Leírom az anyagot és a célt"
+      title="Leírom az anyagot és a célt"
+    >Előminősítés</a>
+    <div class="rail-social">
+      {SOCIAL.map((s) => (
+        <a href={s.href} target="_blank" rel="noopener" aria-label={`${s.label} – új lapon`} title={s.label}><Icon name={s.icon} size={16} /></a>
+      ))}
+    </div>
+    <div class="rail-contact">
+      <a href={`mailto:${CONTACT.email}`} aria-label="E-mail küldése" title={CONTACT.email}><Icon name="mail" size={16} /></a>
+      <a href="https://wa.me/3614301556" target="_blank" rel="noopener" aria-label="WhatsApp üzenet" title="WhatsApp"><Icon name="whatsapp" size={16} /></a>
+      <a href="viber://chat?number=%2B3614301556" aria-label="Viber üzenet" title="Viber"><Icon name="viber" size={16} /></a>
+      <a href={CONTACT.phoneHref} aria-label="Telefonhívás" title={CONTACT.phone}><Icon name="phone" size={16} /></a>
+    </div>
   </div>
 </aside>
 
 <style>
   .rail { display: none; }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1280px) {
     .rail {
       position: fixed;
       inset: 0 auto 0 0;
@@ -41,8 +56,9 @@ import { CONTACT, CTA } from '../../lib/site';
     }
   }
 
-  .rail-logo { display: inline-flex; }
+  .rail-logo { display: inline-flex; border-radius: var(--radius-md); }
 
+  /* Restrained green pre-qual tab — no glow, square-ish to match the site. */
   .rail-cta {
     writing-mode: vertical-rl;
     transform: rotate(180deg);
@@ -53,27 +69,27 @@ import { CONTACT, CTA } from '../../lib/site';
     letter-spacing: var(--ls-overline);
     text-transform: uppercase;
     text-decoration: none;
-    padding: 20px 11px;
-    border-radius: var(--radius-pill);
-    box-shadow: var(--shadow-accent);
+    padding: 18px 10px;
+    border-radius: var(--radius-md);
     transition: background var(--dur-base) var(--ease-standard);
   }
   .rail-cta:hover { background: var(--color-accent-hover); }
 
-  .rail-contact { display: flex; flex-direction: column; gap: 10px; }
-  .rail-contact a {
+  .rail-bottom { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  .rail-social, .rail-contact { display: flex; flex-direction: column; gap: 10px; }
+  .rail-social a, .rail-contact a {
     width: 38px;
     height: 38px;
-    border-radius: var(--radius-pill);
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.32);
     color: var(--ecoteq-white);
     display: grid;
     place-items: center;
     transition: background var(--dur-base) var(--ease-standard), border-color var(--dur-base) var(--ease-standard);
   }
-  .rail-contact a:hover { background: var(--color-accent); border-color: var(--color-accent); }
+  .rail-social a:hover, .rail-contact a:hover { background: var(--color-accent); border-color: var(--color-accent); }
 
   @media (prefers-reduced-motion: reduce) {
-    .rail-cta, .rail-contact a { transition: none; }
+    .rail-cta, .rail-contact a, .rail-social a { transition: none; }
   }
 </style>
