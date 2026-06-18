@@ -27,7 +27,7 @@ export type TechnologyGateway = {
   materials: { h2: string; intro: string; materials: string[]; industries: string[]; goals: string[] };
   process: { h2: string; intro: string; steps: { title: string; text: string }[] };
   decisionFactors: { h2: string; intro: string; factors: { title: string; text: string }[] };
-  role: { h2: string; body: string[]; points: { title: string; text: string }[] };
+  role: { h2: string; body: string[]; points: { title: string; text: string }[]; trust?: string[] };
   related: { h2: string; intro: string; links: RelatedLink[]; spoke?: RelatedLink };
   preQual: { h2: string; body: string; fields: string[] };
   faq: { h2: string; items: { q: string; a: string }[] };
@@ -623,12 +623,12 @@ const vakuumszaritas: TechnologyGateway = {
       "Közös cél, hogy a vákuumszárító ne önálló gépbeszerzés legyen, hanem az Ön faipari gyártásába illeszkedő, reális technológiai fejlesztés.",
     ],
     points: [
-      { title: "Faanyagalapú előminősítés", text: "Fafaj, vastagság, hossz, mennyiség és nedvességi cél alapján indul a javaslat." },
-      { title: "Technológiai megoldás", text: "Segítünk eldönteni, hogy a vákuumszárítás reális megoldás-e, és milyen kapacitástartományt érdemes vizsgálni." },
-      { title: "Közel 50 éves technológiai háttér", text: "Az ECOTEQ az ISVE vákuumtechnológiák magyarországi képviseletével dolgozik a faipari vákuumtechnológiai területen." },
-      { title: "Közvetlen projektmenedzsment", text: "Az előkészítés, ajánlatkérés, egyeztetés és későbbi támogatás saját projektmenedzserrel történik." },
-      { title: "Üzleti realitás", text: "A beruházásnál a ciklusidőt, kapacitást, faanyagértéket, külső szárítási költséget és gyártási hatást együttesen vizsgáljuk." },
+      { title: "Faanyagalapú előminősítés", text: "Fafaj, vastagság, hossz, induló és cél nedvesség, mennyiség és minőségi elvárás alapján indul a javaslat." },
+      { title: "Reális technológiai javaslat", text: "Segítünk eldönteni, hogy a vákuumszárítás jó megoldás-e, és milyen kamraméretet, kapacitást vagy konfigurációt érdemes vizsgálni." },
+      { title: "Üzleti realitás", text: "Nem csak a gépárat nézzük. A ciklusidőt, kapacitást, külső szárítás költségét, készletlekötést és gyártási hatást együtt kell mérlegelni." },
+      { title: "Projektkísérés és támogatás", text: "Az előkészítéstől az ajánlatkérésen és egyeztetésen át a telepítésig, betanításig és későbbi támogatásig végigkísérjük a projektet." },
     ],
+    trust: ["Elismert ISVE vákuumtechnológiai háttér", "Magyar szakértői támogatás", "Faipari projektek előminősítése"],
   },
   related: {
     h2: "Kapcsolódó technológiák és részletes szakmai oldalak",
