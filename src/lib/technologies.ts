@@ -568,10 +568,11 @@ const vakuumszaritas: TechnologyGateway = {
     intro: "A vákuumszárítás nem minden faipari üzemnek ugyanazt jelenti. Más a helyzet egy asztalosüzemnél, más egy fűrészüzemnél, más értékes keményfa esetén, és más akkor, ha a cél saját gyártáshoz szükséges gyorsabb, kiszámíthatóbb alapanyag-előkészítés.",
     items: [
       { title: "Ha a szárítási idő túl hosszú vagy kiszámíthatatlan", text: "A vákuumszárítás segít rövidebb és jobban tervezhető ciklusokban gondolkodni." },
-      { title: "Ha értékes faanyaggal dolgozik", text: "Keményfa, vastagabb anyag vagy magasabb hozzáadott értékű gyártás esetén a szárítás alapvető gazdaságossági kérdés." },
-      { title: "Ha saját gyártáshoz kell megbízható száraz faanyag", text: "Ha a külső szárítás lassú, drága vagy bizonytalan, a saját vákuumszárító a megoldás." },
-      { title: "Ha fontos a minőségi kockázatok csökkentése", text: "Repedés, vetemedés, belső feszültség és nedvességingadozás esetén kontrolláltabb szárítási technológiára van szükség." },
-      { title: "Ha a szárítás kapacitás szűk keresztmetszet", text: "Ha a gyártás a szárításra vár, a döntés nem csak műszaki, hanem termelési és pénzügyi kérdés is." },
+      { title: "Ha értékes faanyaggal dolgozik", text: "Keményfa, vastagabb anyag vagy magasabb hozzáadott értékű gyártás esetén a szárítás alapvető gazdasági kérdés." },
+      { title: "Ha saját gyártáshoz kell megbízható száraz faanyag", text: "Ha a külső szárítás lassú, drága vagy bizonytalan, a saját vákuumszárító reális irány lehet." },
+      { title: "Ha fontos a minőségi problémák csökkentése", text: "Repedés, vetemedés, belső feszültség és nedvességingadozás esetén kontrolláltabb szárítási technológiára van szükség." },
+      { title: "Ha a szárítási kapacitás akadályozza a gyártást", text: "Ha a gyártás a szárításra vár, a döntés nem csak műszaki, hanem termelési és pénzügyi kérdés is." },
+      { title: "Ha többféle fafajt vagy vastagságot kell kezelni", text: "Változó alapanyag, eltérő vastagság vagy kisebb-nagyobb gyártási tételek esetén fontos a rugalmasan tervezhető szárítási folyamat." },
     ],
   },
   problems: {
