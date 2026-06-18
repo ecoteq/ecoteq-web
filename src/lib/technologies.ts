@@ -665,7 +665,7 @@ const vakuumszaritas: TechnologyGateway = {
     h2: "Nem kell tudnia, melyik gép kell. Elég, ha leírja, mit szeretne szárítani",
     body: [
       "A vákuumszárító kiválasztása nem a kamraméretnél kezdődik. Először azt kell látni, milyen faanyaggal dolgozik, milyen nedvességről hová kell eljutni, mekkora mennyiségről van szó, és mi a gyártási cél.",
-      "Ezek alapján segítünk eldönteni, hogy a vákuumszárítás reális irány-e, és ha igen, milyen méretű és kapacitású szárítóban érdemes gondolkodni.",
+      "Ezek alapján segítünk eldönteni, hogy érdemes-e vákuumszárításban gondolkodni, és ha igen, milyen méretű és kapacitású szárító lehet reális.",
     ],
     cta: "Leírom az anyagot és a célt",
     microcopy: "Nem baj, ha nem tud minden adatot pontosan. Munkanapokon átnézzük a megkeresést, és visszajelzünk, merre érdemes továbbmenni.",
