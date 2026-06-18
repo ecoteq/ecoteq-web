@@ -76,7 +76,7 @@ const year = 2026;
       <nav class="legal" aria-label="Jogi">
         {legal.map((l, i) => (
           <>
-            {i > 0 && <span class="sep" aria-hidden="true">·</span>}
+            {i > 0 && <span class="sep" aria-hidden="true">|</span>}
             <a href={l.href}>{l.label}</a>
           </>
         ))}
@@ -143,7 +143,7 @@ const year = 2026;
   .legal { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
   .legal a { color: var(--color-text-muted); text-decoration: none; }
   .legal a:hover { color: var(--color-accent); }
-  .legal .sep { color: var(--color-text-muted); opacity: 0.6; }
+  .legal .sep { color: var(--ecoteq-green); }
 
   @media (prefers-reduced-motion: reduce) { .col a, address a { transition: none; } }
 </style>
