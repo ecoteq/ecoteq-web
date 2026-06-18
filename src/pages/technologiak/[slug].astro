@@ -218,7 +218,7 @@ function factorIcon(title: string): string {
 
   <!-- 11. ZÁRÓ CTA -->
   <Section surface="subtle">
-    <div class="closing-panel">
+    <div class:list={['closing-panel', t.finalCta.checklist && 'has-aside']}>
       <div class="closing-left">
         <h2>{t.finalCta.h2}</h2>
         {t.finalCta.body.map((p) => <p>{p}</p>)}
@@ -350,7 +350,7 @@ function factorIcon(title: string): string {
 
   /* Closing */
   .closing-panel { background: var(--ecoteq-navy); border-radius: var(--radius-xl); padding: clamp(28px, 4vw, 60px); display: grid; gap: var(--space-7); grid-template-columns: 1fr; }
-  @media (min-width: 880px) { .closing-panel { grid-template-columns: 1.15fr 0.85fr; gap: var(--space-8); align-items: start; } }
+  @media (min-width: 880px) { .closing-panel.has-aside { grid-template-columns: 1.15fr 0.85fr; gap: var(--space-8); align-items: start; } }
   .closing-left h2 { margin: 0 0 var(--space-5); font-family: var(--font-display); font-weight: var(--fw-extrabold); font-size: clamp(1.55rem, 1.1rem + 1.5vw, 2.15rem); line-height: var(--lh-tight); letter-spacing: var(--ls-display); color: var(--ecoteq-white); max-width: 24ch; }
   .closing-left > p { margin: 0 0 var(--space-4); font-size: var(--fs-lg); line-height: var(--lh-body); color: rgba(255,255,255,0.82); max-width: 58ch; }
   .closing-cta { margin-top: var(--space-3); }
