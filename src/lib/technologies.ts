@@ -662,13 +662,13 @@ const vakuumszaritas: TechnologyGateway = {
     ],
   },
   finalCta: {
-    h2: "Nem kell pontos géptípust választania. Elég, ha leírja, mit szeretne szárítani",
+    h2: "Nem kell tudnia, melyik gép kell. Elég, ha leírja, mit szeretne szárítani",
     body: [
       "A vákuumszárító kiválasztása nem a kamraméretnél kezdődik. Először azt kell látni, milyen faanyaggal dolgozik, milyen nedvességről hová kell eljutni, mekkora mennyiségről van szó, és mi a gyártási cél.",
-      "Ezek alapján segítünk eldönteni, hogy a vákuumszárítás reális irány-e, és ha igen, milyen méretet, kapacitást vagy konfigurációt érdemes vizsgálni.",
+      "Ezek alapján segítünk eldönteni, hogy a vákuumszárítás reális irány-e, és ha igen, milyen méretű és kapacitású szárítóban érdemes gondolkodni.",
     ],
     cta: "Leírom az anyagot és a célt",
-    microcopy: "Nem kell kész műszaki specifikáció. Munkanapokon előszűrjük a megkeresést, és visszajelzünk, milyen irányt érdemes tovább vizsgálni.",
+    microcopy: "Nem baj, ha nem tud minden adatot pontosan. Munkanapokon átnézzük a megkeresést, és visszajelzünk, merre érdemes továbbmenni.",
     checklist: [
       { title: "Faanyag és méretek", items: ["fafaj", "jellemző hosszúság", "vastagság"] },
       { title: "Nedvesség és mennyiség", items: ["induló nedvesség", "cél nedvesség", "heti vagy havi mennyiség"] },
