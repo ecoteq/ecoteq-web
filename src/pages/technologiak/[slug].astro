@@ -125,7 +125,7 @@ function factorIcon(title: string): string {
     <div class="matrix">
       <div><h3>Anyagok</h3><ul>{t.materials.materials.map((m) => <li>{m}</li>)}</ul></div>
       <div><h3>Iparágak</h3><ul>{t.materials.industries.map((m) => <li>{m}</li>)}</ul></div>
-      <div><h3>Tipikus célok</h3><ul>{t.materials.goals.map((m) => <li>{m}</li>)}</ul></div>
+      <div><h3>Elérhető célok</h3><ul>{t.materials.goals.map((m) => <li>{m}</li>)}</ul></div>
     </div>
   </Section>
 
@@ -229,8 +229,8 @@ function factorIcon(title: string): string {
   /* HERO */
   .hero { position: relative; margin-top: calc(-1 * var(--header-h)); min-height: min(78svh, 760px); display: flex; align-items: stretch; overflow: hidden; background: var(--ecoteq-navy); }
   .media { position: absolute; inset: 0; z-index: 0; }
-  .media img { width: 100%; height: 100%; object-fit: cover; }
-  @media (min-width: 1024px) { .media img { transform: translateX(300px); } }
+  .media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; }
+  @media (min-width: 1024px) { .media img { transform: translateX(220px); } }
   .wash { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(28,52,73,0.99) 0%, rgba(28,52,73,0.98) 32%, rgba(28,52,73,0.78) 56%, rgba(28,52,73,0.4) 78%, rgba(28,52,73,0.12) 100%), linear-gradient(0deg, rgba(15,32,48,0.6) 0%, rgba(15,32,48,0) 50%); }
   .hero-inner { position: relative; z-index: 1; width: 100%; max-width: var(--container-max); margin-inline: auto; padding: calc(var(--header-h) + var(--space-7)) clamp(16px, 4vw, 40px) var(--space-8); display: flex; flex-direction: column; justify-content: space-between; gap: var(--space-6); }
   .hero-main { max-width: 64ch; }

@@ -554,8 +554,8 @@ const vakuumszaritas: TechnologyGateway = {
     secondaryCta: { label: "Részletes vákuumszárító oldal megnyitása", href: "https://vakuumszarito.hu" },
     microcopy: "Nem kell kész gépspecifikációval érkeznie. Elég, ha leírja a fafajt, vastagságot, hosszúságot, induló és cél nedvességet, valamint a havi vagy heti szárítási igényt.",
     trustPills: ["Kontrollált folyamat", "Tervezhető gyártás", "Rövidebb ciklusidő", "Kevesebb selejt"],
-    image: "/ds/photos/vacuum-kiln.png",
-    imageAlt: "Vákuumszárító berendezés",
+    image: "/photos/vakuumszarito-hero.webp",
+    imageAlt: "Vákuumemelő daru faipari raktárban, rakott fűrészáruval",
   },
   heroStats: [
     { value: "kontrollált", suffix: "", label: "Szárítás" },
