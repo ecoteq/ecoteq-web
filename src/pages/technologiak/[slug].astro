@@ -75,7 +75,7 @@ function factorIcon(title: string): string {
         <a href="/">Főoldal</a><span class="sep" aria-hidden="true">|</span><a href="/#technologiak">Technológiák</a><span class="sep" aria-hidden="true">|</span><span class="here">{t.name}</span>
       </nav>
       <div class="hero-main">
-        <Overline class="eyebrow">{t.hero.eyebrow}</Overline>
+        <Overline rule={false} class="eyebrow">{t.hero.eyebrow}</Overline>
         {h1Html ? <h1 set:html={h1Html} /> : <h1>{t.hero.h1}</h1>}
         <p class="lead">{t.hero.lead}</p>
       </div>
