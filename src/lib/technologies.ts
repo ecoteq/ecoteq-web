@@ -630,7 +630,7 @@ const vakuumszaritas: TechnologyGateway = {
       { title: "Üzleti realitás", text: "Nem csak a gépárat nézzük. A ciklusidőt, kapacitást, külső szárítás költségét, készletlekötést és gyártási hatást együtt kell mérlegelni." },
       { title: "Végigvisszük a folyamatot", text: "Segítünk az előkészítésben, az egyeztetésben, az ajánlat pontosításában, majd a telepítés, betanítás és későbbi támogatás során sem marad egyedül." },
     ],
-    trust: ["Elismert ISVE vákuumtechnológiai háttér", "Magyar szakértői támogatás", "Faipari projektek előminősítése"],
+    trust: ["Elismert ISVE vákuumtechnológiai háttér", "Magyar szakértői támogatás", "Faipari alapanyagból induló előminősítés"],
   },
   related: {
     h2: "Kapcsolódó technológiák és részletes szakmai oldalak",
