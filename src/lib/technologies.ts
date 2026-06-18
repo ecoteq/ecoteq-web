@@ -1,7 +1,7 @@
 /** Content model for the technology gateway pages (/technologiak/[slug]/). */
 
 export type Cta = { label: string; href: string };
-export type RelatedLink = { label: string; href: string; description?: string };
+export type RelatedLink = { label: string; href: string; description?: string; title?: string };
 
 export type TechnologyGateway = {
   slug: string;
@@ -633,16 +633,17 @@ const vakuumszaritas: TechnologyGateway = {
     trust: ["Elismert ISVE vákuumtechnológiai háttér", "Magyar szakértői támogatás", "Faipari alapanyagból induló előminősítés"],
   },
   related: {
-    h2: "Kapcsolódó technológiák és részletes szakmai oldalak",
-    intro: "A vákuumszárítás a faipari vákuumtechnológia egyik fő területe. Egyes projektekben vákuumimpregnálás, gőzölés vagy kapcsolódó anyagmozgatási és telepítési kérdések is felmerülhetnek.",
+    h2: "Ha a szárítás mellett más kérdés is felmerül",
+    intro: "A vákuumszárítás sok faipari üzemben önmagában is jó irány lehet. Más esetekben viszont nem csak az a kérdés, hogyan szárad meg a faanyag, hanem az is, hogyan kerül be a rendszerbe, hogyan mozgatják, kell-e kezelés, impregnálás vagy más kapcsolódó technológia. Ezért érdemes a teljes folyamatot együtt nézni, nem csak magát a szárítót.",
     links: [
-      { label: "Vákuumimpregnálás", href: "/technologiak/vakuumimpregnalas/", description: "Ha a faanyag védelme, kezelése vagy speciális impregnálása is cél." },
-      { label: "Anyagmozgatás és rendszerelemek", href: "/technologiak/anyagmozgas-rendszerelemek/", description: "Ha a faanyag rakodása, mozgatása, telepítése vagy kiszolgálása külön figyelmet igényel." },
+      { label: "Vákuumimpregnálás", href: "/technologiak/vakuumimpregnalas/", description: "Ha a faanyag védelme, kezelése vagy speciális impregnálása is része a feladatnak." },
+      { label: "Vákuumos anyagmozgató rendszerek", href: "/technologiak/anyagmozgas-rendszerelemek/", description: "Ha a faanyag rakodása, mozgatása vagy a szárító kiszolgálása külön megoldást igényel." },
     ],
     spoke: {
-      label: "Részletes vákuumszárító oldal megnyitása",
+      title: "Részletes vákuumszárító oldal",
+      label: "Megnézem a részletes vákuumszárító oldalt",
       href: "https://vakuumszarito.hu",
-      description: "A részletes vákuumszárító gépválasztó, technológiai magyarázat, ajánlatkérési út és faipari tudástár a vakuumszarito.hu oldalon érhető el.",
+      description: "Ha mélyebben is utánanézne a vákuumszárításnak, a gépválasztásnak, a döntési szempontoknak és az ajánlatkéréshez szükséges adatoknak, a részletes vákuumszárító oldalunkon több szakmai anyagot talál.",
     },
   },
   preQual: {

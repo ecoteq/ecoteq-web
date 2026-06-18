@@ -182,7 +182,7 @@ function factorIcon(title: string): string {
     {t.related.spoke && (
       <a class="spoke" href={t.related.spoke.href}>
         <div>
-          <p class="lbl">Részletes szakmai oldal</p>
+          <p class="lbl">{t.related.spoke.title ?? 'Részletes szakmai oldal'}</p>
           <p class="spoke-desc">{t.related.spoke.description}</p>
         </div>
         <span class="spoke-cta">{t.related.spoke.label} <Icon name="arrow-up-right" size={18} /></span>
