@@ -20,53 +20,53 @@ const company = [
   { label: 'Ajánlatkérés', href: quoteHref(undefined, 'footer') },
 ];
 const legal = [
-  { label: 'Adatvédelmi tájékoztató', href: '/adatvedelmi-tajekoztato', icon: 'shield-check' },
-  { label: 'Cookie-tájékoztató', href: '/cookie-tajekoztato', icon: 'cookie' },
-  { label: 'Felhasználási feltételek', href: '/felhasznalasi-feltetelek', icon: 'file-text' },
-  { label: 'Impresszum', href: '/impresszum', icon: 'info' },
+  { label: 'Adatvédelmi tájékoztató', href: '/adatvedelmi-tajekoztato' },
+  { label: 'Cookie-tájékoztató', href: '/cookie-tajekoztato' },
+  { label: 'Felhasználási feltételek', href: '/felhasznalasi-feltetelek' },
+  { label: 'Impresszum', href: '/impresszum' },
 ];
 const year = 2026;
 ---
 
 <footer class="footer" id="kapcsolat">
   <div class="inner">
-    <div class="top">
-      <div class="brand-col">
-        <Logo tone="white" size={30} />
-        <p class="about">
-          Ipari hulladék- és biomassza-feldolgozó rendszerek magyarországi és
-          közép-európai üzemeknek.
-        </p>
-        <nav class="brand-nav" aria-label="ECOTEQ">
-          {company.map((c) => <a href={c.href}>{c.label}</a>)}
-        </nav>
+    <nav class="cols" aria-label="Lábléc navigáció">
+      <div class="col">
+        <h3>Megoldások</h3>
+        <ul>{solutions.map((s) => <li><a href="#megoldasok">{s}</a></li>)}</ul>
       </div>
-
-      <nav class="cols" aria-label="Lábléc navigáció">
-        <div class="col">
-          <h3>Megoldások</h3>
-          <ul>{solutions.map((s) => <li><a href="#megoldasok">{s}</a></li>)}</ul>
-        </div>
-        <div class="col">
-          <h3>Technológiák</h3>
-          <ul>{TECHNOLOGIES.map((t) => <li><a href={`/technologiak/${t.slug}/`}>{t.name}</a></li>)}</ul>
-        </div>
-        <div class="col">
-          <h3>Kapcsolódó oldalak</h3>
-          <ul>{SPOKES.map((s) => (
-            <li>
-              <a class="spoke" href={s.href} target="_blank" rel="noopener">
-                <span class="spoke-host">{s.label}<Icon name="arrow-up-right" size={14} /></span>
-                <span class="spoke-note">{s.note}</span>
-              </a>
-            </li>
-          ))}</ul>
-        </div>
-      </nav>
-    </div>
+      <div class="col">
+        <h3>Technológiák</h3>
+        <ul>{TECHNOLOGIES.map((t) => <li><a href={`/technologiak/${t.slug}/`}>{t.name}</a></li>)}</ul>
+      </div>
+      <div class="col">
+        <h3>ECOTEQ</h3>
+        <ul>{company.map((c) => <li><a href={c.href}>{c.label}</a></li>)}</ul>
+      </div>
+      <div class="col">
+        <h3>Kapcsolódó oldalak</h3>
+        <ul>{SPOKES.map((s) => (
+          <li>
+            <a class="spoke" href={s.href} target="_blank" rel="noopener">
+              <span class="spoke-host">{s.label}<Icon name="arrow-up-right" size={14} /></span>
+              <span class="spoke-note">{s.note}</span>
+            </a>
+          </li>
+        ))}</ul>
+      </div>
+      <div class="col">
+        <h3>Kapcsolat</h3>
+        <address class="contact">
+          <span>{CONTACT.company}</span>
+          <span>{CONTACT.address}</span>
+          <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+          <a href={CONTACT.phoneHref}>{CONTACT.phone}</a>
+        </address>
+      </div>
+    </nav>
 
     <div class="bottom">
-      <span>© {year} {CONTACT.company} Minden jog fenntartva.</span>
+      <Logo tone="white" size={24} />
       <nav class="legal" aria-label="Jogi">
         {legal.map((l, i) => (
           <>
@@ -75,69 +75,77 @@ const year = 2026;
           </>
         ))}
       </nav>
+      <button class="totop" type="button" aria-label="Vissza az oldal tetejére" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <Icon name="arrow-up" size={20} />
+      </button>
     </div>
   </div>
 </footer>
 
 <style>
-  .footer { background: var(--navy-900); color: rgba(255, 255, 255, 0.78); }
-  .inner { max-width: var(--container-max); margin-inline: auto; padding: var(--space-9) clamp(16px, 4vw, 40px) var(--space-6); }
+  .footer { background: var(--navy-900); color: rgba(255, 255, 255, 0.72); }
+  .inner { max-width: var(--container-max); margin-inline: auto; padding: var(--space-9) clamp(16px, 4vw, 40px) var(--space-7); }
 
-  .top { display: grid; gap: var(--space-7); grid-template-columns: 1fr; }
-  @media (min-width: 768px) { .top { grid-template-columns: 1fr 1fr; } }
-  @media (min-width: 1080px) { .top { grid-template-columns: 1.2fr 2.8fr; gap: var(--space-8); } }
-
-  .about { font-size: var(--fs-sm); line-height: var(--lh-body); margin: var(--space-4) 0 var(--space-5); max-width: 42ch; }
-
-  .brand-nav { display: flex; flex-direction: column; gap: 10px; margin-top: var(--space-2); }
-  .brand-nav a { color: rgba(255, 255, 255, 0.78); text-decoration: none; font-size: var(--fs-sm); transition: color var(--dur-fast) var(--ease-standard); }
-  .brand-nav a:hover { color: var(--color-accent); }
-
-  .cols { display: grid; gap: var(--space-6) var(--space-5); grid-template-columns: repeat(2, 1fr); }
+  .cols { display: grid; gap: var(--space-8) var(--space-5); grid-template-columns: repeat(2, 1fr); }
   @media (min-width: 680px) { .cols { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 1024px) { .cols { grid-template-columns: repeat(5, 1fr); } }
 
   .col h3 {
     font-family: var(--font-display);
-    font-size: var(--fs-xs);
+    font-size: var(--fs-base);
     font-weight: var(--fw-bold);
-    letter-spacing: var(--ls-overline);
-    text-transform: uppercase;
     color: var(--ecoteq-white);
-    margin: 0 0 var(--space-4);
+    margin: 0 0 var(--space-5);
   }
-  .col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
-  .col a, address a { color: rgba(255, 255, 255, 0.78); text-decoration: none; font-size: var(--fs-sm); transition: color var(--dur-fast) var(--ease-standard); }
-  .col a:hover, address a:hover { color: var(--color-accent); }
+  .col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-4); }
+  .col li { line-height: var(--lh-snug); }
+  .col a, .contact a { color: rgba(255, 255, 255, 0.72); text-decoration: none; font-size: var(--fs-sm); line-height: var(--lh-snug); transition: color var(--dur-fast) var(--ease-standard); }
+  .col a:hover, .contact a:hover { color: var(--color-accent); }
 
-  address { font-style: normal; display: flex; flex-direction: column; gap: 8px; font-size: var(--fs-sm); }
-  address span { color: rgba(255, 255, 255, 0.78); }
-  .contact { margin-top: var(--space-5); }
+  .contact { font-style: normal; display: flex; flex-direction: column; gap: var(--space-3); font-size: var(--fs-sm); line-height: var(--lh-snug); }
+  .contact span { color: rgba(255, 255, 255, 0.72); }
 
   .spoke { display: inline-flex; flex-direction: column; gap: 2px; }
   .spoke-host { display: inline-flex; align-items: center; gap: 7px; }
-  .spoke-host :global(.icon) { color: rgba(255, 255, 255, 0.42); flex: none; transition: color var(--dur-fast) var(--ease-standard); }
+  .spoke-host :global(.icon) { color: rgba(255, 255, 255, 0.4); flex: none; transition: color var(--dur-fast) var(--ease-standard); }
   .spoke:hover .spoke-host :global(.icon) { color: var(--color-accent); }
-  .spoke-note { font-size: var(--fs-xs); color: rgba(255, 255, 255, 0.5); }
-
-  .ic-link { display: inline-flex; align-items: center; gap: 9px; }
-  .ic-link :global(.icon) { color: rgba(255, 255, 255, 0.42); flex: none; transition: color var(--dur-fast) var(--ease-standard); }
-  .ic-link:hover :global(.icon) { color: var(--color-accent); }
+  .spoke-note { font-size: var(--fs-xs); color: rgba(255, 255, 255, 0.46); }
 
   .bottom {
-    margin-top: var(--space-7);
-    padding-top: var(--space-5);
+    margin-top: var(--space-9);
+    padding-top: var(--space-6);
     border-top: 1px solid rgba(255, 255, 255, 0.14);
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
-    justify-content: space-between;
-    font-size: var(--fs-xs);
-    color: var(--color-text-muted);
+    align-items: center;
+    gap: var(--space-5) var(--space-7);
   }
-  .legal { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
-  .legal a { color: var(--color-text-muted); text-decoration: none; }
+  .bottom :global(.logo) { flex: none; }
+
+  .legal { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-4); }
+  .legal a { color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: var(--fs-sm); transition: color var(--dur-fast) var(--ease-standard); }
   .legal a:hover { color: var(--color-accent); }
   .legal .sep { color: var(--ecoteq-green); }
 
-  @media (prefers-reduced-motion: reduce) { .col a, address a { transition: none; } }
+  .totop {
+    margin-left: auto;
+    display: inline-grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--radius-md);
+    background: transparent;
+    color: rgba(255, 255, 255, 0.85);
+    cursor: pointer;
+    transition: border-color var(--dur-fast) var(--ease-standard), color var(--dur-fast) var(--ease-standard);
+  }
+  .totop:hover { border-color: var(--color-accent); color: var(--color-accent); }
+  .totop :global(.icon) { display: block; }
+
+  .copy { margin: var(--space-5) 0 0; font-size: var(--fs-xs); color: rgba(255, 255, 255, 0.4); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .col a, .contact a, .legal a, .totop { transition: none; }
+  }
 </style>
