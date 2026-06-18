@@ -579,7 +579,7 @@ const vakuumszaritas: TechnologyGateway = {
     h2: "Milyen problémára ad választ a vákuumszárító?",
     intro: "A vákuumszárítás mögött általában nem az a kérdés áll, hogy „kell-e egy új szárító”. A valódi kérdés az, hogy a jelenlegi szárítás mennyire lassítja, drágítja vagy bizonytalanítja el a faipari gyártást.",
     cards: [
-      { problem: "Hosszú szárítási átfutás", why: "Ha a faanyag sokáig áll szárítás alatt vagy külső partnerre vár, az lassítja a gyártást és leköti a készletet.", answer: "A vákuumszárítás bizonyos faanyagoknál és méreteknél rövidebb, jobban tervezhető ciklusokat tesz lehetővé." },
+      { problem: "Hosszú szárítási ciklusok", why: "Ha a hagyományos szárítás sokáig tart vagy külső partnerre vár, az lassítja a gyártást és leköti a készletet.", answer: "A vákuumszárítás bizonyos faanyagoknál és méreteknél rövidebb, jobban tervezhető ciklusokat tesz lehetővé." },
       { problem: "Ingadozó faanyagminőség", why: "A nedvességtartalom, repedéskockázat vagy vetemedés bizonytalansága közvetlenül érinti a gyártási minőséget.", answer: "Kontrollált technológiai környezetben jobban kézben tartható a szárítási folyamat." },
       { problem: "Külső szárítási függőség", why: "Ha a szárítás külső kapacitástól függ, az határidő-, minőség- és költségkockázatot jelent.", answer: "Saját vákuumszárító rendszerrel a szárítás egy része vagy egésze házon belülre kerül." },
       { problem: "Rosszul méretezett szárítási kapacitás", why: "Túl kicsi kamra, rosszul választott hossz, nem megfelelő kapacitás vagy energiaellátás hosszú távon korlátozhatja a termelést.", answer: "A méretezést fafaj, vastagság, hossz, induló nedvesség, cél nedvesség és termelési ütem alapján kell vizsgálni." },
