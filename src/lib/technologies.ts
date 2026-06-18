@@ -628,7 +628,7 @@ const vakuumszaritas: TechnologyGateway = {
       { title: "Anyag-alapú előminősítés", text: "Fafaj, vastagság, hossz, induló és cél nedvesség, mennyiség és minőségi elvárás alapján indul a javaslat." },
       { title: "Reális technológiai javaslat", text: "Segítünk eldönteni, hogy a vákuumszárítás jó megoldás-e, és milyen kamraméretet, kapacitást vagy konfigurációt érdemes vizsgálni." },
       { title: "Üzleti realitás", text: "Nem csak a gépárat nézzük. A ciklusidőt, kapacitást, külső szárítás költségét, készletlekötést és gyártási hatást együtt kell mérlegelni." },
-      { title: "Végigvisszük a folyamatot", text: "Az előkészítéstől az ajánlatkérésen és egyeztetésen át a telepítésig, betanításig és későbbi támogatásig végigkísérjük a projektet." },
+      { title: "Végigvisszük a folyamatot", text: "Segítünk az előkészítésben, az egyeztetésben, az ajánlat pontosításában, majd a telepítés, betanítás és későbbi támogatás során sem marad egyedül." },
     ],
     trust: ["Elismert ISVE vákuumtechnológiai háttér", "Magyar szakértői támogatás", "Faipari projektek előminősítése"],
   },
