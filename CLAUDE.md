@@ -16,7 +16,7 @@ industrial waste-recovery equipment). Built on the in-repo design system.
 3. **Brand fidelity.** Fustat font, navy `#1c3449` + green `#43ad4d` on neutral gray;
    pill CTAs; short green accent rule; fixed left navy brand rail; **no stock photos,
    no emoji**; Hungarian-first with full diacritics (á é í ó ö ő ú ü ű); formal "Ön".
-   Primary green CTA: **"Technológiai irányt kérek"** → pre-qualification form
+   Primary green CTA: **"Technológiai javaslatot kérek"** → pre-qualification form
    (`/ajanlatkeres`). Respect `prefers-reduced-motion`; quiet 120–200ms transitions.
 
 4. **Strategy is the source of truth for content.** `project docs/` holds the
@@ -55,7 +55,7 @@ routes visitors to the right technology gateway / pre-qualification path. Deep c
 ("technológiai irány").
 
 **Top nav (7):** Megoldások · Technológiák · Referenciák · Szerviz és alkatrész ·
-Rólunk · Tudástár · Kapcsolat. Primary CTA "Technológiai irányt kérek"; secondary
+Rólunk · Tudástár · Kapcsolat. Primary CTA "Technológiai javaslatot kérek"; secondary
 "Megnézem a megoldásokat"; form CTA "Elküldöm a projekt adatait".
 
 **8 technologies:** ipari darálás · brikettálás · pelletálás · biomassza-szárítás ·
