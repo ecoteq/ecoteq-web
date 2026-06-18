@@ -177,12 +177,15 @@ function factorIcon(title: string): string {
   <!-- 8. ELŐMINŐSÍTÉS -->
   <Section id="ajanlatkeres-info" surface="subtle">
     <div class="prequal">
-      <SectionHeading overline="Előminősítés" title={t.preQual.h2} lead={t.preQual.body} />
-      <div class="prequal-data">
-        <p class="lbl">Hasznos, ha tudjuk:</p>
-        <ul class="chips">{t.preQual.fields.map((f) => <li>{f}</li>)}</ul>
-        <Button href={FORM_CTA.href}>{FORM_CTA.label}</Button>
+      <div class="prequal-intro">
+        <SectionHeading overline="Előminősítés" title={t.preQual.h2} lead={t.preQual.body} />
+        <Button class="prequal-cta" href={FORM_CTA.href}>{FORM_CTA.label}</Button>
         <p class="micro">A beérkező megkereséseket munkanapokon előszűrjük, és jellemzően 24 órán belül visszajelzünk a következő lépésről.</p>
+      </div>
+      <div class="prequal-cloud" aria-hidden="false">
+        <ul class="chips">{t.preQual.fields.map((f, i) => (
+          <li style={`--dur:${7 + (i % 5)}s; --delay:${(-(i * 0.9)).toFixed(1)}s`}><span>{f}</span></li>
+        ))}</ul>
       </div>
     </div>
   </Section>
@@ -247,6 +250,35 @@ function factorIcon(title: string): string {
     </div>
   </Section>
 </SiteLayout>
+
+<script>
+  // Pre-qualification "thoughts" — chips gently float (CSS) and slip away from the cursor.
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = window.matchMedia('(pointer: fine)').matches;
+  const cloud = document.querySelector('.prequal-cloud');
+  if (cloud && !reduce && fine) {
+    const chips = Array.from(cloud.querySelectorAll('.chips li > span'));
+    const RADIUS = 100, PUSH = 30;
+    let raf = null, mx = 0, my = 0, active = false;
+    function update() {
+      raf = null;
+      for (const span of chips) {
+        const r = span.getBoundingClientRect();
+        const dx = (r.left + r.width / 2) - mx;
+        const dy = (r.top + r.height / 2) - my;
+        const dist = Math.hypot(dx, dy);
+        if (active && dist < RADIUS) {
+          const f = (1 - dist / RADIUS) * PUSH / (dist || 1);
+          span.style.transform = `translate(${(dx * f).toFixed(1)}px, ${(dy * f).toFixed(1)}px)`;
+        } else if (span.style.transform) {
+          span.style.transform = '';
+        }
+      }
+    }
+    cloud.addEventListener('pointermove', (e) => { mx = e.clientX; my = e.clientY; active = true; if (!raf) raf = requestAnimationFrame(update); });
+    cloud.addEventListener('pointerleave', () => { active = false; if (!raf) raf = requestAnimationFrame(update); });
+  }
+</script>
 
 <style>
   /* HERO */
@@ -341,10 +373,21 @@ function factorIcon(title: string): string {
 
   /* PreQual */
   .prequal { display: grid; gap: var(--space-6); grid-template-columns: 1fr; }
-  @media (min-width: 880px) { .prequal { grid-template-columns: 1fr 1fr; align-items: start; gap: var(--space-8); } }
-  .prequal-data .lbl { margin: 0 0 var(--space-3); font-size: var(--fs-sm); font-weight: var(--fw-semibold); color: var(--ecoteq-navy); }
-  .prequal-data ul { margin: 0 0 var(--space-5); padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
-  .prequal-data li { font-size: var(--fs-sm); color: var(--color-text-secondary); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-pill); padding: 6px 13px; }
+  @media (min-width: 880px) { .prequal { grid-template-columns: 1fr 1fr; align-items: stretch; gap: var(--space-8); } }
+  .prequal-intro { display: flex; flex-direction: column; }
+  .prequal-cta { align-self: flex-start; margin-top: var(--space-6); }
+  .prequal-cloud { display: flex; align-items: center; justify-content: center; min-height: 240px; overflow: hidden; }
+  .chips { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; justify-content: center; align-content: center; gap: 10px 12px; }
+  .chips li { animation: chipFloat var(--dur, 9s) ease-in-out var(--delay, 0s) infinite; }
+  .chips li span { display: inline-block; font-size: var(--fs-sm); color: var(--color-text-secondary); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-pill); padding: 6px 13px; transition: transform 0.22s ease-out, border-color var(--dur-fast) var(--ease-standard); will-change: transform; }
+  .chips li span:hover { border-color: var(--color-accent); }
+  @keyframes chipFloat {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(4px, -6px) rotate(0.6deg); }
+    50% { transform: translate(-3px, 4px) rotate(-0.5deg); }
+    75% { transform: translate(5px, 3px) rotate(0.4deg); }
+  }
+  @media (prefers-reduced-motion: reduce) { .chips li { animation: none; } .chips li span { transition: border-color var(--dur-fast) var(--ease-standard); } }
   .micro { margin: var(--space-3) 0 0; font-size: var(--fs-sm); color: var(--color-text-muted); max-width: 60ch; }
 
   /* FAQ */
