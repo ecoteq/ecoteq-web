@@ -53,6 +53,13 @@ import { CTA } from '../../lib/site';
       linear-gradient(90deg, rgba(28, 52, 73, 0.95) 0%, rgba(28, 52, 73, 0.74) 48%, rgba(28, 52, 73, 0.22) 100%),
       linear-gradient(0deg, rgba(15, 32, 48, 0.55) 0%, rgba(15, 32, 48, 0) 48%);
   }
+  /* Dark mode: neutralise the navy wash to the DS neutral-dark overlay colour
+     (same structure, no blue cast on the near-black canvas). */
+  :global(html[data-mode='dark']) .wash {
+    background:
+      linear-gradient(90deg, rgba(8, 10, 12, 0.94) 0%, rgba(8, 10, 12, 0.74) 48%, rgba(8, 10, 12, 0.34) 100%),
+      linear-gradient(0deg, rgba(8, 10, 12, 0.62) 0%, rgba(8, 10, 12, 0) 48%);
+  }
 
   .inner {
     position: relative;

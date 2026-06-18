@@ -306,6 +306,8 @@ function factorIcon(title: string): string {
   .media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; }
   @media (min-width: 1024px) { .media img { transform: translateX(360px); } }
   .wash { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(28,52,73,0.99) 0%, rgba(28,52,73,0.97) 30%, rgba(28,52,73,0.68) 54%, rgba(28,52,73,0.22) 78%, rgba(28,52,73,0) 100%), linear-gradient(0deg, rgba(15,32,48,0.5) 0%, rgba(15,32,48,0) 50%); }
+  /* Dark mode: neutral-dark wash (no blue cast). */
+  :global(html[data-mode='dark']) .wash { background: linear-gradient(90deg, rgba(8,10,12,0.985) 0%, rgba(8,10,12,0.96) 30%, rgba(8,10,12,0.70) 54%, rgba(8,10,12,0.32) 78%, rgba(8,10,12,0) 100%), linear-gradient(0deg, rgba(8,10,12,0.55) 0%, rgba(8,10,12,0) 50%); }
   .hero-inner { position: relative; z-index: 1; width: 100%; max-width: var(--container-max); margin-inline: auto; padding: calc(var(--header-h) + var(--space-7)) clamp(16px, 4vw, 40px) var(--space-8); display: flex; flex-direction: column; justify-content: space-between; gap: var(--space-6); }
   .hero-main { max-width: 64ch; }
   .eyebrow { color: var(--ecoteq-green); margin-bottom: var(--space-3); }
