@@ -174,8 +174,21 @@ function factorIcon(title: string): string {
     )}
   </Section>
 
-  <!-- 8. KAPCSOLÓDÓ TECHNOLÓGIÁK -->
-  <Section surface="subtle">
+  <!-- 8. ELŐMINŐSÍTÉS -->
+  <Section id="ajanlatkeres-info" surface="subtle">
+    <div class="prequal">
+      <SectionHeading overline="Előminősítés" title={t.preQual.h2} lead={t.preQual.body} />
+      <div class="prequal-data">
+        <p class="lbl">Hasznos, ha tudjuk:</p>
+        <ul>{t.preQual.fields.map((f) => <li><Icon name="chevron-right" size={15} />{f}</li>)}</ul>
+        <Button href={FORM_CTA.href}>{FORM_CTA.label}</Button>
+        <p class="micro">A beérkező megkereséseket munkanapokon előszűrjük, és jellemzően 24 órán belül visszajelzünk a következő lépésről.</p>
+      </div>
+    </div>
+  </Section>
+
+  <!-- 9. KAPCSOLÓDÓ TECHNOLÓGIÁK -->
+  <Section surface="white">
     <SectionHeading overline="Kapcsolódó technológiák" title={t.related.h2} lead={t.related.intro} />
     <div class="grid cards2">
       {t.related.links.map((l) => (
@@ -194,19 +207,6 @@ function factorIcon(title: string): string {
         <span class="spoke-cta">{t.related.spoke.label} <Icon name="arrow-up-right" size={18} /></span>
       </a>
     )}
-  </Section>
-
-  <!-- 9. ELŐMINŐSÍTÉS -->
-  <Section id="ajanlatkeres-info" surface="white">
-    <div class="prequal">
-      <SectionHeading overline="Előminősítés" title={t.preQual.h2} lead={t.preQual.body} />
-      <div class="prequal-data">
-        <p class="lbl">Hasznos, ha tudjuk:</p>
-        <ul>{t.preQual.fields.map((f) => <li><Icon name="chevron-right" size={15} />{f}</li>)}</ul>
-        <Button href={FORM_CTA.href}>{FORM_CTA.label}</Button>
-        <p class="micro">A beérkező megkereséseket munkanapokon előszűrjük, és jellemzően 24 órán belül visszajelzünk a következő lépésről.</p>
-      </div>
-    </div>
   </Section>
 
   <!-- 10. GYIK -->
