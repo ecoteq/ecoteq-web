@@ -176,7 +176,9 @@ const TECH_ICONS: Record<string, string> = {
     right: 0;
     left: 0;
     z-index: 50;
-    background: var(--ecoteq-white);
+    /* DS header surface — solid white in the master light theme (no token), the
+       DS frosted dark in dark mode. */
+    background: var(--color-header-bg, var(--ecoteq-white));
     border-bottom: 1px solid var(--color-border);
     transition: background var(--dur-base) var(--ease-standard), border-color var(--dur-base) var(--ease-standard), box-shadow var(--dur-base) var(--ease-standard);
   }
@@ -184,6 +186,8 @@ const TECH_ICONS: Record<string, string> = {
 
   .site-header[data-transparent] { background: transparent; border-color: transparent; box-shadow: none; }
   .site-header:not([data-transparent]) { box-shadow: var(--shadow-sm); }
+  /* Frosted glass for the solid header (visible only where the bg is translucent, i.e. dark mode). */
+  .site-header:not([data-transparent]) { backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
 
   .bar {
     height: var(--header-h);
