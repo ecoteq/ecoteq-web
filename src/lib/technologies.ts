@@ -546,7 +546,7 @@ const vakuumszaritas: TechnologyGateway = {
   metaDescription: "Vákuumszárítás faanyag kontrollált, gyorsabb és kiszámíthatóbb szárítására. Az ECOTEQ segít eldönteni, hogy az adott faanyaghoz, mennyiséghez, nedvességhez és gyártási célhoz reális-e a vákuumszárító technológia.",
   hero: {
     eyebrow: "ECOTEQ technológiák · Vákuumszárítás",
-    h1: "Vákuumszárítás faipari üzemeknek, ahol a minőség és az idő is számít",
+    h1: "Vákuumszárító faipari üzemeknek. Ha a minőség és az idő egyformán számít",
     lead: "Az ECOTEQ segít eldönteni, hogy az Ön faanyagára, mennyiségére és gyártási céljára reális-e a vákuumszárító technológia.",
     secondaryCta: { label: "Részletes vákuumszárító oldal megnyitása", href: "https://vakuumszarito.hu" },
     microcopy: "Nem kell kész gépspecifikációval érkeznie. Elég, ha leírja a fafajt, vastagságot, hosszúságot, induló és cél nedvességet, valamint a havi vagy heti szárítási igényt.",
