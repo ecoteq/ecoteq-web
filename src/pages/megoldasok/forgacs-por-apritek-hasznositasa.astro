@@ -1,0 +1,188 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import Section from '../../components/layout/Section.astro';
+import SectionHeading from '../../components/brand/SectionHeading.astro';
+import Button from '../../components/core/Button.astro';
+import Icon from '../../components/Icon.astro';
+
+const situations = [
+  {
+    icon: 'package',
+    title: 'A laza melléktermék sok helyet foglal',
+    text: 'A forgács, a por és az apríték nagy térfogatú, nehezen tárolható és kezelhető — feleslegesen köti le a raktárterületet és a logisztikát.',
+  },
+  {
+    icon: 'wind',
+    title: 'A por és a forgács szétszóródik az üzemben',
+    text: 'A keletkező finom por és forgács összegyűjtése, leválasztása és rendezett kezelése külön feladat, amíg nincs rá célzott megoldás.',
+  },
+  {
+    icon: 'recycle',
+    title: 'A melléktermék elszállítása költséget jelent',
+    text: 'A fel nem dolgozott melléktermék rendszeres elszállítása visszatérő ráfordítás, miközben az anyag energetikai értéke kihasználatlan marad.',
+  },
+  {
+    icon: 'flame',
+    title: 'Saját fűtőanyag vagy értékesíthető termék lehetne belőle',
+    text: 'Megfelelő nedvességtartalom és előkészítés mellett a száraz melléktermékből brikett vagy pellet készülhet — saját fűtésre vagy értékesítésre.',
+  },
+];
+
+const technologies = [
+  {
+    icon: 'package',
+    label: 'Brikettálás',
+    text: 'A száraz mellékanyag tömörítése briketté',
+    href: '/technologiak/brikettalas/',
+  },
+  {
+    icon: 'package',
+    label: 'Pelletálás',
+    text: 'Egységes pellet energetikai vagy értékesítési célra',
+    href: '/technologiak/pelletalas/',
+  },
+  {
+    icon: 'wind',
+    label: 'Elszívás és porleválasztás',
+    text: 'A por és forgács gyűjtése, leválasztása',
+    href: '/technologiak/elszivas-porlevalasztas/',
+  },
+];
+---
+<SiteLayout
+  title="Forgács, por és apríték hasznosítása"
+  description="A laza forgács, por és apríték sok helyet foglal. Előkészítve brikett vagy pellet készülhet belőle — saját fűtőanyag vagy értékesíthető termék."
+  solidHeader
+>
+  <Section surface="subtle">
+    <nav class="crumb" aria-label="Útvonal"><a href="/">Főoldal</a> <span>/</span> <a href="/#megoldasok">Megoldások</a> <span>/</span> <span class="here">Forgács, por és apríték hasznosítása</span></nav>
+    <SectionHeading
+      overline="Megoldás"
+      title="Laza forgácsból, porból és aprítékból értékes termék"
+      lead="A fűrészpor, a forgács és az apríték önmagában nagy térfogatú melléktermék. Megfelelő nedvességtartalom és előkészítés mellett azonban tömörített, jól kezelhető termékké — saját fűtőanyaggá vagy értékesíthető brikketté, illetve pelletté — alakítható."
+      as="h1"
+    />
+    <div class="cta"><Button href="/#ajanlatkeres">Technológiai irányt kérek</Button></div>
+  </Section>
+
+  <Section surface="white">
+    <SectionHeading
+      overline="Mikor merül fel"
+      title="Tipikus helyzetek az üzemben"
+      lead="Ha a következő jelenségek közül több is ismerős, érdemes átgondolni a melléktermék hasznosítását."
+    />
+    <ul class="grid" role="list">
+      {situations.map((s) => (
+        <li class="card">
+          <span class="card-ic" aria-hidden="true"><Icon name={s.icon} size={24} /></span>
+          <h3 class="card-title">{s.title}</h3>
+          <p class="card-body">{s.text}</p>
+        </li>
+      ))}
+    </ul>
+  </Section>
+
+  <Section surface="subtle">
+    <SectionHeading
+      overline="Milyen technológiai irány segíthet"
+      title="Kapcsolódó technológiák"
+      lead="A melléktermék jellegétől és a céltól függően ezek az irányok jöhetnek szóba. Hogy melyik a megfelelő, az anyag és az üzem adottságainak ismeretében dől el."
+    />
+    <div class="tech-grid">
+      {technologies.map((t) => (
+        <a class="tech" href={t.href}>
+          <span class="tech-ic" aria-hidden="true"><Icon name={t.icon} size={22} /></span>
+          <h3 class="tech-title">{t.label} <Icon name="arrow-right" size={16} /></h3>
+          <p class="tech-text">{t.text}</p>
+        </a>
+      ))}
+    </div>
+    <p class="note">A laza forgács, por és apríték sok helyet foglal; megfelelő nedvesség és előkészítés mellett brikett vagy pellet készülhet belőle, amely saját fűtőanyagként hasznosítható vagy termékként értékesíthető.</p>
+  </Section>
+
+  <Section surface="navy">
+    <div class="close">
+      <SectionHeading
+        overline="Beszéljünk a melléktermékről"
+        title="Nézzük meg, mi készülhet az Ön mellékterméből"
+        lead="Mondja el, milyen forgács, por vagy apríték keletkezik az üzemében, és milyen mennyiségben — a megfelelő technológiai irány meghatározásában segítünk."
+        tone="dark"
+        align="center"
+      />
+      <div class="close-cta"><Button href="/#ajanlatkeres">Technológiai irányt kérek</Button></div>
+    </div>
+  </Section>
+</SiteLayout>
+
+<style>
+  .crumb{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:var(--fs-sm);color:var(--color-text-muted);margin-bottom:var(--space-5)}
+  .crumb a{color:var(--color-text-secondary);text-decoration:none}
+  .crumb a:hover{color:var(--color-accent)}
+  .crumb .here{color:var(--color-text)}
+  .cta{margin-top:var(--space-6)}
+
+  /* Situation cards */
+  .grid{
+    list-style:none;margin:var(--space-7) 0 0;padding:0;
+    display:grid;gap:var(--space-4);
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  }
+  .card{
+    background:var(--color-surface);
+    border:var(--border-width) solid var(--color-border);
+    border-radius:var(--radius-lg);
+    padding:var(--space-5);
+    box-shadow:var(--shadow-xs);
+  }
+  .card-ic{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:48px;height:48px;border-radius:var(--radius-md);
+    background:var(--color-accent-tint);color:var(--color-accent);
+    margin-bottom:var(--space-4);
+  }
+  .card-title{
+    margin:0 0 var(--space-2);
+    font-family:var(--font-display);font-weight:var(--fw-bold);
+    font-size:var(--fs-lg);line-height:var(--lh-heading);color:var(--color-text);
+  }
+  .card-body{margin:0;font-size:var(--fs-base);line-height:var(--lh-body);color:var(--color-text-secondary)}
+
+  /* Technology cards */
+  .tech-grid{
+    margin-top:var(--space-7);
+    display:grid;gap:var(--space-4);
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  }
+  .tech{
+    display:flex;flex-direction:column;
+    background:var(--color-surface);
+    border:var(--border-width) solid var(--color-border);
+    border-radius:var(--radius-lg);
+    padding:var(--space-5);text-decoration:none;color:inherit;
+    box-shadow:var(--shadow-xs);
+    transition:box-shadow var(--dur-base) var(--ease-standard),transform var(--dur-base) var(--ease-standard);
+  }
+  .tech:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+  .tech-ic{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:46px;height:46px;border-radius:var(--radius-md);
+    background:var(--color-accent-tint);color:var(--color-accent);
+    margin-bottom:var(--space-4);
+  }
+  .tech-title{
+    margin:0 0 6px;display:inline-flex;align-items:center;gap:8px;
+    font-family:var(--font-display);font-weight:var(--fw-bold);
+    font-size:var(--fs-lg);line-height:var(--lh-heading);color:var(--color-accent-text);
+  }
+  .tech-text{margin:0;font-size:var(--fs-sm);line-height:var(--lh-snug);color:var(--color-text-secondary)}
+  .note{margin:var(--space-6) 0 0;max-width:72ch;font-size:var(--fs-sm);line-height:var(--lh-body);color:var(--color-text-muted)}
+
+  /* Closing CTA */
+  .close{display:flex;flex-direction:column;align-items:center}
+  .close-cta{margin-top:var(--space-6);display:flex;flex-wrap:wrap;justify-content:center;gap:var(--space-3)}
+
+  @media (prefers-reduced-motion: reduce){
+    .tech{transition:none}
+    .tech:hover{transform:none}
+  }
+</style>

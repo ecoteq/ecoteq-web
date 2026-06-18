@@ -1,0 +1,56 @@
+---
+/**
+ * Navy stat band under the hero (DS StatBlock pattern: big figure + accent suffix + label,
+ * short green rule per item). Numbers are intentionally conservative/validatable — swap for
+ * confirmed figures when available.
+ */
+const stats = [
+  { value: '8', suffix: '', label: 'Technológiai terület' },
+  { value: '15', suffix: '+', label: 'Év ipari tapasztalat' },
+  { value: '4', suffix: '+', label: 'Európai gyártó partner' },
+  { value: '24', suffix: 'h', label: 'Jellemző visszajelzés' },
+];
+---
+
+<section class="herostats" data-reveal>
+  <div class="inner">
+    {stats.map((s) => (
+      <div class="stat">
+        <span class="fig">{s.value}{s.suffix && <span class="suf">{s.suffix}</span>}</span>
+        <span class="label">{s.label}</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .herostats { background: var(--ecoteq-navy); border-top: 1px solid rgba(255, 255, 255, 0.08); }
+  .inner {
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding: var(--space-6) clamp(16px, 4vw, 40px);
+    display: grid;
+    gap: var(--space-5) var(--space-6);
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (min-width: 860px) { .inner { grid-template-columns: repeat(4, 1fr); } }
+
+  .stat { border-left: 2px solid var(--ecoteq-green); padding-left: var(--space-4); display: flex; flex-direction: column; gap: 6px; }
+  .fig {
+    font-family: var(--font-display);
+    font-weight: var(--fw-extrabold);
+    font-size: clamp(2rem, 1.4rem + 2vw, 2.75rem);
+    line-height: 1;
+    letter-spacing: var(--ls-display);
+    color: var(--ecoteq-white);
+  }
+  .suf { color: var(--ecoteq-green); margin-left: 1px; }
+  .label {
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-bold);
+    letter-spacing: var(--ls-overline);
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.62);
+    line-height: var(--lh-snug);
+  }
+</style>

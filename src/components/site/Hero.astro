@@ -30,8 +30,6 @@ import { CTA } from '../../lib/site';
       <Button href={CTA.primary.href}>{CTA.primary.label}</Button>
       <Button variant="outline-light" href="#technologiak">Megnézem a technológiai kapukat</Button>
     </div>
-
-    <p class="trustline">2009 óta ipari technológiák területén &nbsp;·&nbsp; Magyar szakértői támogatás &nbsp;·&nbsp; Európai gyártói háttér</p>
   </div>
 </section>
 
@@ -85,14 +83,4 @@ import { CTA } from '../../lib/site';
   }
 
   .ctas { display: flex; flex-wrap: wrap; gap: var(--space-4); }
-
-  .trustline {
-    margin: var(--space-7) 0 0;
-    font-size: var(--fs-sm);
-    font-weight: var(--fw-medium);
-    color: rgba(255, 255, 255, 0.7);
-  }
-  @media (min-width: 1024px) {
-    .trustline { padding-top: var(--space-5); border-top: 1px solid rgba(255, 255, 255, 0.16); max-width: 760px; }
-  }
 </style>

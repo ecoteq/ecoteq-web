@@ -1,0 +1,147 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import Section from '../../components/layout/Section.astro';
+import SectionHeading from '../../components/brand/SectionHeading.astro';
+import Button from '../../components/core/Button.astro';
+import Icon from '../../components/Icon.astro';
+
+const situations = [
+  {
+    icon: 'droplets',
+    title: 'Magas a bemeneti nedvességtartalom',
+    text: 'A frissen keletkező faipari, mezőgazdasági vagy zöldhulladék gyakran túl nedves ahhoz, hogy stabilan tárolható vagy energetikailag hasznosítható legyen.',
+  },
+  {
+    icon: 'flame',
+    title: 'Gyenge a fűtőérték',
+    text: 'A nedvesség elpárologtatása energiát von el az égéstől, ezért a nedves alapanyag fűtőértéke és égési hatásfoka alacsony marad.',
+  },
+  {
+    icon: 'boxes',
+    title: 'Nehezen tárolható, romlik az anyag',
+    text: 'A nedves biomassza beragad, befülled és penészedhet a tárolás során, ami minőségromlással és kezelési nehézségekkel jár.',
+  },
+  {
+    icon: 'shuffle',
+    title: 'Egyenetlen a frakció a feldolgozás előtt',
+    text: 'Vegyes szemcseméret és darabosság esetén a szárítás és a továbbfeldolgozás egyenetlen lesz, ami akadályozza a stabil végterméket.',
+  },
+  {
+    icon: 'route',
+    title: 'Tovább kell dolgozni az anyagot',
+    text: 'Ha a cél brikett, pellet vagy energetikai hasznosítás, a nedves alapanyagot előbb stabilizálni és elő kell készíteni a következő lépésre.',
+  },
+];
+
+const technologies = [
+  {
+    label: 'Biomassza-szárítás',
+    href: '/technologiak/biomassza-szaritas/',
+    text: 'A nedvességtartalom csökkentése, hogy az alapanyag stabilan tárolható és tovább feldolgozható legyen.',
+  },
+  {
+    label: 'Ipari darálás',
+    href: '/technologiak/ipari-daralas/',
+    text: 'Egységesebb frakció a szárítás vagy a továbbfeldolgozás előtt, kiegyensúlyozottabb anyagáramért.',
+  },
+];
+---
+
+<SiteLayout
+  title="Nedves biomassza előkészítése"
+  description="A nedves biomassza nehezen tárolható és gyenge fűtőértékű. A szárítás és szükség szerinti darálás stabilizálja és előkészíti a további feldolgozásra."
+  solidHeader
+>
+  <Section surface="subtle">
+    <nav class="crumb" aria-label="Útvonal">
+      <a href="/">Főoldal</a> <span>/</span>
+      <a href="/#megoldasok">Megoldások</a> <span>/</span>
+      <span class="here">Nedves biomassza előkészítése</span>
+    </nav>
+    <SectionHeading
+      overline="Megoldás"
+      title="Nedves biomassza előkészítése"
+      lead="A nedves biomassza nehezen tárolható és gyengébb fűtőértékű. A szárítás – és szükség szerint a darálás – stabilizálja az anyagot, és előkészíti a további feldolgozásra: briketthez, pellethez vagy energetikai hasznosításhoz."
+      as="h1"
+    />
+    <div class="cta">
+      <Button href="/#ajanlatkeres">Technológiai irányt kérek</Button>
+    </div>
+  </Section>
+
+  <Section surface="white">
+    <SectionHeading
+      overline="Helyzet"
+      title="Mikor merül fel"
+      lead="Jellemző üzemi helyzetek, amelyekben a nedves biomassza előkészítése válik a következő logikus lépéssé."
+    />
+    <div class="grid">
+      {situations.map((s) => (
+        <article class="card">
+          <span class="ic" aria-hidden="true"><Icon name={s.icon} size={22} /></span>
+          <h3>{s.title}</h3>
+          <p>{s.text}</p>
+        </article>
+      ))}
+    </div>
+  </Section>
+
+  <Section surface="subtle">
+    <SectionHeading
+      overline="Technológiai irány"
+      title="Milyen technológiai irány segíthet"
+      lead="A pontos irányt a bemeneti és a cél nedvességtartalom, a feldolgozandó mennyiség és a rendelkezésre álló hőforrás dönti el. Az alábbi technológiák önállóan vagy egymást kiegészítve készítik elő a nedves biomasszát."
+    />
+    <div class="grid tech">
+      {technologies.map((t) => (
+        <a class="rel" href={t.href}>
+          <h3>{t.label} <Icon name="arrow-right" size={16} /></h3>
+          <p>{t.text}</p>
+        </a>
+      ))}
+    </div>
+  </Section>
+
+  <Section surface="navy">
+    <div class="closing">
+      <SectionHeading
+        tone="dark"
+        align="center"
+        overline="Következő lépés"
+        title="Beszéljük át a nedves alapanyag útját"
+        lead="Ossza meg a bemeneti és a cél nedvességet, a mennyiséget és a rendelkezésre álló hőforrást – ezek alapján meghatározzuk a megfelelő szárítási és előkészítési irányt."
+      />
+      <Button href="/#ajanlatkeres">Technológiai irányt kérek</Button>
+    </div>
+  </Section>
+</SiteLayout>
+
+<style>
+  .crumb { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: var(--fs-sm); color: var(--color-text-muted); margin-bottom: var(--space-5); }
+  .crumb a { color: var(--color-text-secondary); text-decoration: none; }
+  .crumb a:hover { color: var(--color-accent); }
+  .crumb .here { color: var(--color-text); }
+  .cta { margin-top: var(--space-6); }
+
+  .grid { margin-top: var(--space-7); display: grid; gap: var(--space-4); grid-template-columns: 1fr; }
+  @media (min-width: 720px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+
+  .card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-5); }
+  .card .ic { display: grid; place-items: center; width: 46px; height: 46px; border-radius: var(--radius-md); background: var(--color-bg-subtle); color: var(--color-accent); margin-bottom: var(--space-4); }
+  .card h3 { margin: 0 0 6px; font-size: var(--fs-h4); font-weight: var(--fw-bold); color: var(--color-text); }
+  .card p { margin: 0; font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: var(--lh-snug); }
+
+  .tech { grid-template-columns: 1fr; }
+  @media (min-width: 720px) { .tech { grid-template-columns: 1fr 1fr; } }
+  .rel { display: flex; flex-direction: column; gap: 6px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-5); text-decoration: none; color: inherit; transition: box-shadow var(--dur-base) var(--ease-standard), transform var(--dur-base) var(--ease-standard); }
+  .rel:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+  .rel h3 { margin: 0; display: inline-flex; align-items: center; gap: 8px; font-size: var(--fs-h4); font-weight: var(--fw-bold); color: var(--color-accent-text); }
+  .rel p { margin: 0; font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: var(--lh-snug); }
+
+  .closing { display: flex; flex-direction: column; align-items: center; gap: var(--space-6); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rel { transition: none; }
+    .rel:hover { transform: none; }
+  }
+</style>

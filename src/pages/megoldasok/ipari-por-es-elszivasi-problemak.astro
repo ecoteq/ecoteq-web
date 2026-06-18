@@ -1,0 +1,258 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import Section from '../../components/layout/Section.astro';
+import SectionHeading from '../../components/brand/SectionHeading.astro';
+import Button from '../../components/core/Button.astro';
+import Icon from '../../components/Icon.astro';
+
+const situations = [
+  {
+    icon: 'wind',
+    text: 'A megmunkálás során folyamatosan keletkező por és forgács terheli a munkateret és a gépek környezetét.',
+  },
+  {
+    icon: 'settings',
+    text: 'A gépekre és a berendezésekre lerakódó por nehezíti a gépkiszolgálást és a karbantartást.',
+  },
+  {
+    icon: 'shield',
+    text: 'A levegőben lévő por befolyásolja a munkakörnyezetet és az üzembiztonságot.',
+  },
+  {
+    icon: 'gauge',
+    text: 'Az elszívás nincs összehangolva a gépekkel és a tényleges légmennyiséggel, ezért a hatása egyenetlen.',
+  },
+  {
+    icon: 'factory',
+    text: 'A leválasztott por és forgács további kezelése – tárolása, kihordása – nincs rendezetten megoldva.',
+  },
+];
+
+const directions = [
+  {
+    icon: 'wind',
+    name: 'Elszívás és porleválasztás',
+    line: 'Por, forgács és technológiai levegő kezelése',
+    href: '/technologiak/elszivas-porlevalasztas/',
+  },
+  {
+    icon: 'route',
+    name: 'Anyagmozgatás és rendszerelemek',
+    line: 'A leválasztott anyag silózása, kihordása',
+    href: '/technologiak/anyagmozgas-rendszerelemek/',
+  },
+];
+---
+
+<SiteLayout
+  title="Ipari por és elszívási problémák"
+  description="Por és forgács kezelése ipari üzemekben – elszívás és porleválasztás a gépekhez, a légmennyiséghez és az anyagkezeléshez illesztve."
+  solidHeader
+>
+  <Section surface="subtle">
+    <nav class="crumb" aria-label="Útvonal">
+      <a href="/">Főoldal</a> <span>/</span>
+      <a href="/#megoldasok">Megoldások</a> <span>/</span>
+      <span class="here">Ipari por és elszívási problémák</span>
+    </nav>
+    <SectionHeading
+      overline="Megoldás"
+      title="Ipari por és elszívási problémák"
+      lead="Az üzemben keletkező por és forgács hatással van a munkakörnyezetre, a gépkiszolgálásra és az üzembiztonságra. A jól megtervezett elszívás a gépekhez, a tényleges légmennyiséghez és az anyagkezeléshez igazodik, így rendezett és megbízható eredményt ad."
+      as="h1"
+    />
+    <div class="cta">
+      <Button href="/#ajanlatkeres">Technológiai irányt kérek</Button>
+    </div>
+  </Section>
+
+  <Section surface="white">
+    <SectionHeading
+      overline="Helyzetkép"
+      title="Mikor merül fel?"
+      lead="Az alábbi üzemi helyzetekben érdemes átgondolni a por- és elszívási kérdéseket."
+    />
+    <ul class="grid" role="list">
+      {
+        situations.map((item) => (
+          <li class="card">
+            <span class="card-ic" aria-hidden="true">
+              <Icon name={item.icon} size={22} />
+            </span>
+            <p class="card-text">{item.text}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <Section surface="subtle">
+    <SectionHeading
+      overline="Technológiai irány"
+      title="Milyen technológiai irány segíthet?"
+      lead="A jó elszívórendszer nem önmagában áll: a gépekhez, a légmennyiséghez és a leválasztott anyag kezeléséhez illeszkedik. Robbanásvédelmi vagy ATEX kérdés esetén külön szakági vizsgálat szükséges."
+    />
+    <div class="tech-grid">
+      {
+        directions.map((tech) => (
+          <a class="tech" href={tech.href}>
+            <span class="tech-ic" aria-hidden="true">
+              <Icon name={tech.icon} size={24} />
+            </span>
+            <span class="tech-body">
+              <span class="tech-name">{tech.name}</span>
+              <span class="tech-line">{tech.line}</span>
+            </span>
+            <span class="tech-arrow" aria-hidden="true">
+              <Icon name="arrow-right" size={20} />
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section surface="navy">
+    <SectionHeading
+      tone="dark"
+      title="Beszéljük át az elszívás irányát"
+      lead="Mondja el, milyen por és forgács keletkezik az üzemében, és közösen meghatározzuk, hogy az elszívás és a leválasztott anyag kezelése milyen módon illik a folyamataihoz."
+    />
+    <div class="cta">
+      <Button href="/#ajanlatkeres">Technológiai irányt kérek</Button>
+    </div>
+  </Section>
+</SiteLayout>
+
+<style>
+  .crumb {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    font-size: var(--fs-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-5);
+  }
+  .crumb a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+  }
+  .crumb .here {
+    color: var(--color-text);
+  }
+  .cta {
+    margin-top: var(--space-6);
+  }
+
+  .grid {
+    list-style: none;
+    margin: var(--space-7) 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-4);
+  }
+  .card {
+    display: flex;
+    gap: var(--space-3);
+    align-items: flex-start;
+    padding: var(--space-5);
+    background: var(--color-bg-subtle);
+    border-radius: var(--radius-lg);
+  }
+  .card-ic {
+    display: inline-flex;
+    flex: none;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    background: var(--color-accent-tint);
+    color: var(--color-accent-active);
+  }
+  .card-text {
+    margin: 0;
+    font-size: var(--fs-base);
+    line-height: var(--lh-body);
+    color: var(--color-text-secondary);
+  }
+
+  .tech-grid {
+    margin-top: var(--space-7);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-4);
+  }
+  .tech {
+    display: flex;
+    gap: var(--space-4);
+    align-items: center;
+    padding: var(--space-5);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    transition:
+      border-color var(--dur-base) var(--ease-standard),
+      box-shadow var(--dur-base) var(--ease-standard),
+      transform var(--dur-fast) var(--ease-standard);
+  }
+  .tech:hover {
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-2px);
+  }
+  .tech-ic {
+    display: inline-flex;
+    flex: none;
+    width: 48px;
+    height: 48px;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    background: var(--color-accent-tint);
+    color: var(--color-accent-active);
+  }
+  .tech-body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1 1 auto;
+  }
+  .tech-name {
+    font-family: var(--font-display);
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-lg);
+    color: var(--color-text);
+  }
+  .tech-line {
+    font-size: var(--fs-sm);
+    line-height: var(--lh-body);
+    color: var(--color-text-secondary);
+  }
+  .tech-arrow {
+    display: inline-flex;
+    flex: none;
+    color: var(--color-text-muted);
+    transition:
+      color var(--dur-base) var(--ease-standard),
+      transform var(--dur-fast) var(--ease-standard);
+  }
+  .tech:hover .tech-arrow {
+    color: var(--color-accent);
+    transform: translateX(3px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tech,
+    .tech-arrow {
+      transition: none;
+    }
+    .tech:hover,
+    .tech:hover .tech-arrow {
+      transform: none;
+    }
+  }
+</style>

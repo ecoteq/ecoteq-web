@@ -31,13 +31,13 @@ export const NAV: NavItem[] = [
     into the homepage solutions section. */
 export type Solution = { label: string; href: string; blurb: string; icon: string };
 export const SOLUTIONS: Solution[] = [
-  { label: 'Faipari hulladék kezelése', href: '/#megoldasok', blurb: 'Forgács, por, apríték és fahulladék rendezett kezelése.', icon: 'trees' },
-  { label: 'Raklap és csomagolóanyag darálása', href: '/#megoldasok', blurb: 'Térfogatcsökkentés és anyag-előkészítés aprítással.', icon: 'package' },
-  { label: 'Forgács, por és apríték hasznosítása', href: '/#megoldasok', blurb: 'Laza mellékanyagból kezelhető, értékesíthető termék.', icon: 'recycle' },
-  { label: 'Nedves biomassza előkészítése', href: '/#megoldasok', blurb: 'Nedvességcsökkentés további feldolgozáshoz.', icon: 'droplets' },
-  { label: 'Faanyag szárítása és kezelése', href: '/#megoldasok', blurb: 'Kontrollált vákuumszárítás és -impregnálás.', icon: 'thermometer' },
-  { label: 'Ipari por és elszívási problémák', href: '/#megoldasok', blurb: 'Tisztább, biztonságosabb üzemi levegő.', icon: 'wind' },
-  { label: 'Komplett anyagáram-rendszerek', href: '/#megoldasok', blurb: 'Adagolás, szállítás, leválasztás, tárolás egyben.', icon: 'route' },
+  { label: 'Faipari hulladék kezelése', href: '/megoldasok/faipari-hulladek-kezelese/', blurb: 'Forgács, por, apríték és fahulladék rendezett kezelése.', icon: 'trees' },
+  { label: 'Raklap és csomagolóanyag darálása', href: '/megoldasok/raklap-es-csomagoloanyag-daralasa/', blurb: 'Térfogatcsökkentés és anyag-előkészítés aprítással.', icon: 'package' },
+  { label: 'Forgács, por és apríték hasznosítása', href: '/megoldasok/forgacs-por-apritek-hasznositasa/', blurb: 'Laza mellékanyagból kezelhető, értékesíthető termék.', icon: 'recycle' },
+  { label: 'Nedves biomassza előkészítése', href: '/megoldasok/nedves-biomassza-elokeszitese/', blurb: 'Nedvességcsökkentés további feldolgozáshoz.', icon: 'droplets' },
+  { label: 'Faanyag szárítása és kezelése', href: '/megoldasok/faanyag-szaritasa-es-kezelese/', blurb: 'Kontrollált vákuumszárítás és -impregnálás.', icon: 'thermometer' },
+  { label: 'Ipari por és elszívási problémák', href: '/megoldasok/ipari-por-es-elszivasi-problemak/', blurb: 'Tisztább, biztonságosabb üzemi levegő.', icon: 'wind' },
+  { label: 'Komplett anyagáram-rendszerek', href: '/megoldasok/komplett-anyagaram-rendszerek/', blurb: 'Adagolás, szállítás, leválasztás, tárolás egyben.', icon: 'route' },
 ];
 
 export type Technology = {
