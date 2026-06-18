@@ -53,12 +53,18 @@ import { CTA } from '../../lib/site';
       linear-gradient(90deg, rgba(28, 52, 73, 0.95) 0%, rgba(28, 52, 73, 0.74) 48%, rgba(28, 52, 73, 0.22) 100%),
       linear-gradient(0deg, rgba(15, 32, 48, 0.55) 0%, rgba(15, 32, 48, 0) 48%);
   }
-  /* Dark mode: neutralise the navy wash to the DS neutral-dark overlay colour
-     (same structure, no blue cast on the near-black canvas). */
+  /* Dark mode: tint the wash with the exact rail/footer colour (--color-surface-dark),
+     fully opaque at the left so the hero blends into the side rail. */
   :global(html[data-mode='dark']) .wash {
     background:
-      linear-gradient(90deg, rgba(8, 10, 12, 0.94) 0%, rgba(8, 10, 12, 0.74) 48%, rgba(8, 10, 12, 0.34) 100%),
-      linear-gradient(0deg, rgba(8, 10, 12, 0.62) 0%, rgba(8, 10, 12, 0) 48%);
+      linear-gradient(90deg,
+        var(--color-surface-dark) 0%,
+        color-mix(in srgb, var(--color-surface-dark) 94%, transparent) 22%,
+        color-mix(in srgb, var(--color-surface-dark) 62%, transparent) 54%,
+        color-mix(in srgb, var(--color-surface-dark) 16%, transparent) 100%),
+      linear-gradient(0deg,
+        color-mix(in srgb, var(--color-surface-dark) 55%, transparent) 0%,
+        transparent 48%);
   }
 
   .inner {
