@@ -44,6 +44,11 @@ const { redirect, tech, techLabel, source, submitLabel = 'Elküldöm az alapadat
   <Input label="Milyen anyagot kell kezelni?" name="anyag" required placeholder="pl. faforgács, raklap, nedves apríték" />
   <Input label="Mi a cél?" name="cel" required placeholder="pl. brikett, térfogatcsökkentés, szárítás" />
 
+  <label class="consent">
+    <input type="checkbox" name="consent" required />
+    <span>Elolvastam és elfogadom az <a href="/adatvedelmi-tajekoztato/" target="_blank" rel="noopener">adatvédelmi tájékoztatót</a>, és hozzájárulok, hogy az ECOTEQ a megkeresésem feldolgozása céljából kezelje a megadott adatokat.</span>
+  </label>
+
   <Button type="submit" class="submit">{submitLabel}</Button>
   <p class="form-msg" role="status" aria-live="polite"></p>
 </form>
@@ -67,6 +72,11 @@ const { redirect, tech, techLabel, source, submitLabel = 'Elküldöm az alapadat
 
       if (!payload.nev || !payload.email || !payload.anyag || !payload.cel) {
         setMsg('Kérjük, töltse ki a kötelező mezőket (név, e-mail, anyag, cél).', 'error');
+        return;
+      }
+
+      if (!payload.consent) {
+        setMsg('Kérjük, fogadja el az adatvédelmi tájékoztatót a küldéshez.', 'error');
         return;
       }
 
@@ -112,6 +122,10 @@ const { redirect, tech, techLabel, source, submitLabel = 'Elküldöm az alapadat
     gap: var(--space-4);
   }
   .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .consent { display: flex; gap: 10px; align-items: flex-start; font-size: var(--fs-sm); line-height: var(--lh-body); color: var(--color-text-secondary); cursor: pointer; }
+  .consent input { margin-top: 3px; flex: none; width: 16px; height: 16px; accent-color: var(--color-accent); cursor: pointer; }
+  .consent a { color: var(--color-accent-text); font-weight: var(--fw-semibold); }
+  .consent a:hover { text-decoration: underline; }
   .row2 { display: grid; gap: var(--space-4); grid-template-columns: 1fr; }
   @media (min-width: 540px) { .row2 { grid-template-columns: 1fr 1fr; } }
 

@@ -75,10 +75,18 @@ function factorIcon(title: string): string {
         <Overline rule={false} class="eyebrow">{t.hero.eyebrow}</Overline>
         {h1Html ? <h1 set:html={h1Html} /> : <h1>{t.hero.h1}</h1>}
         <p class="lead">{t.hero.lead}</p>
+        {t.hero.trustPills?.length > 0 && (
+          <ul class="trust-pills" role="list">
+            {t.hero.trustPills.map((p) => <li>{p}</li>)}
+          </ul>
+        )}
       </div>
-      <div class="ctas">
-        <Button href={QUOTE.href}>{QUOTE.label}</Button>
-        {t.hero.secondaryCta && <Button variant="outline-light" href={t.hero.secondaryCta.href}>{t.hero.secondaryCta.label}</Button>}
+      <div class="hero-foot">
+        <div class="ctas">
+          <Button href={QUOTE.href}>{QUOTE.label}</Button>
+          {t.hero.secondaryCta && <Button variant="outline-light" href={t.hero.secondaryCta.href}>{t.hero.secondaryCta.label}</Button>}
+        </div>
+        {t.hero.microcopy && <p class="hero-micro">{t.hero.microcopy}</p>}
       </div>
     </div>
   </section>
@@ -304,7 +312,20 @@ function factorIcon(title: string): string {
   h1 { color: var(--ecoteq-white); font-size: clamp(1.9rem, 1.2rem + 2.6vw, 3.25rem); line-height: var(--lh-tight); letter-spacing: var(--ls-display); max-width: 20ch; margin: 0 0 var(--space-5); }
   h1 :global(.hl) { color: var(--ecoteq-green); }
   .lead { color: rgba(255,255,255,0.86); font-size: var(--fs-lg); line-height: var(--lh-body); max-width: 62ch; margin: 0; }
+  .trust-pills { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin: var(--space-5) 0 0; padding: 0; }
+  .trust-pills li {
+    display: inline-flex; align-items: center;
+    padding: 6px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-medium);
+  }
+  .hero-foot { display: flex; flex-direction: column; gap: var(--space-4); }
   .ctas { display: flex; flex-wrap: wrap; gap: var(--space-4); }
+  .hero-micro { margin: 0; max-width: 60ch; font-size: var(--fs-sm); color: rgba(255, 255, 255, 0.66); }
 
   /* Breadcrumb (light surface) */
   .crumb { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: var(--space-5); font-size: var(--fs-sm); color: var(--color-text-muted); }
