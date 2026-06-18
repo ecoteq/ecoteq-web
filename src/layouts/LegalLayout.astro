@@ -12,7 +12,7 @@ const { title, updated, description } = Astro.props;
 <SiteLayout title={title} description={description} solidHeader>
   <article class="legal">
     <nav class="crumb" aria-label="Útvonal">
-      <a href="/">Főoldal</a><span aria-hidden="true">/</span><span class="here">{title}</span>
+      <a href="/">Főoldal</a><span aria-hidden="true">|</span><span class="here">{title}</span>
     </nav>
     <header class="head">
       <h1>{title}</h1>

@@ -83,6 +83,10 @@ const { title, description, brand } = Astro.props;
         transform: none;
       }
 
+      /* Breadcrumbs (site-wide rule): UPPERCASE labels, bold green pipe separators. */
+      .crumb { text-transform: uppercase; letter-spacing: 0.05em; }
+      .crumb span[aria-hidden="true"] { color: var(--color-accent); font-weight: var(--fw-bold); }
+
       /* Consistent, accessible focus ring across interactive elements. */
       a:focus-visible,
       button:focus-visible,
