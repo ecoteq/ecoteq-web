@@ -649,7 +649,7 @@ const vakuumszaritas: TechnologyGateway = {
   preQual: {
     h2: "Küldje el az alapadatokat, és segítünk eldönteni, reális-e a vákuumszárító technológia",
     body: "Nem kell kész műszaki specifikációval érkeznie. Első körben tisztázzuk, milyen faanyagot, milyen méretben, milyen nedvességről milyen célra és milyen mennyiségben szeretne szárítani.",
-    fields: ["fafaj", "jellemző hosszúság", "jellemző vastagság", "induló nedvesség, ha ismert", "cél nedvesség", "heti vagy havi mennyiség", "saját gyártás vagy bérszárítás a cél", "rendelkezésre álló elektromos kapacitás", "telepítési hely", "van-e fotó, videó vagy meglévő layout"],
+    fields: ["fafaj", "jellemző hosszúság", "jellemző vastagság", "induló nedvesség, ha ismert", "cél nedvesség", "heti vagy havi mennyiség", "saját gyártás vagy bérszárítás a cél", "rendelkezésre álló elektromos kapacitás", "telepítési hely", "van-e fotó, videó vagy meglévő alaprajz"],
   },
   faq: {
     h2: "Gyakori kérdések a vákuumszárítás kapcsán",
@@ -672,7 +672,7 @@ const vakuumszaritas: TechnologyGateway = {
     checklist: [
       { title: "Faanyag és méretek", items: ["fafaj", "jellemző hosszúság", "vastagság"] },
       { title: "Nedvesség és mennyiség", items: ["induló nedvesség", "cél nedvesség", "heti vagy havi mennyiség"] },
-      { title: "Cél és körülmények", items: ["saját gyártás vagy bérszárítás", "elektromos kapacitás", "telepítési hely", "fotó vagy meglévő layout"] },
+      { title: "Cél és körülmények", items: ["saját gyártás vagy bérszárítás", "elektromos kapacitás", "telepítési hely", "fotó vagy meglévő alaprajz"] },
     ],
   },
 };
@@ -1007,7 +1007,7 @@ const anyagmozgasRendszerelemek: TechnologyGateway = {
   preQual: {
     h2: "Küldje el az alapadatokat, és segítünk eldönteni, milyen anyagmozgatási irány lehet reális",
     body: "Nem kell kész layouttal vagy komponenslistával érkeznie. Első körben azt kell látni, milyen anyagot, honnan hová, milyen mennyiségben és milyen főtechnológia mellett kell mozgatni.",
-    fields: ["milyen anyagot kell mozgatni", "honnan hová kell eljuttatni", "mekkora mennyiséget kell kezelni", "folyamatos vagy szakaszos üzem", "milyen főgéphez kapcsolódik", "van-e szintkülönbség vagy helykorlát", "kell-e mágnes, szeparátor vagy puffer", "telepítési hely", "van-e fotó, videó, alaprajz vagy meglévő layout"],
+    fields: ["milyen anyagot kell mozgatni", "honnan hová kell eljuttatni", "mekkora mennyiséget kell kezelni", "folyamatos vagy szakaszos üzem", "milyen főgéphez kapcsolódik", "van-e szintkülönbség vagy helykorlát", "kell-e mágnes, szeparátor vagy puffer", "telepítési hely", "van-e fotó, videó, alaprajz vagy meglévő alaprajz"],
   },
   faq: {
     h2: "Gyakori kérdések az anyagmozgatás és rendszerelemek kapcsán",
