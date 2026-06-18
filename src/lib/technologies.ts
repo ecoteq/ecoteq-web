@@ -622,10 +622,10 @@ const vakuumszaritas: TechnologyGateway = {
     h2: "Miben segít az ECOTEQ egy vákuumszárítási projektben?",
     body: [
       "Az ECOTEQ nem abból indul ki, hogy mekkora kamrát lehetne eladni. Először tisztázzuk, milyen faanyagot kell szárítani, milyen induló és cél nedvességgel, mekkora mennyiségben és milyen gyártási célra.",
-      "Közös cél, hogy a vákuumszárító ne önálló gépbeszerzés legyen, hanem az Ön faipari gyártásába illeszkedő, reális technológiai fejlesztés.",
+      "Közös érdekünk, hogy a vákuumszárító ne önálló gépbeszerzés legyen, hanem az Ön faipari gyártásába illeszkedő, reális technológiai fejlesztés.",
     ],
     points: [
-      { title: "Faanyagalapú előminősítés", text: "Fafaj, vastagság, hossz, induló és cél nedvesség, mennyiség és minőségi elvárás alapján indul a javaslat." },
+      { title: "Anyag-alapú előminősítés", text: "Fafaj, vastagság, hossz, induló és cél nedvesség, mennyiség és minőségi elvárás alapján indul a javaslat." },
       { title: "Reális technológiai javaslat", text: "Segítünk eldönteni, hogy a vákuumszárítás jó megoldás-e, és milyen kamraméretet, kapacitást vagy konfigurációt érdemes vizsgálni." },
       { title: "Üzleti realitás", text: "Nem csak a gépárat nézzük. A ciklusidőt, kapacitást, külső szárítás költségét, készletlekötést és gyártási hatást együtt kell mérlegelni." },
       { title: "Projektkísérés és támogatás", text: "Az előkészítéstől az ajánlatkérésen és egyeztetésen át a telepítésig, betanításig és későbbi támogatásig végigkísérjük a projektet." },

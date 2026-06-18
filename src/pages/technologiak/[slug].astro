@@ -151,9 +151,9 @@ function factorIcon(title: string): string {
 
   <!-- 7. ECOTEQ SZEREPE (navy) -->
   <Section surface="navy">
+    <SectionHeading tone="dark" overline="ECOTEQ szerepe" title={t.role.h2} />
     <div class="role">
       <div class="role-left">
-        <SectionHeading tone="dark" overline="ECOTEQ szerepe" title={t.role.h2} />
         <div class="role-body">{t.role.body.map((p) => <p>{p}</p>)}</div>
         <Button class="role-cta" href={QUOTE.href}>{QUOTE.label}</Button>
       </div>
@@ -292,10 +292,9 @@ function factorIcon(title: string): string {
   .factor p { margin: 0; font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: var(--lh-snug); }
 
   /* Role (navy) */
-  .role { display: grid; gap: var(--space-7); grid-template-columns: 1fr; align-items: stretch; }
+  .role { margin-top: var(--space-7); display: grid; gap: var(--space-7); grid-template-columns: 1fr; align-items: stretch; }
   @media (min-width: 880px) { .role { grid-template-columns: 0.9fr 1.1fr; gap: var(--space-8); } }
   .role-left { display: flex; flex-direction: column; }
-  .role-body { margin-top: var(--space-5); }
   .role-body p { color: rgba(255,255,255,0.82); line-height: var(--lh-body); margin: 0 0 var(--space-4); }
   .role-cta { margin-top: auto; align-self: flex-start; }
   .role-points { display: grid; gap: var(--space-6) var(--space-5); grid-template-columns: 1fr; }
