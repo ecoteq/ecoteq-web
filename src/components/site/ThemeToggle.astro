@@ -1,0 +1,46 @@
+---
+/** Light/dark toggle. Defaults to the OS preference (handled in BaseLayout's
+    head script); a click sets and persists an explicit choice via window.__setTheme. */
+import Icon from '../Icon.astro';
+---
+
+<button class="theme-toggle" type="button" aria-label="Téma váltása (világos / sötét)" title="Téma váltása">
+  <span class="t-ico t-moon" aria-hidden="true"><Icon name="moon" size={18} /></span>
+  <span class="t-ico t-sun" aria-hidden="true"><Icon name="sun" size={18} /></span>
+</button>
+
+<script>
+  document.querySelectorAll('.theme-toggle').forEach((b) =>
+    b.addEventListener('click', () => {
+      const dark = document.documentElement.dataset.mode === 'dark';
+      const setTheme = (window as unknown as { __setTheme?: (m: string) => void }).__setTheme;
+      setTheme?.(dark ? 'light' : 'dark');
+    })
+  );
+</script>
+
+<style>
+  .theme-toggle {
+    display: inline-grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    background: transparent;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition:
+      background var(--dur-fast) var(--ease-standard),
+      border-color var(--dur-fast) var(--ease-standard),
+      color var(--dur-fast) var(--ease-standard);
+  }
+  .theme-toggle:hover { color: var(--color-accent); border-color: var(--color-accent); }
+  .t-ico { display: inline-flex; }
+
+  /* Light mode → show the moon (switch-to-dark); dark mode → show the sun. */
+  :global(html[data-mode='dark']) .t-moon { display: none; }
+  :global(html:not([data-mode='dark'])) .t-sun { display: none; }
+
+  @media (prefers-reduced-motion: reduce) { .theme-toggle { transition: none; } }
+</style>

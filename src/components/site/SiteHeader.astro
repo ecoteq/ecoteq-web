@@ -2,6 +2,7 @@
 import Logo from '../brand/Logo.astro';
 import Button from '../core/Button.astro';
 import Icon from '../Icon.astro';
+import ThemeToggle from './ThemeToggle.astro';
 import { NAV, CTA, SOLUTIONS, TECHNOLOGIES, quoteHref } from '../../lib/site';
 
 /**
@@ -81,6 +82,7 @@ const TECH_ICONS: Record<string, string> = {
     </nav>
 
     <div class="actions">
+      <ThemeToggle />
       <Button href={cta.href} size="sm" class="header-cta">{cta.label}</Button>
       <button class="burger" type="button" aria-label="Menü megnyitása" aria-expanded="false" aria-controls="mobile-menu">
         <span></span><span></span><span></span>
@@ -274,6 +276,24 @@ const TECH_ICONS: Record<string, string> = {
   .site-header[data-transparent] .nav-trigger,
   .site-header[data-transparent] .burger span { color: var(--ecoteq-white); }
   .site-header[data-transparent] .burger span { background: var(--ecoteq-white); }
+
+  /* Theme toggle reads light over a dark/transparent hero. */
+  .site-header[data-transparent] .theme-toggle { color: var(--ecoteq-white); border-color: rgba(255, 255, 255, 0.3); }
+  .site-header[data-transparent] .theme-toggle:hover { color: var(--ecoteq-white); border-color: rgba(255, 255, 255, 0.65); }
+
+  /* DARK MODE: the solid header sits on a dark canvas, so brand-fixed navy
+     foregrounds must flip to light. Transparent-over-hero already stays white. */
+  :global(html[data-mode='dark']) .site-header:not([data-transparent]) .nav a,
+  :global(html[data-mode='dark']) .site-header:not([data-transparent]) .nav-trigger { color: var(--color-text); }
+  :global(html[data-mode='dark']) .site-header:not([data-transparent]) .brand-light { display: inline-flex; }
+  :global(html[data-mode='dark']) .site-header:not([data-transparent]) .brand-dark { display: none; }
+  :global(html[data-mode='dark']) .site-header:not([data-transparent]) .burger span { background: var(--color-text); }
+  :global(html[data-mode='dark']) .p-ic,
+  :global(html[data-mode='dark']) .p-title { color: var(--color-accent-text); }
+  :global(html[data-mode='dark']) .mega-panel:hover { background: color-mix(in srgb, var(--color-accent) 26%, #14181c); }
+  :global(html[data-mode='dark']) .mobile { background: var(--color-surface); }
+  :global(html[data-mode='dark']) .mobile a,
+  :global(html[data-mode='dark']) .mobile .m-acc { color: var(--color-text); }
 
   .burger { display: inline-flex; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; padding: 10px; background: transparent; border: none; cursor: pointer; }
   .burger span { display: block; height: 2px; width: 100%; background: var(--ecoteq-navy); border-radius: 2px; transition: transform var(--dur-base) var(--ease-standard), opacity var(--dur-fast) var(--ease-standard); }

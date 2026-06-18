@@ -21,6 +21,22 @@ const { title, description, brand } = Astro.props;
     {description && <meta name="description" content={description} />}
     {!ALLOW_INDEXING && <meta name="robots" content="noindex, nofollow" />}
     <link rel="icon" href="/ds/logo-mark-green.svg" type="image/svg+xml" />
+    {/* Theme: follow the OS setting by default; honour an explicit choice once made.
+        Runs before paint to avoid a flash. Exposes window.__setTheme for the toggle. */}
+    <script is:inline>
+      (function () {
+        var d = document.documentElement;
+        var mq = window.matchMedia('(prefers-color-scheme: dark)');
+        function stored() { try { return localStorage.getItem('theme'); } catch (e) { return null; } }
+        function apply(mode) { d.dataset.mode = mode; d.style.colorScheme = mode; }
+        apply(stored() || (mq.matches ? 'dark' : 'light'));
+        window.__setTheme = function (mode) {
+          try { localStorage.setItem('theme', mode); } catch (e) {}
+          apply(mode);
+        };
+        mq.addEventListener('change', function (e) { if (!stored()) apply(e.matches ? 'dark' : 'light'); });
+      })();
+    </script>
     {/* Opt into scroll-reveal only when JS runs and motion is allowed (progressive enhancement). */}
     <script is:inline>
       if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
