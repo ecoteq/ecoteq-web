@@ -6,11 +6,11 @@ Ez az oldal az ECOTEQ.hu technológiai kapuoldala a faipari vákuumszárítás t
 
 Nem célja kiváltani a vakuumszarito.hu részletes szakmai, gépválasztó és ajánlatkérési tartalmait. Feladata, hogy a látogató megértse:
 
-- mire való a vákuumszárítás,
-- mikor lehet releváns faipari üzemeknek,
-- miért nem csak gépméret alapján kell dönteni,
-- milyen faanyag-, nedvesség-, ciklusidő- és minőségi kérdéseket kell tisztázni,
-- hogyan kapcsolódik a technológia az ECOTEQ faipari vákuumtechnológiai irányához.
+* mire való a vákuumszárítás,
+* mikor lehet releváns faipari üzemeknek,
+* miért nem csak gépméret alapján kell dönteni,
+* milyen faanyag-, nedvesség-, ciklusidő- és minőségi kérdéseket kell tisztázni,
+* hogyan kapcsolódik a technológia az ECOTEQ faipari vákuumtechnológiai irányához.
 
 Elsődleges spoke oldal: `https://vakuumszarito.hu`
 
@@ -18,7 +18,7 @@ Javasolt URL:
 
 `/technologiak/vakuumszaritas/`
 
----
+\---
 
 ## SEO alapadatok
 
@@ -32,35 +32,39 @@ Vákuumszárítás faanyag kontrollált, gyorsabb és kiszámíthatóbb szárít
 
 ### H1
 
-Vákuumszárítás faipari üzemeknek, ahol a minőség és az idő is számít
+Vákuumszárítás faipari üzemeknek
+
+Ha a minőség és az idő is számít
 
 ### Elsődleges CTA
 
-Technológiai irányt kérek
+Technológiai javaslatot kérek
 
 ### Űrlap CTA
 
-Elküldöm a projekt adatait
+van egy
 
 ### Spoke CTA
 
-Részletes vákuumszárító oldal megnyitása
+vakuumszarito.hu
 
----
+\---
 
-# 1. HERO
+# 1\. HERO
 
 ## Eyebrow
 
-ECOTEQ technológiai kapu · Vákuumszárítás
+ECOTEQ technológiák · Vákuumszárítás
 
 ## H1
 
-Vákuumszárítás faipari üzemeknek, ahol a minőség és az idő is számít
+Vákuumszárítás faipari üzemeknek.
+
+Ha a minőség és az idő is számít
 
 ## Alcím
 
-A vákuumszárítás akkor lehet jó irány, ha a faanyag szárításánál fontos a kontrolláltabb folyamat, a tervezhetőbb gyártás, a rövidebb ciklusidő és a minőségi kockázatok csökkentése. Az ECOTEQ segít eldönteni, hogy az Ön faanyagára, mennyiségére és gyártási céljára reális-e a vákuumszárító technológia.
+A vákuumszárítás akkor jó irány, ha a faanyag szárításánál fontos a kontrollált folyamat, a tervezhető gyártás, a rövidebb ciklusidő és a minőségi kockázatok csökkentése. Az ECOTEQ segít eldönteni, hogy az Ön faanyagára, mennyiségére és gyártási céljára reális-e a vákuumszárító technológia.
 
 ## CTA-k
 
@@ -73,60 +77,58 @@ Nem kell kész gépspecifikációval érkeznie. Elég, ha leírja a fafajt, vast
 
 ## Trust / context pill
 
-- Faipari vákuumtechnológiai előminősítés
-- ISVE technológiai háttér
-- Magyar szakértői támogatás
-- Kapcsolódó spoke: vakuumszarito.hu
+* kontrollált folyamat
+* tervezhető gyártás
+* rövidebb ciklusidők
+* kevesebb selejt
 
----
-
-# 2. MIKOR LEHET JÓ IRÁNY A VÁKUUMSZÁRÍTÁS?
+# 2\. MIKOR JÓ IRÁNY A VÁKUUMSZÁRÍTÁS?
 
 ## H2
 
-Mikor lehet jó irány a vákuumszárítás?
+Mikor jó irány a vákuumszárítás?
 
 ## Bevezető copy
 
-A vákuumszárítás nem minden faipari üzemnek ugyanazt jelenti. Más a helyzet egy asztalosüzemnél, más egy fűrészüzemnél, más értékes keményfa esetén, és más akkor, ha a cél saját gyártáshoz szükséges gyorsabb, kiszámíthatóbb alapanyag-előkészítés.
+A vákuumszárítás nem minden faipari üzemnek ugyanazt jelenti. Más a helyzet egy asztalosüzemnél, más egy fűrészüzemnél, más értékes keményfa esetén és más akkor, ha a cél saját gyártáshoz szükséges gyorsabb, kiszámíthatóbb alapanyag-előkészítés.
 
 ## Kártyák
 
 ### Ha a szárítási idő túl hosszú vagy kiszámíthatatlan
 
-A vákuumszárítás segíthet rövidebb és jobban tervezhető ciklusokban gondolkodni, ha az anyag és a kapacitás ezt indokolja.
+A vákuumszárítás segít rövidebb és jobban tervezhető ciklusokban gondolkodni.
 
-### Ha értékesebb faanyaggal dolgozik
+### Ha értékes faanyaggal dolgozik
 
-Keményfa, vastagabb anyag vagy magasabb hozzáadott értékű gyártás esetén a szárítás minősége közvetlen üzleti kérdés lehet.
+Keményfa, vastagabb anyag vagy magasabb hozzáadott értékű gyártás esetén a szárítás alapvető gazdaságossági kérdés.
 
-### Ha saját gyártáshoz kell megbízhatóbb száraz faanyag
+### Ha saját gyártáshoz kell megbízható száraz faanyag
 
-Ha a külső szárítás lassú, drága vagy bizonytalan, saját vákuumszárító irány is vizsgálható.
+Ha a külső szárítás lassú, drága vagy bizonytalan, saját vákuumszárító a megoldás.
 
 ### Ha fontos a minőségi kockázatok csökkentése
 
-Repedés, vetemedés, belső feszültség és nedvességingadozás esetén kontrolláltabb szárítási technológiára lehet szükség. A pontos eredmény a faanyagtól és technológiai beállításoktól függ.
+Repedés, vetemedés, belső feszültség és nedvességingadozás esetén kontrolláltabb szárítási technológiára van szükség.
 
-### Ha a szárítás kapacitásszűk keresztmetszet
+### Ha a szárítás kapacitás szűk keresztmetszet
 
-Ha a gyártás a szárításra vár, a technológiai döntés nem csak műszaki, hanem termelési és pénzügyi kérdés is.
+Ha a gyártás a szárításra vár, a döntés nem csak műszaki, hanem termelési és pénzügyi kérdés is.
 
 ## CTA
 
-Leírom a faanyagot és a szárítási célt
+Megadom a faanyagot és a szárítási célt
 
----
+\---
 
-# 3. MILYEN ÜZEMI PROBLÉMÁRA ADHAT VÁLASZT?
+# 3\. MILYEN ÜZEMI PROBLÉMÁRA AD VÁLASZT?
 
 ## H2
 
-Milyen üzemi problémára adhat választ?
+Milyen problémára ad választ a vákuumszárító?
 
 ## Bevezető copy
 
-A vákuumszárítás mögött általában nem az a kérdés áll, hogy „kell-e egy új szárító”. A valódi kérdés az, hogy a jelenlegi szárítás mennyire lassítja, drágítja vagy bizonytalanítja el a faipari gyártást.
+A vákuumszárítás bevezetése mögött általában nem az a kérdés áll, hogy „kell-e egy új szárító”. A valódi kérdés az, hogy a jelenlegi szárítás mennyire lassítja, drágítja vagy bizonytalanítja el a faipari gyártást.
 
 ## Probléma-kártyák
 
@@ -135,7 +137,7 @@ A vákuumszárítás mögött általában nem az a kérdés áll, hogy „kell-e
 **Miért gond?**  
 Ha a faanyag sokáig áll szárítás alatt vagy külső partnerre vár, az lassítja a gyártást és leköti a készletet.
 
-**Technológiai válasz**  
+**Megoldás:**
 A vákuumszárítás bizonyos faanyagoknál és méreteknél rövidebb, jobban tervezhető ciklusokat tehet lehetővé.
 
 ### Ingadozó faanyagminőség
@@ -143,28 +145,28 @@ A vákuumszárítás bizonyos faanyagoknál és méreteknél rövidebb, jobban t
 **Miért gond?**  
 A nedvességtartalom, repedéskockázat vagy vetemedés bizonytalansága közvetlenül érinti a gyártási minőséget.
 
-**Technológiai válasz**  
+**Megoldás**  
 Kontrollált technológiai környezetben jobban kézben tartható a szárítási folyamat.
 
 ### Külső szárítási függőség
 
 **Miért gond?**  
-Ha a szárítás külső kapacitástól függ, az határidő-, minőség- és költségkockázatot jelenthet.
+Ha a szárítás külső kapacitástól függ, az határidő-, minőség- és költségkockázatot jelent.
 
-**Technológiai válasz**  
-Saját vákuumszárító rendszerrel a szárítás egy része vagy egésze házon belülre kerülhet, ha a mennyiség és beruházási logika indokolja.
+**Megoldás**  
+Saját vákuumszárító rendszerrel a szárítás egy része vagy egésze házon belülre kerül.
 
 ### Rosszul méretezett szárítási kapacitás
 
 **Miért gond?**  
-Túl kicsi kamra, rosszul választott hossz, nem megfelelő kapacitás vagy energiaellátás hosszú távon korlátozhatja a termelést.
+Túl kicsi sszárítókamra, rosszul választott hossz, nem megfelelő kapacitás vagy energiaellátás hosszú távon korlátozhatja a termelést.
 
 **Technológiai válasz**  
-A méretezést fafaj, vastagság, hossz, induló nedvesség, cél nedvesség és termelési ütem alapján kell vizsgálni.
+A méretezést fafaj, vastagság, hossz, induló- és célnedvesség, valamint a termelési ütem alapján kell vizsgálni.
 
----
+\---
 
-# 4. TIPIKUS ANYAGOK ÉS ALKALMAZÁSOK
+# 4\. TIPIKUS ANYAGOK ÉS ALKALMAZÁSOK
 
 ## H2
 
@@ -176,42 +178,42 @@ A vákuumszárításnál a fafaj, vastagság, hosszúság, induló nedvesség, c
 
 ## Anyagok
 
-- keményfa,
-- tölgy,
-- bükk,
-- kőris,
-- akác külön vizsgálattal,
-- értékesebb lombos faanyagok,
-- fűrészáru,
-- asztalosipari alapanyag,
-- nyílászáró- és bútoripari faanyag.
+* keményfa,
+* tölgy,
+* bükk,
+* kőris,
+* akác külön vizsgálattal,
+* értékesebb lombos faanyagok,
+* fűrészáru,
+* asztalosipari alapanyag,
+* nyílászáró- és bútoripari faanyag.
 
 ## Iparágak
 
-- asztalosüzemek,
-- bútorgyártás,
-- nyílászárógyártás,
-- fűrészüzemek,
-- fatelepek,
-- faanyag-kereskedelem,
-- egyedi faipari gyártás.
+* asztalosüzemek,
+* bútorgyártás,
+* nyílászárógyártás,
+* fűrészüzemek,
+* fatelepek,
+* faanyag-kereskedelem,
+* egyedi faipari gyártás.
 
 ## Tipikus célok
 
-- szárítási ciklusidő csökkentése,
-- saját gyártási alapanyag előkészítése,
-- külső szárítástól való függés csökkentése,
-- minőségi kockázatok mérséklése,
-- gyártási tervezhetőség javítása,
-- magasabb értékű faanyag kontrollált kezelése.
+* szárítási ciklusidő csökkentése,
+* saját gyártási alapanyag előkészítése,
+* külső szárítástól való függés csökkentése,
+* minőségi kockázatok mérséklése,
+* gyártási tervezhetőség javítása,
+* magasabb értékű faanyag kontrollált kezelése.
 
 ## CTA
 
 Megírom, milyen faanyagot kell szárítani
 
----
+\---
 
-# 5. TIPIKUS RENDSZERFELÉPÍTÉS
+# 5\. TIPIKUS RENDSZERFELÉPÍTÉS
 
 ## H2
 
@@ -223,37 +225,37 @@ A vákuumszárító kiválasztása nem csak kamraméret kérdése. A rakodás, e
 
 ## Folyamat
 
-### 1. Faanyag előminősítése
+### 1\. Faanyag előminősítése
 
 Fafaj, vastagság, hosszúság, induló nedvesség, cél nedvesség és mennyiség tisztázása.
 
-### 2. Kamraméret és kapacitás meghatározása
+### 2\. Kamraméret és kapacitás meghatározása
 
 A szükséges nettó térfogatot és hasznos hosszúságot a tipikus anyagméretekhez kell igazítani.
 
-### 3. Rakodási és telepítési logika
+### 3\. Rakodási és telepítési logika
 
 A faanyag mozgatása, raklapozása, betöltése és kitárolása meghatározza a gyakorlati használhatóságot.
 
-### 4. Vákuumszárítás
+### 4\. Vákuumszárítás
 
 A fő technológiai folyamat kontrollált körülmények között történik, a választott géptől és beállításoktól függően.
 
-### 5. Vezérlés és üzemeltetés
+### 5\. Vezérlés és üzemeltetés
 
 Fontos a kezelhetőség, programozhatóság, mérés és a kezelői rutin.
 
-### 6. Szerviz, alkatrész és támogatás
+### 6\. Szerviz, alkatrész és támogatás
 
 A hosszú távú működéshez szakmai támogatás, alkatrészellátás és szervizháttér is szükséges.
 
 ## CTA
 
-Rendszerirányt kérek a saját faanyagunkra
+Javaslatot kérek a saját faanyagunkra
 
----
+\---
 
-# 6. MIRE KELL FIGYELNI, MIELŐTT VÁKUUMSZÁRÍTÓT VÁLASZT?
+# 6\. MIRE KELL FIGYELNI, MIELŐTT VÁKUUMSZÁRÍTÓT VÁLASZT?
 
 ## H2
 
@@ -261,7 +263,7 @@ Mire kell figyelni, mielőtt vákuumszárítót választ?
 
 ## Bevezető copy
 
-A vákuumszárító beruházásnál a rossz döntés gyakran abból jön, hogy csak a kamraméretet vagy az árat nézik. A jó irányhoz a faanyag, a szárítási cél, a kapacitás és az üzemeltetés együtt számít.
+A vákuumszárító beruházásnál a rossz döntés gyakran onnan ered, hogy csak a kamraméretet vagy az árat nézik. A jó irányhoz a faanyag, a szárítási cél, a kapacitás és az üzemeltethetőség együtt számít.
 
 ## Döntési tényezők
 
@@ -291,15 +293,15 @@ Repedés, vetemedés, szín, belső feszültség és feldolgozhatóság szempont
 
 ### Üzleti realitás
 
-Saját szárító akkor indokolt, ha a mennyiség, érték, időnyereség és minőségi kontroll együtt értelmezhető.
+Saját szárító akkor indokolt, ha a mennyiség, az érték, az időmegtakarítás és a minőségjavulás együtt értelmezhető.
 
 ## CTA
 
 Segítsenek tisztázni a szárítási feladatot
 
----
+\---
 
-# 7. MIBEN SEGÍT AZ ECOTEQ?
+# 7\. MIBEN SEGÍT AZ ECOTEQ?
 
 ## H2
 
@@ -307,9 +309,9 @@ Miben segít az ECOTEQ egy vákuumszárítási projektben?
 
 ## Copy
 
-Az ECOTEQ nem abból indul ki, hogy mekkora kamrát lehetne eladni. Először azt nézzük meg, milyen faanyagot kell szárítani, milyen méretekben, milyen induló és cél nedvességgel, milyen mennyiségben és milyen gyártási célra.
+Nem abból indul ki, hogy mekkora kamrát lehetne eladni. Először tisztázzuk, hogy milyen faanyagot kell szárítani, milyen induló és célnedvességgel, mekkora mennyiségben és milyen gyártási célra.
 
-A cél az, hogy a vákuumszárító ne önálló gépbeszerzés legyen, hanem a faipari gyártásba illeszkedő, reális technológiai döntés.
+közös célunk, hogy a vákuumszárító ne önálló gépbeszerzés legyen, hanem az Ön faipari gyártásába illeszkedő, reális technológiai fejlesztés.
 
 ## Értékpontok
 
@@ -321,25 +323,25 @@ Fafaj, vastagság, hossz, mennyiség és nedvességi cél alapján indul a javas
 
 Segítünk eldönteni, hogy vákuumszárítás reális irány-e, és milyen kapacitástartományt érdemes vizsgálni.
 
-### ISVE technológiai háttér
+### Közel 50 éves technológiai háttér
 
-Az ECOTEQ az ISVE technológiák magyarországi képviseletével dolgozik a faipari vákuumtechnológiai területen.
+Az ECOTEQ az ISVE vákuumtechnológiák magyarországi képviselőjként dolgozik a faipari vákuumtechnológiai területen.
 
-### Magyar projektkommunikáció
+### Közvetlen projektmenedzsment
 
-Az előkészítés, ajánlatkérés, egyeztetés és későbbi támogatás magyar szakmai kapcsolattal történik.
+Az előkészítés, ajánlatkérés, egyeztetés és későbbi támogatás saját projekt menedzserrel
 
 ### Üzleti realitás
 
-A beruházásnál a ciklusidőt, kapacitást, faanyagértéket, külső szárítási költséget és gyártási hatást együtt kell nézni.
+A beruházásnál a ciklusidőt, kapacitást, faanyagértéket, külső szárítási költséget és gyártási hatást együttesen vizsgáljuk.
 
 ## CTA
 
-Technológiai irányt kérek
+Technológiai javaslatot kérek
 
----
+\---
 
-# 8. KAPCSOLÓDÓ TECHNOLÓGIÁK ÉS RÉSZLETES SZAKMAI OLDALAK
+# 8\. KAPCSOLÓDÓ TECHNOLÓGIÁK ÉS RÉSZLETES SZAKMAI OLDALAK
 
 ## H2
 
@@ -373,32 +375,32 @@ Link: `https://vakuumszarito.hu`
 
 ## Másodlagos CTA
 
-Nem tudom, melyik irány kell
+Bizonytalan vagyok, hogy mire van szükségem
 
----
+\---
 
-# 9. PROJEKTINDÍTÁS / ELŐMINŐSÍTÉS
+# 9\. PROJEKTINDÍTÁS / ELŐMINŐSÍTÉS
 
 ## H2
 
-Küldje el az alapadatokat, és segítünk eldönteni, reális-e a vákuumszárító irány.
+Küldje el az alapadatokat, és segítünk eldönteni, reális-e a vákuumszárító technológia.
 
 ## Copy
 
-Nem kell kész műszaki specifikációval érkeznie. Első körben azt kell látni, milyen faanyagot, milyen méretben, milyen nedvességről milyen célra és milyen mennyiségben szeretne szárítani.
+Nem kell kész műszaki specifikációval érkeznie. Első körben tisztázzuk, hogy milyen faanyagot, milyen méretben, milyen nedvességről milyen célra és milyen mennyiségben szeretne szárítani.
 
 ## Bekért adatok
 
-- fafaj,
-- jellemző hosszúság,
-- jellemző vastagság,
-- induló nedvesség, ha ismert,
-- cél nedvesség,
-- heti vagy havi mennyiség,
-- saját gyártás vagy bérszárítás a cél,
-- rendelkezésre álló elektromos kapacitás,
-- telepítési hely,
-- van-e fotó, videó vagy meglévő layout.
+* fafaj,
+* jellemző hosszúság,
+* jellemző vastagság,
+* induló nedvesség, ha ismert,
+* cél nedvesség,
+* heti vagy havi mennyiség,
+* saját gyártás vagy bérszárítás a cél,
+* rendelkezésre álló elektromos kapacitás,
+* telepítési hely,
+* van-e fotó, videó vagy meglévő layout.
 
 ## CTA
 
@@ -406,11 +408,11 @@ Elküldöm a projekt adatait
 
 ## Microcopy
 
-A beérkező megkereséseket munkanapokon előszűrjük, és jellemzően 24 órán belül visszajelzünk a következő lépésről.
+A beérkező megkereséseket feldolgozzuk, és munkanapokon jellemzően 24 órán belül visszajelzünk a következő lépésről.
 
----
+\---
 
-# 10. GYAKORI KÉRDÉSEK
+# 10\. GYAKORI KÉRDÉSEK
 
 ## H2
 
@@ -440,9 +442,9 @@ Igen, de először a fafajt, méretet, mennyiséget, induló és cél nedvesség
 
 További kérdésem van
 
----
+\---
 
-# 11. ZÁRÓ CTA
+# 11\. ZÁRÓ CTA
 
 ## H2
 
@@ -450,13 +452,13 @@ Nem biztos benne, hogy vákuumszárító kell? Ez teljesen normális.
 
 ## Copy
 
-A vákuumszárításnál a jó döntés nem a kamramérettel kezdődik. Először azt kell tisztázni, milyen faanyagot kell szárítani, milyen méretben, milyen nedvességről, milyen célra és milyen mennyiségben.
+A vákuumszárításnál a jó döntés nem a géptípussal vagy a kamramérettel kezdődik. Először azt kell tisztázni, milyen faanyagot kell szárítani, milyen méretben, milyen nedvességről, milyen célra és milyen mennyiségben.
 
-Ha ezt leírja, segítünk eldönteni, hogy a vákuumszárítás reális irány-e, és milyen kapacitástartományt érdemes vizsgálni.
+Ha leírja elképzelését, segítünk eldönteni, hogy a vákuumszárítás reális irány-e, és milyen technológiát és kapacitást érdemes vizsgálni.
 
 ## CTA
 
-Technológiai irányt kérek
+Technológiai javaslatot kérek
 
 ## Másodlagos CTA
 
@@ -464,9 +466,9 @@ Részletes vákuumszárító oldal megnyitása
 
 ## Microcopy
 
-Az első lépés nem kötelezettségvállalás, hanem szakmai előminősítés.
+Az első lépés nem egy ajánlat, hanem a szakmai egyeztetés.
 
----
+\---
 
 ## Claude Code / Astro adatjavaslat
 
@@ -485,15 +487,16 @@ export const vakuumszaritasGateway = {
     label: "Részletes vákuumszárító oldal megnyitása",
     href: "https://vakuumszarito.hu",
   },
-  relatedTechnologies: [
+  relatedTechnologies: \[
     { label: "Vákuumimpregnálás", href: "/technologiak/vakuumimpregnalas/" },
     { label: "Anyagmozgatás és rendszerelemek", href: "/technologiak/anyagmozgas-rendszerelemek/" },
   ],
 };
 ```
 
----
+\---
 
 ## QA megjegyzés
 
 Ez az oldal ne ígérjen konkrét ciklusidőt, repedésmentességet vagy garantált minőségi eredményt validáció nélkül. A cél az orientáció és a vakuumszarito.hu felé történő szakmai továbbvezetés.
+

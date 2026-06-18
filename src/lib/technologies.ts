@@ -547,10 +547,10 @@ const vakuumszaritas: TechnologyGateway = {
   hero: {
     eyebrow: "ECOTEQ technológiai kapu · Vákuumszárítás",
     h1: "Vákuumszárítás faipari üzemeknek, ahol a minőség és az idő is számít",
-    lead: "A vákuumszárítás akkor lehet jó irány, ha a faanyag szárításánál fontos a kontrolláltabb folyamat, a tervezhetőbb gyártás, a rövidebb ciklusidő és a minőségi kockázatok csökkentése. Az ECOTEQ segít eldönteni, hogy az Ön faanyagára, mennyiségére és gyártási céljára reális-e a vákuumszárító technológia.",
+    lead: "Az ECOTEQ segít eldönteni, hogy az Ön faanyagára, mennyiségére és gyártási céljára reális-e a vákuumszárító technológia.",
     secondaryCta: { label: "Részletes vákuumszárító oldal", href: "https://vakuumszarito.hu" },
     microcopy: "Nem kell kész gépspecifikációval érkeznie. Elég, ha leírja a fafajt, vastagságot, hosszúságot, induló és cél nedvességet, valamint a havi vagy heti szárítási igényt.",
-    trustPills: ["Faipari vákuumtechnológiai előminősítés", "ISVE technológiai háttér", "Magyar szakértői támogatás", "Kapcsolódó spoke: vakuumszarito.hu"],
+    trustPills: ["Kontrollált folyamat", "Tervezhető gyártás", "Rövidebb ciklusidő", "Csökkenő selejt"],
     image: "/ds/photos/vacuum-kiln.png",
     imageAlt: "Vákuumszárító berendezés",
   },

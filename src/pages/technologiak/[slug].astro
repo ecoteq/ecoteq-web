@@ -75,8 +75,7 @@ function factorIcon(title: string): string {
         <Button href={QUOTE.href}>{QUOTE.label}</Button>
         {t.hero.secondaryCta && <Button variant="outline-light" href={t.hero.secondaryCta.href}>{t.hero.secondaryCta.label}</Button>}
       </div>
-      <p class="microcopy">{t.hero.microcopy}</p>
-      <ul class="pills">{t.hero.trustPills.map((p) => <li>{p}</li>)}</ul>
+      <ul class="herotrust">{t.hero.trustPills.map((p) => <li><span class="r" aria-hidden="true"></span>{p}</li>)}</ul>
     </div>
   </section>
 
@@ -232,9 +231,10 @@ function factorIcon(title: string): string {
   h1 { color: var(--ecoteq-white); font-size: clamp(1.9rem, 1.2rem + 2.6vw, 3.25rem); line-height: var(--lh-tight); letter-spacing: var(--ls-display); max-width: 20ch; margin: 0 0 var(--space-4); }
   .lead { color: rgba(255,255,255,0.86); font-size: var(--fs-lg); line-height: var(--lh-body); max-width: 62ch; margin: 0 0 var(--space-5); }
   .ctas { display: flex; flex-wrap: wrap; gap: var(--space-4); }
-  .microcopy { color: rgba(255,255,255,0.66); font-size: var(--fs-sm); max-width: 56ch; margin: var(--space-4) 0 var(--space-5); }
-  .pills { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
-  .pills li { font-size: var(--fs-xs); font-weight: var(--fw-semibold); color: #fff; padding: 6px 13px; border-radius: var(--radius-pill); background: rgba(255,255,255,0.08); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.28); }
+  .herotrust { list-style: none; margin: var(--space-7) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-6); }
+  .herotrust li { display: inline-flex; align-items: center; gap: 10px; font-size: var(--fs-sm); font-weight: var(--fw-medium); color: rgba(255, 255, 255, 0.9); }
+  .herotrust .r { width: 3px; height: 18px; border-radius: var(--radius-pill); background: var(--ecoteq-green); flex: none; }
+  @media (min-width: 1024px) { .herotrust { padding-top: var(--space-5); border-top: 1px solid rgba(255, 255, 255, 0.16); } }
 
   /* Shared grids */
   .grid { margin-top: var(--space-7); display: grid; gap: var(--space-4); }
