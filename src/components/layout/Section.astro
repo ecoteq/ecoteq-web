@@ -19,5 +19,8 @@ const { id, surface = 'white', class: className } = Astro.props;
   .section[data-surface='white'] { background: var(--color-bg); }
   .section[data-surface='subtle'] { background: var(--color-bg-subtle); }
   .section[data-surface='navy'] { background: var(--ecoteq-navy); color: var(--color-text-inverse); }
+  /* Dark mode: the bright brand navy reads as a glaring blue band on a near-black
+     canvas. Use a calm, desaturated deep navy and flip text back to light. */
+  :global(html[data-mode='dark']) .section[data-surface='navy'] { background: var(--navy-800); color: var(--color-text); }
   .container { max-width: var(--container-max); margin-inline: auto; padding-inline: clamp(16px, 4vw, 40px); }
 </style>

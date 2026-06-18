@@ -73,6 +73,8 @@ const year = 2026;
 
 <style>
   .footer { background: var(--navy-900); color: rgba(255, 255, 255, 0.72); }
+  /* Dark mode: match the side rail's deep band instead of the lighter navy. */
+  :global(html[data-mode='dark']) .footer { background: var(--color-surface-dark); }
   .inner { max-width: var(--container-max); margin-inline: auto; padding: var(--space-9) clamp(16px, 4vw, 40px) var(--space-7); }
 
   .cols { display: grid; gap: var(--space-8) var(--space-5); grid-template-columns: repeat(2, 1fr); }
