@@ -594,15 +594,15 @@ const vakuumszaritas: TechnologyGateway = {
     note: "Ha nem biztos benne, hogy az Ön faanyaga vagy gyártási helyzete ide tartozik, elég, ha elküldi az alapadatokat. Segítünk eldönteni, érdemes-e vákuumszárításban gondolkodni.",
   },
   process: {
-    h2: "Hogyan épül fel egy vákuumszárítási rendszer?",
-    intro: "A vákuumszárító kiválasztása nem csak kamraméret kérdése. A rakodás, energiaellátás, kondenzvíz-kezelés, vezérlés, telepítési hely és későbbi üzemeltetés ugyanúgy része a döntésnek.",
+    h2: "Egy vákuumszárító rendszer nem csak a kamráról szól",
+    intro: "A jó döntéshez nem elég azt nézni, mekkora kamra fér el vagy mennyibe kerül a gép. A faanyag, a rakodás, az energiaellátás, a vezérlés, a telepítési hely és a későbbi üzemeltetés együtt határozza meg, hogy a rendszer valóban használható lesz-e a mindennapi gyártásban.",
     steps: [
       { title: "Faanyag előminősítése", text: "Fafaj, vastagság, hosszúság, induló nedvesség, cél nedvesség és mennyiség tisztázása." },
-      { title: "Kamraméret és kapacitás meghatározása", text: "A szükséges nettó térfogatot és hasznos hosszúságot a tipikus anyagméretekhez kell igazítani." },
-      { title: "Rakodási és telepítési logika", text: "A faanyag mozgatása, raklapozása, betöltése és kitárolása meghatározza a gyakorlati használhatóságot." },
-      { title: "Vákuumszárítás", text: "A fő technológiai folyamat kontrollált körülmények között történik, a választott géptől és beállításoktól függően." },
-      { title: "Vezérlés és üzemeltetés", text: "Fontos a kezelhetőség, programozhatóság, mérés és a kezelői rutin." },
-      { title: "Szerviz, alkatrész és támogatás", text: "A hosszú távú működéshez szakmai támogatás, alkatrészellátás és szervizháttér is szükséges." },
+      { title: "Kamraméret és kapacitás meghatározása", text: "A szükséges nettó térfogatot, hasznos hosszúságot és kapacitást a tipikus anyagméretekhez és gyártási ritmushoz kell igazítani." },
+      { title: "Rakodási és telepítési logika", text: "A faanyag mozgatása, raklapozása, betöltése, kitárolása és a kezelői hozzáférés meghatározza a gyakorlati használhatóságot." },
+      { title: "Vákuumszárítási technológia", text: "A szárítási folyamat a választott géptől, programtól, faanyagtól, nedvességtől és minőségi elvárástól függ." },
+      { title: "Vezérlés és üzemeltetés", text: "Fontos a kezelhetőség, programozhatóság, mérés, dokumentálhatóság és a kezelői rutin." },
+      { title: "Szerviz, alkatrész és támogatás", text: "A hosszú távú működéshez nemcsak gép kell, hanem elérhető szakmai háttér, alkatrészellátás és támogatás is." },
     ],
   },
   decisionFactors: {
