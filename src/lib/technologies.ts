@@ -31,7 +31,7 @@ export type TechnologyGateway = {
   related: { h2: string; intro: string; links: RelatedLink[]; spoke?: RelatedLink };
   preQual: { h2: string; body: string; fields: string[] };
   faq: { h2: string; items: { q: string; a: string }[] };
-  finalCta: { h2: string; body: string[]; secondaryCta?: Cta };
+  finalCta: { h2: string; body: string[]; secondaryCta?: Cta; cta?: string; microcopy?: string; checklist?: { title: string; items: string[] }[] };
 };
 
 const ipariDaralas: TechnologyGateway = {
@@ -662,12 +662,18 @@ const vakuumszaritas: TechnologyGateway = {
     ],
   },
   finalCta: {
-    h2: "Nem biztos benne, hogy vákuumszárító kell? Ez teljesen normális",
+    h2: "Nem kell pontos géptípust választania. Elég, ha leírja, mit szeretne szárítani",
     body: [
-      "A vákuumszárításnál a jó döntés nem a géptípussal vagy a kamramérettel kezdődik. Először azt kell tisztázni, milyen faanyagot kell szárítani, milyen méretben, milyen nedvességről, milyen célra és milyen mennyiségben.",
-      "Ha leírja az elképzelését, segítünk eldönteni, hogy a vákuumszárítás reális megoldás-e, és milyen technológiát és kapacitást érdemes vizsgálni.",
+      "A vákuumszárító kiválasztása nem a kamraméretnél kezdődik. Először azt kell látni, milyen faanyaggal dolgozik, milyen nedvességről hová kell eljutni, mekkora mennyiségről van szó, és mi a gyártási cél.",
+      "Ezek alapján segítünk eldönteni, hogy a vákuumszárítás reális irány-e, és ha igen, milyen méretet, kapacitást vagy konfigurációt érdemes vizsgálni.",
     ],
-    secondaryCta: { label: "Megnézem a részletes vákuumszárító oldalt", href: "https://vakuumszarito.hu" },
+    cta: "Leírom az anyagot és a célt",
+    microcopy: "Nem kell kész műszaki specifikáció. Munkanapokon előszűrjük a megkeresést, és visszajelzünk, milyen irányt érdemes tovább vizsgálni.",
+    checklist: [
+      { title: "Faanyag és méretek", items: ["fafaj", "jellemző hosszúság", "vastagság"] },
+      { title: "Nedvesség és mennyiség", items: ["induló nedvesség", "cél nedvesség", "heti vagy havi mennyiség"] },
+      { title: "Cél és körülmények", items: ["saját gyártás vagy bérszárítás", "elektromos kapacitás", "telepítési hely", "fotó vagy meglévő layout"] },
+    ],
   },
 };
 

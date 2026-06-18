@@ -217,17 +217,29 @@ function factorIcon(title: string): string {
   </Section>
 
   <!-- 11. ZÁRÓ CTA -->
-  <section class="closing">
-    <div class="closing-inner">
-      <h2>{t.finalCta.h2}</h2>
-      {t.finalCta.body.map((p) => <p>{p}</p>)}
-      <div class="ctas">
-        <Button href={QUOTE.href}>{QUOTE.label}</Button>
-        {t.finalCta.secondaryCta && <Button variant="outline-light" href={t.finalCta.secondaryCta.href}>{t.finalCta.secondaryCta.label}</Button>}
+  <Section surface="subtle">
+    <div class="closing-panel">
+      <div class="closing-left">
+        <h2>{t.finalCta.h2}</h2>
+        {t.finalCta.body.map((p) => <p>{p}</p>)}
+        <Button class="closing-cta" href={QUOTE.href}>{t.finalCta.cta ?? QUOTE.label}</Button>
+        {t.finalCta.microcopy && <p class="micro">{t.finalCta.microcopy}</p>}
       </div>
-      <p class="micro">Az első lépés nem kötelezettségvállalás, hanem szakmai előminősítés.</p>
+      {t.finalCta.checklist && (
+        <aside class="closing-right">
+          <p class="cl-lbl">Hasznos, ha megadja</p>
+          <ul class="cl-groups">
+            {t.finalCta.checklist.map((g) => (
+              <li>
+                <h3>{g.title}</h3>
+                <p>{g.items.join(', ')}</p>
+              </li>
+            ))}
+          </ul>
+        </aside>
+      )}
     </div>
-  </section>
+  </Section>
 </SiteLayout>
 
 <style>
@@ -337,12 +349,18 @@ function factorIcon(title: string): string {
   details p { margin: 0; padding: 0 0 var(--space-5); font-size: var(--fs-body); color: var(--color-text-secondary); line-height: var(--lh-body); max-width: 70ch; }
 
   /* Closing */
-  .closing { background: var(--ecoteq-navy); padding-block: clamp(var(--space-8), 8vw, var(--space-10)); }
-  .closing-inner { max-width: 760px; margin-inline: auto; padding-inline: clamp(16px, 4vw, 40px); text-align: center; display: flex; flex-direction: column; align-items: center; gap: var(--space-4); }
-  .closing h2 { margin: 0; font-family: var(--font-display); font-weight: var(--fw-extrabold); font-size: var(--fs-h2); line-height: var(--lh-heading); letter-spacing: var(--ls-heading); color: var(--ecoteq-white); max-width: 22ch; }
-  .closing p { margin: 0; font-size: var(--fs-lg); line-height: var(--lh-body); color: rgba(255, 255, 255, 0.8); }
-  .closing .micro { color: rgba(255, 255, 255, 0.5); }
-  .closing .ctas { justify-content: center; margin-top: var(--space-3); }
+  .closing-panel { background: var(--ecoteq-navy); border-radius: var(--radius-xl); padding: clamp(28px, 4vw, 60px); display: grid; gap: var(--space-7); grid-template-columns: 1fr; }
+  @media (min-width: 880px) { .closing-panel { grid-template-columns: 1.15fr 0.85fr; gap: var(--space-8); align-items: start; } }
+  .closing-left h2 { margin: 0 0 var(--space-5); font-family: var(--font-display); font-weight: var(--fw-extrabold); font-size: clamp(1.55rem, 1.1rem + 1.5vw, 2.15rem); line-height: var(--lh-tight); letter-spacing: var(--ls-display); color: var(--ecoteq-white); max-width: 24ch; }
+  .closing-left > p { margin: 0 0 var(--space-4); font-size: var(--fs-lg); line-height: var(--lh-body); color: rgba(255,255,255,0.82); max-width: 58ch; }
+  .closing-cta { margin-top: var(--space-3); }
+  .closing-left .micro { margin: var(--space-4) 0 0; font-size: var(--fs-sm); line-height: var(--lh-snug); color: rgba(255,255,255,0.6); max-width: 54ch; }
+  .closing-right { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius-lg); padding: var(--space-6); }
+  .cl-lbl { margin: 0 0 var(--space-5); font-size: var(--fs-xs); font-weight: var(--fw-bold); letter-spacing: var(--ls-overline); text-transform: uppercase; color: var(--ecoteq-green); }
+  .cl-groups { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-5); }
+  .cl-groups li { padding-left: var(--space-4); border-left: 2px solid var(--ecoteq-green); }
+  .cl-groups h3 { margin: 0 0 3px; font-size: var(--fs-sm); font-weight: var(--fw-bold); color: #fff; }
+  .cl-groups li p { margin: 0; font-size: var(--fs-sm); color: rgba(255,255,255,0.68); line-height: var(--lh-snug); }
 
   @media (prefers-reduced-motion: reduce) {
     .rel, summary :global(.icon) { transition: none; }
