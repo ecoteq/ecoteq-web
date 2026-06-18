@@ -2,7 +2,7 @@
 
 export const CONTACT = {
   company: 'ECOTEQ Kft.',
-  email: 'info@ecoteq.hu',
+  email: 'sales@ecoteq.hu',
   phone: '+36 1 430-1556',
   phoneHref: 'tel:+3614301556',
   address: '1037 Budapest, Csillaghegyi út 19–21.',

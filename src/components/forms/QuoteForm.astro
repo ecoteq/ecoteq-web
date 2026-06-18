@@ -38,11 +38,17 @@ const { redirect, tech, techLabel, source, submitLabel = 'Elküldöm az alapadat
     <Input label="E-mail" name="email" type="email" required />
   </div>
   <div class="row2">
+    <Input label="Cégnév" name="ceg" />
     <Input label="Telefonszám" name="telefon" type="tel" />
-    <Input label="Körülbelüli mennyiség" name="mennyiseg" placeholder="pl. 2 t/nap" />
   </div>
+  <Input label="Körülbelüli mennyiség" name="mennyiseg" placeholder="pl. 2 t/nap" />
   <Input label="Milyen anyagot kell kezelni?" name="anyag" required placeholder="pl. faforgács, raklap, nedves apríték" />
   <Input label="Mi a cél?" name="cel" required placeholder="pl. brikett, térfogatcsökkentés, szárítás" />
+
+  <div class="field">
+    <label class="field-label" for="qf-megjegyzes">Üzenet</label>
+    <textarea id="qf-megjegyzes" name="megjegyzes" rows="3" placeholder="Bármi, ami segít a feladat pontosabb megértésében (opcionális)"></textarea>
+  </div>
 
   <label class="consent">
     <input type="checkbox" name="consent" required />
@@ -97,12 +103,12 @@ const { redirect, tech, techLabel, source, submitLabel = 'Elküldöm az alapadat
           setMsg('Köszönjük! Munkanapokon előszűrjük a feladatot, és jellemzően 24 órán belül visszajelzünk.', 'success');
           form.reset();
         } else if (data.error === 'not_configured') {
-          setMsg('Az űrlap e-mail háttere még beállítás alatt — kérjük, írjon közvetlenül: info@ecoteq.hu', 'error');
+          setMsg('Az űrlap e-mail háttere még beállítás alatt — kérjük, írjon közvetlenül: sales@ecoteq.hu', 'error');
         } else {
-          setMsg('Hiba történt a küldéskor. Kérjük, próbálja újra, vagy írjon: info@ecoteq.hu', 'error');
+          setMsg('Hiba történt a küldéskor. Kérjük, próbálja újra, vagy írjon: sales@ecoteq.hu', 'error');
         }
       } catch {
-        setMsg('Hálózati hiba. Kérjük, próbálja újra, vagy írjon: info@ecoteq.hu', 'error');
+        setMsg('Hálózati hiba. Kérjük, próbálja újra, vagy írjon: sales@ecoteq.hu', 'error');
       } finally {
         if (submit) submit.disabled = false;
       }
@@ -122,6 +128,25 @@ const { redirect, tech, techLabel, source, submitLabel = 'Elküldöm az alapadat
     gap: var(--space-4);
   }
   .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field-label { font-size: var(--fs-sm); font-weight: var(--fw-semibold); color: var(--ecoteq-navy); }
+  textarea {
+    width: 100%;
+    box-sizing: border-box;
+    font-family: var(--font-sans);
+    font-size: 15px;
+    color: var(--ecoteq-navy);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 12px 14px;
+    resize: vertical;
+    transition: border-color var(--dur-base) var(--ease-standard), box-shadow var(--dur-base) var(--ease-standard);
+  }
+  textarea::placeholder { color: var(--color-text-muted); }
+  textarea:focus { outline: none; border-color: var(--color-accent); box-shadow: 0 0 0 3px var(--color-accent-ring); }
+
   .consent { display: flex; gap: 10px; align-items: flex-start; font-size: var(--fs-sm); line-height: var(--lh-body); color: var(--color-text-secondary); cursor: pointer; }
   .consent input { margin-top: 3px; flex: none; width: 16px; height: 16px; accent-color: var(--color-accent); cursor: pointer; }
   .consent a { color: var(--color-accent-text); font-weight: var(--fw-semibold); }
@@ -150,4 +175,6 @@ const { redirect, tech, techLabel, source, submitLabel = 'Elküldöm az alapadat
   .form-msg[data-state='success'] { color: var(--green-700); font-weight: var(--fw-semibold); }
   .form-msg[data-state='error'] { color: var(--color-danger); }
   .form-msg[data-state='pending'] { color: var(--color-text-secondary); }
+
+  @media (prefers-reduced-motion: reduce) { textarea { transition: none; } }
 </style>

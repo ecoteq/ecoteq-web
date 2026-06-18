@@ -16,7 +16,7 @@ Az Ön személyes adatainak kezelője a weboldal üzemeltetője:
 - Székhely: 1037 Budapest, Csillaghegyi út 19–21.
 - Cégjegyzékszám: 01-09-890953
 - Adószám: 14145977-2-41
-- E-mail: sales@ecoteq.hu
+- E-mail: info@ecoteq.hu
 - Telefon: +36 (1) 430-1556
 
 Adatvédelmi kérdéseivel a fenti elérhetőségeken fordulhat hozzánk.
@@ -115,7 +115,7 @@ adatátvitel titkosított (HTTPS) csatornán történik.
 - élni az adathordozhatóság jogával;
 - a hozzájárulását bármikor visszavonni, ez a visszavonás előtti adatkezelés jogszerűségét nem érinti.
 
-Kérelmét a sales@ecoteq.hu címen nyújthatja be; arra legkésőbb 30 napon belül válaszolunk.
+Kérelmét a info@ecoteq.hu címen nyújthatja be; arra legkésőbb 30 napon belül válaszolunk.
 
 ## 8. Jogorvoslat
 

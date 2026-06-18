@@ -19,7 +19,7 @@ Az ecoteq.hu weboldal üzemeltetője és a rajta közzétett tartalom kiadója:
 | Adószám | 14145977-2-41 |
 | Közösségi adószám | HU14145977 |
 | Képviselő (ügyvezető) | Csizmadia Csaba |
-| E-mail | sales@ecoteq.hu |
+| E-mail | info@ecoteq.hu |
 | Telefon | +36 (1) 430-1556 |
 
 ## Tárhelyszolgáltató

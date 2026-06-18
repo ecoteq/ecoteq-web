@@ -45,7 +45,7 @@ export const POST: APIRoute = async ({ request }) => {
   }
 
   const apiKey = process.env.RESEND_API_KEY;
-  const to = process.env.CONTACT_TO_EMAIL || 'info@ecoteq.hu';
+  const to = process.env.CONTACT_TO_EMAIL || 'sales@ecoteq.hu';
   const from = process.env.CONTACT_FROM_EMAIL;
 
   // Email backend not configured yet → tell the client to fall back gracefully.

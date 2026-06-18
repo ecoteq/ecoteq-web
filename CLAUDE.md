@@ -67,5 +67,5 @@ technology selector → problem-based entry → systems-thinking → technology 
 references → manufacturers → process ("hogyan indul egy projekt") → why ECOTEQ →
 knowledge → pre-qualification form → closing CTA → footer.
 
-Contact: ECOTEQ Kft., 1037 Budapest, Csillaghegyi út 19–21. · info@ecoteq.hu ·
+Contact: ECOTEQ Kft., 1037 Budapest, Csillaghegyi út 19–21. · sales@ecoteq.hu ·
 +36 1 430-1556.
