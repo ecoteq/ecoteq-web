@@ -75,7 +75,15 @@ function factorIcon(title: string): string {
         <Button href={QUOTE.href}>{QUOTE.label}</Button>
         {t.hero.secondaryCta && <Button variant="outline-light" href={t.hero.secondaryCta.href}>{t.hero.secondaryCta.label}</Button>}
       </div>
-      <ul class="herotrust">{t.hero.trustPills.map((p) => <li><span class="r" aria-hidden="true"></span>{p}</li>)}</ul>
+      <ul class="herotrust">{t.hero.trustPills.map((p) => {
+        const [lead, ...rest] = p.split(' ');
+        return (
+          <li>
+            <span class="r" aria-hidden="true"></span>
+            <span class="t"><span class="lead">{lead}</span>{rest.length > 0 && <span class="sub">{rest.join(' ')}</span>}</span>
+          </li>
+        );
+      })}</ul>
     </div>
   </section>
 
@@ -218,7 +226,7 @@ function factorIcon(title: string): string {
 
 <style>
   /* HERO */
-  .hero { position: relative; margin-top: calc(-1 * var(--header-h)); min-height: min(76svh, 680px); display: flex; align-items: center; overflow: hidden; background: var(--ecoteq-navy); }
+  .hero { position: relative; margin-top: calc(-1 * var(--header-h)); min-height: min(78svh, 760px); display: flex; align-items: center; overflow: hidden; background: var(--ecoteq-navy); }
   .media { position: absolute; inset: 0; z-index: 0; }
   .media img { width: 100%; height: 100%; object-fit: cover; }
   .wash { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(28,52,73,0.95) 0%, rgba(28,52,73,0.72) 46%, rgba(28,52,73,0.28) 100%), linear-gradient(0deg, rgba(15,32,48,0.6) 0%, rgba(15,32,48,0) 50%); }
@@ -231,9 +239,12 @@ function factorIcon(title: string): string {
   h1 { color: var(--ecoteq-white); font-size: clamp(1.9rem, 1.2rem + 2.6vw, 3.25rem); line-height: var(--lh-tight); letter-spacing: var(--ls-display); max-width: 20ch; margin: 0 0 var(--space-4); }
   .lead { color: rgba(255,255,255,0.86); font-size: var(--fs-lg); line-height: var(--lh-body); max-width: 62ch; margin: 0 0 var(--space-5); }
   .ctas { display: flex; flex-wrap: wrap; gap: var(--space-4); }
-  .herotrust { list-style: none; margin: var(--space-7) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-6); }
-  .herotrust li { display: inline-flex; align-items: center; gap: 10px; font-size: var(--fs-sm); font-weight: var(--fw-medium); color: rgba(255, 255, 255, 0.9); }
-  .herotrust .r { width: 3px; height: 18px; border-radius: var(--radius-pill); background: var(--ecoteq-green); flex: none; }
+  .herotrust { list-style: none; margin: var(--space-7) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-5) var(--space-7); }
+  .herotrust li { display: flex; align-items: stretch; gap: 12px; }
+  .herotrust .r { width: 3px; align-self: stretch; min-height: 40px; border-radius: var(--radius-pill); background: var(--ecoteq-green); flex: none; }
+  .herotrust .t { display: flex; flex-direction: column; gap: 4px; }
+  .herotrust .lead { font-family: var(--font-display); font-weight: var(--fw-extrabold); font-size: var(--fs-lg); letter-spacing: var(--ls-overline); text-transform: uppercase; color: var(--ecoteq-white); line-height: 1; }
+  .herotrust .sub { font-size: var(--fs-sm); color: rgba(255, 255, 255, 0.7); line-height: var(--lh-snug); }
   @media (min-width: 1024px) { .herotrust { padding-top: var(--space-5); border-top: 1px solid rgba(255, 255, 255, 0.16); } }
 
   /* Shared grids */
@@ -259,8 +270,8 @@ function factorIcon(title: string): string {
   .matrix { margin-top: var(--space-7); display: grid; gap: var(--space-5); grid-template-columns: 1fr; }
   @media (min-width: 720px) { .matrix { grid-template-columns: repeat(3, 1fr); } }
   .matrix h3 { margin: 0 0 var(--space-3); padding-bottom: var(--space-3); border-bottom: 1px solid var(--color-border); font-size: var(--fs-xs); font-weight: var(--fw-bold); letter-spacing: var(--ls-overline); text-transform: uppercase; color: var(--color-accent-text); }
-  .matrix ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
-  .matrix li { font-size: var(--fs-sm); color: var(--color-text-secondary); }
+  .matrix ul { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+  .matrix li { font-size: var(--fs-sm); color: var(--color-text-secondary); background: var(--color-bg-subtle); border: 1px solid var(--color-border); border-radius: var(--radius-pill); padding: 6px 13px; }
 
   /* Steps */
   .steps { margin-top: var(--space-7); padding: 0; list-style: none; display: grid; gap: var(--space-5); grid-template-columns: 1fr; }

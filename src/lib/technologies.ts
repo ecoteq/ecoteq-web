@@ -37,7 +37,7 @@ const ipariDaralas: TechnologyGateway = {
   metaDescription:
     'Ipari darálás fa, raklap, műanyag, biomassza és vegyes ipari hulladék előkészítésére. Az ECOTEQ segít kiválasztani a reális darálási technológiai irányt, rendszerfelépítést és következő lépést.',
   hero: {
-    eyebrow: 'ECOTEQ technológiai kapu · Ipari darálás',
+    eyebrow: 'ECOTEQ technológiák · Ipari darálás',
     h1: 'Ipari darálás hulladék és mellékanyag előkészítésére',
     lead: 'Az ipari darálás akkor jó irány, ha a nagyméretű, nehezen kezelhető vagy változó összetételű anyagból kisebb, rendezettebb és továbbfeldolgozásra alkalmas frakciót kell készíteni. Az ECOTEQ abban segít, hogy ne csak darálót válasszon, hanem az anyaghoz, mennyiséghez és célhoz illő technológiai irányt.',
     secondaryCta: { label: 'Részletes ipari daráló oldal', href: 'https://iparidaralo.hu' },
@@ -46,7 +46,6 @@ const ipariDaralas: TechnologyGateway = {
       'Anyagalapú előminősítés',
       'Darálótól a komplett anyagáramig',
       'Fa, raklap, műanyag, biomassza és ipari hulladék',
-      'Kapcsolódó spoke: iparidaralo.hu',
     ],
     image: '/ds/photos/shredder-ms40120-hero.jpg',
     imageAlt: 'Ipari daráló gép működés közben',
@@ -182,7 +181,7 @@ const brikettalas: TechnologyGateway = {
   metaTitle: "Brikettálási rendszerek faipari és biomassza mellékanyagokhoz | ECOTEQ",
   metaDescription: "Brikettálás forgács, por, fűrészpor, apríték és biomassza tömörítésére. Az ECOTEQ segít kiválasztani, hogy hidraulikus vagy mechanikus brikettáló rendszer lehet-e reális az Ön anyagára, mennyiségére és céljára.",
   hero: {
-    eyebrow: "ECOTEQ technológiai kapu · Brikettálás",
+    eyebrow: "ECOTEQ technológiák · Brikettálás",
     h1: "Brikettálási rendszerek faipari és biomassza mellékanyagokhoz",
     lead: "A brikettálás akkor lehet jó irány, ha a laza, száraz vagy megfelelően előkészíthető mellékanyagból kezelhetőbb, tárolhatóbb vagy értékesíthető brikettet szeretne előállítani. Az ECOTEQ segít eldönteni, hogy az adott anyaghoz, mennyiséghez és üzemelési célhoz milyen brikettálási irány lehet reális.",
     secondaryCta: { label: "Részletes brikettáló oldal", href: "https://brikettalo.hu" },
@@ -191,7 +190,6 @@ const brikettalas: TechnologyGateway = {
       "Anyagalapú előminősítés",
       "Hidraulikus és mechanikus irány tisztázása",
       "Darálás, szárítás, adagolás és brikettálás rendszerben",
-      "Kapcsolódó spoke: brikettalo.hu",
     ],
     image: "/ds/photos/briquetting-line.png",
     imageAlt: "Brikettáló gépsor működés közben",
@@ -311,7 +309,7 @@ const pelletalas: TechnologyGateway = {
   metaTitle: "Pelletálási rendszerek biomassza és faipari alapanyagokhoz | ECOTEQ",
   metaDescription: "Pelletálás biomassza, faipari mellékanyag és előkészített alapanyag tömörítésére. Az ECOTEQ segít eldönteni, hogy az adott anyag, nedvesség, mennyiség és cél alapján reális-e a pelletálási technológiai irány.",
   hero: {
-    eyebrow: "ECOTEQ technológiai kapu · Pelletálás",
+    eyebrow: "ECOTEQ technológiák · Pelletálás",
     h1: "Pelletálási rendszerek biomassza és faipari alapanyagokhoz",
     lead: "A pelletálás akkor lehet jó irány, ha az előkészített alapanyagból egységes, jól adagolható és jól kezelhető pellet formájú végterméket szeretne előállítani. Az ECOTEQ abban segít, hogy az anyag, nedvesség, szemcseméret, mennyiség és cél alapján kiderüljön: reális-e a pelletálás, és milyen előkészítő rendszer kell hozzá.",
     secondaryCta: { label: "Kapcsolódó technológiák", href: "/#technologiak" },
@@ -428,7 +426,7 @@ const biomasszaSzaritas: TechnologyGateway = {
   metaTitle: "Biomassza-szárítás ipari feldolgozáshoz és energetikai felhasználáshoz | ECOTEQ",
   metaDescription: "Biomassza-szárítás nedves apríték, fűrészpor, mezőgazdasági mellékanyag és ipari biomassza előkészítésére. Az ECOTEQ segít kiválasztani a reális szárítási technológiai irányt.",
   hero: {
-    eyebrow: "ECOTEQ technológiai kapu · Biomassza-szárítás",
+    eyebrow: "ECOTEQ technológiák · Biomassza-szárítás",
     h1: "Biomassza-szárítás ipari feldolgozáshoz és energetikai felhasználáshoz",
     lead: "A nedves biomassza sokszor nehezen tárolható, gyengébb minőségű, kiszámíthatatlanabb és nem mindig alkalmas közvetlen továbbfeldolgozásra. Az ECOTEQ segít eldönteni, hogy az adott anyaghoz, nedvességtartalomhoz, mennyiséghez és célhoz milyen szárítási irány lehet reális.",
     secondaryCta: { label: "Kapcsolódó technológiák megtekintése", href: "/#technologiak" },
@@ -545,33 +543,33 @@ const vakuumszaritas: TechnologyGateway = {
   metaTitle: "Vákuumszárítás faipari üzemeknek | ECOTEQ",
   metaDescription: "Vákuumszárítás faanyag kontrollált, gyorsabb és kiszámíthatóbb szárítására. Az ECOTEQ segít eldönteni, hogy az adott faanyaghoz, mennyiséghez, nedvességhez és gyártási célhoz reális-e a vákuumszárító technológia.",
   hero: {
-    eyebrow: "ECOTEQ technológiai kapu · Vákuumszárítás",
+    eyebrow: "ECOTEQ technológiák · Vákuumszárítás",
     h1: "Vákuumszárítás faipari üzemeknek, ahol a minőség és az idő is számít",
     lead: "Az ECOTEQ segít eldönteni, hogy az Ön faanyagára, mennyiségére és gyártási céljára reális-e a vákuumszárító technológia.",
-    secondaryCta: { label: "Részletes vákuumszárító oldal", href: "https://vakuumszarito.hu" },
+    secondaryCta: { label: "Részletes vákuumszárító oldal megnyitása", href: "https://vakuumszarito.hu" },
     microcopy: "Nem kell kész gépspecifikációval érkeznie. Elég, ha leírja a fafajt, vastagságot, hosszúságot, induló és cél nedvességet, valamint a havi vagy heti szárítási igényt.",
-    trustPills: ["Kontrollált folyamat", "Tervezhető gyártás", "Rövidebb ciklusidő", "Csökkenő selejt"],
+    trustPills: ["Kontrollált folyamat", "Tervezhető gyártás", "Rövidebb ciklusidő", "Kevesebb selejt"],
     image: "/ds/photos/vacuum-kiln.png",
     imageAlt: "Vákuumszárító berendezés",
   },
   fit: {
-    h2: "Mikor lehet jó irány a vákuumszárítás?",
+    h2: "Mikor jó irány a vákuumszárítás?",
     intro: "A vákuumszárítás nem minden faipari üzemnek ugyanazt jelenti. Más a helyzet egy asztalosüzemnél, más egy fűrészüzemnél, más értékes keményfa esetén, és más akkor, ha a cél saját gyártáshoz szükséges gyorsabb, kiszámíthatóbb alapanyag-előkészítés.",
     items: [
-      { title: "Ha a szárítási idő túl hosszú vagy kiszámíthatatlan", text: "A vákuumszárítás segíthet rövidebb és jobban tervezhető ciklusokban gondolkodni, ha az anyag és a kapacitás ezt indokolja." },
-      { title: "Ha értékesebb faanyaggal dolgozik", text: "Keményfa, vastagabb anyag vagy magasabb hozzáadott értékű gyártás esetén a szárítás minősége közvetlen üzleti kérdés lehet." },
-      { title: "Ha saját gyártáshoz kell megbízhatóbb száraz faanyag", text: "Ha a külső szárítás lassú, drága vagy bizonytalan, saját vákuumszárító irány is vizsgálható." },
-      { title: "Ha fontos a minőségi kockázatok csökkentése", text: "Repedés, vetemedés, belső feszültség és nedvességingadozás esetén kontrolláltabb szárítási technológiára lehet szükség. A pontos eredmény a faanyagtól és technológiai beállításoktól függ." },
-      { title: "Ha a szárítás kapacitásszűk keresztmetszet", text: "Ha a gyártás a szárításra vár, a technológiai döntés nem csak műszaki, hanem termelési és pénzügyi kérdés is." },
+      { title: "Ha a szárítási idő túl hosszú vagy kiszámíthatatlan", text: "A vákuumszárítás segít rövidebb és jobban tervezhető ciklusokban gondolkodni." },
+      { title: "Ha értékes faanyaggal dolgozik", text: "Keményfa, vastagabb anyag vagy magasabb hozzáadott értékű gyártás esetén a szárítás alapvető gazdaságossági kérdés." },
+      { title: "Ha saját gyártáshoz kell megbízható száraz faanyag", text: "Ha a külső szárítás lassú, drága vagy bizonytalan, a saját vákuumszárító a megoldás." },
+      { title: "Ha fontos a minőségi kockázatok csökkentése", text: "Repedés, vetemedés, belső feszültség és nedvességingadozás esetén kontrolláltabb szárítási technológiára van szükség." },
+      { title: "Ha a szárítás kapacitás szűk keresztmetszet", text: "Ha a gyártás a szárításra vár, a döntés nem csak műszaki, hanem termelési és pénzügyi kérdés is." },
     ],
   },
   problems: {
-    h2: "Milyen üzemi problémára adhat választ?",
+    h2: "Milyen problémára ad választ a vákuumszárító?",
     intro: "A vákuumszárítás mögött általában nem az a kérdés áll, hogy „kell-e egy új szárító”. A valódi kérdés az, hogy a jelenlegi szárítás mennyire lassítja, drágítja vagy bizonytalanítja el a faipari gyártást.",
     cards: [
-      { problem: "Hosszú szárítási átfutás", why: "Ha a faanyag sokáig áll szárítás alatt vagy külső partnerre vár, az lassítja a gyártást és leköti a készletet.", answer: "A vákuumszárítás bizonyos faanyagoknál és méreteknél rövidebb, jobban tervezhető ciklusokat tehet lehetővé." },
+      { problem: "Hosszú szárítási átfutás", why: "Ha a faanyag sokáig áll szárítás alatt vagy külső partnerre vár, az lassítja a gyártást és leköti a készletet.", answer: "A vákuumszárítás bizonyos faanyagoknál és méreteknél rövidebb, jobban tervezhető ciklusokat tesz lehetővé." },
       { problem: "Ingadozó faanyagminőség", why: "A nedvességtartalom, repedéskockázat vagy vetemedés bizonytalansága közvetlenül érinti a gyártási minőséget.", answer: "Kontrollált technológiai környezetben jobban kézben tartható a szárítási folyamat." },
-      { problem: "Külső szárítási függőség", why: "Ha a szárítás külső kapacitástól függ, az határidő-, minőség- és költségkockázatot jelenthet.", answer: "Saját vákuumszárító rendszerrel a szárítás egy része vagy egésze házon belülre kerülhet, ha a mennyiség és beruházási logika indokolja." },
+      { problem: "Külső szárítási függőség", why: "Ha a szárítás külső kapacitástól függ, az határidő-, minőség- és költségkockázatot jelent.", answer: "Saját vákuumszárító rendszerrel a szárítás egy része vagy egésze házon belülre kerül." },
       { problem: "Rosszul méretezett szárítási kapacitás", why: "Túl kicsi kamra, rosszul választott hossz, nem megfelelő kapacitás vagy energiaellátás hosszú távon korlátozhatja a termelést.", answer: "A méretezést fafaj, vastagság, hossz, induló nedvesség, cél nedvesség és termelési ütem alapján kell vizsgálni." },
     ],
   },
@@ -596,7 +594,7 @@ const vakuumszaritas: TechnologyGateway = {
   },
   decisionFactors: {
     h2: "Mire kell figyelni, mielőtt vákuumszárítót választ?",
-    intro: "A vákuumszárító beruházásnál a rossz döntés gyakran abból jön, hogy csak a kamraméretet vagy az árat nézik. A jó irányhoz a faanyag, a szárítási cél, a kapacitás és az üzemeltetés együtt számít.",
+    intro: "A vákuumszárító beruházásnál a rossz döntés gyakran onnan ered, hogy csak a kamraméretet vagy az árat nézik. A jó irányhoz a faanyag, a szárítási cél, a kapacitás és az üzemeltethetőség együtt számít.",
     factors: [
       { title: "Fafaj", text: "Másképp viselkedik a tölgy, bükk, kőris vagy más keményfa. A fafaj meghatározza a technológiai óvatosságot és cikluslogikát." },
       { title: "Vastagság és hosszúság", text: "A tipikus méretek alapján kell választani kamrahosszt, rakodási módot és kapacitást." },
@@ -610,15 +608,15 @@ const vakuumszaritas: TechnologyGateway = {
   role: {
     h2: "Miben segít az ECOTEQ egy vákuumszárítási projektben?",
     body: [
-      "Az ECOTEQ nem abból indul ki, hogy mekkora kamrát lehetne eladni. Először azt nézzük meg, milyen faanyagot kell szárítani, milyen méretekben, milyen induló és cél nedvességgel, milyen mennyiségben és milyen gyártási célra.",
-      "A cél az, hogy a vákuumszárító ne önálló gépbeszerzés legyen, hanem a faipari gyártásba illeszkedő, reális technológiai döntés.",
+      "Az ECOTEQ nem abból indul ki, hogy mekkora kamrát lehetne eladni. Először tisztázzuk, milyen faanyagot kell szárítani, milyen induló és cél nedvességgel, mekkora mennyiségben és milyen gyártási célra.",
+      "Közös cél, hogy a vákuumszárító ne önálló gépbeszerzés legyen, hanem az Ön faipari gyártásába illeszkedő, reális technológiai fejlesztés.",
     ],
     points: [
       { title: "Faanyagalapú előminősítés", text: "Fafaj, vastagság, hossz, mennyiség és nedvességi cél alapján indul a javaslat." },
-      { title: "Technológiai irány", text: "Segítünk eldönteni, hogy vákuumszárítás reális irány-e, és milyen kapacitástartományt érdemes vizsgálni." },
-      { title: "ISVE technológiai háttér", text: "Az ECOTEQ az ISVE technológiák magyarországi képviseletével dolgozik a faipari vákuumtechnológiai területen." },
-      { title: "Magyar projektkommunikáció", text: "Az előkészítés, ajánlatkérés, egyeztetés és későbbi támogatás magyar szakmai kapcsolattal történik." },
-      { title: "Üzleti realitás", text: "A beruházásnál a ciklusidőt, kapacitást, faanyagértéket, külső szárítási költséget és gyártási hatást együtt kell nézni." },
+      { title: "Technológiai irány", text: "Segítünk eldönteni, hogy a vákuumszárítás reális irány-e, és milyen kapacitástartományt érdemes vizsgálni." },
+      { title: "Közel 50 éves technológiai háttér", text: "Az ECOTEQ az ISVE vákuumtechnológiák magyarországi képviseletével dolgozik a faipari vákuumtechnológiai területen." },
+      { title: "Közvetlen projektmenedzsment", text: "Az előkészítés, ajánlatkérés, egyeztetés és későbbi támogatás saját projektmenedzserrel történik." },
+      { title: "Üzleti realitás", text: "A beruházásnál a ciklusidőt, kapacitást, faanyagértéket, külső szárítási költséget és gyártási hatást együttesen vizsgáljuk." },
     ],
   },
   related: {
@@ -635,8 +633,8 @@ const vakuumszaritas: TechnologyGateway = {
     },
   },
   preQual: {
-    h2: "Küldje el az alapadatokat, és segítünk eldönteni, reális-e a vákuumszárító irány",
-    body: "Nem kell kész műszaki specifikációval érkeznie. Első körben azt kell látni, milyen faanyagot, milyen méretben, milyen nedvességről milyen célra és milyen mennyiségben szeretne szárítani.",
+    h2: "Küldje el az alapadatokat, és segítünk eldönteni, reális-e a vákuumszárító technológia",
+    body: "Nem kell kész műszaki specifikációval érkeznie. Első körben tisztázzuk, milyen faanyagot, milyen méretben, milyen nedvességről milyen célra és milyen mennyiségben szeretne szárítani.",
     fields: ["fafaj", "jellemző hosszúság", "jellemző vastagság", "induló nedvesség, ha ismert", "cél nedvesség", "heti vagy havi mennyiség", "saját gyártás vagy bérszárítás a cél", "rendelkezésre álló elektromos kapacitás", "telepítési hely", "van-e fotó, videó vagy meglévő layout"],
   },
   faq: {
@@ -652,8 +650,8 @@ const vakuumszaritas: TechnologyGateway = {
   finalCta: {
     h2: "Nem biztos benne, hogy vákuumszárító kell? Ez teljesen normális",
     body: [
-      "A vákuumszárításnál a jó döntés nem a kamramérettel kezdődik. Először azt kell tisztázni, milyen faanyagot kell szárítani, milyen méretben, milyen nedvességről, milyen célra és milyen mennyiségben.",
-      "Ha ezt leírja, segítünk eldönteni, hogy a vákuumszárítás reális irány-e, és milyen kapacitástartományt érdemes vizsgálni.",
+      "A vákuumszárításnál a jó döntés nem a géptípussal vagy a kamramérettel kezdődik. Először azt kell tisztázni, milyen faanyagot kell szárítani, milyen méretben, milyen nedvességről, milyen célra és milyen mennyiségben.",
+      "Ha leírja az elképzelését, segítünk eldönteni, hogy a vákuumszárítás reális irány-e, és milyen technológiát és kapacitást érdemes vizsgálni.",
     ],
     secondaryCta: { label: "Részletes vákuumszárító oldal megnyitása", href: "https://vakuumszarito.hu" },
   },
@@ -665,12 +663,12 @@ const vakuumimpregnalas: TechnologyGateway = {
   metaTitle: "Vákuumimpregnálás faanyag kezelésére és védelmére | ECOTEQ",
   metaDescription: "Vákuumimpregnálás faanyag ipari kezelésére, védelmére és speciális felhasználásra való előkészítésére. Az ECOTEQ segít eldönteni, hogy az adott faanyaghoz, kezelési célhoz és üzemhez milyen vákuumimpregnálási irány lehet reális.",
   hero: {
-    eyebrow: "ECOTEQ technológiai kapu · Vákuumimpregnálás",
+    eyebrow: "ECOTEQ technológiák · Vákuumimpregnálás",
     h1: "Vákuumimpregnálás faanyag kezelésére és ipari felhasználásra",
     lead: "A vákuumimpregnálás akkor lehet jó irány, ha a faanyagot kontrollált körülmények között kell kezelni, védeni vagy speciális felhasználásra előkészíteni. Az ECOTEQ segít eldönteni, hogy az adott faanyaghoz, kezelőanyaghoz, végfelhasználáshoz és üzemi működéshez milyen vákuumimpregnálási technológia lehet reális.",
     secondaryCta: { label: "Kapcsolódó vákuumtechnológiák megtekintése", href: "https://vakuumszarito.hu" },
     microcopy: "Nem kell kész gépspecifikációval érkeznie. Elég, ha leírja a faanyagot, a kezelési célt, a méreteket, a mennyiséget és a felhasználási környezetet.",
-    trustPills: ["Faipari vákuumtechnológiai előminősítés", "ISVE technológiai háttér", "Kezelési cél alapján választott rendszer", "Kapcsolódó spoke: vakuumszarito.hu"],
+    trustPills: ["Faipari vákuumtechnológiai előminősítés", "ISVE technológiai háttér", "Kezelési cél alapján választott rendszer"],
     image: "/ds/photos/vacuum-kiln.png",
     imageAlt: "Vákuumimpregnáló berendezés",
   },
@@ -785,7 +783,7 @@ const elszivasPorlevalasztas: TechnologyGateway = {
   metaTitle: "Elszívás és porleválasztás faipari és ipari üzemeknek | ECOTEQ",
   metaDescription: "Elszívási és porleválasztási rendszerek faipari és ipari környezetben. Az ECOTEQ segít tisztázni, milyen elszívási, leválasztási és anyagmozgatási irány lehet reális az Ön üzemében.",
   hero: {
-    eyebrow: "ECOTEQ technológiai kapu · Elszívás és porleválasztás",
+    eyebrow: "ECOTEQ technológiák · Elszívás és porleválasztás",
     h1: "Elszívás és porleválasztás faipari és ipari üzemeknek",
     lead: "Az elszívás és porleválasztás akkor válik kritikus kérdéssé, amikor a por, forgács, technológiai levegő vagy mellékanyag már befolyásolja a munkakörnyezetet, gépkiszolgálást, üzemi rendet vagy további anyaghasznosítást. Az ECOTEQ segít eldönteni, milyen rendszerirány lehet reális az Ön üzemében.",
     secondaryCta: { label: "Kapcsolódó technológiák megtekintése", href: "/#technologiak" },
@@ -901,7 +899,7 @@ const anyagmozgasRendszerelemek: TechnologyGateway = {
   metaTitle: "Anyagmozgatás és rendszerelemek ipari feldolgozó rendszerekhez | ECOTEQ",
   metaDescription: "Anyagmozgató, adagoló, kihordó, siló, mágnes, szeparátor és kiegészítő rendszerelemek ipari daráláshoz, brikettáláshoz, pelletáláshoz, szárításhoz és elszíváshoz. ECOTEQ rendszerintegráció.",
   hero: {
-    eyebrow: "ECOTEQ technológiai kapu · Anyagmozgatás és rendszerelemek",
+    eyebrow: "ECOTEQ technológiák · Anyagmozgatás és rendszerelemek",
     h1: "Anyagmozgatás és rendszerelemek ipari feldolgozó rendszerekhez",
     lead: "Egy ipari rendszer sokszor nem a főgépen bukik el, hanem azon, hogyan jut be az anyag, hogyan jön ki, hol pufferel, hogyan válik le belőle az idegenanyag, és mennyire stabil az anyagáram. Az ECOTEQ segít a daráló, szárító, brikettáló, pelletáló vagy elszívási rendszer köré működő anyagmozgatási és kiegészítő rendszert tervezni.",
     secondaryCta: { label: "Kapcsolódó technológiák megtekintése", href: "/#technologiak" },
