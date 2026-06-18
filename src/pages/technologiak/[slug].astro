@@ -251,7 +251,7 @@ function factorIcon(title: string): string {
   .cards2 { grid-template-columns: 1fr; }
   @media (min-width: 720px) { .cards3 { grid-template-columns: repeat(3, 1fr); } .cards2 { grid-template-columns: 1fr 1fr; } }
 
-  .card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: calc(var(--radius-lg) / 2); padding: var(--space-5); }
+  .card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-5); }
   .card .ic { display: grid; place-items: center; width: 46px; height: 46px; border-radius: var(--radius-md); background: var(--color-bg-subtle); color: var(--color-accent); margin-bottom: var(--space-4); }
   .card h3 { margin: 0 0 6px; font-size: var(--fs-h4); font-weight: var(--fw-bold); color: var(--color-text); }
   .card p { margin: 0; font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: var(--lh-snug); }

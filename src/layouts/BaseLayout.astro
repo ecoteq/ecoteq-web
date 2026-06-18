@@ -53,6 +53,9 @@ const { title, description, brand } = Astro.props;
     </script>
 
     <style is:global>
+      /* App-level radius reduction (DS tokens stay untouched): squarer cards + CTAs globally. */
+      :root { --radius-lg: 8px; }
+
       /* Quiet, premium scroll-reveal. Content is fully visible without JS / with reduced motion. */
       html.js-reveal [data-reveal] {
         opacity: 0;
