@@ -75,7 +75,7 @@ const { title, description, brand } = Astro.props;
       /* Form fields: a dedicated input surface/border. Light keeps the current look;
          dark gives inputs a raised fill + a clearly visible border (WCAG 1.4.11) and a
          brighter danger red so error text stays legible on the dark canvas. */
-      :root { --color-input-bg: var(--color-surface); --color-input-border: var(--color-border); }
+      :root { --color-input-bg: var(--color-bg-subtle); --color-input-border: var(--color-border); }
       html[data-mode="dark"] {
         --color-input-bg: var(--color-surface-alt);
         --color-input-border: #6b757d;

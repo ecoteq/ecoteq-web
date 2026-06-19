@@ -26,36 +26,48 @@ const { redirect, tech, techLabel, source, submitLabel = 'Elküldöm az alapadat
   {tech && <input type="hidden" name="tech" value={techLabel ?? tech} />}
   {source && <input type="hidden" name="forras" value={source} />}
 
+  <header class="qf-head">
+    <span class="qf-rule" aria-hidden="true"></span>
+    <h2 class="qf-title">Projekt adatai</h2>
+    <p class="qf-hint">A <span class="req">*</span> jelölt mezőket kérjük kitölteni — a többi segít, de nem kötelező.</p>
+  </header>
+
   {techLabel && (
     <p class="preset">
       <span class="preset-ic" aria-hidden="true"><Icon name="compass" size={16} /></span>
-      Kiválasztott irány: <strong>{techLabel}</strong>
+      <span>Kiválasztott irány: <strong>{techLabel}</strong></span>
     </p>
   )}
 
-  <div class="row2">
-    <Input label="Név" name="nev" required />
-    <Input label="E-mail" name="email" type="email" required />
-  </div>
-  <div class="row2">
-    <Input label="Cégnév" name="ceg" />
-    <Input label="Telefonszám" name="telefon" type="tel" />
-  </div>
-  <Input label="Körülbelüli mennyiség" name="mennyiseg" placeholder="pl. 2 t/nap" />
-  <Input label="Milyen anyagot kell kezelni?" name="anyag" required placeholder="pl. faforgács, raklap, nedves apríték" />
-  <Input label="Mi a cél?" name="cel" required placeholder="pl. brikett, térfogatcsökkentés, szárítás" />
+  <div class="fields">
+    <div class="row2">
+      <Input label="Név" name="nev" required autocomplete="name" />
+      <Input label="E-mail" name="email" type="email" required autocomplete="email" />
+    </div>
+    <div class="row2">
+      <Input label="Cégnév" name="ceg" autocomplete="organization" />
+      <Input label="Telefonszám" name="telefon" type="tel" autocomplete="tel" />
+    </div>
+    <Input label="Körülbelüli mennyiség" name="mennyiseg" placeholder="pl. 2 t/nap" />
+    <Input label="Milyen anyagot kell kezelni?" name="anyag" required placeholder="pl. faforgács, raklap, nedves apríték" />
+    <Input label="Mi a cél?" name="cel" required placeholder="pl. brikett, térfogatcsökkentés, szárítás" />
 
-  <div class="field">
-    <label class="field-label" for="qf-megjegyzes">Üzenet</label>
-    <textarea id="qf-megjegyzes" name="megjegyzes" rows="3" placeholder="Bármi, ami segít a feladat pontosabb megértésében (opcionális)"></textarea>
+    <div class="field">
+      <label class="field-label" for="qf-megjegyzes">Üzenet</label>
+      <textarea id="qf-megjegyzes" name="megjegyzes" rows="3" placeholder="Bármi, ami segít a feladat pontosabb megértésében (opcionális)"></textarea>
+    </div>
   </div>
 
   <label class="consent">
     <input type="checkbox" name="consent" required />
-    <span>Elolvastam és elfogadom az <a href="/adatvedelmi-tajekoztato/" target="_blank" rel="noopener">adatvédelmi tájékoztatót</a>, és hozzájárulok, hogy az ECOTEQ a megkeresésem feldolgozása céljából kezelje a megadott adatokat.</span>
+    <span class="consent-box" aria-hidden="true"><Icon name="check" size={13} /></span>
+    <span class="consent-text">Elolvastam és elfogadom az <a href="/adatvedelmi-tajekoztato/" target="_blank" rel="noopener">adatvédelmi tájékoztatót</a>, és hozzájárulok, hogy az ECOTEQ a megkeresésem feldolgozása céljából kezelje a megadott adatokat.</span>
   </label>
 
-  <Button type="submit" class="submit">{submitLabel}</Button>
+  <Button type="submit" variant="primary" class="submit">
+    {submitLabel}
+    <Icon name="arrow-right" size={18} slot="icon-right" />
+  </Button>
   <p class="form-msg" role="status" aria-live="polite"></p>
 </form>
 
@@ -122,38 +134,57 @@ const { redirect, tech, techLabel, source, submitLabel = 'Elküldöm az alapadat
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
-    padding: clamp(var(--space-5), 4vw, var(--space-7));
+    padding: clamp(var(--space-5), 3.5vw, var(--space-7));
     display: flex;
     flex-direction: column;
-    gap: var(--space-4);
+    gap: var(--space-5);
+    /* Refined, directional CTA lift for the submit button instead of the loud
+       symmetric accent halo (--shadow-accent) used elsewhere. Scoped to this card. */
+    --shadow-accent: 0 1px 2px rgba(28, 52, 73, 0.18), 0 14px 26px -14px rgba(67, 173, 77, 0.5);
   }
   .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
-  .field { display: flex; flex-direction: column; gap: 6px; }
-  .field-label { font-size: var(--fs-sm); font-weight: var(--fw-semibold); color: var(--color-text); }
+  /* Card header — short green rule + title, gives the form gravitas. */
+  .qf-head { display: flex; flex-direction: column; gap: 6px; }
+  .qf-rule { width: 34px; height: 4px; border-radius: var(--radius-pill); background: var(--color-accent); margin-bottom: 4px; }
+  .qf-title {
+    font-family: var(--font-display);
+    font-size: var(--fs-h3);
+    font-weight: var(--fw-bold);
+    letter-spacing: var(--ls-heading);
+    color: var(--color-text);
+    margin: 0;
+  }
+  .qf-hint { margin: 0; font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: var(--lh-snug); }
+  .qf-hint .req { color: var(--color-accent-text); font-weight: var(--fw-bold); }
+
+  .fields { display: flex; flex-direction: column; gap: var(--space-4); }
+  .row2 { display: grid; gap: var(--space-4); grid-template-columns: 1fr; }
+  @media (min-width: 540px) { .row2 { grid-template-columns: 1fr 1fr; } }
+
+  /* Textarea — matches the Input field styling. */
+  .field { display: flex; flex-direction: column; gap: 7px; }
+  .field-label { font-size: var(--fs-sm); font-weight: var(--fw-semibold); color: var(--color-text); letter-spacing: 0.005em; }
   textarea {
     width: 100%;
     box-sizing: border-box;
     font-family: var(--font-sans);
     font-size: 15px;
+    line-height: var(--lh-body);
     color: var(--color-text);
     background: var(--color-input-bg);
     border: 1px solid var(--color-input-border);
     border-radius: var(--radius-md);
-    padding: 12px 14px;
+    padding: 13px 15px;
     resize: vertical;
+    min-height: 92px;
     transition: border-color var(--dur-base) var(--ease-standard), box-shadow var(--dur-base) var(--ease-standard);
   }
   textarea::placeholder { color: var(--color-text-muted); }
+  textarea:hover { border-color: var(--color-border-strong); }
   textarea:focus { outline: none; border-color: var(--color-accent); box-shadow: 0 0 0 3px var(--color-accent-ring); }
 
-  .consent { display: flex; gap: 10px; align-items: flex-start; font-size: var(--fs-sm); line-height: var(--lh-body); color: var(--color-text-secondary); cursor: pointer; }
-  .consent input { margin-top: 3px; flex: none; width: 16px; height: 16px; accent-color: var(--color-accent); cursor: pointer; }
-  .consent a { color: var(--color-accent-text); font-weight: var(--fw-semibold); }
-  .consent a:hover { text-decoration: underline; }
-  .row2 { display: grid; gap: var(--space-4); grid-template-columns: 1fr; }
-  @media (min-width: 540px) { .row2 { grid-template-columns: 1fr 1fr; } }
-
+  /* Preset direction chip (when arriving from a technology page). */
   .preset {
     display: flex;
     align-items: center;
@@ -169,11 +200,49 @@ const { redirect, tech, techLabel, source, submitLabel = 'Elküldöm az alapadat
   .preset strong { font-weight: var(--fw-bold); }
   .preset-ic { display: inline-flex; color: var(--color-accent-text); flex: none; }
 
-  .submit { align-self: flex-start; margin-top: var(--space-2); }
+  /* Custom consent checkbox — premium, accessible (native input drives state). */
+  .consent {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 11px;
+    align-items: start;
+    position: relative;
+    font-size: var(--fs-sm);
+    line-height: var(--lh-body);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+  }
+  .consent input {
+    position: absolute;
+    opacity: 0;
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    cursor: pointer;
+  }
+  .consent-box {
+    width: 20px;
+    height: 20px;
+    margin-top: 1px;
+    flex: none;
+    display: grid;
+    place-items: center;
+    border-radius: 6px;
+    border: 1px solid var(--color-input-border);
+    background: var(--color-input-bg);
+    color: transparent;
+    transition: background var(--dur-fast) var(--ease-standard), border-color var(--dur-fast) var(--ease-standard), color var(--dur-fast) var(--ease-standard);
+  }
+  .consent input:checked ~ .consent-box { background: var(--color-accent); border-color: var(--color-accent); color: #fff; }
+  .consent input:focus-visible ~ .consent-box { box-shadow: 0 0 0 3px var(--color-accent-ring); }
+  .consent-text a { color: var(--color-accent-text); font-weight: var(--fw-semibold); }
+  .consent-text a:hover { text-decoration: underline; }
+
+  .submit { width: 100%; justify-content: center; margin-top: var(--space-2); }
 
   .form-msg { margin: 0; font-size: var(--fs-sm); min-height: 1.2em; }
   .form-msg[data-state='success'] { color: var(--green-700); font-weight: var(--fw-semibold); }
-  .form-msg[data-state='error'] { color: var(--color-danger); }
+  .form-msg[data-state='error'] { color: var(--color-danger); font-weight: var(--fw-semibold); }
   .form-msg[data-state='pending'] { color: var(--color-text-secondary); }
 
   @media (prefers-reduced-motion: reduce) { textarea { transition: none; } }
