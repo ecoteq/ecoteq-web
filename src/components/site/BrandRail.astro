@@ -62,7 +62,7 @@ const PREQUAL_HREF = quoteHref(undefined, 'rail');
   .rail-cta {
     writing-mode: vertical-rl;
     transform: rotate(180deg);
-    background: var(--color-accent);
+    background: var(--color-cta);
     color: var(--color-on-accent);
     font-weight: var(--fw-bold);
     font-size: var(--fs-xs);
@@ -73,7 +73,7 @@ const PREQUAL_HREF = quoteHref(undefined, 'rail');
     border-radius: var(--radius-md);
     transition: background var(--dur-base) var(--ease-standard);
   }
-  .rail-cta:hover { background: var(--color-accent-hover); }
+  .rail-cta:hover { background: var(--color-cta-hover); }
 
   .rail-bottom { display: flex; flex-direction: column; align-items: center; gap: 16px; }
   .rail-social, .rail-contact { display: flex; flex-direction: column; gap: 10px; }
@@ -87,7 +87,7 @@ const PREQUAL_HREF = quoteHref(undefined, 'rail');
     place-items: center;
     transition: background var(--dur-base) var(--ease-standard), border-color var(--dur-base) var(--ease-standard);
   }
-  .rail-social a:hover, .rail-contact a:hover { background: var(--color-accent); border-color: var(--color-accent); }
+  .rail-social a:hover, .rail-contact a:hover { background: var(--color-cta); border-color: var(--color-cta); }
 
   @media (prefers-reduced-motion: reduce) {
     .rail-cta, .rail-contact a, .rail-social a { transition: none; }

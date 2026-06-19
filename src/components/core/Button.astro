@@ -84,16 +84,16 @@ const hasRight = Astro.slots.has('icon-right');
 
   /* variants */
   .btn[data-variant='primary'] {
-    background: var(--color-accent);
+    background: var(--color-cta);
     color: var(--color-on-accent);
     box-shadow: var(--shadow-accent);
   }
   .btn[data-variant='primary']:not(:disabled):not([aria-disabled='true']):hover {
-    background: var(--color-accent-hover);
+    background: var(--color-cta-hover);
     transform: translateY(-1px);
   }
   .btn[data-variant='primary']:not(:disabled):not([aria-disabled='true']):active {
-    background: var(--color-accent-active);
+    background: var(--color-cta-active);
     transform: translateY(0);
   }
 
@@ -120,8 +120,8 @@ const hasRight = Astro.slots.has('icon-right');
     border-color: rgba(255, 255, 255, 0.55);
   }
   .btn[data-variant='outline-light']:not(:disabled):not([aria-disabled='true']):hover {
-    background: var(--color-accent);
-    border-color: var(--color-accent);
+    background: var(--color-cta);
+    border-color: var(--color-cta);
   }
 
   @media (prefers-reduced-motion: reduce) {

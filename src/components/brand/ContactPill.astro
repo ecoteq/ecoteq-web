@@ -43,7 +43,7 @@ const hasIcon = Astro.slots.has('icon');
   .ic { display: inline-flex; width: 16px; height: 16px; color: var(--color-accent); transition: color var(--dur-base) var(--ease-standard); }
   .ic :global(svg) { width: 100%; height: 100%; }
 
-  .contact:hover { background: var(--color-accent); border-color: var(--color-accent); color: #fff; }
+  .contact:hover { background: var(--color-cta); border-color: var(--color-cta); color: #fff; }
   .contact:hover .ic { color: #fff; }
 
   @media (prefers-reduced-motion: reduce) { .contact, .ic { transition: none; } }

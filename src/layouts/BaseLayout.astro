@@ -94,6 +94,16 @@ const { title, description, brand } = Astro.props;
       :root { --color-brand-panel: var(--ecoteq-navy); }
       html[data-mode="dark"] { --color-brand-panel: #15212e; }
 
+      /* Accessible CTA green. The bright brand green (#43ad4d) stays for accents
+         (rules, icons, links, focus rings), but white-on-green button FILLS use a
+         deeper green so the label clears WCAG AA — 4.6:1 vs the brand green's 2.8:1.
+         Mode-independent (the ratio is text-vs-fill, not vs the canvas). */
+      :root {
+        --color-cta: #2b8437;
+        --color-cta-hover: #25702f;
+        --color-cta-active: #1f5e28;
+      }
+
       /* Quiet, premium scroll-reveal. Content is fully visible without JS / with reduced motion. */
       html.js-reveal [data-reveal] {
         opacity: 0;
