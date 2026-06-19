@@ -2,6 +2,7 @@
 import SiteLayout from '../../layouts/SiteLayout.astro';
 import Section from '../../components/layout/Section.astro';
 import SectionHeading from '../../components/brand/SectionHeading.astro';
+import PageHero from '../../components/site/PageHero.astro';
 import Button from '../../components/core/Button.astro';
 import Icon from '../../components/Icon.astro';
 import { quoteHref } from '../../lib/site';
@@ -70,18 +71,17 @@ const related = [
 <SiteLayout
   title="Komplett anyagáram-rendszerek"
   description="Komplett anyagáram-rendszerek: az ECOTEQ rendszerként tervezi az anyag útját a fogadástól a végtermékig, összehangolt gépekkel. Kérjen technológiai javaslatot."
-  solidHeader
 >
-  <Section surface="subtle">
-    <nav class="crumb" aria-label="Útvonal"><a href="/">Főoldal</a> <span aria-hidden="true">|</span> <a href="/#megoldasok">Megoldások</a> <span aria-hidden="true">|</span> <span class="here">Komplett anyagáram-rendszerek</span></nav>
-    <SectionHeading
-      overline="Megoldás"
-      title="Komplett anyagáram-rendszerek"
-      lead="Egy működő üzemben az anyag útja az anyag fogadásától a végtermékig több gépen halad át: fogadás, előkészítés, fő technológia, kihordás, tárolás és vezérlés. Az ECOTEQ nem önálló gépet, hanem rendszert tervez, amelyben ezek a lépések összehangoltan dolgoznak együtt."
-      as="h1"
-    />
-    <div class="cta"><Button href={quoteHref(undefined,'megoldas')}>Technológiai javaslatot kérek</Button></div>
-  </Section>
+  <PageHero
+    eyebrow="Megoldás"
+    title="Komplett anyagáram-rendszerek"
+    lead="Egy működő üzemben az anyag útja az anyag fogadásától a végtermékig több gépen halad át: fogadás, előkészítés, fő technológia, kihordás, tárolás és vezérlés. Az ECOTEQ nem önálló gépet, hanem rendszert tervez, amelyben ezek a lépések összehangoltan dolgoznak együtt."
+    image="/heroes/hero-komplett.jpg"
+    imageAlt="Faapríték- és fűrészpor-tároló és szárító üzem alkonyatkor"
+    crumb={[{ label: 'Főoldal', href: '/' }, { label: 'Megoldások', href: '/#megoldasok' }, { label: 'Komplett anyagáram-rendszerek' }]}
+  >
+    <Button href={quoteHref(undefined,'megoldas')}>Technológiai javaslatot kérek</Button>
+  </PageHero>
 
   <Section surface="white">
     <SectionHeading

@@ -2,6 +2,7 @@
 import SiteLayout from '../../layouts/SiteLayout.astro';
 import Section from '../../components/layout/Section.astro';
 import SectionHeading from '../../components/brand/SectionHeading.astro';
+import PageHero from '../../components/site/PageHero.astro';
 import Button from '../../components/core/Button.astro';
 import Icon from '../../components/Icon.astro';
 import { quoteHref } from '../../lib/site';
@@ -53,18 +54,17 @@ const technologies = [
 <SiteLayout
   title="Forgács, por és apríték hasznosítása"
   description="A laza forgács, por és apríték sok helyet foglal. Előkészítve brikett vagy pellet készülhet belőle — saját fűtőanyag vagy értékesíthető termék."
-  solidHeader
 >
-  <Section surface="subtle">
-    <nav class="crumb" aria-label="Útvonal"><a href="/">Főoldal</a> <span aria-hidden="true">|</span> <a href="/#megoldasok">Megoldások</a> <span aria-hidden="true">|</span> <span class="here">Forgács, por és apríték hasznosítása</span></nav>
-    <SectionHeading
-      overline="Megoldás"
-      title="Laza forgácsból, porból és aprítékból értékes termék"
-      lead="A fűrészpor, a forgács és az apríték önmagában nagy térfogatú melléktermék. Megfelelő nedvességtartalom és előkészítés mellett azonban tömörített, jól kezelhető termékké — saját fűtőanyaggá vagy értékesíthető briketté, illetve pelletté — alakítható."
-      as="h1"
-    />
-    <div class="cta"><Button href={quoteHref('brikettalas','megoldas')}>Technológiai javaslatot kérek</Button></div>
-  </Section>
+  <PageHero
+    eyebrow="Megoldás"
+    title="Laza forgácsból, porból és aprítékból értékes termék"
+    lead="A fűrészpor, a forgács és az apríték önmagában nagy térfogatú melléktermék. Megfelelő nedvességtartalom és előkészítés mellett azonban tömörített, jól kezelhető termékké — saját fűtőanyaggá vagy értékesíthető briketté, illetve pelletté — alakítható."
+    image="/heroes/hero-forgacs-por.jpg"
+    imageAlt="Telepített hidraulikus brikettáló prés kész fabrikettekkel"
+    crumb={[{ label: 'Főoldal', href: '/' }, { label: 'Megoldások', href: '/#megoldasok' }, { label: 'Forgács, por és apríték hasznosítása' }]}
+  >
+    <Button href={quoteHref('brikettalas','megoldas')}>Technológiai javaslatot kérek</Button>
+  </PageHero>
 
   <Section surface="white">
     <SectionHeading

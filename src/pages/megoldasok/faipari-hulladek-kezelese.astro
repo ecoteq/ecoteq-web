@@ -2,6 +2,7 @@
 import SiteLayout from '../../layouts/SiteLayout.astro';
 import Section from '../../components/layout/Section.astro';
 import SectionHeading from '../../components/brand/SectionHeading.astro';
+import PageHero from '../../components/site/PageHero.astro';
 import Button from '../../components/core/Button.astro';
 import Icon from '../../components/Icon.astro';
 import { quoteHref } from '../../lib/site';
@@ -54,24 +55,17 @@ const directions = [
 <SiteLayout
   title="Faipari hulladék kezelése"
   description="Forgács, por, apríték és fahulladék rendezett kezelése faipari üzemekben – darálás, elszívás és brikettálás kombinációjával."
-  solidHeader
 >
-  <Section surface="subtle">
-    <nav class="crumb" aria-label="Útvonal">
-      <a href="/">Főoldal</a> <span aria-hidden="true">|</span>
-      <a href="/#megoldasok">Megoldások</a> <span aria-hidden="true">|</span>
-      <span class="here">Faipari hulladék kezelése</span>
-    </nav>
-    <SectionHeading
-      overline="Megoldás"
-      title="Faipari hulladék kezelése"
-      lead="A faipari üzemekben keletkező forgács, por, apríték és fahulladék rendezett kezelése kézzelfogható különbséget jelent. Darálás, elszívás és brikettálás kombinációjával az anyag kezelhetőbb, tárolhatóbb és hasznosítható lesz."
-      as="h1"
-    />
-    <div class="cta">
-      <Button href={quoteHref('ipari-daralas', 'megoldas')}>Technológiai javaslatot kérek</Button>
-    </div>
-  </Section>
+  <PageHero
+    eyebrow="Megoldás"
+    title="Faipari hulladék kezelése"
+    lead="A faipari üzemekben keletkező forgács, por, apríték és fahulladék rendezett kezelése kézzelfogható különbséget jelent. Darálás, elszívás és brikettálás kombinációjával az anyag kezelhetőbb, tárolhatóbb és hasznosítható lesz."
+    image="/heroes/hero-faipari-hulladek.jpg"
+    imageAlt="Négytengelyes ipari hulladékdaráló gépsor üzemi környezetben"
+    crumb={[{ label: 'Főoldal', href: '/' }, { label: 'Megoldások', href: '/#megoldasok' }, { label: 'Faipari hulladék kezelése' }]}
+  >
+    <Button href={quoteHref('ipari-daralas', 'megoldas')}>Technológiai javaslatot kérek</Button>
+  </PageHero>
 
   <Section surface="white">
     <SectionHeading

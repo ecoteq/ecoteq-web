@@ -2,6 +2,7 @@
 import SiteLayout from '../layouts/SiteLayout.astro';
 import Section from '../components/layout/Section.astro';
 import SectionHeading from '../components/brand/SectionHeading.astro';
+import PageHero from '../components/site/PageHero.astro';
 import Button from '../components/core/Button.astro';
 import Icon from '../components/Icon.astro';
 import { quoteHref } from '../lib/site';
@@ -35,18 +36,17 @@ const partners = [
 <SiteLayout
   title="Rólunk"
   description="Az ECOTEQ rendszerben gondolkodó ipari technológiai partner: az anyagból működő, üzletileg vállalható folyamatot épít, nem gépet ad el."
-  solidHeader
 >
-  <Section surface="subtle">
-    <nav class="crumb" aria-label="Útvonal"><a href="/">Főoldal</a> <span aria-hidden="true">|</span> <span class="here">Rólunk</span></nav>
-    <SectionHeading
-      overline="Rólunk"
-      title="Rendszerben gondolkodó ipari technológiai partner"
-      lead="Az ECOTEQ nem gépet ad el, hanem az anyagból működő, üzletileg értelmezhető folyamatot épít. A feladatot értjük meg előbb, és a technológiát ehhez illesztjük."
-      as="h1"
-    />
-    <div class="cta"><Button href={quoteHref(undefined, 'rolunk')}>Technológiai javaslatot kérek</Button></div>
-  </Section>
+  <PageHero
+    eyebrow="Rólunk"
+    title="Rendszerben gondolkodó ipari technológiai partner"
+    lead="Az ECOTEQ nem gépet ad el, hanem az anyagból működő, üzletileg értelmezhető folyamatot épít. A feladatot értjük meg előbb, és a technológiát ehhez illesztjük."
+    image="/heroes/hero-rolunk.jpg"
+    imageAlt="Két vákuumszárító kamra az ECOTEQ üzemcsarnokában"
+    crumb={[{ label: 'Főoldal', href: '/' }, { label: 'Rólunk' }]}
+  >
+    <Button href={quoteHref(undefined, 'rolunk')}>Technológiai javaslatot kérek</Button>
+  </PageHero>
 
   <Section surface="white">
     <SectionHeading

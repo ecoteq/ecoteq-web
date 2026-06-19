@@ -2,6 +2,7 @@
 import SiteLayout from '../../layouts/SiteLayout.astro';
 import Section from '../../components/layout/Section.astro';
 import SectionHeading from '../../components/brand/SectionHeading.astro';
+import PageHero from '../../components/site/PageHero.astro';
 import Button from '../../components/core/Button.astro';
 import Icon from '../../components/Icon.astro';
 import { quoteHref } from '../../lib/site';
@@ -48,24 +49,17 @@ const directions = [
 <SiteLayout
   title="Ipari por és elszívási problémák"
   description="Por és forgács kezelése ipari üzemekben – elszívás és porleválasztás a gépekhez, a légmennyiséghez és az anyagkezeléshez illesztve."
-  solidHeader
 >
-  <Section surface="subtle">
-    <nav class="crumb" aria-label="Útvonal">
-      <a href="/">Főoldal</a> <span aria-hidden="true">|</span>
-      <a href="/#megoldasok">Megoldások</a> <span aria-hidden="true">|</span>
-      <span class="here">Ipari por és elszívási problémák</span>
-    </nav>
-    <SectionHeading
-      overline="Megoldás"
-      title="Ipari por és elszívási problémák"
-      lead="Az üzemben keletkező por és forgács hatással van a munkakörnyezetre, a gépkiszolgálásra és az üzembiztonságra. A jól megtervezett elszívás a gépekhez, a tényleges légmennyiséghez és az anyagkezeléshez igazodik, így rendezett és megbízható eredményt ad."
-      as="h1"
-    />
-    <div class="cta">
-      <Button href={quoteHref('elszivas-porlevalasztas', 'megoldas')}>Technológiai javaslatot kérek</Button>
-    </div>
-  </Section>
+  <PageHero
+    eyebrow="Megoldás"
+    title="Ipari por és elszívási problémák"
+    lead="Az üzemben keletkező por és forgács hatással van a munkakörnyezetre, a gépkiszolgálásra és az üzembiztonságra. A jól megtervezett elszívás a gépekhez, a tényleges légmennyiséghez és az anyagkezeléshez igazodik, így rendezett és megbízható eredményt ad."
+    image="/heroes/megoldas-elszivas.jpg"
+    imageAlt="Ipari elszívó- és csővezeték-rendszer üzemcsarnokban"
+    crumb={[{ label: 'Főoldal', href: '/' }, { label: 'Megoldások', href: '/#megoldasok' }, { label: 'Ipari por és elszívási problémák' }]}
+  >
+    <Button href={quoteHref('elszivas-porlevalasztas', 'megoldas')}>Technológiai javaslatot kérek</Button>
+  </PageHero>
 
   <Section surface="white">
     <SectionHeading

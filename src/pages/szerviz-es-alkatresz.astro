@@ -2,6 +2,7 @@
 import SiteLayout from '../layouts/SiteLayout.astro';
 import Section from '../components/layout/Section.astro';
 import SectionHeading from '../components/brand/SectionHeading.astro';
+import PageHero from '../components/site/PageHero.astro';
 import Button from '../components/core/Button.astro';
 import Icon from '../components/Icon.astro';
 import { quoteHref } from '../lib/site';
@@ -49,21 +50,18 @@ const requestPoints = [
 <SiteLayout
   title="Szerviz és alkatrész"
   description="ECOTEQ szerviz, alkatrész-ellátás és szakmai támogatás — a berendezés átadása után is mellettünk áll a hosszú távú, megbízható üzemeltetésben."
-  solidHeader
 >
-  <Section surface="subtle">
-    <nav class="crumb" aria-label="Útvonal"><a href="/">Főoldal</a> <span aria-hidden="true">|</span> <span class="here">Szerviz és alkatrész</span></nav>
-    <SectionHeading
-      overline="Szerviz és alkatrész"
-      title="A megbízható üzemeltetés a gép átadása után kezdődik"
-      lead="Az ECOTEQ munkája nem a berendezés átadásával ér véget. A hosszú távú, biztonságos üzemeltetéshez szerviz, alkatrész-ellátás és folyamatos szakmai támogatás is kell — mindezt egy kézben, az átadás utáni évekre is."
-      as="h1"
-    />
-    <div class="cta">
-      <Button href={quoteHref(undefined, 'szerviz')}>Technológiai javaslatot kérek</Button>
-      <Button href="/kapcsolat/" variant="ghost">Kapcsolatfelvétel</Button>
-    </div>
-  </Section>
+  <PageHero
+    eyebrow="Szerviz és alkatrész"
+    title="A megbízható üzemeltetés a gép átadása után kezdődik"
+    lead="Az ECOTEQ munkája nem a berendezés átadásával ér véget. A hosszú távú, biztonságos üzemeltetéshez szerviz, alkatrész-ellátás és folyamatos szakmai támogatás is kell — mindezt egy kézben, az átadás utáni évekre is."
+    image="/heroes/hero-szerviz.jpg"
+    imageAlt="Daráló tengelyek nagyjavítás közben bakokon"
+    crumb={[{ label: 'Főoldal', href: '/' }, { label: 'Szerviz és alkatrész' }]}
+  >
+    <Button href={quoteHref(undefined, 'szerviz')}>Technológiai javaslatot kérek</Button>
+    <Button href="/kapcsolat/" variant="ghost">Kapcsolatfelvétel</Button>
+  </PageHero>
 
   <Section surface="white">
     <SectionHeading

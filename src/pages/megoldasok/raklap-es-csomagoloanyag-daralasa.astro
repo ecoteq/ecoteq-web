@@ -2,6 +2,7 @@
 import SiteLayout from '../../layouts/SiteLayout.astro';
 import Section from '../../components/layout/Section.astro';
 import SectionHeading from '../../components/brand/SectionHeading.astro';
+import PageHero from '../../components/site/PageHero.astro';
 import Button from '../../components/core/Button.astro';
 import Icon from '../../components/Icon.astro';
 import { quoteHref } from '../../lib/site';
@@ -50,18 +51,17 @@ const related = [
 <SiteLayout
   title="Raklap és csomagolóanyag darálása"
   description="Raklap, láda és csomagolóanyag darálása térfogatcsökkentésre, kezelhetőbb tárolásra és anyag-előkészítésre, fémleválasztással. Kérjen technológiai javaslatot az ECOTEQ-től."
-  solidHeader
 >
-  <Section surface="subtle">
-    <nav class="crumb" aria-label="Útvonal"><a href="/">Főoldal</a> <span aria-hidden="true">|</span> <a href="/#megoldasok">Megoldások</a> <span aria-hidden="true">|</span> <span class="here">Raklap és csomagolóanyag darálása</span></nav>
-    <SectionHeading
-      overline="Megoldás"
-      title="Raklap és csomagolóanyag darálása"
-      lead="A raklap, láda és csomagolóanyag darálásának célja a térfogatcsökkentés, a kezelhetőbb tárolás és az anyag-előkészítés. A megfelelő technológiai irány a felmerülő helyzettől, az anyagáramtól és a benne lévő szennyeződésektől függ."
-      as="h1"
-    />
-    <div class="cta"><Button href={quoteHref('ipari-daralas','megoldas')}>Technológiai javaslatot kérek</Button></div>
-  </Section>
+  <PageHero
+    eyebrow="Megoldás"
+    title="Raklap és csomagolóanyag darálása"
+    lead="A raklap, láda és csomagolóanyag darálásának célja a térfogatcsökkentés, a kezelhetőbb tárolás és az anyag-előkészítés. A megfelelő technológiai irány a felmerülő helyzettől, az anyagáramtól és a benne lévő szennyeződésektől függ."
+    image="/heroes/hero-raklap.jpg"
+    imageAlt="ECOTEQ raklap- és csomagolóanyag-daráló stúdiófelvételen"
+    crumb={[{ label: 'Főoldal', href: '/' }, { label: 'Megoldások', href: '/#megoldasok' }, { label: 'Raklap és csomagolóanyag darálása' }]}
+  >
+    <Button href={quoteHref('ipari-daralas','megoldas')}>Technológiai javaslatot kérek</Button>
+  </PageHero>
 
   <Section surface="white">
     <SectionHeading
