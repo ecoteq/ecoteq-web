@@ -115,6 +115,9 @@ const checklist = [
   .layout { display: grid; gap: var(--space-7); grid-template-columns: 1fr; }
   @media (min-width: 920px) {
     .layout { grid-template-columns: 1fr 1.05fr; gap: var(--space-8); align-items: start; }
+    /* The intro is shorter than the form — pin it so it stays alongside the form
+       (and its helpful context) while the visitor scrolls and fills it in. */
+    .intro { position: sticky; top: calc(var(--header-h) + var(--space-5)); }
   }
 
   .block-title {
