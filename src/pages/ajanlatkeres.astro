@@ -110,7 +110,7 @@ const checklist = [
   .crumb a { color: var(--color-text-secondary); text-decoration: none; }
   .crumb a:hover { color: var(--color-accent-text); }
   .crumb span { margin-inline: 6px; }
-  .crumb .here { color: var(--ecoteq-navy); margin-inline: 0; }
+  .crumb .here { color: var(--color-text); margin-inline: 0; }
 
   .layout { display: grid; gap: var(--space-7); grid-template-columns: 1fr; }
   @media (min-width: 920px) {
@@ -119,10 +119,11 @@ const checklist = [
 
   .block-title {
     font-family: var(--font-display);
-    font-size: var(--fs-md);
+    font-size: var(--fs-h3);
     font-weight: var(--fw-bold);
-    color: var(--ecoteq-navy);
-    margin: 0 0 var(--space-4);
+    letter-spacing: var(--ls-heading);
+    color: var(--color-text);
+    margin: 0 0 var(--space-5);
   }
 
   .steplist { list-style: none; margin: 0 0 var(--space-7); padding: 0; display: flex; flex-direction: column; gap: var(--space-5); }
@@ -136,7 +137,7 @@ const checklist = [
     color: var(--color-accent-text);
   }
   .step-body { display: flex; flex-direction: column; gap: 3px; }
-  .step-title { font-weight: var(--fw-bold); color: var(--ecoteq-navy); }
+  .step-title { font-weight: var(--fw-bold); color: var(--color-text); }
   .step-text { font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: var(--lh-body); }
 
   .checklist { list-style: none; margin: 0 0 var(--space-7); padding: 0; display: flex; flex-direction: column; gap: 12px; }

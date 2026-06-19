@@ -88,6 +88,12 @@ const { title, description, brand } = Astro.props;
       :root { --color-deep-band: var(--navy-900); }
       html[data-mode="dark"] { --color-deep-band: var(--color-surface-dark); }
 
+      /* Brand-navy accent panels (closing CTA, spoke strips). In dark the bright
+         brand navy glares as a blue lump, so panels collapse to a calm deep navy
+         that keeps brand identity without shouting. */
+      :root { --color-brand-panel: var(--ecoteq-navy); }
+      html[data-mode="dark"] { --color-brand-panel: #15212e; }
+
       /* Quiet, premium scroll-reveal. Content is fully visible without JS / with reduced motion. */
       html.js-reveal [data-reveal] {
         opacity: 0;
