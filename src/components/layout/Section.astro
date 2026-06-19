@@ -19,12 +19,12 @@ const { id, surface = 'white', class: className } = Astro.props;
   .section[data-surface='white'] { background: var(--color-bg); }
   .section[data-surface='subtle'] { background: var(--color-bg-subtle); }
   .section[data-surface='navy'] { background: var(--ecoteq-navy); color: var(--color-text-inverse); }
-  /* Dark mode: the bright brand navy reads as a glaring blue band on a near-black
-     canvas. Use a calm, desaturated deep navy and flip text back to light. */
-  :global(html[data-mode='dark']) .section[data-surface='navy'] { background: var(--navy-800); color: var(--color-text); }
-  /* Dark mode: widen the white↔subtle step so the block rhythm reads (the DS
-     subtle is very close to the base canvas). Stays below the card surface so
-     cards still lift. */
-  :global(html[data-mode='dark']) .section[data-surface='subtle'] { background: #1c222b; }
+  /* Dark mode — modern B2B rhythm, not light-mode zebra striping. The bright brand
+     navy reads as a glaring blue lump on near-black, so the "statement" section
+     becomes ONE deliberate deep anchor (DS deep-feature band) that rhymes with the
+     dark rail/footer frame. The subtle step returns to the calm, neutral DS value.
+     Both stay below the card surface (#1f262c) so cards keep lifting everywhere. */
+  :global(html[data-mode='dark']) .section[data-surface='navy'] { background: var(--color-feature-deep); color: var(--color-text); }
+  :global(html[data-mode='dark']) .section[data-surface='subtle'] { background: var(--color-bg-subtle); }
   .container { max-width: var(--container-max); margin-inline: auto; padding-inline: clamp(16px, 4vw, 40px); }
 </style>
