@@ -221,8 +221,6 @@ const TECH_ICONS: Record<string, string> = {
       font-family: var(--font-sans);
       font-size: var(--fs-sm);
       font-weight: var(--fw-semibold);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
       color: var(--ecoteq-navy);
       text-decoration: none;
       transition: color var(--dur-fast) var(--ease-standard);
@@ -263,7 +261,7 @@ const TECH_ICONS: Record<string, string> = {
   .mega-grid > li > a:not(.mega-panel):hover { background: var(--color-bg-subtle); }
   .m-ic { flex: none; color: var(--color-accent); margin-top: 1px; display: inline-flex; }
   .m-body { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-  .m-label { display: inline-flex; align-items: center; gap: 6px; font-weight: var(--fw-bold); font-size: var(--fs-sm); color: var(--color-text); }
+  .m-label { display: inline-flex; align-items: center; gap: 6px; font-weight: var(--fw-bold); font-size: var(--fs-sm); text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text); }
   .m-arrow { color: var(--color-accent); flex: none; opacity: 0; transform: translateX(-4px); transition: opacity var(--dur-fast) var(--ease-standard), transform var(--dur-fast) var(--ease-standard); }
   .mega-grid a:hover .m-arrow { opacity: 1; transform: none; }
   .m-blurb { font-size: var(--fs-xs); color: var(--color-text-secondary); line-height: var(--lh-snug); text-transform: none; letter-spacing: normal; }
@@ -311,7 +309,7 @@ const TECH_ICONS: Record<string, string> = {
   .mobile { background: var(--ecoteq-white); border-top: 1px solid var(--color-border); box-shadow: var(--shadow-md); padding: 10px clamp(16px, 4vw, 40px) 22px; max-height: calc(100vh - var(--header-h)); overflow-y: auto; }
   .mobile > ul { list-style: none; margin: 0 0 14px; padding: 0; display: flex; flex-direction: column; }
   .mobile > ul > li { border-bottom: 1px solid var(--color-border); }
-  .mobile a, .m-acc { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 13px 4px; font-size: var(--fs-lg); font-weight: var(--fw-semibold); text-transform: uppercase; letter-spacing: 0.04em; color: var(--ecoteq-navy); text-decoration: none; background: none; border: none; font-family: var(--font-sans); cursor: pointer; }
+  .mobile a, .m-acc { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 13px 4px; font-size: var(--fs-lg); font-weight: var(--fw-semibold); color: var(--ecoteq-navy); text-decoration: none; background: none; border: none; font-family: var(--font-sans); cursor: pointer; }
   .m-sub { display: flex; flex-direction: column; padding: 0 4px 10px 14px; }
   .m-sub a { font-size: var(--fs-body); font-weight: var(--fw-regular); color: var(--color-text-secondary); padding: 9px 0; border: none; }
   .mobile-cta { width: 100%; }
