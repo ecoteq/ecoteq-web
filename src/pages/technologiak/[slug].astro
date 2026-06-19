@@ -305,10 +305,9 @@ function factorIcon(title: string): string {
   .media { position: absolute; inset: 0; z-index: 0; }
   .media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; }
   @media (min-width: 1024px) { .media img { transform: translateX(360px); } }
-  .wash { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(28,52,73,0.99) 0%, rgba(28,52,73,0.97) 30%, rgba(28,52,73,0.68) 54%, rgba(28,52,73,0.22) 78%, rgba(28,52,73,0) 100%), linear-gradient(0deg, rgba(15,32,48,0.5) 0%, rgba(15,32,48,0) 50%); }
-  /* Dark mode: wash tinted with the exact rail/footer colour, opaque at the left
-     so the hero blends into the side rail. */
-  :global(html[data-mode='dark']) .wash { background: linear-gradient(90deg, var(--color-surface-dark) 0%, var(--color-surface-dark) 48%, color-mix(in srgb, var(--color-surface-dark) 80%, transparent) 64%, color-mix(in srgb, var(--color-surface-dark) 32%, transparent) 82%, transparent 100%), linear-gradient(0deg, color-mix(in srgb, var(--color-surface-dark) 50%, transparent) 0%, transparent 50%); }
+  /* Same mask in both modes — token resolves per theme (navy in light, near-black in
+     dark): solid field on the left for the text, clearing to the image on the right. */
+  .wash { position: absolute; inset: 0; background: linear-gradient(90deg, var(--color-surface-dark) 0%, var(--color-surface-dark) 46%, color-mix(in srgb, var(--color-surface-dark) 82%, transparent) 62%, color-mix(in srgb, var(--color-surface-dark) 32%, transparent) 82%, transparent 100%), linear-gradient(0deg, color-mix(in srgb, var(--color-surface-dark) 55%, transparent) 0%, transparent 48%); }
   .hero-inner { position: relative; z-index: 1; width: 100%; max-width: var(--container-max); margin-inline: auto; padding: calc(var(--header-h) + var(--space-7)) clamp(16px, 4vw, 40px) var(--space-8); display: flex; flex-direction: column; justify-content: space-between; gap: var(--space-6); }
   .hero-main { max-width: 64ch; }
   .eyebrow { color: var(--ecoteq-green); margin-bottom: var(--space-3); }
