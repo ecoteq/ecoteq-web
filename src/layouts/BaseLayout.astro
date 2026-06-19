@@ -94,14 +94,20 @@ const { title, description, brand } = Astro.props;
       :root { --color-brand-panel: var(--ecoteq-navy); }
       html[data-mode="dark"] { --color-brand-panel: #15212e; }
 
-      /* Accessible CTA green. The bright brand green (#43ad4d) stays for accents
-         (rules, icons, links, focus rings), but white-on-green button FILLS use a
-         deeper green so the label clears WCAG AA — 4.6:1 vs the brand green's 2.8:1.
-         Mode-independent (the ratio is text-vs-fill, not vs the canvas). */
+      /* ONE brand green across the whole site — the accessible deeper tone. Button
+         fills use --color-cta; the SAME green also becomes the accent (rules, icons,
+         links, focus, the logo dot) by overriding the raw --ecoteq-green it all
+         derives from. White-on-green clears WCAG AA (4.7:1, was 2.8:1). The CTA lift
+         is a restrained directional shadow now, not a green glow. */
       :root {
         --color-cta: #2b8437;
         --color-cta-hover: #25702f;
         --color-cta-active: #1f5e28;
+        --ecoteq-green: #2b8437;
+        --color-accent-hover: #25702f;
+        --color-accent-active: #1f5e28;
+        --color-accent-ring: rgba(43, 132, 55, 0.24);
+        --shadow-accent: 0 1px 2px rgba(28, 52, 73, 0.14), 0 6px 14px -8px rgba(43, 132, 55, 0.34);
       }
 
       /* Quiet, premium scroll-reveal. Content is fully visible without JS / with reduced motion. */
