@@ -82,6 +82,12 @@ const { title, description, brand } = Astro.props;
         --color-danger: #f87171;
       }
 
+      /* The deepest band — shared by the brand rail and the footer so they read as
+         one continuous dark frame. Darkest value the DS offers in each theme:
+         navy-900 in light, surface-dark ("deepest band / rail") in dark. */
+      :root { --color-deep-band: var(--navy-900); }
+      html[data-mode="dark"] { --color-deep-band: var(--color-surface-dark); }
+
       /* Quiet, premium scroll-reveal. Content is fully visible without JS / with reduced motion. */
       html.js-reveal [data-reveal] {
         opacity: 0;
