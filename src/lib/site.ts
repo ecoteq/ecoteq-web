@@ -21,16 +21,15 @@ export const CTA = {
   form: { label: 'Elküldöm a projekt adatait', href: '#ajanlatkeres' },
 } as const;
 
-/** Top sticky navigation (7 items). Megoldások + Technológiák open mega-menus. */
+/** Top sticky navigation (6 items). Megoldások + Technológiák open mega-menus. */
 export type NavItem = { label: string; href?: string; mega?: 'solutions' | 'technologies' };
 export const NAV: NavItem[] = [
   { label: 'Megoldások', mega: 'solutions' },
   { label: 'Technológiák', mega: 'technologies' },
   { label: 'Referenciák', href: '/referenciak/' },
-  { label: 'Szerviz és alkatrész', href: '/szerviz-es-alkatresz/' },
+  { label: 'Szerviz', href: '/szerviz-es-alkatresz/' },
   { label: 'Rólunk', href: '/rolunk/' },
   { label: 'Tudástár', href: '/tudastar/' },
-  { label: 'Kapcsolat', href: '/kapcsolat/' },
 ];
 
 /** "Megoldások" mega-menu — problem/operational-task based entries.
