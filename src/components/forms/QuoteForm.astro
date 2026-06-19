@@ -14,8 +14,17 @@ interface Props {
   techLabel?: string;
   source?: string;
   submitLabel?: string;
+  /** Technology-specific placeholder examples (set when arriving from a tech page). */
+  hints?: { anyag?: string; cel?: string; mennyiseg?: string };
 }
-const { redirect, tech, techLabel, source, submitLabel = 'Elküldöm az alapadatokat' } = Astro.props;
+const { redirect, tech, techLabel, source, submitLabel = 'Elküldöm az alapadatokat', hints } = Astro.props;
+
+// Placeholders fall back to generic examples; a preset technology makes them specific.
+const ph = {
+  anyag: `pl. ${hints?.anyag ?? 'faforgács, raklap, nedves apríték'}`,
+  cel: `pl. ${hints?.cel ?? 'brikett, térfogatcsökkentés, szárítás'}`,
+  mennyiseg: `pl. ${hints?.mennyiseg ?? '2 t/nap'}`,
+};
 ---
 
 <form id="prequal" class="card" novalidate data-redirect={redirect}>
@@ -44,8 +53,8 @@ const { redirect, tech, techLabel, source, submitLabel = 'Elküldöm az alapadat
       <Input label="Név" name="nev" required autocomplete="name" />
       <Input label="E-mail" name="email" type="email" required autocomplete="email" />
     </div>
-    <Input label="Milyen anyagot kell kezelni?" name="anyag" required placeholder="pl. faforgács, raklap, nedves apríték" />
-    <Input label="Mi a cél?" name="cel" required placeholder="pl. brikett, térfogatcsökkentés, szárítás" />
+    <Input label="Milyen anyagot kell kezelni?" name="anyag" required placeholder={ph.anyag} />
+    <Input label="Mi a cél?" name="cel" required placeholder={ph.cel} />
 
     <div class="optional" data-optional>
       <div class="optional-inner">
@@ -54,7 +63,7 @@ const { redirect, tech, techLabel, source, submitLabel = 'Elküldöm az alapadat
           <Input label="Cégnév" name="ceg" autocomplete="organization" />
           <Input label="Telefonszám" name="telefon" type="tel" autocomplete="tel" />
         </div>
-        <Input label="Körülbelüli mennyiség" name="mennyiseg" placeholder="pl. 2 t/nap" />
+        <Input label="Körülbelüli mennyiség" name="mennyiseg" placeholder={ph.mennyiseg} />
         <div class="field">
           <label class="field-label" for="qf-megjegyzes">Üzenet</label>
           <textarea id="qf-megjegyzes" name="megjegyzes" rows="3" placeholder="Bármi, ami segít a feladat pontosabb megértésében"></textarea>

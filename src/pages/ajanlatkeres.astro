@@ -4,7 +4,7 @@ import Section from '../components/layout/Section.astro';
 import SectionHeading from '../components/brand/SectionHeading.astro';
 import QuoteForm from '../components/forms/QuoteForm.astro';
 import Icon from '../components/Icon.astro';
-import { CONTACT, TECHNOLOGIES } from '../lib/site';
+import { CONTACT, TECHNOLOGIES, FORM_HINTS } from '../lib/site';
 
 // On-demand so we can read ?tech= and ?source= for prefill + tracking.
 export const prerender = false;
@@ -94,6 +94,7 @@ const checklist = [
           source={source}
           tech={tech?.slug}
           techLabel={tech?.name}
+          hints={tech ? FORM_HINTS[tech.slug] : undefined}
           submitLabel="Elküldöm a projekt adatait"
         />
         <p class="privacy">

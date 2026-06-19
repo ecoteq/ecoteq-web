@@ -123,6 +123,53 @@ export const TECHNOLOGIES: Technology[] = [
   },
 ];
 
+/** Technology-specific placeholder examples for the pre-qualification form, shown
+    when the visitor arrives from a technology page (?tech=slug). Grounded in each
+    technology's real materials/goals — illustrative prompts, never claims. */
+export type FormHints = { anyag?: string; cel?: string; mennyiseg?: string };
+export const FORM_HINTS: Record<string, FormHints> = {
+  'ipari-daralas': {
+    anyag: 'raklap, láda, faipari hulladék, fólia',
+    cel: 'térfogatcsökkentés, homogénebb frakció, brikettálás előkészítése',
+    mennyiseg: '2 t/nap',
+  },
+  'brikettalas': {
+    anyag: 'faipari forgács, fűrészpor, csiszolatpor, apríték',
+    cel: 'saját fűtőanyag, értékesíthető brikett, forgács rendezett kezelése',
+    mennyiseg: '500 kg/nap',
+  },
+  'pelletalas': {
+    anyag: 'fűrészpor, finom apríték, szárított biomassza',
+    cel: 'pellet saját felhasználásra, értékesíthető pellet, biomassza egységesítése',
+    mennyiseg: '1 t/óra',
+  },
+  'biomassza-szaritas': {
+    anyag: 'faapríték, fűrészpor, aprított biomassza, energianövény',
+    cel: 'nedvességcsökkentés, brikettálás vagy pelletálás előkészítése',
+    mennyiseg: '5 t/nap, kb. 30% nedvesség',
+  },
+  'vakuumszaritas': {
+    anyag: 'tölgy, bükk, kőris, dió',
+    cel: 'saját szárítókapacitás kiépítése, bővítése, selejtcsökkentés',
+    mennyiseg: '10–20 m³ / ciklus',
+  },
+  'vakuumimpregnalas': {
+    anyag: 'fűrészáru, kültéri faanyag, szerkezeti faanyag',
+    cel: 'faanyag védelme, tartósság javítása, ipari kezelés standardizálása',
+    mennyiseg: '5–10 m³ / sarzs',
+  },
+  'elszivas-porlevalasztas': {
+    anyag: 'faipari forgács, csiszolatpor, fűrészpor, technológiai por',
+    cel: 'tisztább munkakörnyezet, gépkiszolgálás, brikettálás előtti gyűjtés',
+    mennyiseg: '4–6 gép elszívása',
+  },
+  'anyagmozgas-rendszerelemek': {
+    anyag: 'forgács, apríték, darált fa, brikett, pellet',
+    cel: 'stabil adagolás, kihordás, pufferelés, technológiák összekötése',
+    mennyiseg: '2 t/óra kihordás',
+  },
+};
+
 /** Related spoke domains — deep, dedicated technology sites the HUB routes to.
     Only link these where a real dedicated site exists (per nav architecture 03). */
 export type Spoke = { label: string; href: string; note: string };
