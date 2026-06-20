@@ -10,23 +10,33 @@ import { quoteHref } from '../../lib/site';
 const situations = [
   {
     icon: 'wind',
-    text: 'A megmunkálás során folyamatosan keletkező por és forgács terheli a munkateret és a gépeket.',
+    title: 'Már megint minden tele van porral és forgáccsal.',
+    text: 'A megmunkálás közben keletkező por és forgács nemcsak helyet foglal, hanem a munkateret és a gépek környezetét is terheli.',
   },
   {
-    icon: 'boxes',
-    text: 'A laza fahulladék és apríték sok helyet foglal, így a tárolása és a mozgatása nehézkes.',
+    icon: 'maximize',
+    title: 'A laza fahulladék túl sok helyet visz el.',
+    text: 'A por, forgács, apríték és darabos fahulladék gyorsan megtölti a tárolóhelyet, és egyre nehezebb mozgatni.',
   },
   {
     icon: 'shuffle',
-    text: 'A vegyes méretű hulladék – darabos fahulladék, apríték, forgács – nem egységes, ezért nehezen kezelhető.',
+    title: 'Túl vegyes ez a hulladék, így nehéz vele bármit kezdeni.',
+    text: 'Darabos fahulladék, apríték és forgács együtt nehezen kezelhető, ha nincs előre átgondolva, mi legyen vele.',
   },
   {
     icon: 'recycle',
-    text: 'A keletkező mellékanyag jelenleg elszállítandó hulladék, pedig hasznosítható alapanyag is lehetne.',
+    title: 'Kár lenne elszállíttatni, ha még hasznosítható.',
+    text: 'A keletkező mellékanyag megfelelő előkészítéssel akár alapanyagként, brikettként, tüzelőanyagként vagy további feldolgozásra is használható lehet.',
   },
   {
-    icon: 'factory',
-    text: 'A rendezetlen anyagáram lassítja a termelést és kiszámíthatatlanná teszi az üzemi folyamatokat.',
+    icon: 'clock',
+    title: 'A hulladék kezelése már lassítja a munkát.',
+    text: 'Ha a mozgatás, tárolás és ürítés állandó gond, az nemcsak rendetlenség, hanem időveszteség is az üzemben.',
+  },
+  {
+    icon: 'shield',
+    title: 'A tárolás már kockázatot jelent.',
+    text: 'A por, forgács vagy fahulladék helyet foglal, nehezíti a munkát, és üzemi rend szempontból is problémát okoz.',
   },
 ];
 
@@ -80,6 +90,7 @@ const directions = [
             <span class="card-ic" aria-hidden="true">
               <Icon name={item.icon} size={22} />
             </span>
+            <h3 class="card-title">{item.title}</h3>
             <p class="card-text">{item.text}</p>
           </li>
         ))
@@ -91,7 +102,7 @@ const directions = [
     <SectionHeading
       overline="Technológiai irány"
       title="Milyen technológiai irány segíthet?"
-      lead="A faipari hulladék kezelése ritkán egyetlen géptől függ. A legtöbb üzemben az alábbi technológiák összehangolt használata vezet rendezett, hasznosítható anyagáramhoz."
+      lead="A faipari hulladék kezelése ritkán egyetlen géptől függ. A legtöbb üzemben az alábbi technológiák összehangolt használata vezet rendezett hulladékkezeléshez és hasznosítható mellékanyaghoz."
     />
     <div class="tech-grid">
       {
@@ -152,13 +163,15 @@ const directions = [
     margin: var(--space-7) 0 0;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: var(--space-4);
+    grid-template-columns: 1fr;
   }
+  @media (min-width: 620px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 960px) { .grid { grid-template-columns: repeat(3, 1fr); } }
   .card {
     display: flex;
+    flex-direction: column;
     gap: var(--space-3);
-    align-items: flex-start;
     padding: var(--space-5);
     background: var(--color-bg-subtle);
     border-radius: var(--radius-lg);
@@ -173,10 +186,19 @@ const directions = [
     border-radius: var(--radius-md);
     background: var(--color-accent-tint);
     color: var(--color-accent-active);
+    margin-bottom: 2px;
+  }
+  .card-title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-base);
+    line-height: var(--lh-snug);
+    color: var(--color-text);
   }
   .card-text {
     margin: 0;
-    font-size: var(--fs-base);
+    font-size: var(--fs-sm);
     line-height: var(--lh-body);
     color: var(--color-text-secondary);
   }
