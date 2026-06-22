@@ -1,146 +1,40 @@
 ---
-import SiteLayout from '../../layouts/SiteLayout.astro';
-import Section from '../../components/layout/Section.astro';
-import SectionHeading from '../../components/brand/SectionHeading.astro';
-import PageHero from '../../components/site/PageHero.astro';
-import Button from '../../components/core/Button.astro';
-import Icon from '../../components/Icon.astro';
-import { quoteHref } from '../../lib/site';
+// Nyitás-archetípus: tévhit · Vezető pillér: Anyag-először
+import SolutionPage from '../../components/site/SolutionPage.astro';
 
 const situations = [
-  {
-    icon: 'droplets',
-    title: 'Magas a bemeneti nedvességtartalom',
-    text: 'A frissen keletkező faipari, mezőgazdasági vagy zöldhulladék gyakran túl nedves ahhoz, hogy stabilan tárolható vagy energetikailag hasznosítható legyen.',
-  },
-  {
-    icon: 'flame',
-    title: 'Gyenge a fűtőérték',
-    text: 'A nedvesség elpárologtatása energiát von el az égéstől, ezért a nedves alapanyag fűtőértéke és égési hatásfoka alacsony marad.',
-  },
-  {
-    icon: 'boxes',
-    title: 'Nehezen tárolható, romlik az anyag',
-    text: 'A nedves biomassza beragad, befülled és penészedhet a tárolás során, ami minőségromlással és kezelési nehézségekkel jár.',
-  },
-  {
-    icon: 'shuffle',
-    title: 'Egyenetlen a frakció a feldolgozás előtt',
-    text: 'Vegyes szemcseméret és darabosság esetén a szárítás és a továbbfeldolgozás egyenetlen lesz, ami akadályozza a stabil végterméket.',
-  },
-  {
-    icon: 'route',
-    title: 'Tovább kell dolgozni az anyagot',
-    text: 'Ha a cél brikett, pellet vagy energetikai hasznosítás, a nedves alapanyagot előbb stabilizálni és elő kell készíteni a következő lépésre.',
-  },
+  { icon: 'droplets', title: 'Magas a bemeneti nedvességtartalom', text: 'A frissen keletkező faipari, mezőgazdasági vagy zöldhulladék gyakran túl nedves ahhoz, hogy stabilan tárolható vagy energetikailag hasznosítható legyen.' },
+  { icon: 'flame', title: 'Gyenge a fűtőérték', text: 'A nedvesség elpárologtatása energiát von el az égéstől, ezért a nedves alapanyag fűtőértéke és égési hatásfoka alacsony marad.' },
+  { icon: 'boxes', title: 'Nehezen tárolható, romlik az anyag', text: 'A nedves biomassza beragad, befülled és penészedhet a tárolás során, ami minőségromlással és kezelési nehézségekkel jár.' },
+  { icon: 'shuffle', title: 'Egyenetlen a frakció a feldolgozás előtt', text: 'Vegyes szemcseméret és darabosság esetén a szárítás és a továbbfeldolgozás egyenetlen lesz, ami akadályozza a stabil végterméket.' },
+  { icon: 'route', title: 'Tovább kell dolgozni az anyagot', text: 'Ha a cél brikett, pellet vagy energetikai hasznosítás, a nedves alapanyagot előbb stabilizálni és elő kell készíteni a következő lépésre.' },
+  { icon: 'gauge', title: 'Bizonytalan, megéri-e egyáltalán szárítani', text: 'Nem minden nedves anyagnál a szárítás a leggazdaságosabb út. Az anyag, a mennyiség és a cél együtt dönti el, hol térül meg az energiabefektetés.' },
 ];
 
-const technologies = [
-  {
-    label: 'Biomassza-szárítás',
-    href: '/technologiak/biomassza-szaritas/',
-    text: 'A nedvességtartalom csökkentése, hogy az alapanyag stabilan tárolható és tovább feldolgozható legyen.',
-  },
-  {
-    label: 'Ipari darálás',
-    href: '/technologiak/ipari-daralas/',
-    text: 'Egységesebb frakció a szárítás vagy a továbbfeldolgozás előtt, kiegyensúlyozottabb anyagáramért.',
-  },
+const directions = [
+  { icon: 'thermometer', name: 'Biomassza-szárítás', line: 'A nedvességtartalom csökkentése, hogy az alapanyag stabilan tárolható és tovább feldolgozható legyen.', href: '/technologiak/biomassza-szaritas/' },
+  { icon: 'shuffle', name: 'Ipari darálás', line: 'Egységesebb frakció a szárítás vagy a továbbfeldolgozás előtt, kiegyensúlyozottabb anyagáramért.', href: '/technologiak/ipari-daralas/' },
+];
+
+const faq = [
+  { q: 'Honnan tudom, hogy megéri-e szárítani?', a: 'Az anyag induló nedvességéből, a mennyiségből és a célból számoljuk vissza. [VALIDÁLANDÓ: jellemző nedvesség- és mennyiségküszöb]. Ha a szárítás nem térül meg, azt is megmondjuk.' },
+  { q: 'Kell-e darálni a szárítás előtt?', a: 'Gyakran igen. Az egyenletesebb frakció gyorsabb és egyenletesebb szárítást ad, ezért sok esetben a darálás az első lépés.' },
+  { q: 'Mi lehet a végcél a szárított biomasszával?', a: 'Stabil tárolás, jobb fűtőérték, vagy alapanyag brikettáláshoz és pelletáláshoz. A szárítást ehhez a célhoz méretezzük.' },
 ];
 ---
 
-<SiteLayout
+<SolutionPage
   title="Nedves biomassza előkészítése"
-  description="A nedves biomassza nehezen tárolható és gyenge fűtőértékű. A szárítás és szükség szerinti darálás stabilizálja és előkészíti a további feldolgozásra."
->
-  <PageHero
-    eyebrow="Megoldás"
-    title="Nedves biomassza előkészítése"
-    lead="A nedves biomassza nehezen tárolható és gyengébb fűtőértékű. A szárítás – és szükség szerint a darálás – stabilizálja az anyagot, és előkészíti a további feldolgozásra: briketthez, pellethez vagy energetikai hasznosításhoz."
-    image="/heroes/hero-biomassza.jpg"
-    imageAlt="Telepített szalagos biomassza-szárító kék órában"
-    crumb={[{ label: 'Főoldal', href: '/' }, { label: 'Megoldások', href: '/#megoldasok' }, { label: 'Nedves biomassza előkészítése' }]}
-  >
-    <Button href={quoteHref('biomassza-szaritas','megoldas')}>Technológiai javaslatot kérek</Button>
-  </PageHero>
-
-  <Section surface="white">
-    <SectionHeading
-      overline="Helyzet"
-      title="Mikor merül fel"
-      lead="Jellemző üzemi helyzetek, amelyekben a nedves biomassza előkészítése válik a következő logikus lépéssé."
-    />
-    <div class="grid">
-      {situations.map((s) => (
-        <article class="card">
-          <span class="ic" aria-hidden="true"><Icon name={s.icon} size={22} /></span>
-          <h3>{s.title}</h3>
-          <p>{s.text}</p>
-        </article>
-      ))}
-    </div>
-  </Section>
-
-  <Section surface="subtle">
-    <SectionHeading
-      overline="Technológiai irány"
-      title="Milyen technológiai irány segíthet"
-      lead="A pontos irányt a bemeneti és a cél nedvességtartalom, a feldolgozandó mennyiség és a rendelkezésre álló hőforrás dönti el. Az alábbi technológiák önállóan vagy egymást kiegészítve készítik elő a nedves biomasszát."
-    />
-    <div class="grid tech">
-      {technologies.map((t) => (
-        <a class="rel" href={t.href}>
-          <h3>{t.label} <Icon name="arrow-right" size={16} /></h3>
-          <p>{t.text}</p>
-        </a>
-      ))}
-    </div>
-  </Section>
-
-  <Section surface="navy">
-    <div class="closing">
-      <SectionHeading
-        tone="dark"
-        align="center"
-        overline="Következő lépés"
-        title="Beszéljük át a nedves alapanyag útját"
-        lead="Ossza meg a bemeneti és a cél nedvességet, a mennyiséget és a rendelkezésre álló hőforrást – ezek alapján meghatározzuk a megfelelő szárítási és előkészítési irányt."
-      />
-      <Button href={quoteHref('biomassza-szaritas','megoldas')}>Technológiai javaslatot kérek</Button>
-    </div>
-  </Section>
-</SiteLayout>
-
-<style>
-  .crumb { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: var(--fs-sm); color: var(--color-text-muted); margin-bottom: var(--space-5); }
-  .crumb a { color: var(--color-text-secondary); text-decoration: none; }
-  .crumb a:hover { color: var(--color-accent); }
-  .crumb .here { color: var(--color-text); }
-  .cta { margin-top: var(--space-6); }
-
-  .grid { margin-top: var(--space-7); display: grid; gap: var(--space-4); grid-template-columns: 1fr; }
-  @media (min-width: 720px) { .grid { grid-template-columns: repeat(3, 1fr); } }
-
-  .card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-5); }
-  .card .ic { display: grid; place-items: center; width: 46px; height: 46px; border-radius: var(--radius-md); background: var(--color-accent-tint); color: var(--color-accent-active); margin-bottom: var(--space-4); }
-  .card h3 { margin: 0 0 6px; font-size: var(--fs-h4); font-weight: var(--fw-bold); color: var(--color-text); }
-  .card p { margin: 0; font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: var(--lh-snug); }
-
-  .tech { grid-template-columns: 1fr; }
-  @media (min-width: 720px) { .tech { grid-template-columns: 1fr 1fr; } }
-  .rel { display: flex; flex-direction: column; gap: 6px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-5); text-decoration: none; color: inherit; transition: box-shadow var(--dur-base) var(--ease-standard), transform var(--dur-base) var(--ease-standard); }
-  .rel:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
-  .rel h3 { margin: 0; display: inline-flex; align-items: center; gap: 8px; font-size: var(--fs-h4); font-weight: var(--fw-bold); color: var(--color-accent-text); }
-  .rel h3 :global(svg) { transition: transform var(--dur-base) var(--ease-standard); }
-  .rel:hover h3 :global(svg) { transform: translateX(3px); }
-  .rel p { margin: 0; font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: var(--lh-snug); }
-
-  .closing { display: flex; flex-direction: column; align-items: center; gap: var(--space-6); }
-
-  @media (prefers-reduced-motion: reduce) {
-    .rel { transition: none; }
-    .rel:hover { transform: none; }
-    .rel h3 :global(svg) { transition: none; }
-    .rel:hover h3 :global(svg) { transform: none; }
-  }
-</style>
+  description="A nedves biomassza nehezen tárolható és gyenge fűtőértékű. Szárítással és szükség szerinti darálással stabilizálható és előkészíthető a további feldolgozásra, az anyaghoz méretezve."
+  heroLead="A nedves biomasszát nem a szárító menti meg elsőként, hanem az a kérdés, hogy egyáltalán érdemes-e szárítani, és milyen frakcióban. A frissen keletkező faipari, mezőgazdasági vagy zöldhulladék gyakran túl nedves a stabil tároláshoz és a jó fűtőértékhez. Hogy a szárítás, a darálás vagy ezek együtt a megoldás, az az anyagtól és a céltól függ."
+  heroImage="/heroes/hero-biomassza.jpg"
+  heroImageAlt="Telepített szalagos biomassza-szárító üzemi környezetben"
+  source="megoldas-nedves-biomassza"
+  situationsLead="Az alábbi helyzetekben érdemes átgondolni a nedves biomassza előkészítését."
+  situations={situations}
+  directionsLead="A nedves biomassza ritkán egyetlen géptől függ. Sokszor előbb a frakciót kell rendbe tenni, és csak utána éri meg szárítani. A szárítást és a darálást egy helyről, több vezető európai gyártó kínálatából hangoljuk össze, az anyaghoz és a célhoz méretezve."
+  directions={directions}
+  faq={faq}
+  ctaTitle="Nézzük meg, érdemes-e szárítani"
+  ctaLead="Mondja el, milyen biomassza keletkezik, mennyi, milyen induló nedvességgel, és mi a célja vele. Ebből meghatározzuk, hogy a szárítás, a darálás vagy ezek kombinációja illik a feladathoz, és hol térül meg az energiabefektetés."
+/>

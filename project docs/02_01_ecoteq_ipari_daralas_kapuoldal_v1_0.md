@@ -1,4 +1,11 @@
-# ECOTEQ.hu technológiai kapuoldal — Ipari darálás v1.0
+# ECOTEQ.hu technológiai kapuoldal — Ipari darálás v1.1
+
+> **v1.1 — összhangba hozva az „általános szabályok" réteggel (2026-06-21).**
+> - CTA-rendszer csere (QA 2.1 §16): „Technológiai irányt kérek" → „Leírom az anyagot és a célt"; űrlap submit → „Elküldöm az alapadatokat".
+> - Vezető pillér + nyitó-archetípus rögzítve (Stratégia §7.2).
+> - Tudatossági szint: megoldás-tudatos. Valós referenciák/adatok: [VALIDÁLANDÓ].
+
+> **Vezető pillér:** Anyag-először · **Nyitó-archetípus:** Tünet-nyitás · **Tudatossági szint:** megoldás-tudatos · **Primer CTA:** Leírom az anyagot és a célt
 
 ## Oldal szerepe
 
@@ -38,11 +45,11 @@ Ipari darálás hulladék és mellékanyag előkészítésére
 
 ### Elsődleges CTA
 
-Technológiai irányt kérek
+Leírom az anyagot és a célt
 
 ### Űrlap CTA
 
-Elküldöm a projekt adatait
+Elküldöm az alapadatokat
 
 ### Spoke CTA
 
@@ -66,7 +73,7 @@ Az ipari darálás akkor jó irány, ha a nagyméretű, nehezen kezelhető vagy 
 
 ## CTA-k
 
-Primer CTA: **Technológiai irányt kérek**  
+Primer CTA: **Leírom az anyagot és a célt**  
 Másodlagos CTA: **Részletes ipari daráló oldal megnyitása**
 
 ## Microcopy
@@ -354,7 +361,7 @@ Az egyeztetés, ajánlat-előkészítés, projektkövetés és későbbi támoga
 
 ## CTA
 
-Technológiai irányt kérek
+Leírom az anyagot és a célt
 
 ---
 
@@ -432,7 +439,7 @@ Nem kell kész műszaki specifikációval érkeznie. Az első körben az a cél,
 
 ## CTA
 
-Elküldöm a projekt adatait
+Elküldöm az alapadatokat
 
 ## Microcopy
 
@@ -486,7 +493,7 @@ Ha ezt leírja, segítünk eldönteni, hogy az ipari darálás milyen formában 
 
 ## CTA
 
-Technológiai irányt kérek
+Leírom az anyagot és a célt
 
 ## Másodlagos CTA
 
@@ -508,7 +515,7 @@ export const ipariDaralasGateway = {
   metaDescription:
     "Ipari darálás fa, raklap, műanyag, biomassza és vegyes ipari hulladék előkészítésére. Az ECOTEQ segít kiválasztani a reális darálási technológiai irányt, rendszerfelépítést és következő lépést.",
   primaryCta: {
-    label: "Technológiai irányt kérek",
+    label: "Leírom az anyagot és a célt",
     href: "/ajanlatkeres/?tech=ipari-daralas",
   },
   secondaryCta: {

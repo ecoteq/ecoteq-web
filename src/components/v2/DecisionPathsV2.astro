@@ -1,0 +1,81 @@
+---
+/* V2 REVIEW CLONE of sections/DecisionPaths.astro — copy-only changes (CSS identical).
+   Change: added the section H2 + lead from the spec (a problémafókuszú keret, ami
+   eddig hiányzott; a 3 kártya tartalma változatlan). */
+import Section from '../layout/Section.astro';
+import SectionHeading from '../brand/SectionHeading.astro';
+import Icon from '../Icon.astro';
+
+const paths = [
+  {
+    icon: 'help-circle',
+    title: 'Anyagom van, nem tudom, mit kezdjek vele',
+    text: 'Írja le az anyagot, a mennyiséget és a célt. Segítünk eldönteni, milyen technológiai irány reális.',
+    cta: 'Leírom a feladatot',
+    href: '#ajanlatkeres',
+  },
+  {
+    icon: 'compass',
+    title: 'Konkrét technológiát keresek',
+    text: 'Ha már tudja, melyik irány érdekli, induljon a technológiáktól, és nézze meg a részleteket.',
+    cta: 'Technológiák megnézése',
+    href: '#technologiak',
+  },
+  {
+    icon: 'layers',
+    title: 'Komplett rendszert vagy beruházást tervezek',
+    text: 'Több gépből álló anyagáramot tervezünk, az anyag fogadásától a végtermékig, rendszerként.',
+    cta: 'Rendszerirányt kérek',
+    href: '#ajanlatkeres',
+  },
+];
+---
+
+<Section surface="white">
+  <SectionHeading
+    overline="Hol tart most?"
+    title="Nem biztos, hogy rögtön egy gépre van szüksége. Célszerű előbb az irányt tisztázni"
+    lead="Sok ipari projekt ott csúszik el, hogy túl korán kezdődik a gépválasztás. Ugyanarra az anyagra más megoldás kell, ha a cél a térfogatcsökkentés, más a brikettálás, és megint más, ha a fő gond a nedvesség, a por vagy a mozgatás."
+  />
+
+  <div class="grid">
+    {paths.map((p) => (
+      <a class="path" href={p.href}>
+        <span class="ic"><Icon name={p.icon} size={26} /></span>
+        <h3>{p.title}</h3>
+        <p>{p.text}</p>
+        <span class="cta">{p.cta} <Icon name="arrow-right" size={16} class="arr" /></span>
+      </a>
+    ))}
+  </div>
+</Section>
+
+<style>
+  .grid { display: grid; gap: var(--space-5); grid-template-columns: 1fr; margin-top: var(--space-7); }
+  @media (min-width: 860px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+
+  .path {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-6);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow var(--dur-base) var(--ease-standard), transform var(--dur-base) var(--ease-standard), border-color var(--dur-base) var(--ease-standard);
+  }
+  .path:hover { box-shadow: var(--shadow-md); border-color: var(--color-accent); transform: translateY(-2px); }
+
+  .ic { width: 52px; height: 52px; border-radius: var(--radius-md); background: var(--color-accent-tint); color: var(--color-accent-active); display: grid; place-items: center; margin-bottom: var(--space-2); }
+  .path:hover .ic { background: var(--color-accent-tint); }
+
+  .path h3 { margin: 0; font-size: var(--fs-h3); font-weight: var(--fw-bold); color: var(--color-text); line-height: var(--lh-heading); }
+  .path p { margin: 0; font-size: var(--fs-body); color: var(--color-text-secondary); line-height: var(--lh-body); }
+  .cta { margin-top: auto; padding-top: var(--space-3); display: inline-flex; align-items: center; gap: 8px; color: var(--color-accent-text); font-weight: var(--fw-bold); font-size: var(--fs-sm); }
+  .arr { transition: transform var(--dur-fast) var(--ease-standard); }
+  .path:hover .arr { transform: translateX(4px); }
+
+  @media (prefers-reduced-motion: reduce) { .path, .arr { transition: none; } .path:hover { transform: none; } .path:hover .arr { transform: none; } }
+</style>

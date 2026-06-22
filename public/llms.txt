@@ -1,0 +1,28 @@
+# ECOTEQ
+
+> ECOTEQ Kft. a körforgásos gazdaság független műszaki partnere. Ipari hulladék- és biomassza-feldolgozó rendszereket tervez és szállít: előbb az anyagot érti meg, és csak azt ajánlja, ami a feladatból következik, több vezető európai gyártó kínálatából, a megtérülésig kísérve. Székhely: 1037 Budapest, Csillaghegyi út 19–21. Alapítás: 2008.
+
+## Technológiák
+- [Ipari darálás](https://ecoteq.hu/technologiak/ipari-daralas/): aprítás, térfogatcsökkentés, anyag-előkészítés.
+- [Brikettálás](https://ecoteq.hu/technologiak/brikettalas/): száraz mellékanyag tömörítése briketté.
+- [Pelletálás](https://ecoteq.hu/technologiak/pelletalas/): egységes pellet energetikai vagy értékesítési célra.
+- [Biomassza-szárítás](https://ecoteq.hu/technologiak/biomassza-szaritas/): nedvességcsökkentés további feldolgozáshoz.
+- [Vákuumszárítás](https://ecoteq.hu/technologiak/vakuumszaritas/): kontrollált, gyorsabb faanyagszárítás.
+- [Vákuumimpregnálás](https://ecoteq.hu/technologiak/vakuumimpregnalas/): faanyag tartós, ipari kezelése.
+- [Elszívás és porleválasztás](https://ecoteq.hu/technologiak/elszivas-porlevalasztas/): por, forgács és technológiai levegő kezelése.
+- [Anyagmozgatás és rendszerelemek](https://ecoteq.hu/technologiak/anyagmozgas-rendszerelemek/): adagolás, kihordás, silózás, rendszerelemek.
+
+## Megoldások
+- [Faipari hulladék kezelése](https://ecoteq.hu/megoldasok/faipari-hulladek-kezelese/)
+- [Raklap és csomagolóanyag darálása](https://ecoteq.hu/megoldasok/raklap-es-csomagoloanyag-daralasa/)
+- [Forgács, por és apríték hasznosítása](https://ecoteq.hu/megoldasok/forgacs-por-apritek-hasznositasa/)
+- [Nedves biomassza előkészítése](https://ecoteq.hu/megoldasok/nedves-biomassza-elokeszitese/)
+- [Faanyag szárítása és kezelése](https://ecoteq.hu/megoldasok/faanyag-szaritasa-es-kezelese/)
+- [Ipari por és elszívási problémák](https://ecoteq.hu/megoldasok/ipari-por-es-elszivasi-problemak/)
+- [Komplett anyagáram-rendszerek](https://ecoteq.hu/megoldasok/komplett-anyagaram-rendszerek/)
+
+## Cég
+- [Rólunk](https://ecoteq.hu/rolunk/)
+- [Referenciák](https://ecoteq.hu/referenciak/)
+- [Szerviz és alkatrész](https://ecoteq.hu/szerviz-es-alkatresz/)
+- [Kapcsolat](https://ecoteq.hu/kapcsolat/)

@@ -1,84 +1,25 @@
 ---
-import BaseLayout from './BaseLayout.astro';
-import BrandRail from '../components/site/BrandRail.astro';
-import SiteHeader from '../components/site/SiteHeader.astro';
-import SiteFooter from '../components/site/SiteFooter.astro';
-import Icon from '../components/Icon.astro';
+/* Canonical site layout. Delegates to the reconciled V2 chrome (SiteHeaderV2 +
+   SiteFooterV2) so every page — including legal/utility pages — shares one header,
+   footer and CTA system. Same props as before. */
+import SiteLayoutV2 from '../components/v2/SiteLayoutV2.astro';
 
 interface Props {
   title: string;
   description?: string;
   brand?: string;
-  /** Keep the header solid from the top (for pages without a dark hero). */
   solidHeader?: boolean;
-  /** Optional per-page override for the top-nav CTA. */
   headerCta?: { label: string; href: string };
 }
 const { title, description, brand, solidHeader = false, headerCta } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description} brand={brand}>
-  <BrandRail />
-  <div class="shell">
-    <SiteHeader solid={solidHeader} cta={headerCta} />
-    <main><slot /></main>
-    <SiteFooter />
-  </div>
-
-  <button id="back-to-top" class="back-to-top" type="button" aria-label="Vissza az oldal tetejére" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-    <Icon name="arrow-up" size={20} />
-  </button>
-  <script is:inline>
-    (function () {
-      var btn = document.getElementById('back-to-top');
-      if (!btn) return;
-      var upd = function () {
-        if (window.scrollY > window.innerHeight) btn.classList.add('is-visible');
-        else btn.classList.remove('is-visible');
-      };
-      window.addEventListener('scroll', upd, { passive: true });
-      upd();
-    })();
-  </script>
-</BaseLayout>
-
-<style is:global>
-  :root { --header-h: 76px; }
-
-  html { scroll-padding-top: var(--header-h); }
-  @media (prefers-reduced-motion: no-preference) {
-    html { scroll-behavior: smooth; }
-  }
-
-  .shell main { padding-top: var(--header-h); }
-  @media (min-width: 1280px) {
-    .shell { padding-left: var(--sidebar-w); }
-  }
-
-  /* Universal back-to-top — appears after the first viewport scroll, desktop only. */
-  .back-to-top {
-    position: fixed;
-    right: clamp(16px, 3vw, 36px);
-    bottom: clamp(20px, 4vh, 40px);
-    z-index: 60;
-    display: none;
-    place-items: center;
-    width: 48px;
-    height: 48px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: var(--radius-md);
-    background: var(--ecoteq-navy);
-    color: var(--ecoteq-white);
-    box-shadow: var(--shadow-md);
-    cursor: pointer;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-    transition: opacity var(--dur-base) var(--ease-standard), transform var(--dur-base) var(--ease-standard), visibility var(--dur-base), background var(--dur-fast), border-color var(--dur-fast);
-  }
-  @media (min-width: 1024px) { .back-to-top { display: inline-grid; } }
-  .back-to-top.is-visible { opacity: 1; visibility: visible; transform: none; }
-  .back-to-top:hover { background: var(--color-cta); border-color: var(--color-cta); }
-  .back-to-top :global(.icon) { display: block; }
-  @media (prefers-reduced-motion: reduce) { .back-to-top { transition: opacity var(--dur-base), visibility var(--dur-base); } }
-</style>
+<SiteLayoutV2
+  title={title}
+  description={description}
+  brand={brand}
+  solidHeader={solidHeader}
+  headerCta={headerCta}
+>
+  <slot />
+</SiteLayoutV2>

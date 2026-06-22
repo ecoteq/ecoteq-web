@@ -6,6 +6,24 @@ export const prerender = false;
 const json = (body: unknown, status = 200) =>
   new Response(JSON.stringify(body), { status, headers: { 'content-type': 'application/json' } });
 
+// Strip CR/LF (defends against email header injection) and cap length.
+const oneLine = (s: string, max = 200) => s.replace(/[\r\n]+/g, ' ').trim().slice(0, max);
+
+// Best-effort per-IP rate limit. Serverless instances are reused under Fluid
+// Compute, so an in-memory window meaningfully throttles floods on a warm
+// instance. For hard guarantees add a Vercel WAF rate rule or KV-backed limiter.
+const RATE_MAX = 5;
+const RATE_WINDOW_MS = 60_000;
+const hits = new Map<string, number[]>();
+const rateLimited = (ip: string) => {
+  const now = Date.now();
+  const recent = (hits.get(ip) || []).filter((t) => now - t < RATE_WINDOW_MS);
+  recent.push(now);
+  hits.set(ip, recent);
+  if (hits.size > 5000) hits.clear(); // bound memory
+  return recent.length > RATE_MAX;
+};
+
 const FIELD_LABELS: Record<string, string> = {
   nev: 'Név',
   ceg: 'Cég',
@@ -21,7 +39,13 @@ const FIELD_LABELS: Record<string, string> = {
   forras: 'Forrás',
 };
 
-export const POST: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async ({ request, clientAddress }) => {
+  const ip = (request.headers.get('x-forwarded-for') || clientAddress || 'unknown').split(',')[0].trim();
+  if (rateLimited(ip)) return json({ ok: false, error: 'rate_limited' }, 429);
+
+  const len = Number(request.headers.get('content-length') || 0);
+  if (len > 20_000) return json({ ok: false, error: 'too_large' }, 413);
+
   let data: Record<string, unknown>;
   try {
     data = await request.json();
@@ -34,7 +58,7 @@ export const POST: APIRoute = async ({ request }) => {
     return json({ ok: true });
   }
 
-  const get = (k: string) => (typeof data[k] === 'string' ? (data[k] as string).trim() : '');
+  const get = (k: string) => (typeof data[k] === 'string' ? (data[k] as string).trim().slice(0, 2000) : '');
   const nev = get('nev');
   const email = get('email');
   const anyag = get('anyag');
@@ -69,7 +93,7 @@ export const POST: APIRoute = async ({ request }) => {
       from,
       to,
       replyTo: email,
-      subject: `Új előminősítés — ${nev}${anyag ? ` (${anyag})` : ''}`,
+      subject: oneLine(`Új előminősítés: ${nev}${anyag ? ` (${anyag})` : ''}`),
       text: `Új projekt-előminősítés érkezett az ecoteq.hu űrlapról.\n\n${summary}`,
     });
 

@@ -1,0 +1,69 @@
+---
+/* V2 REVIEW CLONE of sections/SystemsThinking.astro — copy-only changes (CSS identical).
+   Changes: lead → függetlenség kimondva (Pillér 1) + nem ismétli újra a teljes
+   technológia-listát (§1 anti-ismétlés); 1. pillér → kétsávos mondat (műszaki +
+   "csak az indokolt scope"); CTA → locked-set (§16: "Konzultációt kérek" helyett). */
+import Section from '../layout/Section.astro';
+import SectionHeading from '../brand/SectionHeading.astro';
+import Button from '../core/Button.astro';
+import { CTA } from '../../lib/site-v2';
+
+const pillars = [
+  {
+    title: 'Anyag és mennyiség',
+    text: 'Milyen anyag keletkezik, milyen formában, nedvességgel és mennyiségben? Innen indul minden döntés. Ez dönti el, kell-e egyáltalán gép, vagy elég az előkészítést rendbe tenni.',
+  },
+  {
+    title: 'Technológiai irány',
+    text: 'Aprítás, szárítás, tömörítés vagy elszívás, a feladathoz illesztve, nem katalógusból. Csak azt javasoljuk, ami az anyag és a cél alapján tényleg indokolt.',
+  },
+  {
+    title: 'Működő rendszer és támogatás',
+    text: 'Adagolás, anyagmozgatás, telepítés, szerviz és bővíthetőség, hogy a rendszer az üzemben is működjön, ne csak papíron.',
+  },
+];
+---
+
+<Section surface="navy">
+  <SectionHeading
+    tone="dark"
+    overline="ECOTEQ szemlélet"
+    title="Nem gépet választunk először. Anyagot, célt és üzemi realitást tisztázunk"
+    lead="Az anyag útja akkor működik jól, ha végig át van gondolva. A gép csak ezután jön. Mivel több vezető európai gyártót képviselünk, nem egy márkához igazítjuk a feladatot, hanem a feladathoz a gépet."
+  />
+
+  <div class="pillars">
+    {pillars.map((p, i) => (
+      <div class="pillar">
+        <span class="num">{String(i + 1).padStart(2, '0')}</span>
+        <h3>{p.title}</h3>
+        <p>{p.text}</p>
+      </div>
+    ))}
+  </div>
+
+  <Button variant="outline-light" href={CTA.primary.href}>Leírom az anyagot és a célt</Button>
+</Section>
+
+<style>
+  .pillars {
+    margin: var(--space-8) 0;
+    display: grid;
+    gap: var(--space-6) var(--space-7);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 768px) { .pillars { grid-template-columns: repeat(3, 1fr); } }
+
+  .num {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: var(--fw-extrabold);
+    font-size: var(--fs-h2);
+    line-height: 1;
+    letter-spacing: var(--ls-display);
+    color: var(--ecoteq-green);
+    margin-bottom: var(--space-4);
+  }
+  .pillar h3 { margin: 0 0 var(--space-2); font-size: var(--fs-h3); font-weight: var(--fw-bold); color: var(--ecoteq-white); }
+  .pillar p { margin: 0; color: rgba(255, 255, 255, 0.78); line-height: var(--lh-body); }
+</style>

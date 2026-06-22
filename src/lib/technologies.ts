@@ -64,6 +64,7 @@ const ipariDaralas: TechnologyGateway = {
       { title: 'Ha a tárolás és mozgatás nehézkes', text: 'A nagy darabos, összevissza álló anyag rosszul tárolható és nehezen adagolható. A darálás rendezettebb anyagáramot adhat.' },
       { title: 'Ha csökkenteni kell a szállítási és hulladékkezelési terhet', text: 'A kisebb térfogat és egységesebb anyag bizonyos esetekben egyszerűbb logisztikát és jobb kezelhetőséget eredményezhet. A konkrét megtakarítás mindig az anyagtól, mennyiségtől és jelenlegi folyamattól függ.' },
       { title: 'Ha a meglévő folyamat gyakran elakad', text: 'Darabos, heterogén vagy szennyezett anyagoknál nem mindegy, milyen darálási elv, adagolás, kihordás és védelem kerül a rendszerbe.' },
+      { title: 'Ha rendszeresen, kiszámítható mennyiségben keletkezik az anyag', text: 'Ha a hulladék vagy mellékanyag már nem alkalmi, hanem folyamatosan keletkezik, az eseti vagy kézi kezelés helyett érdemes stabil, gépi darálási irányban gondolkodni.' },
     ],
   },
   problems: {
@@ -125,6 +126,7 @@ const ipariDaralas: TechnologyGateway = {
       { title: 'Rendszerszemlélet', text: 'A daráló mellett az adagolást, kihordást, mágneses leválasztást, szállítást, porleválasztást és további feldolgozást is figyelembe vesszük.' },
       { title: 'Továbbfeldolgozási logika', text: 'Ha a cél brikettálás, pelletálás, szárítás vagy energetikai felhasználás, akkor a darálást ezekhez kell méretezni és illeszteni.' },
       { title: 'Magyar szakértői támogatás', text: 'Az egyeztetés, ajánlat-előkészítés, projektkövetés és későbbi támogatás magyar nyelvű szakmai kapcsolattal történik.' },
+      { title: 'Szerviz és alkatrész háttér', text: 'A darálórendszer hosszú távú működéséhez nemcsak jó döntés kell, hanem elérhető szerviz, kopóalkatrész-ellátás és üzemeltetési támogatás is.' },
     ],
   },
   related: {
@@ -182,11 +184,11 @@ const ipariDaralas: TechnologyGateway = {
 const brikettalas: TechnologyGateway = {
   slug: "brikettalas",
   name: "Brikettálás",
-  metaTitle: "Brikettálási rendszerek faipari és biomassza mellékanyagokhoz | ECOTEQ",
+  metaTitle: "Brikettáló rendszerek faipari és biomassza mellékanyagokhoz | ECOTEQ",
   metaDescription: "Brikettálás forgács, por, fűrészpor, apríték és biomassza tömörítésére. Az ECOTEQ segít kiválasztani, hogy hidraulikus vagy mechanikus brikettáló rendszer lehet-e reális az Ön anyagára, mennyiségére és céljára.",
   hero: {
     eyebrow: "ECOTEQ technológiák · Brikettálás",
-    h1: "Brikettálási rendszerek faipari és biomassza mellékanyagokhoz",
+    h1: "Brikettáló rendszerek faipari és biomassza mellékanyagokhoz",
     lead: "A brikettálás akkor lehet jó megoldás, ha a laza, száraz vagy megfelelően előkészíthető mellékanyagból kezelhetőbb, tárolhatóbb vagy értékesíthető brikettet szeretne előállítani. Az ECOTEQ segít eldönteni, hogy az adott anyaghoz, mennyiséghez és üzemelési célhoz milyen brikettálási irány lehet reális.",
     secondaryCta: { label: "Részletes brikettáló oldal", href: "https://brikettalo.hu" },
     microcopy: "Nem kell pontos géptípussal érkeznie. Elég, ha leírja az alapanyagot, a mennyiséget, a nedvességet és azt, hogy saját felhasználásra vagy értékesítésre készülne a brikett.",
@@ -214,7 +216,7 @@ const brikettalas: TechnologyGateway = {
     h2: "Milyen üzemi problémára adhat választ?",
     intro: "A brikettálás mögött általában nem az a kérdés áll, hogy „vegyünk-e egy gépet”. A valódi kérdés az, hogy mit kezdjen az üzem a forgáccsal, porral, aprítékkal vagy más tömöríthető mellékanyaggal úgy, hogy abból kezelhetőbb és üzletileg értelmezhető folyamat legyen.",
     cards: [
-      { problem: "Laza, sok helyet foglaló mellékanyag", why: "A forgács, por, fűrészpor vagy apríték gyorsan megtöltheti a tárolóteret, nehezen kezelhető, és sokszor rendezetlen üzemi képet ad.", answer: "A megfelelő brikettálási rendszer tömörebb, egységesebb, könnyebben tárolható brikettet készíthet az alkalmas alapanyagból." },
+      { problem: "Laza, sok helyet foglaló mellékanyag", why: "A forgács, por, fűrészpor vagy apríték gyorsan megtöltheti a tárolóteret, nehezen kezelhető, és sokszor rendezetlen üzemi képet ad.", answer: "A megfelelő brikettáló rendszer tömörebb, egységesebb, könnyebben tárolható brikettet készíthet az alkalmas alapanyagból." },
       { problem: "Hulladékból saját felhasználású energiahordozó", why: "Ha az üzem fűtési vagy energetikai célra tudná használni a mellékanyagot, a laza forma és az ingadozó minőség akadály lehet.", answer: "Megfelelő alapanyag és előkészítés esetén a brikett kezelhetőbb formát adhat saját felhasználáshoz. A pontos műszaki és engedélyezési feltételeket külön kell vizsgálni." },
       { problem: "Értékesítési célú brikettgyártás", why: "Értékesítésnél már nem elég, hogy a gép „brikettet csinál”. Stabil minőség, alapanyagellátás, kiszámítható kapacitás, csomagolás és logisztika is kell.", answer: "A brikettálási technológiát a végtermék elvárt minőségéhez és az üzemi működéshez kell illeszteni." },
       { problem: "Túl korai gépválasztás", why: "Sok hibás beruházás abból jön, hogy a döntés egy gépár vagy névleges kapacitás alapján születik, miközben az anyag nedvessége, szemcsemérete vagy mennyisége nincs tisztázva.", answer: "Az ECOTEQ először az anyagot és a célt nézi meg, utána javasol hidraulikus, mechanikus vagy más technológiai irányt." },
@@ -228,7 +230,7 @@ const brikettalas: TechnologyGateway = {
     goals: ["saját fűtőanyag előállítása", "értékesíthető brikett gyártása", "hulladékhely csökkentése", "forgács és por rendezett kezelése", "tárolhatóság javítása", "hulladéklogisztika egyszerűsítése", "biomassza energetikai hasznosítása", "darált vagy szárított anyag továbbfeldolgozása"],
   },
   process: {
-    h2: "Hogyan épülhet fel egy brikettálási rendszer?",
+    h2: "Hogyan épülhet fel egy brikettáló rendszer?",
     intro: "A brikettáló gép csak a rendszer egyik eleme. A működő brikettálási folyamatnál fontos az alapanyaggyűjtés, az adagolás, a nedvesség, a szemcseméret, a kihordás, a tárolás és az üzemeltetés is.",
     steps: [
       { title: "Alapanyag gyűjtése", text: "Az anyag érkezhet elszívórendszerből, silóból, zsákból, konténerből vagy közvetlenül gyártási mellékáramból." },
@@ -265,6 +267,7 @@ const brikettalas: TechnologyGateway = {
       { title: "Rendszerszemlélet", text: "A brikettáló mellett az adagolást, darálást, szárítást, tárolást, kihordást és csomagolást is figyelembe vesszük." },
       { title: "Üzleti realitás", text: "A brikettálás akkor jó, ha az anyag, mennyiség, üzemóra, energia, kezelői munka és beruházási cél együtt is értelmezhető." },
       { title: "Magyar projektkommunikáció", text: "Az egyeztetés, ajánlat-előkészítés, projektkövetés és későbbi támogatás magyar nyelvű szakmai kapcsolattal történik." },
+      { title: "Szerviz és alkatrész háttér", text: "A brikettáló rendszer üzembiztos működéséhez karbantartási, kopóalkatrész- és szervizháttér is szükséges, nem csak a kezdeti beruházás." },
     ],
   },
   related: {
@@ -331,6 +334,7 @@ const pelletalas: TechnologyGateway = {
       { title: "Ha a brikett helyett kisebb, egységesebb forma kell", text: "Bizonyos helyzetekben nem a brikett, hanem a pellet a megfelelő végtermék. Ezt az alapanyag, célpiac, felhasználás és kapacitás együtt dönti el." },
       { title: "Ha az alapanyag folyamatosan és kiszámíthatóan rendelkezésre áll", text: "A pelletálás akkor működik jól, ha az alapanyag-ellátás, a nedvesség és a frakció nem esik szét naponta." },
       { title: "Ha a rendszerbe szárítás vagy darálás is illeszthető", text: "Sok pelletálási projekt előkészítő rendszer nélkül nem működik stabilan. A darálás, szárítás, adagolás és hűtés gyakran ugyanúgy része a feladatnak, mint maga a pelletprés." },
+      { title: "Ha egyenletes, kiszámítható végtermék-minőség a cél", text: "A pellet akkor jó irány, ha a végterméknek tételről tételre hasonló méretűnek, sűrűségűnek és kezelhetőségűnek kell lennie. Ehhez stabil alapanyag és előkészítés szükséges." },
     ],
   },
   problems: {
@@ -387,6 +391,7 @@ const pelletalas: TechnologyGateway = {
       { title: "Technológiai irány kiválasztása", text: "Nem minden pelletálási rendszer való minden anyagra és üzemi helyzetre." },
       { title: "Üzleti realitás", text: "A pelletálásnál a beruházás mellett az üzemeltetési költség, energiaigény, karbantartás és alapanyagellátás is kritikus." },
       { title: "Magyar szakértői kommunikáció", text: "Az egyeztetés és az ajánlat-előkészítés magyar nyelvű szakmai támogatással történik." },
+      { title: "Szerviz és alkatrész háttér", text: "A pelletálás folyamatos üzemeltetési fegyelmet kíván; a stabil működéshez karbantartás, kopóalkatrész-ellátás és szakmai támogatás is szükséges." },
     ],
   },
   related: {
@@ -448,6 +453,7 @@ const biomasszaSzaritas: TechnologyGateway = {
       { title: "Ha javítani kell a tárolhatóságot", text: "A nedves biomassza tárolása nehezebb, kockázatosabb és kiszámíthatatlanabb lehet, mint a stabilabb nedvességű anyagé." },
       { title: "Ha a cél jobb energetikai hasznosítás", text: "A nedvességtartalom közvetlenül befolyásolja az energetikai felhasználás értelmét és hatékonyságát." },
       { title: "Ha a szárítás a rendszer része, nem önálló cél", text: "A szárító sokszor darálóval, adagolóval, pufferrel, brikettálóval, pelletálóval vagy hőtermelő rendszerrel együtt működik jól." },
+      { title: "Ha a magas nedvesség felesleges súlyt és szállítási terhet jelent", text: "A nedves biomassza mozgatásakor és tárolásakor jelentős részben vizet kezelünk. A szárítás bizonyos esetekben csökkentheti a tömeget és javíthatja a kezelhetőséget; a tényleges hatás az anyagtól és a logisztikától függ." },
     ],
   },
   problems: {
@@ -504,6 +510,7 @@ const biomasszaSzaritas: TechnologyGateway = {
       { title: "Technológiai irány kiválasztása", text: "Nem minden szárítási technológia való minden biomasszára és üzemeltetési helyzetre." },
       { title: "Üzleti realitás", text: "A szárítás energiaigényét, üzemóráját és beruházási logikáját különösen fontos tisztázni." },
       { title: "Magyar szakértői kommunikáció", text: "Az egyeztetés, előkészítés és projektkövetés magyar nyelvű szakmai támogatással történik." },
+      { title: "Szerviz és üzemeltetési támogatás", text: "A szárítórendszer hosszú távú működéséhez karbantartási, alkatrész- és üzemeltetési háttér is szükséges, nem csak a megfelelő technológiai döntés." },
     ],
   },
   related: {
@@ -703,6 +710,7 @@ const vakuumimpregnalas: TechnologyGateway = {
       { title: "Ha speciális kezelőanyaggal dolgoznak", text: "A kezelőanyag tulajdonságai, viszkozitása, előírásai és technológiai kompatibilitása meghatározzák a rendszer irányát." },
       { title: "Ha ipari mennyiséget kell kezelni", text: "Kézi vagy egyszerű merítéses megoldások helyett ipari folyamatra lehet szükség, ha a mennyiség, határidő vagy minőség ezt indokolja." },
       { title: "Ha a szárítás és impregnálás együtt is felmerül", text: "Bizonyos faipari projektekben a szárítás, gőzölés, impregnálás vagy egyéb vákuumtechnológiai lépés rendszerben vizsgálandó." },
+      { title: "Ha dokumentálható, visszakövethető kezelés kell", text: "Ha a végfelhasználás vagy a megrendelő igényli a kezelés visszakövethetőségét, az eseti megoldás helyett mérhető, dokumentálható ipari folyamatra van szükség." },
     ],
   },
   problems: {
@@ -759,6 +767,7 @@ const vakuumimpregnalas: TechnologyGateway = {
       { title: "ISVE technológiai háttér", text: "Az ECOTEQ az ISVE vákuumtechnológiai háttérrel dolgozik ezen a területen." },
       { title: "Rendszerszemlélet", text: "Kamra, tartály, kezelőanyag-áram, rakodás, biztonság és support együtt számít." },
       { title: "Magyar szakértői kommunikáció", text: "Az előkészítés, ajánlatkérés és projektkövetés magyar szakmai támogatással történik." },
+      { title: "Szerviz és üzemeltetési támogatás", text: "Az ipari kezelőrendszer működtetéséhez a telepítés után karbantartás, alkatrész-ellátás és technológiai támogatás is szükséges." },
     ],
   },
   related: {
@@ -823,6 +832,7 @@ const elszivasPorlevalasztas: TechnologyGateway = {
       { title: "Ha a keletkező forgácsot vagy port tovább kell kezelni", text: "Az elszívott anyag mehet silóba, brikettálásra, gyűjtőbe vagy további anyagmozgatásra." },
       { title: "Ha a meglévő rendszer nem bírja a kapacitást", text: "Új gépek, bővülő termelés vagy módosított technológia esetén a régi elszívás szűk keresztmetszetté válhat." },
       { title: "Ha biztonsági vagy megfelelőségi kérdések is felmerülnek", text: "Por, robbanásvédelmi vagy munkavédelmi kérdéseknél külön szakági vizsgálat és szabványos tervezés szükséges lehet." },
+      { title: "Ha az elszívás energiafogyasztása túl nagy", text: "A folyamatosan, teljes teljesítményen járó elszívás sok energiát fogyaszthat. Igényvezérelt szabályozással és jól méretezett hálózattal az üzemeltetés kiegyensúlyozottabbá tehető." },
     ],
   },
   problems: {
@@ -879,6 +889,7 @@ const elszivasPorlevalasztas: TechnologyGateway = {
       { title: "Gyártói háttér", text: "A feladathoz illő európai technológiai háttér és komponensek vizsgálata." },
       { title: "Magyar projektkommunikáció", text: "Az egyeztetés, ajánlat-előkészítés és projektkövetés magyar szakmai kapcsolattal történik." },
       { title: "Üzleti realitás", text: "A rendszernek nem csak műszakilag, hanem üzemeltetésben, karbantartásban és bővíthetőségben is működnie kell." },
+      { title: "Szerviz és alkatrész háttér", text: "Az elszívórendszer megbízható működéséhez a szűrők karbantartása, alkatrész-ellátás és üzemeltetési támogatás is hozzátartozik." },
     ],
   },
   related: {
@@ -937,6 +948,7 @@ const anyagmozgasRendszerelemek: TechnologyGateway = {
       { title: "Ha idegenanyag-leválasztásra van szükség", text: "Fém, csavar, pánt vagy más szennyeződés esetén mágnesre, szeparálásra vagy gépvédelmi megoldásra lehet szükség." },
       { title: "Ha pufferelni kell az anyagot", text: "A siló, tartály, konténer vagy köztes tárolás segíthet összehangolni a különböző kapacitású technológiai lépéseket." },
       { title: "Ha a rendszer több gépből áll", text: "Daráló + szárító + brikettáló vagy elszívás + siló + brikettáló esetén az anyagáram a rendszer gerince." },
+      { title: "Ha kézi anyagmozgatás köti le a munkaerőt", text: "Ha az anyag mozgatása sok kézi munkát, targoncázást vagy folyamatos felügyeletet igényel, érdemes automatizálhatóbb adagolási és kihordási megoldásokat vizsgálni." },
     ],
   },
   problems: {
@@ -993,6 +1005,7 @@ const anyagmozgasRendszerelemek: TechnologyGateway = {
       { title: "Gépvédelem és szeparálás", text: "Idegenanyag-kockázat esetén mágnes, szeparátor vagy más védelem is vizsgálható." },
       { title: "Bővíthetőség", text: "A rendszert úgy érdemes gondolni, hogy későbbi kapacitásbővítés vagy technológiai kiegészítés is kezelhető legyen." },
       { title: "Magyar szakértői kommunikáció", text: "Az egyeztetés, ajánlat-előkészítés és projektkövetés magyar szakmai kapcsolattal történik." },
+      { title: "Szerviz és üzemeltetési támogatás", text: "Az anyagmozgató elemek hosszú távú működéséhez karbantartás, alkatrész-ellátás és üzemeltetési támogatás is szükséges." },
     ],
   },
   related: {
@@ -1004,6 +1017,7 @@ const anyagmozgasRendszerelemek: TechnologyGateway = {
       { label: "Pelletálás", href: "/technologiak/pelletalas/", description: "Ha a pelletálási rendszerhez előkészítés, adagolás, hűtés vagy csomagolás kapcsolódik." },
       { label: "Biomassza-szárítás", href: "/technologiak/biomassza-szaritas/", description: "Ha a nedves anyagot szárítóba kell adagolni vagy onnan továbbvezetni." },
       { label: "Elszívás és porleválasztás", href: "/technologiak/elszivas-porlevalasztas/", description: "Ha a por vagy forgács légtechnikai úton kerül leválasztásra és továbbkezelésre." },
+      { label: "Vákuumszárítás", href: "/technologiak/vakuumszaritas/", description: "Ha a faanyag rakodása, mozgatása vagy a szárítókamra kiszolgálása külön anyagmozgatási megoldást igényel." },
     ],
   },
   preQual: {

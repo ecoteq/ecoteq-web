@@ -1,0 +1,53 @@
+---
+/* V2 stat band — reconciled facts: 2008 óta / 8 terület / 10+ partner / 24h jellemző. */
+const defaultStats = [
+  { value: '2008', suffix: '', label: 'Óta ipari technológiákban' },
+  { value: '8', suffix: '', label: 'Technológiai terület' },
+  { value: '10', suffix: '+', label: 'Gyártó és beszállító partner' },
+  { value: '24', suffix: 'h', label: 'Jellemző visszajelzés' },
+];
+const { stats = defaultStats } = Astro.props;
+---
+
+<section class="herostats">
+  <div class="inner">
+    {stats.map((s) => (
+      <div class="stat">
+        <span class="fig">{s.value}{s.suffix && <span class="suf">{s.suffix}</span>}</span>
+        <span class="label">{s.label}</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .herostats { background: var(--color-surface-dark); border-top: 1px solid rgba(255, 255, 255, 0.08); }
+  .inner {
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding: var(--space-6) clamp(16px, 4vw, 40px);
+    display: grid;
+    gap: var(--space-5) var(--space-6);
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (min-width: 860px) { .inner { grid-template-columns: repeat(4, 1fr); } }
+
+  .stat { border-left: 2px solid var(--ecoteq-green); padding-left: var(--space-4); display: flex; flex-direction: column; gap: 6px; }
+  .fig {
+    font-family: var(--font-display);
+    font-weight: var(--fw-extrabold);
+    font-size: clamp(1.6rem, 1.12rem + 1.6vw, 2.2rem);
+    line-height: 1;
+    letter-spacing: var(--ls-display);
+    color: var(--ecoteq-white);
+  }
+  .suf { color: var(--ecoteq-green); margin-left: 1px; }
+  .label {
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-bold);
+    letter-spacing: var(--ls-overline);
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.62);
+    line-height: var(--lh-snug);
+  }
+</style>

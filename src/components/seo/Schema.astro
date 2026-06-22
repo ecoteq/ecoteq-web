@@ -1,0 +1,113 @@
+---
+/**
+ * JSON-LD structured data (schema.org) for SEO/AISEO.
+ * Emits a single @graph <script>. Use:
+ *  - site-wide in BaseLayout: <Schema org webpage={{ title, description }} />
+ *  - on rich pages: <Schema breadcrumbs={[...]} faq={[...]} howto={{ name, steps }} />
+ */
+import { CONTACT } from '../../lib/site';
+
+const SITE = (Astro.site?.toString() || 'https://ecoteq.hu/').replace(/\/+$/, '');
+
+type Crumb = { name: string; href?: string };
+interface Props {
+  org?: boolean;
+  webpage?: { title?: string; description?: string };
+  breadcrumbs?: Crumb[];
+  faq?: { q: string; a: string }[];
+  howto?: { name: string; steps: { title: string; text: string }[] };
+}
+const { org, webpage, breadcrumbs, faq, howto } = Astro.props;
+
+const pageUrl = new URL(Astro.url.pathname, SITE + '/').toString();
+const abs = (href?: string) => (href ? new URL(href, SITE + '/').toString() : undefined);
+
+const graph: Record<string, unknown>[] = [];
+
+if (org) {
+  graph.push({
+    '@type': 'Organization',
+    '@id': SITE + '/#org',
+    name: CONTACT.company,
+    url: SITE + '/',
+    logo: SITE + '/ds/logo-mark-navy.svg',
+    email: CONTACT.email,
+    telephone: CONTACT.phone,
+    foundingDate: '2008',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'sales',
+      telephone: CONTACT.phone,
+      email: CONTACT.email,
+      areaServed: ['HU', 'EU'],
+      availableLanguage: ['hu'],
+    },
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Csillaghegyi út 19–21.',
+      postalCode: '1037',
+      addressLocality: 'Budapest',
+      addressCountry: 'HU',
+    },
+  });
+  graph.push({
+    '@type': 'WebSite',
+    '@id': SITE + '/#website',
+    url: SITE + '/',
+    name: 'ECOTEQ',
+    publisher: { '@id': SITE + '/#org' },
+    inLanguage: 'hu-HU',
+  });
+}
+
+if (webpage) {
+  graph.push({
+    '@type': 'WebPage',
+    '@id': pageUrl + '#webpage',
+    url: pageUrl,
+    name: webpage.title,
+    ...(webpage.description ? { description: webpage.description } : {}),
+    isPartOf: { '@id': SITE + '/#website' },
+    inLanguage: 'hu-HU',
+  });
+}
+
+if (breadcrumbs?.length) {
+  graph.push({
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbs.map((c, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: c.name,
+      ...(abs(c.href) ? { item: abs(c.href) } : {}),
+    })),
+  });
+}
+
+if (faq?.length) {
+  graph.push({
+    '@type': 'FAQPage',
+    mainEntity: faq.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  });
+}
+
+if (howto) {
+  graph.push({
+    '@type': 'HowTo',
+    name: howto.name,
+    step: howto.steps.map((s, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: s.title,
+      text: s.text,
+    })),
+  });
+}
+
+const data = { '@context': 'https://schema.org', '@graph': graph };
+---
+{graph.length > 0 && <script type="application/ld+json" set:html={JSON.stringify(data)} />}

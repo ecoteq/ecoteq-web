@@ -1,11 +1,11 @@
 ---
-import SiteLayout from '../layouts/SiteLayout.astro';
+import SiteLayout from '../components/v2/SiteLayoutV2.astro';
 import Section from '../components/layout/Section.astro';
 import SectionHeading from '../components/brand/SectionHeading.astro';
 import PageHero from '../components/site/PageHero.astro';
 import Button from '../components/core/Button.astro';
 import Icon from '../components/Icon.astro';
-import { CONTACT, quoteHref } from '../lib/site';
+import { CONTACT, quoteHref } from '../lib/site-v2';
 
 const checklist = [
   { label: 'Anyag', text: 'Milyen anyag keletkezik (faforgács, por, fólia, vegyes ipari hulladék)?' },
@@ -71,7 +71,7 @@ const checklist = [
             </li>
           ))}
         </ul>
-        <div class="cta"><Button href={quoteHref(undefined, 'kapcsolat')}>Technológiai javaslatot kérek</Button></div>
+        <div class="cta"><Button href={quoteHref(undefined, 'kapcsolat')}>Leírom az anyagot és a célt</Button></div>
       </div>
     </div>
   </Section>
@@ -83,7 +83,7 @@ const checklist = [
         title="Beszéljünk a feladatról, mielőtt gépről beszélnénk"
         lead="Mondja el, milyen anyaggal és milyen céllal dolgozik. Megnézzük az egész anyagutat, és olyan technológiai irányt javaslunk, amely üzletileg is vállalható."
       />
-      <div class="cta"><Button href={quoteHref(undefined, 'kapcsolat')}>Technológiai javaslatot kérek</Button></div>
+      <div class="cta"><Button href={quoteHref(undefined, 'kapcsolat')}>Leírom az anyagot és a célt</Button></div>
     </div>
   </Section>
 </SiteLayout>

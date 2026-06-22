@@ -16,9 +16,9 @@ export const SOCIAL = [
 ] as const;
 
 export const CTA = {
-  primary: { label: 'Technológiai javaslatot kérek', href: '#ajanlatkeres' },
-  secondary: { label: 'Megnézem a megoldásokat', href: '#megoldasok' },
-  form: { label: 'Elküldöm a projekt adatait', href: '#ajanlatkeres' },
+  primary: { label: 'Leírom, mit kell megoldani', href: '#ajanlatkeres' },
+  secondary: { label: 'Megnézem a technológiákat', href: '#technologiak' },
+  form: { label: 'Elküldöm az alapadatokat', href: '#ajanlatkeres' },
 } as const;
 
 /** Top sticky navigation (6 items). Megoldások + Technológiák open mega-menus. */

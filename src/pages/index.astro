@@ -1,27 +1,50 @@
 ---
-import SiteLayout from '../layouts/SiteLayout.astro';
-import { CTA } from '../lib/site';
-import Hero from '../components/site/Hero.astro';
-import HeroStats from '../components/site/HeroStats.astro';
-import DecisionPaths from '../components/sections/DecisionPaths.astro';
+/* FŐOLDAL V2 — reconciled (v1.1) review klón, összevetésre az élő `/`-rel.
+   Nem éles oldal; a noindex globálisan érvényes. A/B: alapból B; ?v=a → kihívó (A) H1. */
+import SiteLayoutV2 from '../components/v2/SiteLayoutV2.astro';
+import HeroV2 from '../components/v2/HeroV2.astro';
+import HeroStatsV2 from '../components/v2/HeroStatsV2.astro';
+import DecisionPathsV2 from '../components/v2/DecisionPathsV2.astro';
 import TechnologyGateways from '../components/sections/TechnologyGateways.astro';
-import SystemsThinking from '../components/sections/SystemsThinking.astro';
-import Proof from '../components/sections/Proof.astro';
-import ProcessTimeline from '../components/sections/ProcessTimeline.astro';
+import SystemsThinkingV2 from '../components/v2/SystemsThinkingV2.astro';
+import ProofV2 from '../components/v2/ProofV2.astro';
+import ProcessTimelineV2 from '../components/v2/ProcessTimelineV2.astro';
 import PreQualForm from '../components/sections/PreQualForm.astro';
 ---
 
-<SiteLayout
+<SiteLayoutV2
   title="Ipari hulladék- és biomassza-feldolgozó rendszerek"
-  description="Az ECOTEQ ipari darálási, szárítási, brikettálási, pelletálási és elszívási rendszerekben segít magyarországi és közép-európai üzemeknek — reális technológiai iránnyal."
-  headerCta={{ label: CTA.primary.label, href: '#ajanlatkeres' }}
+  description="Az ECOTEQ ipari darálási, szárítási, brikettálási, pelletálási és elszívási rendszerekben segít. Előbb az anyagot értjük meg, és működő anyagáramot építünk. Reális technológiai irány, nem dobozos gép."
+  headerCta={{ label: 'Leírom, mit kell megoldani', href: '#ajanlatkeres' }}
 >
-  <Hero />
-  <HeroStats />
-  <DecisionPaths />
+  <a class="v2flag" href="/">V2 — review · vissza az élő főoldalra (/)</a>
+  <HeroV2 />
+  <HeroStatsV2 />
+  <DecisionPathsV2 />
   <TechnologyGateways />
-  <SystemsThinking />
-  <Proof />
-  <ProcessTimeline />
+  <SystemsThinkingV2 />
+  <ProofV2 />
+  <ProcessTimelineV2 />
   <PreQualForm />
-</SiteLayout>
+</SiteLayoutV2>
+
+<style>
+  .v2flag {
+    position: fixed;
+    top: 8px;
+    right: 8px;
+    z-index: 200;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--ecoteq-green);
+    border-radius: var(--radius-pill);
+    padding: 5px 12px;
+    text-decoration: none;
+    box-shadow: var(--shadow-md);
+    opacity: 0.92;
+  }
+  .v2flag:hover { opacity: 1; }
+</style>

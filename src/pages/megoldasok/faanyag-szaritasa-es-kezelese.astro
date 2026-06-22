@@ -1,254 +1,40 @@
 ---
-import SiteLayout from '../../layouts/SiteLayout.astro';
-import Section from '../../components/layout/Section.astro';
-import SectionHeading from '../../components/brand/SectionHeading.astro';
-import PageHero from '../../components/site/PageHero.astro';
-import Button from '../../components/core/Button.astro';
-import Icon from '../../components/Icon.astro';
-import { quoteHref } from '../../lib/site';
+// Nyitás-archetípus: döntési-villa · Vezető pillér: Anyag-először
+import SolutionPage from '../../components/site/SolutionPage.astro';
 
 const situations = [
-  {
-    icon: 'clock',
-    text: 'A hagyományos szárítás hosszú ciklusideje lassítja a gyártást, és nehezen tervezhetővé teszi az átfutást.',
-  },
-  {
-    icon: 'thermometer',
-    text: 'A nem kellően kontrollált szárítás repedéseket, vetemedést és minőségi ingadozást okoz a faanyagon.',
-  },
-  {
-    icon: 'droplets',
-    text: 'A faanyag nedvességtartalma egyenetlen, ezért a feldolgozás és a további megmunkálás nehezen kiszámítható.',
-  },
-  {
-    icon: 'shield',
-    text: 'A faanyag tartós védelme – a kezelése, impregnálása – iparilag is megbízható módon merül fel igényként.',
-  },
-  {
-    icon: 'trees',
-    text: 'Eltérő fafaj, méret, nedvesség és mennyiség kerül egy üzembe, így nehéz egységes szárítási irányt kijelölni.',
-  },
+  { icon: 'clock', title: 'Hosszú, nehezen tervezhető szárítási ciklus', text: 'A hagyományos szárítás ciklusideje lassítja a gyártást, és nehezen tervezhetővé teszi az átfutást. A kontrollált szárítás rövidíti és kiszámíthatóbbá teszi ezt.' },
+  { icon: 'thermometer', title: 'Repedés és vetemedés a szárítás után', text: 'A nem kellően kontrollált szárítás repedéseket, vetemedést és minőségi ingadozást okoz. Minden hibás darab anyag- és időveszteség.' },
+  { icon: 'droplets', title: 'Egyenetlen a faanyag nedvességtartalma', text: 'Ha a nedvesség egyenetlen, a feldolgozás és a megmunkálás nehezen kiszámítható. Az egyenletes végnedvesség stabilabb gyártást ad.' },
+  { icon: 'shield', title: 'Tartós védelem és ipari kezelés kell', text: 'A faanyag tartós védelme, kezelése és impregnálása iparilag is megbízható módon merül fel igényként, ahol a dokumentálható eredmény számít.' },
+  { icon: 'trees', title: 'Eltérő fafaj, méret és mennyiség egy üzemben', text: 'Ha sokféle fafaj, méret és nedvesség kerül be, nehéz egységes szárítási irányt kijelölni. A program a konkrét anyaghoz igazítható.' },
+  { icon: 'gauge', title: 'Bizonytalan, hol a tényleges szűk keresztmetszet', text: 'Sokszor nem maga a szárítás a lassú pont, hanem az előkészítés vagy a betárolás. Érdemes előbb megnézni, hol áll meg valójában az anyag.' },
 ];
 
 const directions = [
-  {
-    icon: 'thermometer',
-    name: 'Vákuumszárítás',
-    line: 'Kontrollált, gyorsabb faanyagszárítás',
-    href: '/technologiak/vakuumszaritas/',
-  },
-  {
-    icon: 'shield',
-    name: 'Vákuumimpregnálás',
-    line: 'A faanyag védelme, ipari kezelése',
-    href: '/technologiak/vakuumimpregnalas/',
-  },
+  { icon: 'thermometer', name: 'Vákuumszárítás', line: 'Kontrollált, gyorsabb faanyagszárítás kevesebb repedéssel és vetemedéssel.', href: '/technologiak/vakuumszaritas/' },
+  { icon: 'shield', name: 'Vákuumimpregnálás', line: 'A faanyag tartós, ipari szintű védelme és kezelése, dokumentálható eredménnyel.', href: '/technologiak/vakuumimpregnalas/' },
+];
+
+const faq = [
+  { q: 'Mennyivel gyorsabb a vákuumszárítás?', a: 'A kontrollált vákuumszárítás jellemzően rövidebb és kiszámíthatóbb ciklust ad a hagyományosnál. [VALIDÁLANDÓ: tipikus ciklusidő-tartomány fafajonként].' },
+  { q: 'Minden fafajhoz ugyanaz a program kell?', a: 'Nem. A programot a fafajhoz, a mérethez és az induló nedvességhez igazítjuk, hogy egyenletes végnedvesség és kevesebb hiba legyen az eredmény.' },
+  { q: 'Mi a különbség a szárítás és az impregnálás között?', a: 'A szárítás a nedvességet állítja be a feldolgozhatósághoz, az impregnálás pedig tartós védelmet ad a faanyagnak. A kettő egy folyamatba illeszthető.' },
 ];
 ---
 
-<SiteLayout
+<SolutionPage
   title="Faanyag szárítása és kezelése"
-  description="Faipari üzemek faanyagszárítása és kezelése – kontrollált vákuumszárítás és vákuumimpregnálás az ISVE technológiai hátterére építve."
->
-  <PageHero
-    eyebrow="Megoldás"
-    title="Faanyag szárítása és kezelése"
-    lead="A faipari üzemekben a kontrolláltabb szárítás és a faanyag megfelelő kezelése kézzelfogható különbséget jelent. A rövidebb ciklusidő, a kevesebb repedés és vetemedés, valamint az ipari impregnálás együtt teszi tervezhetőbbé és tartósabbá a faanyagot."
-    image="/heroes/hero-vakuumszaritas.jpg"
-    imageAlt="ISVE vákuumszárító kamra az ECOTEQ üzemcsarnokában"
-    crumb={[{ label: 'Főoldal', href: '/' }, { label: 'Megoldások', href: '/#megoldasok' }, { label: 'Faanyag szárítása és kezelése' }]}
-  >
-    <Button href={quoteHref('vakuumszaritas', 'megoldas')}>Technológiai javaslatot kérek</Button>
-  </PageHero>
-
-  <Section surface="white">
-    <SectionHeading
-      overline="Helyzetkép"
-      title="Mikor merül fel?"
-      lead="Az alábbi üzemi helyzetekben érdemes átgondolni a faanyag szárítását és kezelését."
-    />
-    <ul class="grid" role="list">
-      {
-        situations.map((item) => (
-          <li class="card">
-            <span class="card-ic" aria-hidden="true">
-              <Icon name={item.icon} size={22} />
-            </span>
-            <p class="card-text">{item.text}</p>
-          </li>
-        ))
-      }
-    </ul>
-  </Section>
-
-  <Section surface="subtle">
-    <SectionHeading
-      overline="Technológiai irány"
-      title="Milyen technológiai irány segíthet?"
-      lead="A megfelelő irányt a fafaj, a méret, a nedvességtartalom és a mennyiség dönti el. Az ISVE technológiai hátterére építve az alábbi technológiák segítenek a kontrollált szárításban és a faanyag tartós kezelésében."
-    />
-    <div class="tech-grid">
-      {
-        directions.map((tech) => (
-          <a class="tech" href={tech.href}>
-            <span class="tech-ic" aria-hidden="true">
-              <Icon name={tech.icon} size={24} />
-            </span>
-            <span class="tech-body">
-              <span class="tech-name">{tech.name}</span>
-              <span class="tech-line">{tech.line}</span>
-            </span>
-            <span class="tech-arrow" aria-hidden="true">
-              <Icon name="arrow-right" size={20} />
-            </span>
-          </a>
-        ))
-      }
-    </div>
-  </Section>
-
-  <Section surface="navy">
-    <SectionHeading
-      tone="dark"
-      overline="Következő lépés"
-      title="Beszéljük át a faanyag szárítását és kezelését"
-      lead="Mondja el, milyen fafajjal, mérettel, nedvességtartalommal és mennyiséggel dolgozik, és közösen meghatározzuk, hogy a vákuumszárítás és a vákuumimpregnálás milyen iránya illik a folyamataihoz."
-    />
-    <div class="cta">
-      <Button href={quoteHref('vakuumszaritas', 'megoldas')}>Technológiai javaslatot kérek</Button>
-    </div>
-  </Section>
-</SiteLayout>
-
-<style>
-  .crumb {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    align-items: center;
-    font-size: var(--fs-sm);
-    color: var(--color-text-muted);
-    margin-bottom: var(--space-5);
-  }
-  .crumb a {
-    color: var(--color-text-secondary);
-    text-decoration: none;
-  }
-  .crumb .here {
-    color: var(--color-text);
-  }
-  .cta {
-    margin-top: var(--space-6);
-  }
-
-  .grid {
-    list-style: none;
-    margin: var(--space-7) 0 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: var(--space-4);
-  }
-  .card {
-    display: flex;
-    gap: var(--space-3);
-    align-items: flex-start;
-    padding: var(--space-5);
-    background: var(--color-bg-subtle);
-    border-radius: var(--radius-lg);
-  }
-  .card-ic {
-    display: inline-flex;
-    flex: none;
-    width: 44px;
-    height: 44px;
-    align-items: center;
-    justify-content: center;
-    border-radius: var(--radius-md);
-    background: var(--color-accent-tint);
-    color: var(--color-accent-active);
-  }
-  .card-text {
-    margin: 0;
-    font-size: var(--fs-base);
-    line-height: var(--lh-body);
-    color: var(--color-text-secondary);
-  }
-
-  .tech-grid {
-    margin-top: var(--space-7);
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--space-4);
-  }
-  .tech {
-    display: flex;
-    gap: var(--space-4);
-    align-items: center;
-    padding: var(--space-5);
-    background: var(--color-bg);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    text-decoration: none;
-    transition:
-      border-color var(--dur-base) var(--ease-standard),
-      box-shadow var(--dur-base) var(--ease-standard),
-      transform var(--dur-fast) var(--ease-standard);
-  }
-  .tech:hover {
-    border-color: var(--color-accent);
-    box-shadow: var(--shadow-sm);
-    transform: translateY(-2px);
-  }
-  .tech-ic {
-    display: inline-flex;
-    flex: none;
-    width: 48px;
-    height: 48px;
-    align-items: center;
-    justify-content: center;
-    border-radius: var(--radius-md);
-    background: var(--color-accent-tint);
-    color: var(--color-accent-active);
-  }
-  .tech-body {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    flex: 1 1 auto;
-  }
-  .tech-name {
-    font-family: var(--font-display);
-    font-weight: var(--fw-bold);
-    font-size: var(--fs-lg);
-    color: var(--color-text);
-  }
-  .tech-line {
-    font-size: var(--fs-sm);
-    line-height: var(--lh-body);
-    color: var(--color-text-secondary);
-  }
-  .tech-arrow {
-    display: inline-flex;
-    flex: none;
-    color: var(--color-text-muted);
-    transition:
-      color var(--dur-base) var(--ease-standard),
-      transform var(--dur-fast) var(--ease-standard);
-  }
-  .tech:hover .tech-arrow {
-    color: var(--color-accent);
-    transform: translateX(3px);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .tech,
-    .tech-arrow {
-      transition: none;
-    }
-    .tech:hover,
-    .tech:hover .tech-arrow {
-      transform: none;
-    }
-  }
-</style>
+  description="Faipari üzemek faanyagszárítása és kezelése: kontrollált vákuumszárítás és vákuumimpregnálás az ISVE technológiai hátterére építve, a fafajhoz és a célhoz méretezve."
+  heroLead="A faanyagnál a kérdés ritkán az, melyik szárító a legjobb. Sokkal inkább az, hogy a szárítás-e a szűk keresztmetszet, és milyen kontroll kell a repedés és a vetemedés elkerüléséhez. A kontrollált vákuumszárítás és az ipari impregnálás együtt teszi tervezhetőbbé, gyorsabbá és tartósabbá a faanyagot."
+  heroImage="/heroes/hero-vakuumszaritas.jpg"
+  heroImageAlt="ISVE vákuumszárító kamra az ECOTEQ üzemcsarnokában"
+  source="megoldas-faanyag-szaritas"
+  situationsLead="Az alábbi helyzetekben érdemes átgondolni a faanyag szárítását és kezelését."
+  situations={situations}
+  directionsLead="A faanyag szárítása és kezelése ritkán egyetlen lépés. A kontrollált szárítás és az impregnálás összehangolva ad tervezhető, tartós eredményt. A technológiát egy helyről, az ISVE hátterére építve méretezzük a fafajhoz, a mérethez és a célhoz."
+  directions={directions}
+  faq={faq}
+  ctaTitle="Nézzük meg a faanyag útját"
+  ctaLead="Mondja el, milyen fafajt, méretet és mennyiséget szárít, és mi a célja a faanyaggal. Ebből meghatározzuk, hogy a vákuumszárítás, az impregnálás vagy ezek kombinációja illik a folyamathoz, és hol nyer időt és minőséget."
+/>

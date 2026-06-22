@@ -3,6 +3,7 @@
     (same fade in light + dark, driven by --color-surface-dark) and a title block.
     Optional breadcrumb + a default slot for CTAs below the lead. */
 import Overline from '../brand/Overline.astro';
+import Schema from '../seo/Schema.astro';
 
 interface CrumbItem { label: string; href?: string; }
 interface Props {
@@ -41,6 +42,10 @@ const { title, lead, eyebrow, image, imageAlt = '', crumb } = Astro.props;
       ))}
     </nav>
   </div>
+)}
+
+{crumb && crumb.length > 0 && (
+  <Schema breadcrumbs={crumb.map((c) => ({ name: c.label, href: c.href }))} />
 )}
 
 <style>

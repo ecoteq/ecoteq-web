@@ -1,164 +1,46 @@
 ---
-import SiteLayout from '../../layouts/SiteLayout.astro';
-import Section from '../../components/layout/Section.astro';
-import SectionHeading from '../../components/brand/SectionHeading.astro';
-import PageHero from '../../components/site/PageHero.astro';
-import Button from '../../components/core/Button.astro';
-import Icon from '../../components/Icon.astro';
-import { quoteHref } from '../../lib/site';
+// Nyitás-archetípus: rendszer / döntési-villa · Vezető pillér: Végig ott vagyunk + Függetlenség
+import SolutionPage from '../../components/site/SolutionPage.astro';
 
 const situations = [
-  {
-    icon: 'layers',
-    title: 'Több, egymásra épülő technológiai lépés',
-    text: 'A feladat nem egyetlen géppel oldható meg: az anyag fogadásától a végtermékig több lépésen halad át, amelyeket egymáshoz kell illeszteni.',
-  },
-  {
-    icon: 'route',
-    title: 'A gépek között akad meg az anyag útja',
-    text: 'A fő gépek külön-külön működnek, de az adagolás, a kihordás és a továbbítás nincs összehangolva, ezért a folyamat egyenetlen.',
-  },
-  {
-    icon: 'boxes',
-    title: 'Fogadás, előkészítés és tárolás megoldatlan',
-    text: 'A bejövő anyag fogadása, az előkészítés és a végtermék tárolása esetleges, így a fő technológia nem tud folyamatosan dolgozni.',
-  },
-  {
-    icon: 'settings',
-    title: 'Hiányzó közös vezérlés és összehangolás',
-    text: 'A különálló gépek külön indulnak és állnak le; egységes vezérlés és összehangolt működés nélkül nehéz kiegyensúlyozott üzemet tartani.',
-  },
-  {
-    icon: 'factory',
-    title: 'Bővítés vagy átalakítás egy meglévő üzemben',
-    text: 'Új technológiai lépés vagy kapacitásbővítés esetén a meglévő gépeket, az anyagáramot és a teret együtt, rendszerként kell átgondolni.',
-  },
+  { icon: 'layers', title: 'Több, egymásra épülő technológiai lépés', text: 'A feladat nem egyetlen géppel oldható meg: az anyag a fogadástól a végtermékig több lépésen halad át, amelyeket egymáshoz kell illeszteni.' },
+  { icon: 'route', title: 'A gépek között akad meg az anyag útja', text: 'A fő gépek külön-külön működnek, de az adagolás, a kihordás és a továbbítás nincs összehangolva, ezért a folyamat egyenetlen.' },
+  { icon: 'boxes', title: 'Fogadás, előkészítés és tárolás megoldatlan', text: 'A bejövő anyag fogadása, az előkészítés és a végtermék tárolása esetleges, így a fő technológia nem tud folyamatosan dolgozni.' },
+  { icon: 'settings', title: 'Hiányzó közös vezérlés és összehangolás', text: 'A különálló gépek külön indulnak és állnak le. Egységes vezérlés nélkül nehéz kiegyensúlyozott üzemet tartani.' },
+  { icon: 'factory', title: 'Bővítés vagy átalakítás egy meglévő üzemben', text: 'Új technológiai lépés vagy kapacitásbővítés esetén a meglévő gépeket, az anyagáramot és a teret együtt, rendszerként kell átgondolni.' },
+  { icon: 'gauge', title: 'Egyenetlen kapacitás a lépések között', text: 'Ha az egyes gépek eltérő teljesítménnyel dolgoznak, megfelelő pufferelés és méretezés nélkül a leglassabb lépés fogja vissza az egész rendszert.' },
 ];
 
-const related = [
-  {
-    title: 'Ipari darálás',
-    text: 'Bemenő anyag aprítása egyenletes, kezelhető frakcióra a további lépésekhez.',
-    href: '/technologiak/ipari-daralas/',
-  },
-  {
-    title: 'Biomassza-szárítás',
-    text: 'Nedvességtartalom beállítása az anyag tömörítés vagy hasznosítás előtti előkészítéséhez.',
-    href: '/technologiak/biomassza-szaritas/',
-  },
-  {
-    title: 'Brikettálás',
-    text: 'Előkészített anyag tömörítése brikettbe a rendszer kihordási oldalán.',
-    href: '/technologiak/brikettalas/',
-  },
-  {
-    title: 'Pelletálás',
-    text: 'Előkészített anyag pelletté formálása egységes, tárolható végtermékként.',
-    href: '/technologiak/pelletalas/',
-  },
-  {
-    title: 'Elszívás és porleválasztás',
-    text: 'A keletkező por és apró szemcse elszívása és leválasztása a folyamat mentén.',
-    href: '/technologiak/elszivas-porlevalasztas/',
-  },
-  {
-    title: 'Anyagmozgatás és rendszerelemek',
-    text: 'Adagolás, kihordás és továbbítás, amely összeköti a fő gépeket egy rendszerré.',
-    href: '/technologiak/anyagmozgas-rendszerelemek/',
-  },
+const directions = [
+  { icon: 'shuffle', name: 'Ipari darálás', line: 'Bemenő anyag aprítása egyenletes, kezelhető frakcióra a további lépésekhez.', href: '/technologiak/ipari-daralas/' },
+  { icon: 'thermometer', name: 'Biomassza-szárítás', line: 'Nedvességtartalom beállítása a tömörítés vagy a hasznosítás előtti előkészítéshez.', href: '/technologiak/biomassza-szaritas/' },
+  { icon: 'flame', name: 'Brikettálás', line: 'Előkészített anyag tömörítése brikettbe a rendszer kihordási oldalán.', href: '/technologiak/brikettalas/' },
+  { icon: 'package', name: 'Pelletálás', line: 'Előkészített anyag pelletté formálása egységes, tárolható végtermékként.', href: '/technologiak/pelletalas/' },
+  { icon: 'wind', name: 'Elszívás és porleválasztás', line: 'A keletkező por és apró szemcse elszívása és leválasztása a folyamat mentén.', href: '/technologiak/elszivas-porlevalasztas/' },
+  { icon: 'route', name: 'Anyagmozgatás és rendszerelemek', line: 'Adagolás, kihordás és továbbítás, amely a fő gépeket egy rendszerré köti össze.', href: '/technologiak/anyagmozgas-rendszerelemek/' },
+];
+
+const faq = [
+  { q: 'Miért jobb rendszerként tervezni, mint gépenként vásárolni?', a: 'Mert a leglassabb vagy rosszul illesztett lépés fogja vissza az egész üzemet. Rendszerként a kapacitások összehangolhatók, és egy felelős visel gondot a teljes anyagáramért.' },
+  { q: 'Egy meglévő üzemet is át lehet alakítani rendszerré?', a: 'Igen. A meglévő gépeket, az anyagáramot és a teret felmérjük, és a hiányzó láncszemeket illesztjük be, bővítés vagy átalakítás formájában.' },
+  { q: 'Tényleg egy beszállító viszi az egészet?', a: 'Igen. Több vezető gyártó kínálatából állítjuk össze a rendszert, de a tervezéstől az üzembe helyezésig egy felelős koordinálja a folyamatot. [VALIDÁLANDÓ: referenciaprojekt megnevezése].' },
 ];
 ---
-<SiteLayout
+
+<SolutionPage
   title="Komplett anyagáram-rendszerek"
-  description="Komplett anyagáram-rendszerek: az ECOTEQ rendszerként tervezi az anyag útját a fogadástól a végtermékig, összehangolt gépekkel. Kérjen technológiai javaslatot."
->
-  <PageHero
-    eyebrow="Megoldás"
-    title="Komplett anyagáram-rendszerek"
-    lead="Egy működő üzemben az anyag útja az anyag fogadásától a végtermékig több gépen halad át: fogadás, előkészítés, fő technológia, kihordás, tárolás és vezérlés. Az ECOTEQ nem önálló gépet, hanem rendszert tervez, amelyben ezek a lépések összehangoltan dolgoznak együtt."
-    image="/heroes/hero-komplett.jpg"
-    imageAlt="Faapríték- és fűrészpor-tároló és szárító üzem alkonyatkor"
-    crumb={[{ label: 'Főoldal', href: '/' }, { label: 'Megoldások', href: '/#megoldasok' }, { label: 'Komplett anyagáram-rendszerek' }]}
-  >
-    <Button href={quoteHref(undefined,'megoldas')}>Technológiai javaslatot kérek</Button>
-  </PageHero>
-
-  <Section surface="white">
-    <SectionHeading
-      overline="Helyzetkép"
-      title="Mikor merül fel"
-      lead="Az alábbi üzemi helyzetekben válik kérdéssé, hogy a feladatot egyetlen gép helyett összefüggő rendszerként érdemes megközelíteni."
-    />
-    <div class="situations">
-      {situations.map((s) => (
-        <article class="scard">
-          <span class="ic" aria-hidden="true"><Icon name={s.icon} size={22} /></span>
-          <h3>{s.title}</h3>
-          <p>{s.text}</p>
-        </article>
-      ))}
-    </div>
-  </Section>
-
-  <Section surface="subtle">
-    <SectionHeading
-      overline="Technológia"
-      title="Milyen technológiai irány segíthet"
-      lead="Egy komplett rendszerben a fő gépeket az anyagmozgatás és a kapcsolódó elemek kötik össze, az anyag fogadásától a végtermékig. Az alábbi technológiák jellemzően egy ilyen anyagáram-rendszer építőelemei."
-    />
-    <div class="related">
-      {related.map((r) => (
-        <a class="rel" href={r.href}>
-          <h3>{r.title} <Icon name="arrow-right" size={16} /></h3>
-          <p>{r.text}</p>
-        </a>
-      ))}
-    </div>
-    <p class="note">A rendszerszemlélet lényege, hogy nem külön gépeket állítunk egymás mellé, hanem az anyag teljes útját tervezzük meg a fogadástól a végtermékig; az anyagmozgatás és a kapcsolódó elemek kötik a fő gépeket egységes, összehangolt működéssé.</p>
-  </Section>
-
-  <Section surface="navy">
-    <SectionHeading
-      tone="dark"
-      overline="Következő lépés"
-      title="Beszéljünk a teljes anyagáramról"
-      lead="Mutassa meg, milyen anyag, mennyiség és cél áll a feladat mögött, és közösen meghatározzuk, hogyan épülhet fel az anyag útja a fogadástól a végtermékig."
-    />
-    <div class="closing-cta"><Button href={quoteHref(undefined,'megoldas')}>Technológiai javaslatot kérek</Button></div>
-  </Section>
-</SiteLayout>
-<style>
-  .crumb{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:var(--fs-sm);color:var(--color-text-muted);margin-bottom:var(--space-5)}
-  .crumb a{color:var(--color-text-secondary);text-decoration:none}
-  .crumb a:hover{color:var(--color-accent)}
-  .crumb .here{color:var(--color-text)}
-  .cta{margin-top:var(--space-6)}
-
-  .situations { margin-top: var(--space-7); display: grid; gap: var(--space-4); grid-template-columns: 1fr; }
-  @media (min-width: 720px) { .situations { grid-template-columns: repeat(2, 1fr); } }
-  @media (min-width: 1000px) { .situations { grid-template-columns: repeat(3, 1fr); } }
-  .scard { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-5); }
-  .scard .ic { display: grid; place-items: center; width: 46px; height: 46px; border-radius: var(--radius-md); background: var(--color-accent-tint); color: var(--color-accent-active); margin-bottom: var(--space-4); }
-  .scard h3 { margin: 0 0 6px; font-size: var(--fs-h4); font-weight: var(--fw-bold); color: var(--color-text); }
-  .scard p { margin: 0; font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: var(--lh-snug); }
-
-  .related { margin-top: var(--space-7); display: grid; gap: var(--space-4); grid-template-columns: 1fr; }
-  @media (min-width: 720px) { .related { grid-template-columns: 1fr 1fr; } }
-  @media (min-width: 1000px) { .related { grid-template-columns: repeat(3, 1fr); } }
-  .rel { display: flex; flex-direction: column; gap: 6px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-5); text-decoration: none; color: inherit; transition: box-shadow var(--dur-base) var(--ease-standard), transform var(--dur-base) var(--ease-standard); }
-  .rel:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
-  .rel h3 { margin: 0; display: inline-flex; align-items: center; gap: 8px; font-size: var(--fs-h4); font-weight: var(--fw-bold); color: var(--color-accent-text); }
-  .rel h3 :global(svg) { transition: transform var(--dur-base) var(--ease-standard); }
-  .rel:hover h3 :global(svg) { transform: translateX(3px); }
-  .rel p { margin: 0; font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: var(--lh-snug); }
-  .note { margin: var(--space-6) 0 0; font-size: var(--fs-sm); color: var(--color-text-muted); max-width: 70ch; }
-
-  .closing-cta { margin-top: var(--space-6); }
-
-  @media (prefers-reduced-motion: reduce) {
-    .rel { transition: none; }
-    .rel:hover { transform: none; }
-    .rel h3 :global(svg) { transition: none; }
-    .rel:hover h3 :global(svg) { transform: none; }
-  }
-</style>
+  description="Komplett anyagáram-rendszerek: az ECOTEQ rendszerként tervezi az anyag útját a fogadástól a végtermékig, összehangolt gépekkel, több gyártó kínálatából, egy felelőssel."
+  heroLead="Egy működő üzemben az anyag útja a fogadástól a végtermékig több gépen halad át: fogadás, előkészítés, fő technológia, kihordás, tárolás és vezérlés. Ha ezek külön-külön jók, de nincsenek összehangolva, a leglassabb lépés fogja vissza az egészet. Az ECOTEQ nem önálló gépet, hanem rendszert tervez, amelyben a lépések együtt dolgoznak."
+  heroImage="/heroes/hero-komplett.jpg"
+  heroImageAlt="Faapríték- és fűrészpor-tároló és -szárító üzem alkonyatkor"
+  source="megoldas-komplett-anyagaram"
+  situationsTitle="Mikor beszélünk rendszerről?"
+  situationsLead="Az alábbi helyzetekben éri meg az anyag útját rendszerként átgondolni, nem gépenként."
+  situations={situations}
+  directionsTitle="Milyen elemekből áll össze?"
+  directionsLead="A komplett anyagáram nem gépek listája, hanem egy összehangolt rendszer. A fő technológiák köré az előkészítés, az elszívás és az anyagmozgatás illeszkedik, egy közös logika szerint. Ezt egy helyről, több vezető európai gyártó kínálatából tervezzük, egy felelőssel a fogadástól a végtermékig."
+  directions={directions}
+  faq={faq}
+  ctaTitle="Tervezzük meg az anyag teljes útját"
+  ctaLead="Mondja el, milyen anyaggal dolgozik, milyen lépések vannak már meg, és hol akad el a folyamat. Ebből összerakjuk a fogadástól a végtermékig tartó rendszert, összehangolt kapacitásokkal és egy felelőssel."
+/>

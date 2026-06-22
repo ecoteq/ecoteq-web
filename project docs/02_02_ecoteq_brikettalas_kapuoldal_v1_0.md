@@ -1,4 +1,11 @@
-# ECOTEQ.hu technológiai kapuoldal — Brikettálás v1.0
+# ECOTEQ.hu technológiai kapuoldal — Brikettálás v1.1
+
+> **v1.1 — összhangba hozva az „általános szabályok" réteggel (2026-06-21).**
+> - CTA-rendszer csere (QA 2.1 §16): „Technológiai irányt kérek" → „Leírom az anyagot és a célt"; űrlap submit → „Elküldöm az alapadatokat".
+> - Vezető pillér + nyitó-archetípus rögzítve (Stratégia §7.2).
+> - Tudatossági szint: megoldás-tudatos. Valós referenciák/adatok: [VALIDÁLANDÓ].
+
+> **Vezető pillér:** Végig ott vagyunk (megtérülés) · **Nyitó-archetípus:** Számszerű-realitás · **Tudatossági szint:** megoldás-tudatos · **Primer CTA:** Leírom az anyagot és a célt
 
 ## Oldal szerepe
 
@@ -26,7 +33,7 @@ Javasolt URL:
 
 ### Meta title
 
-Brikettálási rendszerek faipari és biomassza mellékanyagokhoz | ECOTEQ
+Brikettáló rendszerek faipari és biomassza mellékanyagokhoz | ECOTEQ
 
 ### Meta description
 
@@ -34,15 +41,15 @@ Brikettálás forgács, por, fűrészpor, apríték és biomassza tömörítés�
 
 ### H1
 
-Brikettálási rendszerek faipari és biomassza mellékanyagokhoz
+Brikettáló rendszerek faipari és biomassza mellékanyagokhoz
 
 ### Elsődleges CTA
 
-Technológiai irányt kérek
+Leírom az anyagot és a célt
 
 ### Űrlap CTA
 
-Elküldöm a projekt adatait
+Elküldöm az alapadatokat
 
 ### Spoke CTA
 
@@ -58,7 +65,7 @@ ECOTEQ technológiai kapu · Brikettálás
 
 ## H1
 
-Brikettálási rendszerek faipari és biomassza mellékanyagokhoz
+Brikettáló rendszerek faipari és biomassza mellékanyagokhoz
 
 ## Alcím
 
@@ -66,7 +73,7 @@ A brikettálás akkor lehet jó irány, ha a laza, száraz vagy megfelelően el�
 
 ## CTA-k
 
-Primer CTA: **Technológiai irányt kérek**  
+Primer CTA: **Leírom az anyagot és a célt**  
 Másodlagos CTA: **Részletes brikettáló oldal megnyitása**
 
 ## Microcopy
@@ -148,7 +155,7 @@ A brikettálás mögött általában nem az a kérdés áll, hogy „vegyünk-e 
 A forgács, por, fűrészpor vagy apríték gyorsan megtöltheti a tárolóteret, nehezen kezelhető, és sokszor rendezetlen üzemi képet ad.
 
 **Technológiai válasz**  
-A megfelelő brikettálási rendszer tömörebb, egységesebb, könnyebben tárolható brikettet készíthet az alkalmas alapanyagból.
+A megfelelő brikettáló rendszer tömörebb, egységesebb, könnyebben tárolható brikettet készíthet az alkalmas alapanyagból.
 
 ### Hulladékból saját felhasználású energiahordozó
 
@@ -230,7 +237,7 @@ Megírom, milyen anyaggal dolgozunk
 
 ## H2
 
-Hogyan épülhet fel egy brikettálási rendszer?
+Hogyan épülhet fel egy brikettáló rendszer?
 
 ## Bevezető copy
 
@@ -354,7 +361,7 @@ Az egyeztetés, ajánlat-előkészítés, projektkövetés és későbbi támoga
 
 ## CTA
 
-Technológiai irányt kérek
+Leírom az anyagot és a célt
 
 ---
 
@@ -432,7 +439,7 @@ Nem kell kész műszaki specifikációval érkeznie. Az első körben az a cél,
 
 ## CTA
 
-Elküldöm a projekt adatait
+Elküldöm az alapadatokat
 
 ## Microcopy
 
@@ -486,7 +493,7 @@ Ha ezt leírja, segítünk eldönteni, hogy a brikettálás reális irány-e, é
 
 ## CTA
 
-Technológiai irányt kérek
+Leírom az anyagot és a célt
 
 ## Másodlagos CTA
 
@@ -505,11 +512,11 @@ export const brikettalasGateway = {
   slug: "brikettalas",
   title: "Brikettálás",
   metaTitle:
-    "Brikettálási rendszerek faipari és biomassza mellékanyagokhoz | ECOTEQ",
+    "Brikettáló rendszerek faipari és biomassza mellékanyagokhoz | ECOTEQ",
   metaDescription:
     "Brikettálás forgács, por, fűrészpor, apríték és biomassza tömörítésére. Az ECOTEQ segít kiválasztani, hogy hidraulikus vagy mechanikus brikettáló rendszer lehet-e reális az Ön anyagára, mennyiségére és céljára.",
   primaryCta: {
-    label: "Technológiai irányt kérek",
+    label: "Leírom az anyagot és a célt",
     href: "/ajanlatkeres/?tech=brikettalas",
   },
   secondaryCta: {

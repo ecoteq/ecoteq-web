@@ -1,282 +1,41 @@
 ---
-import SiteLayout from '../../layouts/SiteLayout.astro';
-import Section from '../../components/layout/Section.astro';
-import SectionHeading from '../../components/brand/SectionHeading.astro';
-import PageHero from '../../components/site/PageHero.astro';
-import Button from '../../components/core/Button.astro';
-import Icon from '../../components/Icon.astro';
-import { quoteHref } from '../../lib/site';
+// Nyitás-archetípus: tünet · Vezető pillér: Anyag-először + Függetlenség
+import SolutionPage from '../../components/site/SolutionPage.astro';
 
 const situations = [
-  {
-    icon: 'wind',
-    title: 'Megint áll a por a műhelyben.',
-    text: 'A gépek körül folyamatosan gyűlik a forgács, belepi a munkateret, és a végén mindennap takarítani kell utána.',
-  },
-  {
-    icon: 'maximize',
-    title: 'Egyszerűen elfogy a hely.',
-    text: 'A laza apríték és a fahulladék pillanatok alatt megtölti a konténert meg a sarkokat, és állandóan pakolni kell, hogy legyen hová tenni.',
-  },
-  {
-    icon: 'shuffle',
-    title: 'Ezzel a kevercsel nem tudunk mit kezdeni.',
-    text: 'Ami összejön, az darabos is, apró is egyszerre — így, ahogy van, nehéz vele bármit kezdeni vagy értékesíteni.',
-  },
-  {
-    icon: 'recycle',
-    title: 'Kár ezt csak úgy elvitetni.',
-    text: 'Amiért most fizetünk, hogy elszállítsák, abból egy kis előkészítéssel akár brikett vagy tüzelő is lehetne.',
-  },
-  {
-    icon: 'clock',
-    title: 'Több idő megy el a takarításra, mint a munkára.',
-    text: 'A mozgatás, az ürítés meg a pakolgatás folyamatosan elviszi az emberek idejét a tényleges munka elől.',
-  },
-  {
-    icon: 'shield',
-    title: 'Így már nem biztonságos a tárolás.',
-    text: 'A felgyűlt anyag útban van, balesetveszélyes, és egy ellenőrzésnél sem mutat jól az üzem.',
-  },
+  { icon: 'wind', title: 'Mindennap visszatér a por és a forgács', text: 'A gépek körül folyamatosan gyűlik az anyag, és a műszak végén külön takarítani kell. Ez minden nap visszatérő munkaóra, amit másra is lehetne fordítani.' },
+  { icon: 'maximize', title: 'Fogy a hely a laza anyagtól', text: 'A laza apríték és fahulladék gyorsan megtölti a konténert és a sarkokat. Előbb-utóbb a tárolóhely szab határt a termelésnek.' },
+  { icon: 'shuffle', title: 'Vegyes a hulladék, nehéz vele bármit kezdeni', text: 'Darabos és apró egyszerre keletkezik, így ahogy van, sem hasznosítani, sem értékesíteni nem egyszerű. Előkészítés nélkül a teljes mennyiség hulladék marad.' },
+  { icon: 'recycle', title: 'Kár érte fizetni az elszállításnál', text: 'Amiért most az elszállítás díját fizeti, abból egy kis előkészítéssel tüzelő vagy brikett is lehetne. A költséghely így bevételi oldallá fordítható.' },
+  { icon: 'clock', title: 'Több idő megy a mozgatásra, mint kéne', text: 'A gyűjtés, az ürítés és a pakolás elviszi az emberek idejét a tényleges munka elől. Egy rendezett anyagút ezt a holtidőt csökkenti.' },
+  { icon: 'shield', title: 'A felgyűlt anyag már biztonsági kérdés', text: 'Az útban álló, poros anyag balesetveszélyes, és egy hatósági ellenőrzésnél sem előnyös. A rendezett kezelés a munkavédelmi kockázatot is csökkenti.' },
 ];
 
 const directions = [
-  {
-    icon: 'shuffle',
-    name: 'Ipari darálás',
-    line: 'A faipari hulladék aprítása, térfogatcsökkentés',
-    href: '/technologiak/ipari-daralas/',
-  },
-  {
-    icon: 'wind',
-    name: 'Elszívás és porleválasztás',
-    line: 'A por és forgács elszívása, leválasztása',
-    href: '/technologiak/elszivas-porlevalasztas/',
-  },
-  {
-    icon: 'flame',
-    name: 'Brikettálás',
-    line: 'A száraz mellékanyag tömörítése briketté',
-    href: '/technologiak/brikettalas/',
-  },
+  { icon: 'shuffle', name: 'Ipari darálás', line: 'Vegyes fahulladék aprítása; kezelhető, tárolható és továbbdolgozható alapanyag.', href: '/technologiak/ipari-daralas/' },
+  { icon: 'wind', name: 'Elszívás és porleválasztás', line: 'A por és a forgács elszívása a keletkezés helyén; tisztább levegő, kevesebb takarítás.', href: '/technologiak/elszivas-porlevalasztas/' },
+  { icon: 'flame', name: 'Brikettálás', line: 'A száraz mellékanyag briketté tömörítése; a költséghelyből eladható termék.', href: '/technologiak/brikettalas/' },
+];
+
+const faq = [
+  { q: 'Honnan tudom, melyik technológia kell?', a: 'Az anyagból indulunk ki. Ha elmondja, mi keletkezik, mennyi és milyen nedvességgel, abból meghatározzuk, hogy darálás, elszívás, brikettálás vagy ezek kombinációja illik a folyamathoz. Nem kell előre eldöntenie.' },
+  { q: 'Megoldható az egész egy beszállítótól?', a: 'Igen. Több vezető európai gyártó kínálatából egyetlen, összehangolt anyagutat állítunk össze, és egy felelőssel végig ott vagyunk a tervezéstől az üzembe helyezésig.' },
+  { q: 'Mekkora mennyiségtől éri meg foglalkozni vele?', a: 'Ezt a konkrét anyag és a jelenlegi elszállítási költség dönti el. [VALIDÁLANDÓ: tipikus küszöbmennyiség]. Az első lépés egy rövid helyzetfelmérés, amely megmutatja, hol térül meg az előkészítés.' },
 ];
 ---
 
-<SiteLayout
+<SolutionPage
   title="Faipari hulladék kezelése"
-  description="Forgács, por, apríték és fahulladék rendezett kezelése faipari üzemekben – darálás, elszívás és brikettálás kombinációjával."
->
-  <PageHero
-    eyebrow="Megoldás"
-    title="Faipari hulladék kezelése"
-    lead="A faipari üzemekben keletkező forgács, por, apríték és fahulladék rendezett kezelése kézzelfogható különbséget jelent. Darálás, elszívás és brikettálás kombinációjával az anyag kezelhetőbb, tárolhatóbb és hasznosítható lesz."
-    image="/heroes/hero-faipari-hulladek.jpg"
-    imageAlt="Négytengelyes ipari hulladékdaráló gépsor üzemi környezetben"
-    crumb={[{ label: 'Főoldal', href: '/' }, { label: 'Megoldások', href: '/#megoldasok' }, { label: 'Faipari hulladék kezelése' }]}
-  >
-    <Button href={quoteHref('ipari-daralas', 'megoldas')}>Technológiai javaslatot kérek</Button>
-  </PageHero>
-
-  <Section surface="white">
-    <SectionHeading
-      overline="Helyzetkép"
-      title="Mikor merül fel?"
-      lead="Az alábbi üzemi helyzetekben érdemes átgondolni a faipari hulladék kezelését."
-    />
-    <ul class="grid" role="list">
-      {
-        situations.map((item) => (
-          <li class="card">
-            <span class="card-ic" aria-hidden="true">
-              <Icon name={item.icon} size={22} />
-            </span>
-            <h3 class="card-title">{item.title}</h3>
-            <p class="card-text">{item.text}</p>
-          </li>
-        ))
-      }
-    </ul>
-  </Section>
-
-  <Section surface="subtle">
-    <SectionHeading
-      overline="Technológiai irány"
-      title="Milyen technológiai irány segíthet?"
-      lead="A faipari hulladék kezelése ritkán egyetlen géptől függ. A legtöbb üzemben az alábbi technológiák összehangolt használata vezet rendezett hulladékkezeléshez és hasznosítható mellékanyaghoz."
-    />
-    <div class="tech-grid">
-      {
-        directions.map((tech) => (
-          <a class="tech" href={tech.href}>
-            <span class="tech-ic" aria-hidden="true">
-              <Icon name={tech.icon} size={24} />
-            </span>
-            <span class="tech-body">
-              <span class="tech-name">{tech.name}</span>
-              <span class="tech-line">{tech.line}</span>
-            </span>
-            <span class="tech-arrow" aria-hidden="true">
-              <Icon name="arrow-right" size={20} />
-            </span>
-          </a>
-        ))
-      }
-    </div>
-  </Section>
-
-  <Section surface="navy">
-    <SectionHeading
-      tone="dark"
-      overline="Következő lépés"
-      title="Beszéljük át a faipari hulladék útját"
-      lead="Mondja el, milyen anyag keletkezik az üzemében, és közösen meghatározzuk, hogy a darálás, az elszívás és a brikettálás milyen kombinációja illik a folyamataihoz."
-    />
-    <div class="cta">
-      <Button href={quoteHref('ipari-daralas', 'megoldas')}>Technológiai javaslatot kérek</Button>
-    </div>
-  </Section>
-</SiteLayout>
-
-<style>
-  .crumb {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    align-items: center;
-    font-size: var(--fs-sm);
-    color: var(--color-text-muted);
-    margin-bottom: var(--space-5);
-  }
-  .crumb a {
-    color: var(--color-text-secondary);
-    text-decoration: none;
-  }
-  .crumb .here {
-    color: var(--color-text);
-  }
-  .cta {
-    margin-top: var(--space-6);
-  }
-
-  .grid {
-    list-style: none;
-    margin: var(--space-7) 0 0;
-    padding: 0;
-    display: grid;
-    gap: var(--space-4);
-    grid-template-columns: 1fr;
-  }
-  @media (min-width: 620px) { .grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (min-width: 960px) { .grid { grid-template-columns: repeat(3, 1fr); } }
-  .card {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-    padding: var(--space-5);
-    background: var(--color-bg-subtle);
-    border-radius: var(--radius-lg);
-  }
-  .card-ic {
-    display: inline-flex;
-    flex: none;
-    width: 44px;
-    height: 44px;
-    align-items: center;
-    justify-content: center;
-    border-radius: var(--radius-md);
-    background: var(--color-accent-tint);
-    color: var(--color-accent-active);
-    margin-bottom: 2px;
-  }
-  .card-title {
-    margin: 0;
-    font-family: var(--font-display);
-    font-weight: var(--fw-bold);
-    font-size: var(--fs-base);
-    line-height: var(--lh-snug);
-    color: var(--color-text);
-  }
-  .card-text {
-    margin: 0;
-    font-size: var(--fs-sm);
-    line-height: var(--lh-body);
-    color: var(--color-text-secondary);
-  }
-
-  .tech-grid {
-    margin-top: var(--space-7);
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--space-4);
-  }
-  .tech {
-    display: flex;
-    gap: var(--space-4);
-    align-items: center;
-    padding: var(--space-5);
-    background: var(--color-bg);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    text-decoration: none;
-    transition:
-      border-color var(--dur-base) var(--ease-standard),
-      box-shadow var(--dur-base) var(--ease-standard),
-      transform var(--dur-fast) var(--ease-standard);
-  }
-  .tech:hover {
-    border-color: var(--color-accent);
-    box-shadow: var(--shadow-sm);
-    transform: translateY(-2px);
-  }
-  .tech-ic {
-    display: inline-flex;
-    flex: none;
-    width: 48px;
-    height: 48px;
-    align-items: center;
-    justify-content: center;
-    border-radius: var(--radius-md);
-    background: var(--color-accent-tint);
-    color: var(--color-accent-active);
-  }
-  .tech-body {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    flex: 1 1 auto;
-  }
-  .tech-name {
-    font-family: var(--font-display);
-    font-weight: var(--fw-bold);
-    font-size: var(--fs-lg);
-    color: var(--color-text);
-  }
-  .tech-line {
-    font-size: var(--fs-sm);
-    line-height: var(--lh-body);
-    color: var(--color-text-secondary);
-  }
-  .tech-arrow {
-    display: inline-flex;
-    flex: none;
-    color: var(--color-text-muted);
-    transition:
-      color var(--dur-base) var(--ease-standard),
-      transform var(--dur-fast) var(--ease-standard);
-  }
-  .tech:hover .tech-arrow {
-    color: var(--color-accent);
-    transform: translateX(3px);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .tech,
-    .tech-arrow {
-      transition: none;
-    }
-    .tech:hover,
-    .tech:hover .tech-arrow {
-      transform: none;
-    }
-  }
-</style>
+  description="Forgács, por, apríték és fahulladék rendezett kezelése faipari üzemekben: darálás, elszívás és brikettálás összehangolásával, több gyártó kínálatából, egy felelőssel."
+  heroLead="A faüzemben keletkező forgács, por, apríték és fahulladék nem egyetlen gép kérdése, hanem az egész anyagáramé. Ha előbb az anyagot nézzük meg (mennyiség, nedvesség, szennyezettség), abból már látszik, hol éri meg aprítani, elszívni vagy briketté tömöríteni. Ott pedig hely, idő és elszállítási költség szabadul fel."
+  heroImage="/heroes/hero-faipari-hulladek.jpg"
+  heroImageAlt="Négytengelyes ipari hulladékdaráló gépsor üzemi környezetben"
+  source="megoldas-faipari-hulladek"
+  situationsLead="Az alábbi üzemi helyzetekben érdemes átgondolni a faipari hulladék útját."
+  situations={situations}
+  directionsLead="A faipari hulladék ritkán egyetlen géptől függ. A legtöbb üzemben a darálás, az elszívás és a brikettálás összehangolása vezet rendezett anyaghoz. Mindhárom irányt egy helyről, több vezető európai gyártó kínálatából állítjuk össze, így a megoldás a feladathoz igazodik, nem egyetlen márka katalógusához."
+  directions={directions}
+  faq={faq}
+  ctaTitle="Beszéljük át a faipari hulladék útját"
+  ctaLead="Mondja el, milyen anyag keletkezik az üzemében, mennyi és hová kerül most. Közösen meghatározzuk, hogy a darálás, az elszívás és a brikettálás milyen kombinációja illik a folyamataihoz, és mi térül meg a leggyorsabban."
+/>

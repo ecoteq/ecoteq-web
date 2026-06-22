@@ -1,11 +1,11 @@
 ---
-import SiteLayout from '../layouts/SiteLayout.astro';
+import SiteLayout from '../components/v2/SiteLayoutV2.astro';
 import Section from '../components/layout/Section.astro';
 import SectionHeading from '../components/brand/SectionHeading.astro';
 import PageHero from '../components/site/PageHero.astro';
 import Button from '../components/core/Button.astro';
 import Icon from '../components/Icon.astro';
-import { quoteHref } from '../lib/site';
+import { quoteHref } from '../lib/site-v2';
 
 const pillars = [
   {
@@ -45,7 +45,7 @@ const partners = [
     imageAlt="Két vákuumszárító kamra az ECOTEQ üzemcsarnokában"
     crumb={[{ label: 'Főoldal', href: '/' }, { label: 'Rólunk' }]}
   >
-    <Button href={quoteHref(undefined, 'rolunk')}>Technológiai javaslatot kérek</Button>
+    <Button href={quoteHref(undefined, 'rolunk')}>Leírom az anyagot és a célt</Button>
   </PageHero>
 
   <Section surface="white">
@@ -94,7 +94,7 @@ const partners = [
         <SectionHeading
           overline="Gyártói háttér"
           title="Elismert európai gyártók, a feladathoz illesztve"
-          lead="Európai partnergyártókkal dolgozunk, és mindig a feladathoz illő technológiát választjuk — nem a márkanevet toljuk."
+          lead="Európai partnergyártókkal dolgozunk, és mindig a feladathoz illő technológiát választjuk, nem a márkanevet toljuk."
         />
         <div class="prose">
           <p>
@@ -126,7 +126,7 @@ const partners = [
         title="Beszéljünk a feladatról, mielőtt gépről beszélnénk"
         lead="Mondja el, milyen anyaggal és milyen céllal dolgozik. Megnézzük az egész anyagutat, és olyan technológiai irányt javaslunk, amely üzletileg is vállalható."
       />
-      <div class="cta"><Button href={quoteHref(undefined, 'rolunk')}>Technológiai javaslatot kérek</Button></div>
+      <div class="cta"><Button href={quoteHref(undefined, 'rolunk')}>Leírom az anyagot és a célt</Button></div>
     </div>
   </Section>
 </SiteLayout>

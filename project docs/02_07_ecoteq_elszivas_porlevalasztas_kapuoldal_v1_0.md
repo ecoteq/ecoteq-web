@@ -1,4 +1,11 @@
-# ECOTEQ.hu technológiai kapuoldal — Elszívás és porleválasztás v1.0
+# ECOTEQ.hu technológiai kapuoldal — Elszívás és porleválasztás v1.1
+
+> **v1.1 — összhangba hozva az „általános szabályok" réteggel (2026-06-21).**
+> - CTA-rendszer csere (QA 2.1 §16): „Technológiai irányt kérek" → „Leírom az anyagot és a célt"; űrlap submit → „Elküldöm az alapadatokat".
+> - Vezető pillér + nyitó-archetípus rögzítve (Stratégia §7.2).
+> - Tudatossági szint: megoldás-tudatos. Valós referenciák/adatok: [VALIDÁLANDÓ].
+
+> **Vezető pillér:** Anyag-először · **Nyitó-archetípus:** Tünet-nyitás · **Tudatossági szint:** megoldás-tudatos · **Primer CTA:** Leírom az anyagot és a célt
 
 ## Oldal szerepe
 
@@ -34,11 +41,11 @@ Elszívás és porleválasztás faipari és ipari üzemeknek
 
 ### Elsődleges CTA
 
-Technológiai irányt kérek
+Leírom az anyagot és a célt
 
 ### Űrlap CTA
 
-Elküldöm a projekt adatait
+Elküldöm az alapadatokat
 
 ---
 
@@ -58,7 +65,7 @@ Az elszívás és porleválasztás akkor válik kritikus kérdéssé, amikor a p
 
 ## CTA-k
 
-Primer CTA: **Technológiai irányt kérek**  
+Primer CTA: **Leírom az anyagot és a célt**  
 Másodlagos CTA: **Kapcsolódó technológiák megtekintése**
 
 ## Microcopy
@@ -331,7 +338,7 @@ A rendszernek nem csak műszakilag, hanem üzemeltetésben, karbantartásban és
 
 ## CTA
 
-Technológiai irányt kérek
+Leírom az anyagot és a célt
 
 ---
 
@@ -394,7 +401,7 @@ Nem kell kész légtechnikai tervvel érkeznie. Első körben azt kell látni, m
 
 ## CTA
 
-Elküldöm a projekt adatait
+Elküldöm az alapadatokat
 
 ## Microcopy
 
@@ -448,7 +455,7 @@ Ha ezt leírja, segítünk eldönteni, milyen rendszerirány lehet reális.
 
 ## CTA
 
-Technológiai irányt kérek
+Leírom az anyagot és a célt
 
 ## Másodlagos CTA
 
@@ -470,7 +477,7 @@ export const elszivasPorlevalasztasGateway = {
   metaDescription:
     "Elszívási és porleválasztási rendszerek faipari és ipari környezetben. Az ECOTEQ segít tisztázni, milyen elszívási, leválasztási és anyagmozgatási irány lehet reális az Ön üzemében.",
   primaryCta: {
-    label: "Technológiai irányt kérek",
+    label: "Leírom az anyagot és a célt",
     href: "/ajanlatkeres/?tech=elszivas",
   },
   relatedTechnologies: [

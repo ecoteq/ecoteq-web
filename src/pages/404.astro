@@ -1,0 +1,28 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import Button from '../components/core/Button.astro';
+---
+
+<SiteLayout
+  title="A keresett oldal nem található"
+  description="A keresett oldal nem található az ECOTEQ.hu oldalon. Térjen vissza a főoldalra, vagy nézze meg a technológiákat."
+  solidHeader
+>
+  <section class="nf">
+    <p class="code" aria-hidden="true">404</p>
+    <h1>Ez az oldal nem található</h1>
+    <p class="lead">Lehet, hogy az oldal megszűnt, vagy elírás történt a címben. Innen tud továbblépni:</p>
+    <div class="actions">
+      <Button href="/">Vissza a főoldalra</Button>
+      <Button href="/#technologiak" variant="secondary">Megnézem a technológiákat</Button>
+    </div>
+  </section>
+</SiteLayout>
+
+<style>
+  .nf { max-width: var(--container-max); margin-inline: auto; padding: clamp(72px, 14vh, 180px) clamp(16px, 4vw, 40px); text-align: center; }
+  .code { font-family: var(--font-display); font-weight: var(--fw-extrabold); font-size: clamp(3rem, 8vw, 6rem); color: var(--color-accent); margin: 0; line-height: 1; }
+  .nf h1 { margin: var(--space-4) 0 var(--space-3); }
+  .lead { color: var(--color-text-secondary); max-width: 52ch; margin: 0 auto var(--space-6); }
+  .actions { display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: center; }
+</style>

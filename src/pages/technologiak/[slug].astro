@@ -1,13 +1,14 @@
 ---
-import SiteLayout from '../../layouts/SiteLayout.astro';
+import SiteLayout from '../../components/v2/SiteLayoutV2.astro';
 import Section from '../../components/layout/Section.astro';
 import SectionHeading from '../../components/brand/SectionHeading.astro';
 import Button from '../../components/core/Button.astro';
 import Icon from '../../components/Icon.astro';
 import Overline from '../../components/brand/Overline.astro';
 import HeroStats from '../../components/site/HeroStats.astro';
-import { gatewaySlugs, getGateway } from '../../lib/technologies';
-import { quoteHref } from '../../lib/site';
+import { gatewaySlugs, getGateway } from '../../lib/technologies-v2';
+import { quoteHref } from '../../lib/site-v2';
+import Schema from '../../components/seo/Schema.astro';
 
 export function getStaticPaths() {
   return gatewaySlugs().map((slug) => ({ params: { slug } }));
@@ -17,8 +18,8 @@ const { slug } = Astro.params;
 const t = getGateway(slug!);
 if (!t) return Astro.redirect('/404');
 
-const QUOTE = { label: 'Technológiai javaslatot kérek', href: quoteHref(slug, 'technologia') };
-const FORM_CTA = { label: 'Elküldöm a projekt adatait', href: quoteHref(slug, 'technologia') };
+const QUOTE = { label: 'Leírom az anyagot és a célt', href: quoteHref(slug, 'technologia') };
+const FORM_CTA = { label: 'Elküldöm az alapadatokat', href: quoteHref(slug, 'technologia') };
 
 // Wrap any highlighted words in the H1 with a green accent span (trusted content).
 const h1Html = t.hero.h1Highlights?.length
@@ -27,14 +28,14 @@ const h1Html = t.hero.h1Highlights?.length
 
 // Figurative icon per "Mikor jó irány?" card, by technology + index.
 const FIT_ICONS: Record<string, string[]> = {
-  'ipari-daralas': ['shrink', 'route', 'boxes', 'truck', 'settings'],
+  'ipari-daralas': ['shrink', 'route', 'boxes', 'truck', 'settings', 'trending-up'],
   'brikettalas': ['factory', 'flame', 'store', 'boxes', 'trending-down', 'wrench'],
-  'pelletalas': ['package', 'flame', 'shrink', 'repeat', 'settings'],
-  'biomassza-szaritas': ['droplets', 'shuffle', 'boxes', 'flame', 'settings'],
+  'pelletalas': ['package', 'flame', 'shrink', 'repeat', 'settings', 'gauge'],
+  'biomassza-szaritas': ['droplets', 'shuffle', 'boxes', 'flame', 'settings', 'truck'],
   'vakuumszaritas': ['clock', 'trees', 'factory', 'shield', 'gauge', 'layers'],
-  'vakuumimpregnalas': ['shield', 'settings', 'droplets', 'gauge', 'layers'],
-  'elszivas-porlevalasztas': ['wind', 'route', 'recycle', 'gauge', 'shield'],
-  'anyagmozgas-rendszerelemek': ['repeat', 'route', 'magnet', 'boxes', 'layers'],
+  'vakuumimpregnalas': ['shield', 'settings', 'droplets', 'gauge', 'layers', 'file-text'],
+  'elszivas-porlevalasztas': ['wind', 'route', 'recycle', 'gauge', 'shield', 'trending-down'],
+  'anyagmozgas-rendszerelemek': ['repeat', 'route', 'magnet', 'boxes', 'layers', 'settings'],
 };
 const fitIcons = FIT_ICONS[t.slug] ?? [];
 
@@ -62,6 +63,12 @@ function factorIcon(title: string): string {
 ---
 
 <SiteLayout title={t.metaTitle} description={t.metaDescription} headerCta={{ label: 'Leírom az anyagot és a célt', href: quoteHref(slug, 'header') }}>
+  <Schema
+    breadcrumbs={[{ name: 'Főoldal', href: '/' }, { name: 'Technológiák', href: '/#technologiak' }, { name: t.name }]}
+    faq={t.faq.items}
+    howto={{ name: t.process.h2, steps: t.process.steps }}
+  />
+
   <!-- HERO -->
   <section class="hero">
     {t.hero.image && (
@@ -146,10 +153,21 @@ function factorIcon(title: string): string {
   <!-- 5. RENDSZERFELÉPÍTÉS -->
   <Section surface="subtle">
     <SectionHeading overline="Rendszerfelépítés" title={t.process.h2} lead={t.process.intro} />
-    <ol class="steps">
-      {t.process.steps.map((s, i) => (
-        <li><span class="num">{String(i + 1).padStart(2, '0')}</span><div><h3>{s.title}</h3><p>{s.text}</p></div></li>
-      ))}
+    <ol class="timeline">
+      {t.process.steps.map((s, i) => {
+        const nn = String(i + 1).padStart(2, '0');
+        return (
+          <li class="t-item" data-side={i % 2 === 0 ? 'right' : 'left'}>
+            <span class="t-ghost" aria-hidden="true">{nn}</span>
+            <span class="t-dot" aria-hidden="true"></span>
+            <article class="t-card">
+              <span class="t-num">{nn}</span>
+              <h3>{s.title}</h3>
+              <p>{s.text}</p>
+            </article>
+          </li>
+        );
+      })}
     </ol>
   </Section>
 
@@ -299,6 +317,38 @@ function factorIcon(title: string): string {
   }
 </script>
 
+<script>
+  // Process timeline: fill the centre line green in sync with scroll; dots activate
+  // as the green head reaches them; reverses on scroll up.
+  const tl = document.querySelector('.timeline');
+  if (tl) {
+    const dots = Array.from(tl.querySelectorAll('.t-dot'));
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) {
+      tl.style.setProperty('--t-fill', '100%');
+      dots.forEach((d) => d.classList.add('is-active'));
+    } else {
+      let raf = null;
+      const update = () => {
+        raf = null;
+        const r = tl.getBoundingClientRect();
+        const mark = window.innerHeight * 0.5; // playhead = viewport centre
+        const prog = Math.max(0, Math.min(r.height, mark - r.top));
+        tl.style.setProperty('--t-fill', prog + 'px');
+        for (const d of dots) {
+          const dr = d.getBoundingClientRect();
+          const center = dr.top + dr.height / 2 - r.top;
+          d.classList.toggle('is-active', center <= prog);
+        }
+      };
+      const onScroll = () => { if (!raf) raf = requestAnimationFrame(update); };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      update();
+    }
+  }
+</script>
+
 <style>
   /* HERO */
   .hero { position: relative; margin-top: calc(-1 * var(--header-h)); min-height: min(78svh, 760px); display: flex; align-items: stretch; overflow: hidden; background: var(--ecoteq-navy); }
@@ -364,13 +414,34 @@ function factorIcon(title: string): string {
   .matrix-note :global(.icon) { color: var(--green-700); flex: none; }
   .matrix-note:hover { border-color: var(--color-accent); }
 
-  /* Steps */
-  .steps { margin-top: var(--space-7); padding: 0; list-style: none; display: grid; gap: var(--space-5); grid-template-columns: 1fr; }
-  @media (min-width: 760px) { .steps { grid-template-columns: 1fr 1fr; gap: var(--space-6) var(--space-7); } }
-  .steps li { display: flex; gap: var(--space-4); align-items: flex-start; }
-  .num { flex: none; font-family: var(--font-display); font-size: var(--fs-h3); font-weight: var(--fw-extrabold); color: var(--color-accent); line-height: 1; letter-spacing: var(--ls-display); }
-  .steps h3 { margin: 0 0 4px; font-size: var(--fs-h4); font-weight: var(--fw-bold); color: var(--color-text); }
-  .steps p { margin: 0; font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: var(--lh-snug); }
+  /* Process timeline (cikkcakk) */
+  .timeline { position: relative; list-style: none; margin: var(--space-8) 0 0; padding: 0 0 0 32px; display: flex; flex-direction: column; gap: var(--space-6); }
+  .timeline::before { content: ''; position: absolute; left: 7px; top: 0; bottom: 0; width: 2px; background: var(--color-border); }
+  .timeline::after { content: ''; position: absolute; left: 7px; top: 0; width: 2px; height: var(--t-fill, 0px); background: var(--color-accent); z-index: 1; }
+  .t-item { position: relative; }
+  .t-ghost { display: none; }
+  .t-dot { position: absolute; left: -32px; top: 12px; width: 16px; height: 16px; border-radius: 50%; background: var(--gray-400); box-shadow: 0 0 0 4px var(--color-bg-subtle); z-index: 2; transition: background-color 160ms var(--ease-standard); }
+  .t-dot.is-active { background: var(--color-accent); }
+  .t-card { position: relative; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); padding: var(--space-5); transition: box-shadow var(--dur-base) var(--ease-standard), transform var(--dur-base) var(--ease-standard), border-color var(--dur-base) var(--ease-standard); }
+  .t-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); border-color: var(--color-accent); }
+  .t-num { position: absolute; top: var(--space-4); right: var(--space-5); font-size: var(--fs-xs); font-weight: var(--fw-bold); letter-spacing: var(--ls-overline); color: var(--color-accent-text); }
+  .t-card h3 { margin: 0 0 6px; padding-right: 2.5rem; font-size: var(--fs-h4); font-weight: var(--fw-bold); color: var(--color-text); }
+  .t-card p { margin: 0; font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: var(--lh-snug); }
+
+  @media (min-width: 880px) {
+    .timeline { padding-left: 0; gap: var(--space-7); }
+    .timeline::before { left: 50%; top: 0; bottom: 0; transform: translateX(-50%); }
+    .timeline::after { left: 50%; transform: translateX(-50%); }
+    .t-item { display: grid; grid-template-columns: 1fr 1fr; column-gap: var(--space-8); align-items: center; }
+    .t-item > .t-card, .t-item > .t-ghost { grid-row: 1; align-self: center; }
+    .t-item[data-side="right"] .t-card { grid-column: 2; }
+    .t-item[data-side="right"] .t-ghost { grid-column: 1; justify-self: end; padding-right: var(--space-7); }
+    .t-item[data-side="left"] .t-card { grid-column: 1; }
+    .t-item[data-side="left"] .t-ghost { grid-column: 2; justify-self: start; padding-left: var(--space-7); }
+    .t-ghost { margin: 0; align-self: center; }
+    .t-dot { left: 50%; top: 50%; transform: translate(-50%, -50%); width: 18px; height: 18px; }
+    .t-ghost { display: block; font-family: var(--font-display); font-weight: var(--fw-extrabold); font-size: clamp(3rem, 5vw, 5rem); line-height: 1; letter-spacing: var(--ls-display); color: var(--color-border); }
+  }
 
   /* Decision factors */
   .tight { gap: var(--space-5) var(--space-6); }
@@ -454,5 +525,7 @@ function factorIcon(title: string): string {
   @media (prefers-reduced-motion: reduce) {
     .rel, .rel h3 :global(.icon), summary :global(.icon) { transition: none; }
     .rel:hover, .rel:hover h3 :global(.icon) { transform: none; }
+    .t-card, .t-dot { transition: none; }
+    .t-card:hover { transform: none; }
   }
 </style>

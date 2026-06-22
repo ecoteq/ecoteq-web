@@ -1,0 +1,70 @@
+---
+/* V2 clone of sections/ProcessTimeline.astro — imports site-v2 (form CTA "Elküldöm az alapadatokat"). */
+import Section from '../layout/Section.astro';
+import SectionHeading from '../brand/SectionHeading.astro';
+import Button from '../core/Button.astro';
+import { CTA } from '../../lib/site-v2';
+
+const steps = [
+  { title: 'Ön elküldi az alapadatokat', text: 'Anyag típusa, mennyisége, nedvessége, jelenlegi kezelése, kívánt cél, telepítési hely, rendelkezésre álló energia és hely.' },
+  { title: 'Előszűrjük a feladatot', text: 'Megnézzük, hogy darálás, szárítás, brikettálás, pelletálás, elszívás, anyagmozgatás vagy ezek kombinációja lehet-e indokolt.' },
+  { title: 'Javaslunk egy technológiai irányt', text: 'Nem végleges ajánlatot adunk azonnal, hanem megmondjuk, merre érdemes továbbmenni, és milyen adat kell még a pontosításhoz.' },
+  { title: 'Szükség esetén pontosítunk', text: 'Lehet műszaki egyeztetés, anyagminta, helyszíni információ, layout, fotó, videó vagy további üzemi adat.' },
+  { title: 'Elkészül a műszaki és kereskedelmi ajánlat', text: 'Ha a feladat már elég pontos, összeállítható a gép- vagy rendszerjavaslat a fő paraméterekkel és beruházási kerettel.' },
+  { title: 'Megvalósítás és támogatás', text: 'Megrendelés után a projekt szállítással, telepítéssel, betanítással, szervizzel és alkatrész-támogatással folytatódik.' },
+];
+---
+
+<Section surface="white">
+  <SectionHeading
+    overline="Együttműködés"
+    title="Így jutunk el az első kérdéstől a reális technológiai irányig"
+    lead="Egy ipari technológiai projektet nem érdemes találgatással kezdeni. Néhány alapadatból már sokszor látszik, hogy melyik irány lehet reális, és melyiket érdemes kizárni."
+  />
+
+  <ol class="steps">
+    {steps.map((s, i) => (
+      <li class="step">
+        <span class="num">{String(i + 1).padStart(2, '0')}</span>
+        <div>
+          <h3>{s.title}</h3>
+          <p>{s.text}</p>
+        </div>
+      </li>
+    ))}
+  </ol>
+
+  <div class="cta-wrap">
+    <Button href={CTA.form.href}>{CTA.form.label}</Button>
+    <p class="microcopy">A beérkező megkereséseket munkanapokon előszűrjük, és jellemzően 24 órán belül visszajelzünk a következő lépésről.</p>
+  </div>
+</Section>
+
+<style>
+  .steps {
+    margin: var(--space-7) 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: var(--space-5);
+    grid-template-columns: 1fr;
+    counter-reset: step;
+  }
+  @media (min-width: 760px) { .steps { grid-template-columns: 1fr 1fr; gap: var(--space-6) var(--space-7); } }
+
+  .step { display: flex; gap: var(--space-4); align-items: flex-start; }
+  .num {
+    flex: none;
+    font-family: var(--font-display);
+    font-size: var(--fs-h3);
+    font-weight: var(--fw-extrabold);
+    color: var(--color-accent);
+    line-height: 1;
+    letter-spacing: var(--ls-display);
+  }
+  .step h3 { margin: 0 0 4px; font-size: var(--fs-h4); font-weight: var(--fw-bold); color: var(--color-text); }
+  .step p { margin: 0; font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: var(--lh-snug); }
+
+  .cta-wrap { margin-top: var(--space-8); display: flex; flex-direction: column; gap: var(--space-3); align-items: flex-start; }
+  .microcopy { margin: 0; font-size: var(--fs-sm); color: var(--color-text-muted); max-width: 60ch; }
+</style>

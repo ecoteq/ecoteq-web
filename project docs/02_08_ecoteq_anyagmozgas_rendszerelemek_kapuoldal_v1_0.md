@@ -1,4 +1,11 @@
-# ECOTEQ.hu technológiai kapuoldal — Anyagmozgatás és rendszerelemek v1.0
+# ECOTEQ.hu technológiai kapuoldal — Anyagmozgatás és rendszerelemek v1.1
+
+> **v1.1 — összhangba hozva az „általános szabályok" réteggel (2026-06-21).**
+> - CTA-rendszer csere (QA 2.1 §16): „Technológiai irányt kérek" → „Leírom az anyagot és a célt"; űrlap submit → „Elküldöm az alapadatokat".
+> - Vezető pillér + nyitó-archetípus rögzítve (Stratégia §7.2).
+> - Tudatossági szint: megoldás-tudatos. Valós referenciák/adatok: [VALIDÁLANDÓ].
+
+> **Vezető pillér:** Rendszerszemlélet · **Nyitó-archetípus:** Döntési-villa · **Tudatossági szint:** megoldás-tudatos · **Primer CTA:** Leírom az anyagot és a célt
 
 ## Oldal szerepe
 
@@ -34,11 +41,11 @@ Anyagmozgatás és rendszerelemek ipari feldolgozó rendszerekhez
 
 ### Elsődleges CTA
 
-Technológiai irányt kérek
+Leírom az anyagot és a célt
 
 ### Űrlap CTA
 
-Elküldöm a projekt adatait
+Elküldöm az alapadatokat
 
 ---
 
@@ -58,7 +65,7 @@ Egy ipari rendszer sokszor nem a főgépen bukik el, hanem azon, hogyan jut be a
 
 ## CTA-k
 
-Primer CTA: **Technológiai irányt kérek**  
+Primer CTA: **Leírom az anyagot és a célt**  
 Másodlagos CTA: **Kapcsolódó technológiák megtekintése**
 
 ## Microcopy
@@ -336,7 +343,7 @@ Az egyeztetés, ajánlat-előkészítés és projektkövetés magyar szakmai kap
 
 ## CTA
 
-Technológiai irányt kérek
+Leírom az anyagot és a célt
 
 ---
 
@@ -412,7 +419,7 @@ Nem kell kész layouttal vagy komponenslistával érkeznie. Első körben azt ke
 
 ## CTA
 
-Elküldöm a projekt adatait
+Elküldöm az alapadatokat
 
 ## Microcopy
 
@@ -466,7 +473,7 @@ Ha ezt leírja, segítünk eldönteni, milyen anyagáram-irány lehet reális.
 
 ## CTA
 
-Technológiai irányt kérek
+Leírom az anyagot és a célt
 
 ## Másodlagos CTA
 
@@ -489,7 +496,7 @@ export const anyagmozgasRendszerelemekGateway = {
   metaDescription:
     "Anyagmozgató, adagoló, kihordó, siló, mágnes, szeparátor és kiegészítő rendszerelemek ipari daráláshoz, brikettáláshoz, pelletáláshoz, szárításhoz és elszíváshoz. ECOTEQ rendszerintegráció.",
   primaryCta: {
-    label: "Technológiai irányt kérek",
+    label: "Leírom az anyagot és a célt",
     href: "/ajanlatkeres/?tech=anyagmozgas",
   },
   relatedTechnologies: [

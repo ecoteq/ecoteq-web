@@ -1,0 +1,94 @@
+---
+/* V2 REVIEW CLONE of sections/Proof.astro — copy-only changes (CSS identical).
+   Changes: cím enyhítve (a tartalom jelenleg tipikus feladat-sablon, nem megnevezett
+   megvalósult referencia → ne ígérjen többet); a partnerblokk kap egy függetlenség-
+   mondatot (Pillér 1). [VALIDÁLANDÓ]: 3–5 valós, megnevezett referencia (fotó + idézet
+   + 1 mérhető üzemi tény); a gyártói partnerek pontos köre (a stratégia RP Engineeringet
+   is említ). A "Megvalósított ipari rendszerek" cím csak valós referenciákkal állítható vissza. */
+import Section from '../layout/Section.astro';
+import SectionHeading from '../brand/SectionHeading.astro';
+import Button from '../core/Button.astro';
+
+const refs = [
+  {
+    title: 'Faipari mellékanyag kezelése',
+    rows: [
+      ['Anyag', 'forgács, por, apríték'],
+      ['Technológia', 'darálás, elszívás, brikettálás'],
+      ['Eredmény', 'rendezettebb anyagkezelés, jobb tárolhatóság'],
+    ],
+  },
+  {
+    title: 'Biomassza előkészítése',
+    rows: [
+      ['Anyag', 'apríték, fűrészpor, biomassza'],
+      ['Technológia', 'szárítás, darálás, brikettálás vagy pelletálás'],
+      ['Eredmény', 'kezelhetőbb, jobban tervezhető alapanyag'],
+    ],
+  },
+  {
+    title: 'Ipari hulladék térfogatcsökkentése',
+    rows: [
+      ['Anyag', 'raklap, csomagolóanyag, vegyes ipari hulladék'],
+      ['Technológia', 'ipari darálás, szeparálás, anyagmozgatás'],
+      ['Eredmény', 'kisebb térfogat, jobb üzemi rend'],
+    ],
+  },
+];
+
+const partners = ['ISVE', 'Prodeco', 'CF Nielsen', 'Nova Pellet', 'RP Engineering', 'AL-KO'];
+---
+
+<Section id="referenciak" surface="subtle">
+  <SectionHeading
+    overline="Tipikus feladatok"
+    title="Tipikus üzemi feladatok, és a hozzájuk illő technológiai irány"
+    lead="Az ipari technológiai döntésnél a bizalom nem szlogeneken múlik, hanem azon, hogy a partner ért-e hasonló anyagokhoz és üzemekhez. Néhány visszatérő feladat, és az, milyen irányba szoktuk vinni."
+  />
+
+  <div class="refs">
+    {refs.map((r) => (
+      <article class="ref">
+        <h3>{r.title}</h3>
+        <dl>
+          {r.rows.map(([k, v]) => (
+            <div class="row"><dt>{k}</dt><dd>{v}</dd></div>
+          ))}
+        </dl>
+      </article>
+    ))}
+  </div>
+
+  <div class="partners">
+    <p class="plabel">Elismert európai gyártói háttér</p>
+    <p class="pintro">Több vezető európai gyártót képviselünk, így a feladathoz illő gépet ajánljuk, nem egy márkát.</p>
+    <ul class="plist">{partners.map((p) => <li>{p}</li>)}</ul>
+  </div>
+
+  <div class="cta-wrap">
+    <Button variant="secondary" href="/referenciak/">Referenciák megtekintése</Button>
+  </div>
+</Section>
+
+<style>
+  .refs { margin-top: var(--space-7); display: grid; gap: var(--space-5); grid-template-columns: 1fr; }
+  @media (min-width: 760px) { .refs { grid-template-columns: repeat(3, 1fr); } }
+
+  .ref { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); padding: var(--space-6); }
+  .ref h3 { margin: 0 0 var(--space-4); padding-bottom: var(--space-4); border-bottom: 1px solid var(--color-border); font-size: var(--fs-h4); font-weight: var(--fw-bold); color: var(--color-text); }
+  dl { margin: 0; display: flex; flex-direction: column; gap: var(--space-3); }
+  .row { display: flex; flex-direction: column; gap: 2px; }
+  dt { font-size: var(--fs-xs); font-weight: var(--fw-bold); letter-spacing: var(--ls-overline); text-transform: uppercase; color: var(--color-accent-text); }
+  dd { margin: 0; font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: var(--lh-snug); }
+
+  .partners { margin-top: var(--space-8); padding-top: var(--space-6); border-top: 1px solid var(--color-border); }
+  .plabel { margin: 0 0 var(--space-2); font-size: var(--fs-xs); font-weight: var(--fw-bold); letter-spacing: var(--ls-overline); text-transform: uppercase; color: var(--color-text-muted); }
+  .pintro { margin: 0 0 var(--space-5); font-size: var(--fs-sm); color: var(--color-text-secondary); max-width: 56ch; line-height: var(--lh-snug); }
+  .plist { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-5) var(--space-8); align-items: center; }
+  .plist li { font-family: var(--font-display); font-weight: var(--fw-extrabold); font-size: var(--fs-h3); letter-spacing: var(--ls-heading); color: var(--gray-400); transition: color var(--dur-base) var(--ease-standard); }
+  .plist li:hover { color: var(--ecoteq-navy); }
+
+  .cta-wrap { margin-top: var(--space-7); }
+
+  @media (prefers-reduced-motion: reduce) { .plist li { transition: none; } }
+</style>

@@ -1,6 +1,7 @@
 ---
 import '../ds/styles.css';
 import { ALLOW_INDEXING, SITE_NAME } from '../config';
+import Schema from '../components/seo/Schema.astro';
 
 interface Props {
   title: string;
@@ -10,6 +11,8 @@ interface Props {
 }
 
 const { title, description, brand } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://ecoteq.hu').toString();
+const ogImage = new URL('/ds/photos/hero-briquette-plant.jpg', Astro.site ?? 'https://ecoteq.hu').toString();
 ---
 
 <!doctype html>
@@ -21,6 +24,16 @@ const { title, description, brand } = Astro.props;
     {description && <meta name="description" content={description} />}
     {!ALLOW_INDEXING && <meta name="robots" content="noindex, nofollow" />}
     <link rel="icon" href="/ds/logo-mark-green.svg" type="image/svg+xml" />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:locale" content="hu_HU" />
+    <meta property="og:title" content={`${title} · ${SITE_NAME}`} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <Schema org webpage={{ title, description }} />
     {/* Theme: follow the OS setting by default; honour an explicit choice once made.
         Runs before paint to avoid a flash. Exposes window.__setTheme for the toggle. */}
     <script is:inline>
@@ -47,30 +60,43 @@ const { title, description, brand } = Astro.props;
   <body>
     <slot />
 
-    <script>
-      const els = document.querySelectorAll('[data-reveal]');
-      const root = document.documentElement;
-      if (els.length && root.classList.contains('js-reveal') && 'IntersectionObserver' in window) {
-        const io = new IntersectionObserver(
-          (entries) => {
-            for (const e of entries) {
+    {/* Inline (never bundled, so it cannot fail to load) + a failsafe timeout:
+        content is NEVER left stuck at opacity:0. */}
+    <script is:inline>
+      (function () {
+        var els = document.querySelectorAll('[data-reveal]');
+        if (!els.length) return;
+        var root = document.documentElement;
+        function revealAll() { els.forEach(function (el) { el.classList.add('is-visible'); }); }
+        if (!root.classList.contains('js-reveal') || !('IntersectionObserver' in window)) {
+          revealAll();
+          return;
+        }
+        var io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (e) {
               if (e.isIntersecting) {
                 e.target.classList.add('is-visible');
                 io.unobserve(e.target);
               }
-            }
+            });
           },
           { rootMargin: '0px 0px -8% 0px', threshold: 0.08 }
         );
-        els.forEach((el) => io.observe(el));
-      } else {
-        els.forEach((el) => el.classList.add('is-visible'));
-      }
+        els.forEach(function (el) { io.observe(el); });
+        // Failsafe: if anything misfires, reveal everything after 2.5s.
+        setTimeout(revealAll, 2500);
+      })();
     </script>
 
     <style is:global>
       /* App-level radius reduction (DS tokens stay untouched): squarer cards + CTAs globally. */
       :root { --radius-lg: 8px; }
+
+      /* Balanced headings + tidy paragraphs: prevents lonely orphan words and
+         disproportionate line breaks in text blocks (low specificity so components win). */
+      :where(h1, h2, h3, h4) { text-wrap: balance; }
+      :where(p, li, .lead) { text-wrap: pretty; }
 
       /* Form fields: a dedicated input surface/border. Light keeps the current look;
          dark gives inputs a raised fill + a clearly visible border (WCAG 1.4.11) and a

@@ -1,0 +1,108 @@
+---
+/* V2 homepage hero — A/B test (default B = eredmény-keret; challenger A = reframe via ?v=a).
+   Common eyebrow/subhead/benefit-row/CTA per project docs/01 v1.1. "anyagáram" is NOT here. */
+import Overline from '../brand/Overline.astro';
+import Button from '../core/Button.astro';
+import { CTA } from '../../lib/site-v2';
+---
+
+<section class="hero">
+  <div class="media">
+    <img
+      src="/ds/photos/hero-briquette-plant.jpg"
+      alt="Ipari brikettáló üzem működés közben"
+      fetchpriority="high"
+      decoding="async"
+    />
+    <div class="wash" aria-hidden="true"></div>
+  </div>
+
+  <div class="inner">
+    <Overline class="eyebrow">Ipari hulladék- és biomassza-feldolgozó rendszerek</Overline>
+
+    <h1 id="hero-h1">Ipari hulladékból <span class="accent">kezelhető anyag</span></h1>
+
+    <p class="lead">
+      Ipari darálási, szárítási, brikettálási, pelletálási és elszívási rendszerek.
+      Megnézzük az anyagot, a mennyiséget és a célt, hogy azt ajánljuk, ami a feladathoz illik.
+    </p>
+
+    <div class="ctas">
+      <Button href={CTA.primary.href}>{CTA.primary.label}</Button>
+      <Button variant="outline-light" href={CTA.secondary.href}>{CTA.secondary.label}</Button>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  /* A/B: default H1 = B (eredmény-keret). ?v=a → challenger reframe H1. */
+  (function () {
+    try {
+      if (new URLSearchParams(location.search).get('v') === 'a') {
+        var h = document.getElementById('hero-h1');
+        if (h) h.innerHTML = 'A jó technológia nem géppel kezdődik, hanem <span class="accent">az anyaggal</span>';
+      }
+    } catch (e) {}
+  })();
+</script>
+
+<style>
+  .hero {
+    position: relative;
+    margin-top: calc(-1 * var(--header-h));
+    min-height: min(94svh, 900px);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: var(--ecoteq-navy);
+  }
+
+  .media { position: absolute; inset: 0; z-index: 0; }
+  .media img { width: 100%; height: 100%; object-fit: cover; }
+  .wash {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg,
+        var(--color-surface-dark) 0%,
+        var(--color-surface-dark) 46%,
+        color-mix(in srgb, var(--color-surface-dark) 82%, transparent) 62%,
+        color-mix(in srgb, var(--color-surface-dark) 32%, transparent) 82%,
+        transparent 100%),
+      linear-gradient(0deg,
+        color-mix(in srgb, var(--color-surface-dark) 55%, transparent) 0%,
+        transparent 48%);
+  }
+
+  .inner {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding: calc(var(--header-h) + var(--space-7)) clamp(16px, 4vw, 40px) var(--space-8);
+  }
+
+  .eyebrow { color: var(--ecoteq-green); margin-bottom: var(--space-5); }
+
+  h1 {
+    color: var(--ecoteq-white);
+    font-size: clamp(2.4rem, 1.4rem + 3.6vw, 4.6rem);
+    line-height: var(--lh-tight);
+    letter-spacing: var(--ls-display);
+    max-width: 20ch;
+    margin: 0 0 var(--space-5);
+  }
+  h1 { text-wrap: balance; }
+  h1 :global(.accent) { color: var(--ecoteq-green); white-space: nowrap; }
+
+  .lead {
+    color: rgba(255, 255, 255, 0.86);
+    font-size: var(--fs-lg);
+    line-height: var(--lh-body);
+    max-width: 54ch;
+    margin: 0 0 var(--space-7);
+  }
+
+  .ctas { display: flex; flex-wrap: wrap; gap: var(--space-4); }
+</style>

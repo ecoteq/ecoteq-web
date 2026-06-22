@@ -1,143 +1,40 @@
 ---
-import SiteLayout from '../../layouts/SiteLayout.astro';
-import Section from '../../components/layout/Section.astro';
-import SectionHeading from '../../components/brand/SectionHeading.astro';
-import PageHero from '../../components/site/PageHero.astro';
-import Button from '../../components/core/Button.astro';
-import Icon from '../../components/Icon.astro';
-import { quoteHref } from '../../lib/site';
+// Nyitás-archetípus: konkrét-anyag · Vezető pillér: Anyag-először
+import SolutionPage from '../../components/site/SolutionPage.astro';
 
 const situations = [
-  {
-    icon: 'package',
-    title: 'Helyhiány a sérült és selejt raklapokból',
-    text: 'A használhatatlan raklapok, ládák és csomagolóanyagok terjedelmesen állnak az udvaron vagy a raktárban, és értékes tárhelyet foglalnak.',
-  },
-  {
-    icon: 'truck',
-    title: 'Drága és gyakori elszállítás',
-    text: 'A laza, nagy térfogatú hulladék miatt sok a részben üres fuvar, ami feleslegesen növeli a szállítási és kezelési költségeket.',
-  },
-  {
-    icon: 'boxes',
-    title: 'Kezelhetetlen, vegyes anyagáram',
-    text: 'A fa, a karton és a műanyag csomagolóanyag egyben nehezen tárolható és továbbadható; egységes, kezelhető frakcióra van szükség.',
-  },
-  {
-    icon: 'route',
-    title: 'Anyag-előkészítés a következő lépéshez',
-    text: 'A felaprított anyagot tovább kell adni hasznosításra vagy belső feldolgozásra, ezért egyenletes szemcseméretű, előkészített kimenet a cél.',
-  },
-  {
-    icon: 'magnet',
-    title: 'Szegek, fémkapcsok és szennyeződés a raklapokban',
-    text: 'A raklapokban maradó szegek, fémkapcsok és egyéb idegenanyagok védelem nélkül károsíthatják a gépet és ronthatják a végtermék minőségét.',
-  },
+  { icon: 'package', title: 'Helyhiány a sérült és selejt raklapokból', text: 'A használhatatlan raklapok, ládák és csomagolóanyagok terjedelmesen állnak az udvaron, és értékes tárhelyet foglalnak. A felgyűlt mennyiség a napi mozgást is akadályozza.' },
+  { icon: 'truck', title: 'Drága és gyakori elszállítás', text: 'A laza, nagy térfogatú hulladék miatt sok a részben üres fuvar, ami feleslegesen növeli a szállítási és a kezelési költségeket.' },
+  { icon: 'boxes', title: 'Kezelhetetlen, vegyes anyagáram', text: 'A fa, a karton és a műanyag csomagolóanyag egyben nehezen tárolható és továbbadható. Egységes, kezelhető frakcióra van szükség, bármi legyen a következő lépés.' },
+  { icon: 'route', title: 'Anyag-előkészítés a következő lépéshez', text: 'A felaprított anyagot tovább kell adni hasznosításra vagy belső feldolgozásra, ezért egyenletes szemcseméretű, előkészített kimenet a cél.' },
+  { icon: 'magnet', title: 'Szegek, fémkapcsok és szennyeződés a raklapokban', text: 'A raklapokban maradó szegek és fémkapcsok védelem nélkül károsíthatják a gépet és ronthatják a végtermék minőségét. A fémleválasztás ezért része a megoldásnak.' },
+  { icon: 'recycle', title: 'A hulladékból visszanyerhető anyag', text: 'Az aprított, fémmentes faanyag tüzelőként vagy alapanyagként hasznosítható, így a selejt raklap a költséghelyről az értékteremtés oldalára kerül.' },
 ];
 
-const related = [
-  {
-    title: 'Ipari darálás',
-    text: 'Raklap, láda és csomagolóanyag aprítása egyenletes, kezelhető frakcióra.',
-    href: '/technologiak/ipari-daralas/',
-  },
-  {
-    title: 'Anyagmozgatás és rendszerelemek',
-    text: 'Adagolás, kihordás és idegenanyag-leválasztás a darálási folyamat köré építve.',
-    href: '/technologiak/anyagmozgas-rendszerelemek/',
-  },
+const directions = [
+  { icon: 'shuffle', name: 'Ipari darálás', line: 'Raklap, láda és csomagolóanyag aprítása egyenletes, kezelhető frakcióra.', href: '/technologiak/ipari-daralas/' },
+  { icon: 'route', name: 'Anyagmozgatás és rendszerelemek', line: 'Adagolás, kihordás és idegenanyag-leválasztás a darálás köré építve.', href: '/technologiak/anyagmozgas-rendszerelemek/' },
+];
+
+const faq = [
+  { q: 'Mi van a raklapokban lévő szegekkel és fémkapcsokkal?', a: 'A folyamatba fémleválasztás épül, amely védi a gépet és tisztább végterméket ad. A megoldást a tényleges szennyezettséghez méretezzük.' },
+  { q: 'Vegyes fa, karton és műanyag csomagolóanyaggal is működik?', a: 'Igen. Az anyagösszetétel alapján választjuk ki az aprítás módját és a frakciót, hogy a kimenet a következő lépéshez illeszkedjen. [VALIDÁLANDÓ: kezelhető anyagtípusok listája].' },
+  { q: 'Mit kezdhetek az aprított anyaggal?', a: 'A fémmentes, egyenletes frakció tárolható, elszállítható, tüzelőként vagy alapanyagként hasznosítható. Hogy melyik éri meg, az anyagtól és a helyi lehetőségektől függ.' },
 ];
 ---
-<SiteLayout
+
+<SolutionPage
   title="Raklap és csomagolóanyag darálása"
-  description="Raklap, láda és csomagolóanyag darálása térfogatcsökkentésre, kezelhetőbb tárolásra és anyag-előkészítésre, fémleválasztással. Kérjen technológiai javaslatot az ECOTEQ-től."
->
-  <PageHero
-    eyebrow="Megoldás"
-    title="Raklap és csomagolóanyag darálása"
-    lead="A raklap, láda és csomagolóanyag darálásának célja a térfogatcsökkentés, a kezelhetőbb tárolás és az anyag-előkészítés. A megfelelő technológiai irány a felmerülő helyzettől, az anyagáramtól és a benne lévő szennyeződésektől függ."
-    image="/heroes/hero-raklap.jpg"
-    imageAlt="ECOTEQ raklap- és csomagolóanyag-daráló stúdiófelvételen"
-    crumb={[{ label: 'Főoldal', href: '/' }, { label: 'Megoldások', href: '/#megoldasok' }, { label: 'Raklap és csomagolóanyag darálása' }]}
-  >
-    <Button href={quoteHref('ipari-daralas','megoldas')}>Technológiai javaslatot kérek</Button>
-  </PageHero>
-
-  <Section surface="white">
-    <SectionHeading
-      overline="Helyzetkép"
-      title="Mikor merül fel"
-      lead="Az alábbi üzemi helyzetekben jelent jellemzően kérdést a raklapok és csomagolóanyagok darálása."
-    />
-    <div class="situations">
-      {situations.map((s) => (
-        <article class="scard">
-          <span class="ic" aria-hidden="true"><Icon name={s.icon} size={22} /></span>
-          <h3>{s.title}</h3>
-          <p>{s.text}</p>
-        </article>
-      ))}
-    </div>
-  </Section>
-
-  <Section surface="subtle">
-    <SectionHeading
-      overline="Technológia"
-      title="Milyen technológiai irány segíthet"
-      lead="A darálás önmagában is csökkenti a térfogatot, de a kezelhető, tiszta anyagáramhoz a fémek és szennyeződések leválasztására, valamint az anyag mozgatására is figyelni kell. Az alábbi technológiák kapcsolódnak ehhez a feladathoz."
-    />
-    <div class="related">
-      {related.map((r) => (
-        <a class="rel" href={r.href}>
-          <h3>{r.title} <Icon name="arrow-right" size={16} /></h3>
-          <p>{r.text}</p>
-        </a>
-      ))}
-    </div>
-    <p class="note">A megfelelő gép kiválasztásánál mindig figyelni kell a raklapokban maradó fémekre és egyéb szennyeződésekre: mágnes és szeparátor védi a gépet és tartja tisztán a végterméket.</p>
-  </Section>
-
-  <Section surface="navy">
-    <SectionHeading
-      tone="dark"
-      overline="Következő lépés"
-      title="Beszéljünk a raklap- és csomagolóanyag-áramról"
-      lead="Mutassa meg, milyen anyag, mennyiség és cél áll a feladat mögött, és közösen meghatározzuk a megfelelő technológiai irányt."
-    />
-    <div class="closing-cta"><Button href={quoteHref('ipari-daralas','megoldas')}>Technológiai javaslatot kérek</Button></div>
-  </Section>
-</SiteLayout>
-<style>
-  .crumb{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:var(--fs-sm);color:var(--color-text-muted);margin-bottom:var(--space-5)}
-  .crumb a{color:var(--color-text-secondary);text-decoration:none}
-  .crumb a:hover{color:var(--color-accent)}
-  .crumb .here{color:var(--color-text)}
-  .cta{margin-top:var(--space-6)}
-
-  .situations { margin-top: var(--space-7); display: grid; gap: var(--space-4); grid-template-columns: 1fr; }
-  @media (min-width: 720px) { .situations { grid-template-columns: repeat(2, 1fr); } }
-  @media (min-width: 1000px) { .situations { grid-template-columns: repeat(3, 1fr); } }
-  .scard { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-5); }
-  .scard .ic { display: grid; place-items: center; width: 46px; height: 46px; border-radius: var(--radius-md); background: var(--color-accent-tint); color: var(--color-accent-active); margin-bottom: var(--space-4); }
-  .scard h3 { margin: 0 0 6px; font-size: var(--fs-h4); font-weight: var(--fw-bold); color: var(--color-text); }
-  .scard p { margin: 0; font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: var(--lh-snug); }
-
-  .related { margin-top: var(--space-7); display: grid; gap: var(--space-4); grid-template-columns: 1fr; }
-  @media (min-width: 720px) { .related { grid-template-columns: 1fr 1fr; } }
-  .rel { display: flex; flex-direction: column; gap: 6px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-5); text-decoration: none; color: inherit; transition: box-shadow var(--dur-base) var(--ease-standard), transform var(--dur-base) var(--ease-standard); }
-  .rel:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
-  .rel h3 { margin: 0; display: inline-flex; align-items: center; gap: 8px; font-size: var(--fs-h4); font-weight: var(--fw-bold); color: var(--color-accent-text); }
-  .rel h3 :global(svg) { transition: transform var(--dur-base) var(--ease-standard); }
-  .rel:hover h3 :global(svg) { transform: translateX(3px); }
-  .rel p { margin: 0; font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: var(--lh-snug); }
-  .note { margin: var(--space-6) 0 0; font-size: var(--fs-sm); color: var(--color-text-muted); max-width: 70ch; }
-
-  .closing-cta { margin-top: var(--space-6); }
-
-  @media (prefers-reduced-motion: reduce) {
-    .rel { transition: none; }
-    .rel:hover { transform: none; }
-    .rel h3 :global(svg) { transition: none; }
-    .rel:hover h3 :global(svg) { transform: none; }
-  }
-</style>
+  description="Raklap, láda és csomagolóanyag darálása térfogatcsökkentésre, kezelhető tárolásra és anyag-előkészítésre, fémleválasztással, több gyártó kínálatából."
+  heroLead="Sérült raklap, törött láda, fa és karton csomagolóanyag: nagy térfogatú, vegyes anyag, amely gyorsan elfoglalja a teret és drágán szállítható el. Aprítva egységes, tömör frakcióvá válik, amelyet könnyebb tárolni, elszállítani vagy tovább hasznosítani. A megfelelő irány attól függ, mi van benne, mennyi, és mi a célja vele."
+  heroImage="/heroes/hero-raklap.jpg"
+  heroImageAlt="ECOTEQ raklap- és csomagolóanyag-daráló üzemi környezetben"
+  source="megoldas-raklap-csomagoloanyag"
+  situationsLead="Az alábbi helyzetekben érdemes átgondolni a raklap és a csomagolóanyag darálását."
+  situations={situations}
+  directionsLead="A raklap és a csomagolóanyag darálása ritkán csak egy gép. A tartós eredményhez az aprítás, a fémleválasztás és az anyag kihordása összehangoltan működik. Ezt egy helyről, több vezető gyártó kínálatából állítjuk össze, a benne lévő szennyeződésekhez és a kívánt frakcióhoz igazítva."
+  directions={directions}
+  faq={faq}
+  ctaTitle="Nézzük meg, mi van a raklapban"
+  ctaLead="Mondja el, milyen raklap és csomagolóanyag gyűlik az üzemében, mennyi, és mi benne a szennyeződés. Ebből meghatározzuk az aprítás módját, a szükséges fémleválasztást és a kihordást, hogy kezelhető anyag és kevesebb fuvar legyen az eredmény."
+/>

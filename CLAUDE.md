@@ -69,3 +69,45 @@ knowledge → pre-qualification form → closing CTA → footer.
 
 Contact: ECOTEQ Kft., 1037 Budapest, Csillaghegyi út 19–21. · sales@ecoteq.hu ·
 +36 1 430-1556.
+
+ECOTEQ copy — működési utasítás (rétegsorrend)
+
+Három dokumentum vezérli az oldalszövegeket, RÖGZÍTETT sorrendben (ezek a project könyvtárban vannak: \project docs\általános szabályok\):
+1. ECOTEQ_Strategiai_Pozicionalas_es_Uzenetarchitektura_v1_0.md
+   → MI A NYERŐ ÉRV. Ez determinál előbb.
+2. ECOTEQ_Copy_QA_Mag_v1_0.md
+   → HOGYAN SZÓLJON. A kész szöveget ezen futtatod át.
+3. QA v2.1.md
+   → REFERENCIA. Csak akkor nézd, ha egy QA-jelzés kétséges/határeset.
+
+A sorrend nem fordítható meg: a QA nem teszi nyerővé a gyenge érvet,
+csak szebbé. Előbb az érv, utána a csiszolás.
+
+NEM ÍRHATOD FELÜL (locked — konfliktusnál a brand guideline és a hub
+master spec / source of truth győz):
+- CTA-rendszer a hub specből („Leírom, mit kell megoldani”,
+  „Leírom a feladatot”, „Elküldöm az alapadatokat”,
+  „Nem tudom, mi kell — segítsenek választani”,
+  „Leírom az anyagot és a célt”) — ne találj ki újat.
+- Színek: navy #1c3449, zöld #43ad4d (accent ≤10%).
+  TILTOTT off-brand: #0B131F és #10B981 (generikus SaaS-hatás).
+- Fustat font, 8px spacing-skála.
+- HUB–SPOKE architektúra, a rögzített blokksorrend,
+  „nincs ROI-kalkulátor az MVP HUB-on”.
+
+A HÉT NEM-ALKUDHATÓ SZABÁLY (pozicionálás-réteg §8 — ezt nézd ELŐSZÖR):
+1. Anyag előbb, gép utóbb.
+2. A függetlenség (több gyártó egy kézből) látszódjon a kulcsoldalakon.
+3. Egy oldal = egy tudatossági szint = egy elsődleges (locked) CTA.
+4. Konkrét + feltétel + következő lépés — sosem túlígérő.
+5. Kétsávos mondat: műszaki tény + gazdasági következmény összekötve.
+6. Nyolc technológiai oldal = nyolc különböző nyitás.
+7. Csak az indokolt scope — sosem „mindenkinek komplett rendszer”.
+
+BIZONYÍTÉK: ahol nincs validált adat (szám, kapacitás, referencia),
+NE találj ki — tedd „[VALIDÁLANDÓ]” jelölővel, és a végén listázd,
+mit kell beszerezni.
+
+MUNKAMÓD: egy oldal egyszerre. A tervet és a szöveget előbb add
+válaszban, review-ra. Csak jóváhagyás után írd a tényleges Astro
+komponensbe.

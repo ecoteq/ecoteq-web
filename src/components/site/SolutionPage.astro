@@ -1,0 +1,276 @@
+---
+/**
+ * Megoldás (solution) page template — problem-aware awareness level.
+ * One page = one awareness level = one primary CTA (Stratégia §6).
+ * Primary CTA: "Nem tudom, mi kell — segítsenek választani" (uncertain / problem-aware).
+ * Secondary: "Megnézem a technológiákat" (shortcut for the solution-aware).
+ * Structure: hero → helyzetkép (two-track cards) → technológiai irány (independence)
+ *            → mini-FAQ → navy CTA. Emits BreadcrumbList + FAQPage JSON-LD.
+ */
+import SiteLayout from '../v2/SiteLayoutV2.astro';
+import Section from '../layout/Section.astro';
+import SectionHeading from '../brand/SectionHeading.astro';
+import PageHero from './PageHero.astro';
+import Button from '../core/Button.astro';
+import Icon from '../Icon.astro';
+import Schema from '../seo/Schema.astro';
+import { quoteHref, CTA } from '../../lib/site-v2';
+
+interface Situation { icon: string; title: string; text: string; }
+interface Direction { icon: string; name: string; line: string; href: string; }
+interface Faq { q: string; a: string; }
+
+interface Props {
+  title: string;
+  description: string;
+  heroLead: string;
+  heroImage: string;
+  heroImageAlt: string;
+  /** analytics source slug, e.g. "megoldas-faipari" */
+  source: string;
+  situationsTitle?: string;
+  situationsLead?: string;
+  situations: Situation[];
+  directionsTitle?: string;
+  directionsLead: string;
+  directions: Direction[];
+  faqTitle?: string;
+  faq: Faq[];
+  ctaTitle: string;
+  ctaLead: string;
+}
+
+const {
+  title,
+  description,
+  heroLead,
+  heroImage,
+  heroImageAlt,
+  source,
+  situationsTitle = 'Mikor merül fel?',
+  situationsLead,
+  situations,
+  directionsTitle = 'Milyen irány segíthet?',
+  directionsLead,
+  directions,
+  faqTitle = 'Gyakori kérdések',
+  faq,
+  ctaTitle,
+  ctaLead,
+} = Astro.props;
+
+const quoteUrl = quoteHref(undefined, source);
+const crumb = [
+  { label: 'Főoldal', href: '/' },
+  { label: 'Megoldások', href: '/#megoldasok' },
+  { label: title },
+];
+---
+
+<SiteLayout title={title} description={description}>
+  <Schema faq={faq} />
+
+  <PageHero
+    eyebrow="Megoldás"
+    title={title}
+    lead={heroLead}
+    image={heroImage}
+    imageAlt={heroImageAlt}
+    crumb={crumb}
+  >
+    <Button href={quoteUrl}>{CTA.uncertain.label}</Button>
+    <Button href="#iranyok" variant="outline-light">{CTA.secondary.label}</Button>
+  </PageHero>
+
+  <Section surface="white">
+    <SectionHeading overline="Helyzetkép" title={situationsTitle} lead={situationsLead} />
+    <ul class="grid" role="list">
+      {
+        situations.map((item) => (
+          <li class="card">
+            <span class="card-ic" aria-hidden="true">
+              <Icon name={item.icon} size={22} />
+            </span>
+            <h3 class="card-title">{item.title}</h3>
+            <p class="card-text">{item.text}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <Section surface="subtle" id="iranyok">
+    <SectionHeading overline="Technológiai irány" title={directionsTitle} lead={directionsLead} />
+    <div class="tech-grid">
+      {
+        directions.map((tech) => (
+          <a class="tech" href={tech.href}>
+            <span class="tech-ic" aria-hidden="true">
+              <Icon name={tech.icon} size={24} />
+            </span>
+            <span class="tech-body">
+              <span class="tech-name">{tech.name}</span>
+              <span class="tech-line">{tech.line}</span>
+            </span>
+            <span class="tech-arrow" aria-hidden="true">
+              <Icon name="arrow-right" size={20} />
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </Section>
+
+  {
+    faq.length > 0 && (
+      <Section surface="white">
+        <SectionHeading overline="Kérdés és válasz" title={faqTitle} />
+        <dl class="faq">
+          {faq.map((item) => (
+            <div class="faq-item">
+              <dt class="faq-q">{item.q}</dt>
+              <dd class="faq-a">{item.a}</dd>
+            </div>
+          ))}
+        </dl>
+      </Section>
+    )
+  }
+
+  <Section surface="navy">
+    <SectionHeading tone="dark" overline="Következő lépés" title={ctaTitle} lead={ctaLead} />
+    <div class="cta">
+      <Button href={quoteUrl}>{CTA.uncertain.label}</Button>
+    </div>
+  </Section>
+</SiteLayout>
+
+<style>
+  .cta { margin-top: var(--space-6); }
+
+  .grid {
+    list-style: none;
+    margin: var(--space-7) 0 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-4);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 620px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 960px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-5);
+    background: var(--color-bg-subtle);
+    border-radius: var(--radius-lg);
+  }
+  .card-ic {
+    display: inline-flex;
+    flex: none;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    background: var(--color-accent-tint);
+    color: var(--color-accent-active);
+    margin-bottom: 2px;
+  }
+  .card-title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-base);
+    line-height: var(--lh-snug);
+    color: var(--color-text);
+  }
+  .card-text {
+    margin: 0;
+    font-size: var(--fs-sm);
+    line-height: var(--lh-body);
+    color: var(--color-text-secondary);
+  }
+
+  .tech-grid {
+    margin-top: var(--space-7);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-4);
+  }
+  .tech {
+    display: flex;
+    gap: var(--space-4);
+    align-items: center;
+    padding: var(--space-5);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    transition:
+      border-color var(--dur-base) var(--ease-standard),
+      box-shadow var(--dur-base) var(--ease-standard),
+      transform var(--dur-fast) var(--ease-standard);
+  }
+  .tech:hover {
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-2px);
+  }
+  .tech-ic {
+    display: inline-flex;
+    flex: none;
+    width: 48px;
+    height: 48px;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    background: var(--color-accent-tint);
+    color: var(--color-accent-active);
+  }
+  .tech-body { display: flex; flex-direction: column; gap: 4px; flex: 1 1 auto; }
+  .tech-name {
+    font-family: var(--font-display);
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-lg);
+    color: var(--color-text);
+  }
+  .tech-line { font-size: var(--fs-sm); line-height: var(--lh-body); color: var(--color-text-secondary); }
+  .tech-arrow {
+    display: inline-flex;
+    flex: none;
+    color: var(--color-text-muted);
+    transition:
+      color var(--dur-base) var(--ease-standard),
+      transform var(--dur-fast) var(--ease-standard);
+  }
+  .tech:hover .tech-arrow { color: var(--color-accent); transform: translateX(3px); }
+
+  .faq {
+    margin: var(--space-7) 0 0;
+    display: grid;
+    gap: var(--space-4);
+    max-width: 760px;
+  }
+  .faq-item {
+    padding: var(--space-5);
+    background: var(--color-bg-subtle);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+  }
+  .faq-q {
+    margin: 0 0 var(--space-2);
+    font-family: var(--font-display);
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-lg);
+    line-height: var(--lh-snug);
+    color: var(--color-text);
+  }
+  .faq-a { margin: 0; font-size: var(--fs-base); line-height: var(--lh-body); color: var(--color-text-secondary); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tech, .tech-arrow { transition: none; }
+    .tech:hover, .tech:hover .tech-arrow { transform: none; }
+  }
+</style>

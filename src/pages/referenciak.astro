@@ -1,11 +1,11 @@
 ---
-import SiteLayout from '../layouts/SiteLayout.astro';
+import SiteLayout from '../components/v2/SiteLayoutV2.astro';
 import Section from '../components/layout/Section.astro';
 import SectionHeading from '../components/brand/SectionHeading.astro';
 import PageHero from '../components/site/PageHero.astro';
 import Button from '../components/core/Button.astro';
 import Icon from '../components/Icon.astro';
-import { quoteHref } from '../lib/site';
+import { quoteHref } from '../lib/site-v2';
 
 const projects = [
   {
@@ -40,12 +40,12 @@ const projects = [
 
 <SiteLayout
   title="Referenciák"
-  description="Megvalósított ipari rendszereink iparág és technológia szerint — anonimizált, kategóriaszintű projektek és a bizalom alapja az ECOTEQ-nél."
+  description="Megvalósított ipari rendszereink iparág és technológia szerint: anonimizált, kategóriaszintű projektek és a bizalom alapja az ECOTEQ-nél."
 >
   <PageHero
     eyebrow="Referenciák"
     title="Megvalósított ipari rendszerek, iparág és technológia szerint"
-    lead="Az ipari technológiai döntésnél a bizalom nem szlogeneken múlik — fontos látni, hogy a partner ért-e hasonló anyagokhoz, üzemekhez és beruházási helyzetekhez."
+    lead="Az ipari technológiai döntésnél a bizalom nem szlogeneken múlik. Fontos látni, hogy a partner ért-e hasonló anyagokhoz, üzemekhez és beruházási helyzetekhez."
     image="/heroes/hero-referenciak.jpg"
     imageAlt="Telepített négytengelyes daráló rendszer rozsdamentes adagolóval"
     crumb={[{ label: 'Főoldal', href: '/' }, { label: 'Referenciák' }]}
@@ -55,7 +55,7 @@ const projects = [
     <SectionHeading
       overline="Projektpéldák"
       title="Kategóriaszintű projektek"
-      lead="A lenti példák anonimizált, kategóriaszintű bemutatások — a jellemző anyagot, az alkalmazott technológiát és az elért eredményt mutatják be, valós ügyfélnevek nélkül."
+      lead="A lenti példák anonimizált, kategóriaszintű bemutatások. A jellemző anyagot, az alkalmazott technológiát és az elért eredményt mutatják be, valós ügyfélnevek nélkül."
     />
     <div class="cards">
       {projects.map((p) => (
@@ -97,12 +97,12 @@ const projects = [
     <SectionHeading
       overline="Következő lépés"
       title="Beszéljük át, mi illik az Ön üzeméhez"
-      lead="Mondja el, milyen anyag keletkezik és mi a cél — javaslunk egy reális technológiai irányt, kötelezettség nélkül."
+      lead="Mondja el, milyen anyag keletkezik és mi a cél. Javaslunk egy reális technológiai irányt, kötelezettség nélkül."
       tone="dark"
       align="center"
     />
     <div class="cta">
-      <Button href={quoteHref(undefined, 'referenciak')}>Technológiai javaslatot kérek</Button>
+      <Button href={quoteHref(undefined, 'referenciak')}>Leírom az anyagot és a célt</Button>
     </div>
   </Section>
 </SiteLayout>

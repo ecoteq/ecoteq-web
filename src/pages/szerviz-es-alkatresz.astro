@@ -1,11 +1,11 @@
 ---
-import SiteLayout from '../layouts/SiteLayout.astro';
+import SiteLayout from '../components/v2/SiteLayoutV2.astro';
 import Section from '../components/layout/Section.astro';
 import SectionHeading from '../components/brand/SectionHeading.astro';
 import PageHero from '../components/site/PageHero.astro';
 import Button from '../components/core/Button.astro';
 import Icon from '../components/Icon.astro';
-import { quoteHref } from '../lib/site';
+import { quoteHref } from '../lib/site-v2';
 
 const services = [
   {
@@ -41,7 +41,7 @@ const services = [
 ];
 
 const requestPoints = [
-  'a berendezés típusa és — ha ismert — gyári azonosítója,',
+  'a berendezés típusa és (ha ismert) a gyári azonosítója,',
   'az üzem és a felhasználás jellege (mit, milyen mennyiségben dolgoz fel),',
   'a tapasztalt hibajelenség vagy az igényelt szolgáltatás rövid leírása,',
   'kapcsolattartó és elérhetőség a visszajelzéshez.',
@@ -49,17 +49,17 @@ const requestPoints = [
 ---
 <SiteLayout
   title="Szerviz és alkatrész"
-  description="ECOTEQ szerviz, alkatrész-ellátás és szakmai támogatás — a berendezés átadása után is mellettünk áll a hosszú távú, megbízható üzemeltetésben."
+  description="ECOTEQ szerviz, alkatrész-ellátás és szakmai támogatás. A berendezés átadása után is mellettünk áll a hosszú távú, megbízható üzemeltetésben."
 >
   <PageHero
     eyebrow="Szerviz és alkatrész"
     title="A megbízható üzemeltetés a gép átadása után kezdődik"
-    lead="Az ECOTEQ munkája nem a berendezés átadásával ér véget. A hosszú távú, biztonságos üzemeltetéshez szerviz, alkatrész-ellátás és folyamatos szakmai támogatás is kell — mindezt egy kézben, az átadás utáni évekre is."
+    lead="Az ECOTEQ munkája nem a berendezés átadásával ér véget. A hosszú távú, biztonságos üzemeltetéshez szerviz, alkatrész-ellátás és folyamatos szakmai támogatás is kell, mindezt egy kézben, az átadás utáni évekre is."
     image="/heroes/hero-szerviz.jpg"
     imageAlt="Daráló tengelyek nagyjavítás közben bakokon"
     crumb={[{ label: 'Főoldal', href: '/' }, { label: 'Szerviz és alkatrész' }]}
   >
-    <Button href={quoteHref(undefined, 'szerviz')}>Technológiai javaslatot kérek</Button>
+    <Button href={quoteHref(undefined, 'szerviz')}>Leírom az anyagot és a célt</Button>
     <Button href="/kapcsolat/" variant="ghost">Kapcsolatfelvétel</Button>
   </PageHero>
 
@@ -90,7 +90,7 @@ const requestPoints = [
         />
         <div class="how-cta">
           <Button href="/kapcsolat/">Kapcsolatfelvétel</Button>
-          <Button href={quoteHref(undefined, 'szerviz')} variant="ghost">Technológiai javaslatot kérek</Button>
+          <Button href={quoteHref(undefined, 'szerviz')} variant="ghost">Leírom az anyagot és a célt</Button>
         </div>
       </div>
       <aside class="panel" aria-label="Mit érdemes megadni">
@@ -116,12 +116,12 @@ const requestPoints = [
       <SectionHeading
         overline="Hosszú távú partnerség"
         title="Beszéljünk az üzemeltetésről"
-        lead="Mondja el, milyen berendezést üzemeltet, vagy mit tervez — a megfelelő technológiai irány és a hozzá tartozó hosszú távú támogatás megtervezésében segítünk."
+        lead="Mondja el, milyen berendezést üzemeltet, vagy mit tervez. A megfelelő technológiai irány és a hozzá tartozó hosszú távú támogatás megtervezésében segítünk."
         tone="dark"
         align="center"
       />
       <div class="close-cta">
-        <Button href={quoteHref(undefined, 'szerviz')}>Technológiai javaslatot kérek</Button>
+        <Button href={quoteHref(undefined, 'szerviz')}>Leírom az anyagot és a célt</Button>
         <Button href="/kapcsolat/" variant="outline-light">Kapcsolatfelvétel</Button>
       </div>
     </div>
