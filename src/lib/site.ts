@@ -63,7 +63,7 @@ export const TECHNOLOGIES: Technology[] = [
     task: 'Térfogatcsökkentés és anyag-előkészítés',
     blurb:
       'Fa, raklap, műanyag, csomagolóanyag vagy vegyes ipari hulladék térfogatcsökkentésére és további feldolgozásra való előkészítésére.',
-    image: '/ds/photos/shredder.png',
+    image: '/heroes/hero-ipari-daralas.jpg',
   },
   {
     slug: 'brikettalas',
@@ -71,7 +71,7 @@ export const TECHNOLOGIES: Technology[] = [
     task: 'Mellékanyagból tömör, értékesíthető brikett',
     blurb:
       'Forgács, por, apríték és más száraz mellékanyag tömörítése kezelhető, tárolható vagy értékesíthető briketté.',
-    image: '/ds/photos/briquetting-line.png',
+    image: '/heroes/hero-brikettalas.jpg',
   },
   {
     slug: 'pelletalas',
@@ -79,7 +79,7 @@ export const TECHNOLOGIES: Technology[] = [
     task: 'Egységes pellet energetikára vagy értékesítésre',
     blurb:
       'Biomassza és faipari alapanyagok előkészítése és tömörítése egységes pellet formába, energetikai vagy értékesítési célra.',
-    image: '/ds/photos/pelletizing-line.png',
+    image: '/heroes/hero-pelletalas.jpg',
   },
   {
     slug: 'biomassza-szaritas',
@@ -87,7 +87,7 @@ export const TECHNOLOGIES: Technology[] = [
     task: 'Nedves anyag kezelhető állapotba hozása',
     blurb:
       'Nedves apríték, biomassza vagy mellékanyag nedvességtartalmának csökkentése további feldolgozáshoz vagy energetikai felhasználáshoz.',
-    image: '/ds/photos/biomass-belt-dryer.png',
+    image: '/heroes/hero-biomassza-szaritas.jpg',
   },
   {
     slug: 'vakuumszaritas',
@@ -95,7 +95,7 @@ export const TECHNOLOGIES: Technology[] = [
     task: 'Faanyag kontrollált, gyors szárítása',
     blurb:
       'Faanyag kontrollált, gyorsabb és kíméletesebb szárítása olyan üzemeknek, ahol a minőség és a ciklusidő is számít.',
-    image: '/ds/photos/vacuum-kiln.png',
+    image: '/heroes/hero-vakuumszaritas.jpg',
   },
   {
     slug: 'vakuumimpregnalas',
@@ -103,7 +103,7 @@ export const TECHNOLOGIES: Technology[] = [
     task: 'Faanyag védelme és ipari kezelése',
     blurb:
       'Faanyag védelme, kezelése és impregnálása ipari felhasználásra, kontrollált technológiai környezetben.',
-    image: '/ds/photos/vacuum-kiln.png',
+    image: '/heroes/hero-vakuumimpregnalas.jpg',
   },
   {
     slug: 'elszivas-porlevalasztas',
@@ -111,7 +111,7 @@ export const TECHNOLOGIES: Technology[] = [
     task: 'Tisztább, biztonságosabb üzemi levegő',
     blurb:
       'Por, forgács és technológiai levegő kezelése faipari és ipari üzemekben, a tisztább és biztonságosabb működésért.',
-    image: '/ds/photos/service-installation.png',
+    image: '/heroes/hero-elszivas.jpg',
   },
   {
     slug: 'anyagmozgas-rendszerelemek',
@@ -119,6 +119,7 @@ export const TECHNOLOGIES: Technology[] = [
     task: 'Stabil anyagáram és rendszerelemek',
     blurb:
       'Felhordók, szállítószalagok, adagolók, mágnesek, szeparátorok és kiegészítő rendszerelemek a stabil anyagáramhoz.',
+    image: '/heroes/hero-komplett.jpg',
   },
 ];
 

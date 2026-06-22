@@ -22,7 +22,7 @@ const brikettalas: TechnologyGateway = {
     microcopy:
       'A megfelelő brikettáló technológia kiválasztásához elég, ha megadja az alapanyagot, a mennyiséget és a nedvességet, és hogy saját fűtésre vagy értékesítésre szánja a brikettet.',
     trustPills: [],
-    image: '/heroes/brikettalas-gepsor.jpg',
+    image: '/heroes/hero-brikettalas.jpg',
     imageAlt: 'Ipari brikettáló gépsor üzem közben: présgépek és szállítószalagokon mozgó brikett (CF Nielsen)',
   },
   // Brikettálás-specifikus trust sor. A hidraulikus/mechanikus típusszám [VALIDÁLANDÓ]
@@ -269,7 +269,7 @@ const ipariDaralas: TechnologyGateway = {
     secondaryCta: { label: 'Részletes ipari daráló oldal', href: 'https://iparidaralo.hu' },
     microcopy: 'A megfelelő ipari daráló kiválasztásához elég, ha megadja az anyagot, a mennyiséget, a darabméretet és a kívánt frakciót.',
     trustPills: [],
-    image: '/ds/photos/shredder-ms40120-hero.jpg',
+    image: '/heroes/hero-ipari-daralas.jpg',
     imageAlt: 'Ipari daráló gép működés közben',
   },
   heroStats: [
@@ -399,7 +399,7 @@ const pelletalas: TechnologyGateway = {
     secondaryCta: { label: 'Kapcsolódó technológiák megtekintése', href: '/#technologiak' },
     microcopy: 'A megfelelő pelletáló kiválasztásához elég, ha megadja az alapanyagot, a mennyiséget, a nedvességet és a végtermék célját.',
     trustPills: [],
-    image: '/ds/photos/pelletizing-line.png',
+    image: '/heroes/hero-pelletalas.jpg',
     imageAlt: 'Pellet gyártó gépsor működés közben',
   },
   heroStats: [
@@ -528,7 +528,7 @@ const biomasszaSzaritas: TechnologyGateway = {
     secondaryCta: { label: 'Kapcsolódó technológiák megtekintése', href: '/#technologiak' },
     microcopy: 'A megfelelő szárítási irány kiválasztásához elég, ha megadja az anyagot, a bemeneti és a cél nedvességet, a mennyiséget és a hőforrást.',
     trustPills: [],
-    image: '/ds/photos/biomass-belt-dryer.png',
+    image: '/heroes/hero-biomassza-szaritas.jpg',
     imageAlt: 'Biomassza szárító rendszer',
   },
   heroStats: [
@@ -657,7 +657,7 @@ const vakuumszaritas: TechnologyGateway = {
     secondaryCta: { label: 'Megnézem a részletes vákuumszárító oldalt', href: 'https://vakuumszarito.hu' },
     microcopy: 'A megfelelő vákuumszárító kiválasztásához elég, ha megadja a fafajt, a vastagságot, az induló és a cél nedvességet és a heti mennyiséget.',
     trustPills: [],
-    image: '/photos/vakuumszarito-hero.webp',
+    image: '/heroes/hero-vakuumszaritas.jpg',
     imageAlt: 'Vákuumemelő daru faipari raktárban, rakott fűrészáruval',
   },
   heroStats: [
@@ -786,7 +786,7 @@ const vakuumimpregnalas: TechnologyGateway = {
     secondaryCta: { label: 'Kapcsolódó vákuumtechnológiák megtekintése', href: 'https://vakuumszarito.hu' },
     microcopy: 'A megfelelő vákuumimpregnáló kiválasztásához elég, ha megadja a faanyagot, a kezelőanyagot, a méreteket és a kezelési célt.',
     trustPills: [],
-    image: '/ds/photos/vacuum-kiln.png',
+    image: '/heroes/hero-vakuumimpregnalas.jpg',
     imageAlt: 'Vákuumimpregnáló berendezés',
   },
   heroStats: [
@@ -914,7 +914,7 @@ const elszivasPorlevalasztas: TechnologyGateway = {
     secondaryCta: { label: 'Kapcsolódó technológiák megtekintése', href: '/#technologiak' },
     microcopy: 'A megfelelő elszívás kiválasztásához elég, ha megadja a gépeket, az anyagot és a porkaraktert, és a tisztasági vagy munkavédelmi elvárást.',
     trustPills: [],
-    image: '/ds/photos/service-installation.png',
+    image: '/heroes/hero-elszivas.jpg',
     imageAlt: 'Ipari elszívó- és porleválasztó rendszer',
   },
   // AL-KO portfólióból validált specifikációk (pilot): max légszállítás, W3 tanúsítvány, ATEX kivitel.
@@ -1041,6 +1041,7 @@ const anyagmozgasRendszerelemek: TechnologyGateway = {
     'Anyagmozgató, adagoló, kihordó, siló, mágnes és szeparátor rendszerelemek daráláshoz, brikettáláshoz, pelletáláshoz, szárításhoz és elszíváshoz. ECOTEQ rendszerintegráció.',
   hero: {
     eyebrow: 'ECOTEQ technológiák · Anyagmozgatás és rendszerelemek',
+    image: '/heroes/hero-komplett.jpg',
     h1: 'Anyagmozgatás és rendszerelemek ipari feldolgozó rendszerekhez',
     lead: 'Egy rendszer ritkán a főgépen bukik el, hanem azon, hogyan jut be és ki az anyag. A kérdés ritkán egy szalag vagy csiga, inkább hogy a teljes anyagáram stabil-e a beadagolástól a végtermékig.',
     secondaryCta: { label: 'Kapcsolódó technológiák megtekintése', href: '/#technologiak' },
