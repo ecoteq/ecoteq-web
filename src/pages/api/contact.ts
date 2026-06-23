@@ -101,7 +101,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     });
     if (notifyErr) {
       console.error('[contact] Resend notify error:', JSON.stringify(notifyErr));
-      return json({ ok: false, error: 'send_failed', detail: (notifyErr as { name?: string; message?: string }).name + ': ' + (notifyErr as { message?: string }).message }, 502);
+      return json({ ok: false, error: 'send_failed' }, 502);
     }
 
     if (email) {
