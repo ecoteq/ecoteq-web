@@ -5,6 +5,14 @@
 > A site ekkor **v0.9**, noindex alatt, élesítés (ecoteq.hu domain ráirányítása) előtt.
 > Folytatás: ezt a listát fentről lefelé visszük; P0 = launch-blokkoló.
 
+> **✅ ELVÉGEZVE (2026-06-23 este, commit `bcfb659`)** — a kódból megoldható tételek:
+> **P0-2** favicon/ikon/manifest szett, **P0-3** mobil sticky CTA, **P1-2** hero-preload,
+> **P1-3** font-preload, **P1-4** kontraszt-csomag, **P1-6** tiltott-CTA maradványok,
+> **P1-7** skip-link + fókuszálható main, **P1-8** inline űrlap-validáció.
+> **HÁTRA (felhasználói adat/döntés):** P0-1 analytics (A/B) + jogi szöveg · P0-4 Resend env+DKIM ·
+> P0-5 e-mail címek · P0-6 go-live noindex · P1-1 OG-kép (jóváhagyás) · P1-5 CTA-felirat egységesítés
+> (jóváhagyás) · P1-9 meta-leírások ≤160 (jóváhagyás) · P1-10 e-mail-VAGY-telefon (jóváhagyás) · P2 tételek.
+
 ## 1. Vezetői összegzés
 
 A site mérnöki és tartalmi minősége magas: 0-warning build, példás security headerök,

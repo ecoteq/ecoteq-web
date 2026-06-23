@@ -26,8 +26,10 @@ vákuumimpregnálás, anyagmozgatás. A forrásképek: `Downloads\főoldal fotó
 - **P0-6** explicit „go" a noindex feloldásához (utolsó lépés a domain ráirányítása előtt).
 - **P1-1/P1-5/P1-9** OG-kártya + elsődleges CTA-felirat + meta-leírás jóváhagyás.
 
-**Amit önállóan, kódból elkezdhetek** (jóváhagyásra): P0-2 favicon/manifest, P0-3 mobil sticky CTA,
-P1-2 hero-preload, P1-3 font-preload, P1-4 kontraszt-csomag, P1-7 skip-link, P1-8 inline űrlap-validáció.
+**✅ Kódból már elkészült** (commit `bcfb659`): P0-2 favicon/manifest, P0-3 mobil sticky CTA, P1-2 hero-preload,
+P1-3 font-preload, P1-4 kontraszt-csomag, P1-6 tiltott-CTA maradványok, P1-7 skip-link, P1-8 inline űrlap-validáció.
+**Következő, szintén kódból:** P1-1 OG-kép (kell egy 1200×630 jóváhagyás), P1-5 CTA-felirat egységesítés
+(felirat jóváhagyás), P1-9 meta-leírások ≤160, P1-10 e-mail-VAGY-telefon, majd a P2 kódos tételei.
 
 **Maradék korábbról:** 3 tech-kártya fotó (pelletálás, vákuumszárítás, elszívás) · valós SOCIAL URL-ek ·
 fotós esettanulmányok a `/referenciak`-on (Diósjenő story megvan, Jákófa story jön).
