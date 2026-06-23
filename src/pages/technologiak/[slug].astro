@@ -69,11 +69,13 @@ function factorIcon(title: string): string {
     howto={{ name: t.process.h2, steps: t.process.steps }}
   />
 
-  <!-- HERO -->
   <section class="hero">
     {t.hero.image && (
       <div class="media">
-        <img src={t.hero.image} alt={t.hero.imageAlt ?? t.name} fetchpriority="high" decoding="async" />
+        <picture>
+          <source type="image/webp" srcset={`${t.hero.image.replace(/\.jpe?g$/i, '')}-640.webp 640w, ${t.hero.image.replace(/\.jpe?g$/i, '')}-1280.webp 1280w, ${t.hero.image.replace(/\.jpe?g$/i, '')}-1920.webp 1920w`} sizes="100vw" />
+          <img src={t.hero.image} alt={t.hero.imageAlt ?? t.name} width="1920" height="1080" fetchpriority="high" decoding="async" />
+        </picture>
         <div class="wash" aria-hidden="true"></div>
       </div>
     )}
@@ -102,7 +104,6 @@ function factorIcon(title: string): string {
 
   <Breadcrumb items={[{ label: 'Főoldal', href: '/' }, { label: 'Technológiák', href: '/#technologiak' }, { label: t.name }]} />
 
-  <!-- 2. PROBLÉMA -->
   <Section surface="white">
     <SectionHeading overline="Üzemi probléma" title={t.problems.h2} lead={t.problems.intro} />
     <div class="grid cards2">
@@ -119,7 +120,6 @@ function factorIcon(title: string): string {
     </div>
   </Section>
 
-  <!-- 3. MIKOR JÓ MEGOLDÁS -->
   <Section surface="subtle">
     <SectionHeading overline="Mikor jó megoldás" title={t.fit.h2} lead={t.fit.intro} />
     <div class="grid cards3">
@@ -133,7 +133,6 @@ function factorIcon(title: string): string {
     </div>
   </Section>
 
-  <!-- 4. ANYAGOK -->
   <Section surface="white">
     <SectionHeading overline="Anyagok és alkalmazások" title={t.materials.h2} lead={t.materials.intro} />
     <div class="matrix">
@@ -149,7 +148,6 @@ function factorIcon(title: string): string {
     )}
   </Section>
 
-  <!-- 5. RENDSZERFELÉPÍTÉS -->
   <Section surface="subtle">
     <SectionHeading overline="Rendszerfelépítés" title={t.process.h2} lead={t.process.intro} />
     <ol class="timeline">
@@ -170,7 +168,6 @@ function factorIcon(title: string): string {
     </ol>
   </Section>
 
-  <!-- 6. DÖNTÉSI TÉNYEZŐK -->
   <Section surface="white">
     <SectionHeading overline="Döntés előtt" title={t.decisionFactors.h2} lead={t.decisionFactors.intro} />
     <div class="grid cards2 tight">
@@ -180,7 +177,6 @@ function factorIcon(title: string): string {
     </div>
   </Section>
 
-  <!-- 7. ECOTEQ SZEREPE (navy) -->
   <Section surface="navy">
     <SectionHeading tone="dark" overline="ECOTEQ szerepe" title={t.role.h2} />
     <div class="role">
@@ -199,7 +195,6 @@ function factorIcon(title: string): string {
     )}
   </Section>
 
-  <!-- 8. ELŐMINŐSÍTÉS -->
   <Section id="ajanlatkeres-info" surface="subtle">
     <div class="prequal">
       <div class="prequal-intro">
@@ -215,7 +210,6 @@ function factorIcon(title: string): string {
     </div>
   </Section>
 
-  <!-- 9. KAPCSOLÓDÓ TECHNOLÓGIÁK -->
   <Section surface="white">
     <SectionHeading overline="Kapcsolódó technológiák" title={t.related.h2} lead={t.related.intro} />
     <div class="grid cards2">
@@ -237,7 +231,6 @@ function factorIcon(title: string): string {
     )}
   </Section>
 
-  <!-- 10. GYIK -->
   <Section surface="subtle">
     <SectionHeading overline="GYIK" title={t.faq.h2} />
     <div class="faq">
@@ -250,7 +243,6 @@ function factorIcon(title: string): string {
     </div>
   </Section>
 
-  <!-- 11. ZÁRÓ CTA -->
   <Section surface="white">
     <div class:list={['closing-panel', t.finalCta.checklist && 'has-aside']}>
       <h2 class="closing-h2">{t.finalCta.h2}</h2>
@@ -353,6 +345,7 @@ function factorIcon(title: string): string {
 <style>
   /* HERO */
   .hero { position: relative; margin-top: calc(-1 * var(--header-h)); min-height: min(78svh, 760px); display: flex; align-items: stretch; overflow: hidden; background: var(--ecoteq-navy); }
+  .hero .media picture { display: contents; }
   .media { position: absolute; inset: 0; z-index: 0; }
   .media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; }
   @media (min-width: 1024px) { .media img { transform: translateX(360px); } }

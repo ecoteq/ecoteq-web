@@ -15,11 +15,16 @@ interface Props {
   crumb?: CrumbItem[];
 }
 const { title, lead, eyebrow, image, imageAlt = '', crumb } = Astro.props;
+const heroBase = image.replace(/\.jpe?g$/i, '');
+const heroSrcset = `${heroBase}-640.webp 640w, ${heroBase}-1280.webp 1280w, ${heroBase}-1920.webp 1920w`;
 ---
 
 <section class="phero">
   <div class="media">
-    <img src={image} alt={imageAlt} fetchpriority="high" decoding="async" />
+    <picture>
+      <source type="image/webp" srcset={heroSrcset} sizes="100vw" />
+      <img src={image} alt={imageAlt} width="1920" height="1080" fetchpriority="high" decoding="async" />
+    </picture>
     <div class="wash" aria-hidden="true"></div>
   </div>
 
@@ -44,6 +49,7 @@ const { title, lead, eyebrow, image, imageAlt = '', crumb } = Astro.props;
     background: var(--ecoteq-navy);
   }
   .media { position: absolute; inset: 0; z-index: 0; }
+  .media picture { display: contents; }
   .media img { width: 100%; height: 100%; object-fit: cover; }
   /* Same mask in both modes — the token resolves per theme (navy in light, near-black
      in dark): solid field on the left for the text, clearing to the image on the right. */
