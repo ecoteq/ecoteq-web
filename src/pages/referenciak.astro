@@ -6,46 +6,17 @@ import PageHero from '../components/site/PageHero.astro';
 import Button from '../components/core/Button.astro';
 import Icon from '../components/Icon.astro';
 import { quoteHref } from '../lib/site-v2';
-
-const projects = [
-  {
-    icon: 'trees',
-    title: 'Faipari mellékanyag kezelése',
-    rows: [
-      { label: 'Anyag', value: 'forgács, por, apríték' },
-      { label: 'Technológia', value: 'darálás, elszívás, brikettálás vagy ezek kombinációja' },
-      { label: 'Eredmény', value: 'rendezettebb anyagkezelés, jobb tárolhatóság, hasznosítható mellékanyag' },
-    ],
-  },
-  {
-    icon: 'flame',
-    title: 'Biomassza előkészítése',
-    rows: [
-      { label: 'Anyag', value: 'apríték, fűrészpor, biomassza' },
-      { label: 'Technológia', value: 'szárítás, darálás, anyagmozgatás, brikettálás vagy pelletálás' },
-      { label: 'Eredmény', value: 'kezelhetőbb, jobban tervezhető alapanyag' },
-    ],
-  },
-  {
-    icon: 'recycle',
-    title: 'Ipari hulladék térfogatcsökkentése',
-    rows: [
-      { label: 'Anyag', value: 'raklap, csomagolóanyag, műanyag vagy vegyes ipari hulladék' },
-      { label: 'Technológia', value: 'ipari darálás, szeparálás, anyagmozgatás' },
-      { label: 'Eredmény', value: 'kisebb térfogat, átláthatóbb hulladékkezelés, jobb üzemi rend' },
-    ],
-  },
-];
+import { referencesSorted, CATEGORY_LABELS, CATEGORY_ORDER, REFERENCE_COUNT } from '../lib/references';
 ---
 
 <SiteLayout
   title="Referenciák"
-  description="Megvalósított ipari rendszereink iparág és technológia szerint: anonimizált, kategóriaszintű projektek és a bizalom alapja az ECOTEQ-nél."
+  description="Megvalósult magyar ipari rendszereink technológia és iparág szerint: brikettálás, darálás, pelletálás, elszívás, szárítás és komplett gépsorok, megnevezett ügyfelekkel."
 >
   <PageHero
     eyebrow="Referenciák"
-    title="Megvalósított ipari rendszerek, iparág és technológia szerint"
-    lead="Az ipari technológiai döntésnél a bizalom nem szlogeneken múlik. Fontos látni, hogy a partner ért-e hasonló anyagokhoz, üzemekhez és beruházási helyzetekhez."
+    title="Megvalósult ipari rendszerek, iparág és technológia szerint"
+    lead="Az ipari technológiai döntésnél a bizalom nem szlogeneken múlik. Fontos látni, hogy a partner ért-e hasonló anyagokhoz, üzemekhez és beruházási helyzetekhez. Az alábbi projektek valós, megvalósult szállítások."
     image="/heroes/hero-referenciak.jpg"
     imageAlt="Telepített négytengelyes daráló rendszer rozsdamentes adagolóval"
     crumb={[{ label: 'Főoldal', href: '/' }, { label: 'Referenciák' }]}
@@ -53,42 +24,51 @@ const projects = [
 
   <Section surface="white">
     <SectionHeading
-      overline="Projektpéldák"
-      title="Kategóriaszintű projektek"
-      lead="A lenti példák anonimizált, kategóriaszintű bemutatások. A jellemző anyagot, az alkalmazott technológiát és az elért eredményt mutatják be, valós ügyfélnevek nélkül."
+      overline="Megvalósult projektek"
+      title={`Több mint ${REFERENCE_COUNT} megvalósult magyar ipari projekt`}
+      lead="Szűrjön technológia szerint. Minden projekt valós szállítás; a kiemelt nevek ismert ipari megrendelők. A géptípusok és kapacitások a megvalósult rendszerek dokumentált adatai."
     />
-    <div class="cards">
-      {projects.map((p) => (
-        <article class="card">
-          <span class="card-ic" aria-hidden="true"><Icon name={p.icon} size={22} /></span>
-          <h3 class="card-title">{p.title}</h3>
-          <dl class="card-rows">
-            {p.rows.map((r) => (
-              <div class="card-row">
-                <dt>{r.label}</dt>
-                <dd>{r.value}</dd>
-              </div>
-            ))}
-          </dl>
-        </article>
-      ))}
-    </div>
-  </Section>
 
-  <Section surface="subtle">
-    <SectionHeading
-      overline="Logófal"
-      title="Ügyfeleink és partnereink"
-      lead="Valós, ellenőrzött ügyféllogókat és referenciákat csak a megbízó kifejezett jóváhagyását követően jelenítünk meg. Addig a helyét semleges helykitöltők jelzik."
-    />
-    <div class="logos" aria-hidden="true">
-      {Array.from({ length: 8 }).map(() => (
-        <div class="logo-ph"></div>
+    <div class="refwall">
+      <input class="rf" type="radio" name="refcat" id="rf-all" checked />
+      {CATEGORY_ORDER.map((c) => (
+        <input class="rf" type="radio" name="refcat" id={`rf-${c}`} />
       ))}
+
+      <fieldset class="filterbar">
+        <legend class="sr-only">Szűrés technológia szerint</legend>
+        <label for="rf-all" class="chip">Mind</label>
+        {CATEGORY_ORDER.map((c) => (
+          <label for={`rf-${c}`} class="chip">{CATEGORY_LABELS[c]}</label>
+        ))}
+      </fieldset>
+
+      <div class="wall">
+        {referencesSorted.map((r) => (
+          <article class:list={['refcard', r.cats.map((c) => `cat-${c}`)]} data-marquee={r.marquee ? 'true' : undefined}>
+            <div class="rc-head">
+              <h3 class="rc-company">{r.company}</h3>
+              {r.marquee && (
+                <span class="rc-badge" title="Ismert ipari megrendelő"><Icon name="shield" size={15} /></span>
+              )}
+            </div>
+            {(r.city || r.year) && (
+              <p class="rc-meta">{[r.city, r.year].filter(Boolean).join(' · ')}</p>
+            )}
+            <ul class="rc-tags">
+              {r.cats.map((c) => (
+                <li>{CATEGORY_LABELS[c]}</li>
+              ))}
+            </ul>
+            <p class="rc-machines">{r.machines}</p>
+          </article>
+        ))}
+      </div>
     </div>
+
     <p class="note">
       <span class="note-ic" aria-hidden="true"><Icon name="shield" size={18} /></span>
-      Csak valós, ellenőrzött referenciákat jelenítünk meg.
+      Minden referencia valós, megvalósult ECOTEQ-szállítás. A bemutatott ügyfélnevek megjelenítése engedélyezett.
     </p>
   </Section>
 
@@ -107,79 +87,115 @@ const projects = [
 </SiteLayout>
 
 <style>
-  .crumb { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: var(--fs-sm); color: var(--color-text-muted); margin-bottom: var(--space-5); }
-  .crumb a { color: var(--color-text-secondary); text-decoration: none; }
-  .crumb a:hover { color: var(--color-accent); }
-  .crumb .here { color: var(--color-text); }
-
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--space-5);
-    margin-top: var(--space-7);
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
   }
-  .card {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
+
+  /* Radios drive a CSS-only filter — visually hidden, but focusable. */
+  .rf {
+    position: absolute; width: 1px; height: 1px; opacity: 0;
+    pointer-events: none; margin: 0;
+  }
+
+  .filterbar {
+    border: 0; margin: var(--space-7) 0 0; padding: 0;
+    display: flex; flex-wrap: wrap; gap: var(--space-2);
+  }
+  .chip {
+    display: inline-flex; align-items: center;
+    padding: 8px 16px;
+    font-size: var(--fs-sm); font-weight: var(--fw-bold);
+    color: var(--color-text-secondary);
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background var(--dur-base) var(--ease-standard), color var(--dur-base) var(--ease-standard);
+  }
+  .chip:hover { color: var(--color-text); border-color: var(--color-text-muted); }
+
+  /* Active chip (one rule per category — categories are a fixed set). */
+  #rf-all:checked ~ .filterbar label[for='rf-all'],
+  #rf-komplett:checked ~ .filterbar label[for='rf-komplett'],
+  #rf-brikettalas:checked ~ .filterbar label[for='rf-brikettalas'],
+  #rf-ipari-daralas:checked ~ .filterbar label[for='rf-ipari-daralas'],
+  #rf-pelletalas:checked ~ .filterbar label[for='rf-pelletalas'],
+  #rf-elszivas:checked ~ .filterbar label[for='rf-elszivas'],
+  #rf-szaritas:checked ~ .filterbar label[for='rf-szaritas'] {
+    background: var(--ecoteq-navy); color: #fff; border-color: var(--ecoteq-navy);
+  }
+
+  /* Keyboard focus ring routed to the associated chip. */
+  #rf-all:focus-visible ~ .filterbar label[for='rf-all'],
+  #rf-komplett:focus-visible ~ .filterbar label[for='rf-komplett'],
+  #rf-brikettalas:focus-visible ~ .filterbar label[for='rf-brikettalas'],
+  #rf-ipari-daralas:focus-visible ~ .filterbar label[for='rf-ipari-daralas'],
+  #rf-pelletalas:focus-visible ~ .filterbar label[for='rf-pelletalas'],
+  #rf-elszivas:focus-visible ~ .filterbar label[for='rf-elszivas'],
+  #rf-szaritas:focus-visible ~ .filterbar label[for='rf-szaritas'] {
+    outline: 2px solid var(--color-accent); outline-offset: 2px;
+  }
+
+  .wall {
+    margin-top: var(--space-6);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-5);
+  }
+
+  /* Filtering — hide cards that don't carry the selected category. */
+  #rf-komplett:checked ~ .wall .refcard:not(.cat-komplett),
+  #rf-brikettalas:checked ~ .wall .refcard:not(.cat-brikettalas),
+  #rf-ipari-daralas:checked ~ .wall .refcard:not(.cat-ipari-daralas),
+  #rf-pelletalas:checked ~ .wall .refcard:not(.cat-pelletalas),
+  #rf-elszivas:checked ~ .wall .refcard:not(.cat-elszivas),
+  #rf-szaritas:checked ~ .wall .refcard:not(.cat-szaritas) {
+    display: none;
+  }
+
+  .refcard {
+    display: flex; flex-direction: column; gap: var(--space-3);
     padding: clamp(var(--space-5), 3vw, var(--space-6));
     background: var(--color-bg);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
   }
-  .card-ic {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    border-radius: var(--radius-md);
-    background: var(--color-accent-tint);
-    color: var(--color-accent-active);
-  }
-  .card-title {
+  .refcard[data-marquee] { border-top: 3px solid var(--color-accent); }
+
+  .rc-head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-2); }
+  .rc-company {
     margin: 0;
-    font-family: var(--font-display);
-    font-weight: var(--fw-bold);
-    font-size: var(--fs-h4, var(--fs-lg));
-    line-height: var(--lh-heading);
+    font-family: var(--font-display); font-weight: var(--fw-bold);
+    font-size: var(--fs-h4, var(--fs-lg)); line-height: var(--lh-heading);
     color: var(--color-text);
   }
-  .card-rows { margin: 0; display: flex; flex-direction: column; gap: var(--space-3); }
-  .card-row { display: flex; flex-direction: column; gap: 2px; padding-top: var(--space-3); border-top: 1px solid var(--color-border); }
-  .card-row:first-child { padding-top: 0; border-top: none; }
-  .card-row dt {
-    font-size: var(--fs-xs, 12px);
-    font-weight: var(--fw-bold);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--color-accent-active);
+  .rc-badge {
+    flex: none; display: inline-flex; align-items: center; justify-content: center;
+    width: 26px; height: 26px; border-radius: var(--radius-sm);
+    background: var(--color-accent-tint); color: var(--color-accent-active);
   }
-  .card-row dd { margin: 0; font-size: var(--fs-sm); line-height: var(--lh-body); color: var(--color-text-secondary); }
+  .rc-meta { margin: 0; font-size: var(--fs-xs, 12px); color: var(--color-text-muted); }
+  .rc-tags { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .rc-tags li {
+    font-size: var(--fs-xs, 12px); font-weight: var(--fw-bold);
+    letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--color-accent-text);
+    background: var(--color-accent-tint);
+    padding: 3px 8px; border-radius: var(--radius-sm);
+  }
+  .rc-machines { margin: 0; font-size: var(--fs-sm); line-height: var(--lh-body); color: var(--color-text-secondary); }
 
-  .logos {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: var(--space-4);
-    margin-top: var(--space-7);
-  }
-  .logo-ph {
-    height: 72px;
-    border-radius: var(--radius-md);
-    border: 1px dashed var(--color-border);
-    background:
-      repeating-linear-gradient(135deg, var(--color-bg-subtle) 0 10px, var(--color-bg) 10px 20px);
-  }
   .note {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    margin: var(--space-6) 0 0;
-    font-size: var(--fs-sm);
-    color: var(--color-text-secondary);
+    display: flex; align-items: center; gap: var(--space-2);
+    margin: var(--space-7) 0 0; font-size: var(--fs-sm); color: var(--color-text-secondary);
   }
   .note-ic { display: inline-flex; color: var(--color-accent-active); }
 
   .cta { display: flex; justify-content: center; margin-top: var(--space-6); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .chip { transition: none; }
+  }
 </style>

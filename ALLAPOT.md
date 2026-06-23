@@ -5,6 +5,41 @@
 
 ---
 
+## 🆕 2026-06-23 — Benchmark audit + referenciafal (folytatás a másik gépen)
+
+**Folytatás:** `git pull` → `npm install` → `npm run dev` (→ http://localhost:4321) → a fal a `/referenciak`-on.
+
+**1) Teljes audit + benchmark + backlog** elkészült: `project docs/AUDIT_benchmark_2026-06-23.md`
+(Fázis 1–5: site-inventory, 13 nemzetközi versenytárs élő benchmarkja, 12-dimenziós mátrix
+[ECOTEQ 48/60], ICE-pontozott P0/P1/P2 backlog, és elemenként beilleszthető CC-prompt).
+
+**2) Cégadat ELDÖNTVE** (eddig ellentmondásos volt): **alapítás 2008**; **11 gyártói képviselet**
+(„10+ gyártói képviselet"): ISVE, CF Nielsen, Prodeco, RP Engineering, AL-KO, Nova Pellet,
+Lumago, Cormall, Pettini, Strojplast, Italsime. Megj.: a `CLAUDE.md` elavult — top nav **6** (nem 7),
+és a benne dokumentált CTA-k már nincsenek a kódban → **P0-05-ben javítandó**.
+
+**3) P0-01 KÉSZ — szűrhető referenciafal megépítve:**
+- `src/lib/references.ts` — **41 valós, PII-mentes magyar/nemzetközi referencia** (24 marquee),
+  technológia-kategóriákkal (komplett, brikettálás, ipari darálás, pelletálás, elszívás, szárítás).
+- `src/pages/referenciak.astro` — átírva **CSS-only (0 JS) technológia-szűrőre**, marquee-kiemeléssel;
+  a korábbi „anonimizált / helykitöltő logófal" lecserélve. Build hibamentes, 1 H1.
+- Források: `project docs/referenciák/` 2 PDF — **GITIGNORE-olt (ügyfél-PII)**; a PII-mentes kivonat:
+  `project docs/referenciák/referenciafal_adatok_DRAFT.md`. (A PDF-ek a másik gépen nincsenek meg,
+  ha kellenek, külön kell átmásolni.)
+
+**Nyitott teendők (sorrendben):**
+- **Szegmens szűrő** (Ipari · Önkormányzat · Nonprofit · Oktatás · Nemzetközi) — a user kérésére
+  „előbb az adatbevitel lezárása", utána egyszerre épül (`segment` mező + 2. CSS-only szűrősor).
+- **Fotós kiemelt esettanulmány:** Diósjenő + Magyar Máltai Szeretetszolgálat (fotók kellenek).
+- **P0-05:** 11 partner + 2008 egységesítés (`site-v2.ts`, `ProofV2.astro`, `CLAUDE.md`); a `ProofV2`
+  jelenleg még a régi 6 partnert + generikus „tipikus feladatok"-at mutatja → 3–5 marquee referencia
+  bekötése a főoldalra is.
+- **Hullám 0 maradék:** P0-02 (`[VALIDÁLANDÓ]` statok), P0-03 kontraszt (megj.: a `--color-accent-text`
+  token MÁR létezik és használatban), P0-04 (meta >160 / title >60 hangolás). Részletek + CC-promptok
+  az audit-doksiban.
+
+---
+
 ## ⚠️ EGYETLEN NYITOTT BLOKKOLÓ: a Vercel deploy
 
 A repo **nincs Vercel-projekthez kötve**, és a Vercel CLI **nincs bejelentkezve** ezen a gépen (a CLI telepítve van: 51.7.0). A kód kész és felpusholva, csak az élesítés van hátra. Az irodai gépen két út:
