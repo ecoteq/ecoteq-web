@@ -17,7 +17,6 @@ import PreQualForm from '../components/sections/PreQualForm.astro';
   description="Az ECOTEQ ipari darálási, szárítási, brikettálási, pelletálási és elszívási rendszerekben segít. Előbb az anyagot értjük meg, és működő anyagáramot építünk. Reális technológiai irány, nem dobozos gép."
   headerCta={{ label: 'Leírom, mit kell megoldani', href: '#ajanlatkeres' }}
 >
-  <a class="v2flag" href="/">V2 — review · vissza az élő főoldalra (/)</a>
   <HeroV2 />
   <HeroStatsV2 />
   <DecisionPathsV2 />
@@ -27,24 +26,3 @@ import PreQualForm from '../components/sections/PreQualForm.astro';
   <ProcessTimelineV2 />
   <PreQualForm />
 </SiteLayoutV2>
-
-<style>
-  .v2flag {
-    position: fixed;
-    top: 8px;
-    right: 8px;
-    z-index: 200;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: #fff;
-    background: var(--ecoteq-green);
-    border-radius: var(--radius-pill);
-    padding: 5px 12px;
-    text-decoration: none;
-    box-shadow: var(--shadow-md);
-    opacity: 0.92;
-  }
-  .v2flag:hover { opacity: 1; }
-</style>
