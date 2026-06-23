@@ -38,7 +38,7 @@ export const NAV: NavItem[] = [
 export type Solution = { label: string; href: string; blurb: string; icon: string };
 export const SOLUTIONS: Solution[] = [
   { label: 'Faipari hulladék kezelése', href: '/megoldasok/faipari-hulladek-kezelese/', blurb: 'Forgács, por, apríték és fahulladék rendezett kezelése.', icon: 'trees' },
-  { label: 'Raklap és csomagolóanyag darálása', href: '/megoldasok/raklap-es-csomagoloanyag-daralasa/', blurb: 'Térfogatcsökkentés és anyag-előkészítés aprítással.', icon: 'package' },
+  { label: 'Raklap és csomagolóanyag', href: '/megoldasok/raklap-es-csomagoloanyag-daralasa/', blurb: 'Térfogatcsökkentés és anyag-előkészítés aprítással.', icon: 'package' },
   { label: 'Forgács, por és apríték hasznosítása', href: '/megoldasok/forgacs-por-apritek-hasznositasa/', blurb: 'Laza mellékanyagból kezelhető, értékesíthető termék.', icon: 'recycle' },
   { label: 'Nedves biomassza előkészítése', href: '/megoldasok/nedves-biomassza-elokeszitese/', blurb: 'Nedvességcsökkentés további feldolgozáshoz.', icon: 'droplets' },
   { label: 'Faanyag szárítása és kezelése', href: '/megoldasok/faanyag-szaritasa-es-kezelese/', blurb: 'Kontrollált vákuumszárítás és -impregnálás.', icon: 'thermometer' },
