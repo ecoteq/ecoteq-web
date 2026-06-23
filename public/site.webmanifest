@@ -1,0 +1,14 @@
+{
+  "name": "ECOTEQ",
+  "short_name": "ECOTEQ",
+  "description": "Ipari hulladék- és biomassza-feldolgozó rendszerek",
+  "lang": "hu",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1c3449",
+  "theme_color": "#1c3449",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

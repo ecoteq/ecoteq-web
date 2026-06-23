@@ -5,6 +5,7 @@ import BrandRail from '../site/BrandRail.astro';
 import SiteHeaderV2 from './SiteHeaderV2.astro';
 import SiteFooterV2 from './SiteFooterV2.astro';
 import Icon from '../Icon.astro';
+import { CTA } from '../../lib/site-v2';
 
 interface Props {
   title: string;
@@ -12,28 +13,39 @@ interface Props {
   brand?: string;
   solidHeader?: boolean;
   headerCta?: { label: string; href: string };
+  /** LCP hero image base (e.g. "/heroes/hero-home") — forwarded to BaseLayout preload. */
+  heroImage?: string;
 }
-const { title, description, brand, solidHeader = false, headerCta } = Astro.props;
+const { title, description, brand, solidHeader = false, headerCta, heroImage } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description} brand={brand}>
+<BaseLayout title={title} description={description} brand={brand} heroImage={heroImage}>
+  <a class="skip-link" href="#fooldal-tartalom">Ugrás a tartalomra</a>
   <BrandRail />
   <div class="shell">
     <SiteHeaderV2 solid={solidHeader} cta={headerCta} />
-    <main><slot /></main>
+    <main id="fooldal-tartalom" tabindex="-1"><slot /></main>
     <SiteFooterV2 />
   </div>
 
   <button id="back-to-top" class="back-to-top" type="button" aria-label="Vissza az oldal tetejére" onclick="window.scrollTo({top:0,behavior:'smooth'})">
     <Icon name="arrow-up" size={20} />
   </button>
+
+  {/* Mobil perzisztens elsődleges CTA — a header CTA csak ≥1024px-en látszik, így
+      mobilon a hero után ez biztosítja a folyamatos konverziós pontot. */}
+  <a id="mobile-cta" class="mobile-cta" href="/ajanlatkeres">
+    <Icon name="arrow-right" size={18} /><span>{CTA.primary.label}</span>
+  </a>
+
   <script is:inline>
     (function () {
       var btn = document.getElementById('back-to-top');
-      if (!btn) return;
+      var mcta = document.getElementById('mobile-cta');
       var upd = function () {
-        if (window.scrollY > window.innerHeight) btn.classList.add('is-visible');
-        else btn.classList.remove('is-visible');
+        var pastHero = window.scrollY > window.innerHeight * 0.6;
+        if (btn) btn.classList.toggle('is-visible', window.scrollY > window.innerHeight);
+        if (mcta) mcta.classList.toggle('is-visible', pastHero);
       };
       window.addEventListener('scroll', upd, { passive: true });
       upd();
@@ -43,6 +55,26 @@ const { title, description, brand, solidHeader = false, headerCta } = Astro.prop
 
 <style is:global>
   :root { --header-h: 76px; }
+
+  /* Skip-link (WCAG 2.4.1) — off-screen until focused, then visible top-left. */
+  .skip-link {
+    position: fixed;
+    top: 8px;
+    left: 8px;
+    z-index: 200;
+    transform: translateY(-150%);
+    padding: 10px 16px;
+    background: var(--ecoteq-navy);
+    color: var(--ecoteq-white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    font-weight: var(--fw-bold);
+    text-decoration: none;
+    transition: transform var(--dur-base) var(--ease-standard);
+  }
+  .skip-link:focus { transform: translateY(0); }
+  #fooldal-tartalom:focus { outline: none; }
+  @media (prefers-reduced-motion: reduce) { .skip-link { transition: none; } }
 
   html { scroll-padding-top: var(--header-h); }
   @media (prefers-reduced-motion: no-preference) {
@@ -79,4 +111,36 @@ const { title, description, brand, solidHeader = false, headerCta } = Astro.prop
   .back-to-top:hover { background: var(--color-cta); border-color: var(--color-cta); }
   .back-to-top :global(.icon) { display: block; }
   @media (prefers-reduced-motion: reduce) { .back-to-top { transition: opacity var(--dur-base), visibility var(--dur-base); } }
+
+  /* Mobil sticky elsődleges CTA — csak <1024px, a hero elhagyása után csúszik be. */
+  .mobile-cta {
+    position: fixed;
+    left: clamp(12px, 4vw, 20px);
+    right: clamp(12px, 4vw, 20px);
+    bottom: max(12px, env(safe-area-inset-bottom, 0px));
+    z-index: 70;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    min-height: 52px;
+    padding: 12px 20px;
+    border-radius: var(--radius-pill, 999px);
+    background: var(--color-cta);
+    color: var(--ecoteq-white);
+    font-family: var(--font-display);
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-base);
+    text-decoration: none;
+    box-shadow: 0 6px 20px -6px rgba(28, 52, 73, 0.45);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(120%);
+    transition: opacity var(--dur-base) var(--ease-standard), transform var(--dur-base) var(--ease-standard), visibility var(--dur-base);
+  }
+  @media (max-width: 1023px) { .mobile-cta { display: inline-flex; } }
+  .mobile-cta.is-visible { opacity: 1; visibility: visible; transform: none; }
+  .mobile-cta:active { background: var(--color-cta-active); }
+  .mobile-cta :global(.icon) { flex: none; }
+  @media (prefers-reduced-motion: reduce) { .mobile-cta { transition: opacity var(--dur-base), visibility var(--dur-base); transform: none; } }
 </style>

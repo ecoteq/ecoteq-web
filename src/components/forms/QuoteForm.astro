@@ -112,19 +112,52 @@ const ph = {
       if (msg) { msg.textContent = text; msg.dataset.state = state; }
     };
 
+    // Mező-szintű validáció + a11y: aria-invalid + piros keret (data-error), fókusz az
+    // első hibás mezőre, e-mail formátum kliensoldalon, hibatörlés gépeléskor.
+    const REQUIRED = ['nev', 'email', 'anyag', 'cel'];
+    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const fieldEl = (name: string) => form.querySelector<HTMLElement>(`[name="${name}"]`);
+    const markError = (el: HTMLElement | null, on: boolean) => {
+      if (!el) return;
+      if (on) { el.setAttribute('data-error', ''); el.setAttribute('aria-invalid', 'true'); }
+      else { el.removeAttribute('data-error'); el.removeAttribute('aria-invalid'); }
+    };
+    form.addEventListener('input', (e) => {
+      const t = e.target as HTMLElement | null;
+      if (t && t.hasAttribute && t.hasAttribute('data-error')) markError(t, false);
+    });
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const fd = new FormData(form);
       const payload: Record<string, unknown> = Object.fromEntries(fd.entries());
       delete (payload as Record<string, unknown>)['']; // safety
 
-      if (!payload.nev || !payload.email || !payload.anyag || !payload.cel) {
-        setMsg('Kérjük, töltse ki a kötelező mezőket (név, e-mail, anyag, cél).', 'error');
+      const invalid: HTMLElement[] = [];
+      REQUIRED.forEach((name) => {
+        const el = fieldEl(name);
+        const ok = String(payload[name] ?? '').trim().length > 0;
+        markError(el, !ok);
+        if (!ok && el) invalid.push(el);
+      });
+      const emailEl = fieldEl('email');
+      const emailVal = String(payload.email ?? '').trim();
+      if (emailVal && !emailRe.test(emailVal)) {
+        markError(emailEl, true);
+        if (emailEl && !invalid.includes(emailEl)) invalid.push(emailEl);
+      }
+      if (invalid.length) {
+        setMsg('Kérjük, ellenőrizze a pirossal jelölt kötelező mezőket (név, e-mail, anyag, cél).', 'error');
+        invalid[0].focus();
+        invalid[0].scrollIntoView({ block: 'center', behavior: reduceMotion ? 'auto' : 'smooth' });
         return;
       }
 
-      if (!payload.consent) {
+      const consentEl = form.querySelector<HTMLInputElement>('[name="consent"]');
+      if (!consentEl || !consentEl.checked) {
         setMsg('Kérjük, fogadja el az adatvédelmi tájékoztatót a küldéshez.', 'error');
+        consentEl?.focus();
         return;
       }
 
