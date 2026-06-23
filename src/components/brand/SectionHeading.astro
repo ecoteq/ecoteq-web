@@ -25,6 +25,8 @@ const Heading = as;
 
 <style>
   .sh { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; text-align: left; max-width: 640px; }
+  /* Az eyebrow ~fél sornyival távolabb a címtől (a cím↔lead térköz változatlan). */
+  .sh :global(.overline) { margin-bottom: var(--space-3); }
   .sh[data-align='center'] { align-items: center; text-align: center; margin-inline: auto; }
 
   .sh-title {
