@@ -28,7 +28,7 @@ const links = [
   solidHeader
   noindex
 >
-  <!-- 1. Megerősítés (navy, teljes-képernyős, középre) -->
+  <!-- 1. Megerősítés (navy, kompakt, középre zárt blokk) -->
   <Section surface="navy" class="confirm-hero">
     <div class="confirm">
       <span class="badge" aria-hidden="true"><Icon name="mail" size={30} /></span>
@@ -105,8 +105,7 @@ const links = [
 </script>
 
 <style>
-  /* 1. Megerősítés — teljes-képernyős, függőlegesen középre igazítva */
-  :global(.confirm-hero) { min-height: calc(100svh - var(--header-h)); display: flex; align-items: center; }
+  /* 1. Megerősítés — kompakt, középre zárt blokk (a Section saját padding-block-ja adja a levegőt) */
   .confirm { max-width: 62ch; margin-inline: auto; text-align: center; }
   .badge {
     display: inline-flex; align-items: center; justify-content: center;
