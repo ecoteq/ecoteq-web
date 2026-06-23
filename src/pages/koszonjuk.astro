@@ -1,9 +1,19 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
 import Section from '../components/layout/Section.astro';
+import SectionHeading from '../components/brand/SectionHeading.astro';
 import Button from '../components/core/Button.astro';
 import Icon from '../components/Icon.astro';
-import { CONTACT } from '../lib/site';
+import { CONTACT, TECHNOLOGIES } from '../lib/site';
+
+// Slug → name, hogy a ?tech= kontextusból kliensoldalon megszemélyesíthessük a visszaigazolást.
+const techNames = Object.fromEntries(TECHNOLOGIES.map((t) => [t.slug, t.name]));
+
+const steps = [
+  { n: '01', icon: 'mail', title: 'Beérkezés és előszűrés', text: 'Munkanapokon átnézzük az adatokat, és megnézzük, merre vihető tovább a feladat műszakilag és üzletileg.' },
+  { n: '02', icon: 'clock', title: 'Visszajelzés 24 órán belül', text: 'Jellemzően 24 órán belül jelentkezünk: pontosító kérdésekkel vagy egy javasolt technológiai iránnyal.' },
+  { n: '03', icon: 'compass', title: 'Közös irányválasztás', text: 'Együtt meghatározzuk a megfelelő technológiai irányt és a következő lépést a megvalósítás felé.' },
+];
 
 const links = [
   { icon: 'layers', label: 'Technológiák', text: 'Nézze meg a 8 fő technológiai irányt.', href: '/technologiak/ipari-daralas/' },
@@ -14,29 +24,55 @@ const links = [
 
 <SiteLayout
   title="Köszönjük a megkeresést"
-  description="Megkaptuk a projekt alapadatait. Munkanapokon előszűrjük a feladatot, és jellemzően 24 órán belül visszajelzünk."
+  description="Megkaptuk a projekt alapadatait. Munkanapokon előszűrjük a feladatot, és jellemzően 24 órán belül visszajelzünk a következő lépésről."
   solidHeader
 >
-  <Section surface="subtle">
+  <!-- 1. Megerősítés (navy) -->
+  <Section surface="navy">
     <div class="confirm">
-      <span class="badge" aria-hidden="true"><Icon name="mail" size={34} /></span>
+      <span class="badge" aria-hidden="true"><Icon name="mail" size={30} /></span>
+      <p class="eyebrow">Megkeresés rögzítve</p>
       <h1 class="title">Köszönjük — megkaptuk a megkeresését</h1>
+      <p class="topic" id="topic" data-names={JSON.stringify(techNames)} hidden>
+        Érdeklődési irány: <span id="topic-name"></span>
+      </p>
       <p class="lead">
         Munkanapokon előszűrjük a feladatot, és jellemzően <strong>24 órán belül</strong>
         visszajelzünk a következő lépésről. A megadott e-mail-címre visszaigazolást is küldtünk.
       </p>
-      <p class="sub">
-        Sürgős esetben elérhetők vagyunk telefonon:
-        <a href={CONTACT.phoneHref}>{CONTACT.phone}</a> · <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>.
-      </p>
       <div class="actions">
         <Button href="/">Vissza a főoldalra</Button>
+        <Button href="/referenciak/" variant="outline-light">Megnézem a referenciákat</Button>
       </div>
+      <p class="sub">
+        Sürgős esetben elérhetők vagyunk:
+        <a href={CONTACT.phoneHref}>{CONTACT.phone}</a> · <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+      </p>
     </div>
   </Section>
 
+  <!-- 2. Mi történik most? -->
   <Section surface="white">
-    <h2 class="block-title">Amíg visszajelzünk, érdemes körülnézni</h2>
+    <SectionHeading
+      overline="A folyamat"
+      title="Mi történik most?"
+      lead="A megkeresése nem automata ajánlatba, hanem szakmai előszűrésbe kerül. Így halad tovább:"
+    />
+    <ol class="steps" role="list">
+      {steps.map((s) => (
+        <li class="step">
+          <span class="step-n" aria-hidden="true">{s.n}</span>
+          <span class="step-ic" aria-hidden="true"><Icon name={s.icon} size={22} /></span>
+          <h3 class="step-title">{s.title}</h3>
+          <p class="step-text">{s.text}</p>
+        </li>
+      ))}
+    </ol>
+  </Section>
+
+  <!-- 3. Amíg visszajelzünk -->
+  <Section surface="subtle">
+    <SectionHeading overline="Addig is" title="Amíg visszajelzünk, érdemes körülnézni" />
     <div class="cards">
       {links.map((l) => (
         <a class="card" href={l.href}>
@@ -50,64 +86,106 @@ const links = [
   </Section>
 </SiteLayout>
 
+<script is:inline>
+  (function () {
+    var el = document.getElementById('topic');
+    if (!el) return;
+    try {
+      var tech = new URL(location.href).searchParams.get('tech');
+      if (!tech) return;
+      var names = JSON.parse(el.getAttribute('data-names') || '{}');
+      var name = names[tech];
+      if (!name) return;
+      var n = document.getElementById('topic-name');
+      if (n) n.textContent = name;
+      el.hidden = false;
+    } catch (e) {}
+  })();
+</script>
+
 <style>
-  .confirm { max-width: 60ch; margin-inline: auto; text-align: center; }
+  /* 1. Megerősítés */
+  .confirm { max-width: 62ch; margin-inline: auto; text-align: center; }
   .badge {
     display: inline-flex; align-items: center; justify-content: center;
-    width: 68px; height: 68px;
-    border-radius: var(--radius-pill);
-    background: var(--color-accent-tint);
-    color: var(--color-accent);
-    border: 1px solid var(--color-accent-ring);
+    width: 64px; height: 64px; border-radius: var(--radius-pill);
+    background: color-mix(in srgb, var(--color-accent) 22%, transparent);
+    color: var(--color-accent-on-dark);
+    border: 1px solid color-mix(in srgb, var(--color-accent) 45%, transparent);
     margin-bottom: var(--space-5);
+  }
+  .eyebrow {
+    font-size: var(--fs-sm); font-weight: var(--fw-bold);
+    text-transform: uppercase; letter-spacing: var(--ls-overline);
+    color: var(--color-accent-on-dark); margin: 0 0 var(--space-3);
   }
   .title {
     font-family: var(--font-display);
-    font-size: clamp(var(--fs-xl), 4vw, var(--fs-2xl));
-    font-weight: var(--fw-bold);
-    color: var(--ecoteq-navy);
-    line-height: var(--lh-tight);
+    font-size: clamp(var(--fs-xl), 1.4rem + 2.4vw, var(--fs-2xl));
+    font-weight: var(--fw-extrabold);
+    color: var(--ecoteq-white);
+    line-height: 1.15; letter-spacing: var(--ls-display);
+    margin: 0 0 var(--space-4); text-wrap: balance;
+  }
+  .topic {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: var(--fs-sm); font-weight: var(--fw-semibold);
+    color: rgba(255, 255, 255, 0.92);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: var(--radius-pill); padding: 6px 14px;
     margin: 0 0 var(--space-4);
   }
-  .lead { font-size: var(--fs-lg); color: var(--color-text-secondary); line-height: var(--lh-body); margin: 0 0 var(--space-4); }
-  .lead strong { color: var(--ecoteq-navy); font-weight: var(--fw-bold); }
-  .sub { font-size: var(--fs-sm); color: var(--color-text-muted); margin: 0 0 var(--space-6); }
-  .sub a { color: var(--color-accent-text); text-decoration: none; font-weight: var(--fw-semibold); }
+  .topic span { color: var(--color-accent-on-dark); }
+  .lead { font-size: var(--fs-lg); color: rgba(255, 255, 255, 0.84); line-height: var(--lh-body); margin: 0 auto var(--space-6); max-width: 54ch; }
+  .lead strong { color: var(--ecoteq-white); font-weight: var(--fw-bold); }
+  .actions { display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: center; margin-bottom: var(--space-6); }
+  .sub { font-size: var(--fs-sm); color: rgba(255, 255, 255, 0.66); margin: 0; }
+  .sub a { color: var(--color-accent-on-dark); text-decoration: none; font-weight: var(--fw-semibold); }
   .sub a:hover { text-decoration: underline; }
-  .actions { display: flex; justify-content: center; }
 
-  .block-title {
-    font-family: var(--font-display);
-    font-size: var(--fs-md);
-    font-weight: var(--fw-bold);
-    color: var(--ecoteq-navy);
-    margin: 0 0 var(--space-5);
+  /* 2. Lépések */
+  .steps {
+    list-style: none; margin: var(--space-7) 0 0; padding: 0;
+    display: grid; gap: var(--space-4); grid-template-columns: 1fr; counter-reset: step;
   }
-  .cards { display: grid; gap: var(--space-4); grid-template-columns: 1fr; }
-  @media (min-width: 720px) { .cards { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 760px) { .steps { grid-template-columns: repeat(3, 1fr); gap: var(--space-5); } }
+  .step {
+    position: relative; padding: var(--space-6) var(--space-5) var(--space-5);
+    background: var(--color-surface); border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg); box-shadow: var(--shadow-xs);
+  }
+  .step-n {
+    position: absolute; top: var(--space-4); right: var(--space-5);
+    font-family: var(--font-display); font-weight: var(--fw-extrabold);
+    font-size: var(--fs-xl); color: var(--color-border-strong); line-height: 1;
+  }
+  .step-ic {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 46px; height: 46px; border-radius: var(--radius-md);
+    background: var(--color-accent-tint); color: var(--color-accent-active);
+    margin-bottom: var(--space-4);
+  }
+  .step-title { margin: 0 0 6px; font-family: var(--font-display); font-weight: var(--fw-bold); font-size: var(--fs-lg); color: var(--color-text); }
+  .step-text { margin: 0; font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: var(--lh-body); }
 
+  /* 3. Kártyák */
+  .cards { display: grid; gap: var(--space-4); grid-template-columns: 1fr; margin-top: var(--space-7); }
+  @media (min-width: 720px) { .cards { grid-template-columns: repeat(3, 1fr); } }
   .card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    padding: var(--space-5);
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
+    position: relative; display: flex; flex-direction: column; gap: 6px;
+    padding: var(--space-5); background: var(--color-surface);
+    border: 1px solid var(--color-border); border-radius: var(--radius-lg);
     text-decoration: none;
     transition: border-color var(--dur-base) var(--ease-standard), box-shadow var(--dur-base) var(--ease-standard), transform var(--dur-base) var(--ease-standard);
   }
   .card:hover { border-color: var(--color-accent); box-shadow: var(--shadow-md); transform: translateY(-2px); }
   .card-ic {
     display: inline-flex; align-items: center; justify-content: center;
-    width: 44px; height: 44px;
-    border-radius: var(--radius-md);
-    background: var(--color-accent-tint);
-    color: var(--color-accent-text);
-    margin-bottom: 6px;
+    width: 44px; height: 44px; border-radius: var(--radius-md);
+    background: var(--color-accent-tint); color: var(--color-accent-active); margin-bottom: 6px;
   }
-  .card-label { font-family: var(--font-display); font-weight: var(--fw-bold); color: var(--ecoteq-navy); }
+  .card-label { font-family: var(--font-display); font-weight: var(--fw-bold); color: var(--color-text); }
   .card-text { font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: var(--lh-body); }
   .card-go { color: var(--color-accent); margin-top: 8px; transition: transform var(--dur-base) var(--ease-standard); }
   .card:hover .card-go { transform: translateX(3px); }
