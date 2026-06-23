@@ -28,3 +28,7 @@ hero-candidates/
 # A weboldalra a feldolgozott (vágott, anonimizált, webp) változatok kerülnek a public/ alá.
 project docs/referenciák/*
 !project docs/referenciák/*.md
+
+# Nyers ügyféllogó-forrás (több nem használt + nevesíthetetlen, pl. DIPA — de-anonimizálás
+# elkerülése). A weboldali, feldolgozott badge-ek a public/referenciak/logok/ alatt vannak.
+project docs/logo/

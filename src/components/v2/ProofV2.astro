@@ -1,26 +1,42 @@
 ---
 /* Referenciák / bizonyíték blokk — megnevezett, megvalósult rendszerek (P0-01).
-   5 valós referencia, mindegyikhez 1 mérhető üzemi tény vagy jellegzetes mérnöki
-   kihívás. A "Biztonsági papír" üzem a megrendelő kérésére NEM nevesíthető (anonim
-   leíró megnevezés). TODO: ezekre fotós kiemelt esettanulmány készül a /referenciak-on
-   (van hozzájuk kép + story) — akkor a kártyák a case study oldalra linkelnek. */
+   Karusszel: 3 kártya látszik asztali nézetben, nyílgombokkal + pöttyökkel lapozható,
+   mobilon natív swipe (scroll-snap). Egységes 16:9 kártyakép, minden kártyán valós fotó,
+   a partner logó/címer/ikon a fotó jobb felső sarkában badge-ként (per-badge --bscale
+   skálázható). A "Biztonsági papírtermék" üzem a megrendelő kérésére NEM nevesíthető
+   (anonim fotó + pajzs ikon). Assetek: public/referenciak/. TODO: fotós esettanulmányok /referenciak. */
 import Section from '../layout/Section.astro';
 import SectionHeading from '../brand/SectionHeading.astro';
 import Button from '../core/Button.astro';
+import Icon from '../Icon.astro';
 import { COMPANY } from '../../lib/site-v2';
 
 const cases = [
   {
     company: 'K és B Bioenergia Kft.',
     tag: 'Komplett rendszer · Szombathely',
+    media: { type: 'photo', src: '/referenciak/kesb-640.webp', srcset: '/referenciak/kesb-640.webp 640w, /referenciak/kesb-1280.webp 1280w', alt: 'Zsugorfóliázott kész brikett a csomagoló görgőssorán' },
+    badge: { type: 'logo', src: '/referenciak/logok/kesb.png', alt: 'K és B Bioenergia' },
     rows: [
       ['Rendszer', 'Komplett, ipari mechanikus brikettgyártó üzem — darálás, szárítás, brikettálás, fűrészelés és csomagolás egy gépsorban.'],
       ['Kiemelt', 'CF Nielsen mechanikus brikettálás max. 1600 kg/h, automata faapríték-dobszárító rendszerrel — a melléktermék helyben válik kész, csomagolt brikettté.'],
     ],
   },
   {
+    company: 'AWF Kft.',
+    tag: 'Ipari darálás · Sárvár',
+    media: { type: 'photo', src: '/referenciak/awf-640.webp', srcset: '/referenciak/awf-640.webp 640w, /referenciak/awf-1280.webp 1280w', alt: 'Négytengelyes daráló késtengelyei hidraulikus leszorítóval' },
+    badge: { type: 'logo', src: '/referenciak/logok/awf.png', alt: 'AWF Kft.', scale: 0.9 },
+    rows: [
+      ['Rendszer', 'Merev, üvegszálas autókárpit-gyártási hulladék darálása és tömörítése. A könnyű, terjedelmes anyaghoz négytengelyes daráló, hidraulikus leszorítóval, egyedi magas tartószerkezeten; a kárpitdarabokat széles szállítószalag hordja fel, a darálékot emelő-ürítő berendezés juttatja a tömörítő konténerbe.'],
+      ['Kiemelt', 'A nagyméretű, merev hulladék korábban alig volt tömöríthető, ezért a konténeres elszállítás költséges volt. Gazdaságossági számítás után a darálásra váltottak — a szállítási gyakoriság és költség így körülbelül az ötödére csökkent.'],
+    ],
+  },
+  {
     company: 'Richter Gedeon Nyrt.',
     tag: 'Ipari darálás · gyógyszeripar',
+    media: { type: 'photo', src: '/referenciak/richter-640.webp', srcset: '/referenciak/richter-640.webp 640w, /referenciak/richter-1280.webp 1280w', alt: 'Daráló kihordószalaggal és porelszívással, szabályozott gyártókörnyezetben' },
+    badge: { type: 'logo', src: '/referenciak/logok/richter.png', alt: 'Richter Gedeon', scale: 1.1 },
     rows: [
       ['Rendszer', 'Ipari darálórendszer szabályozott gyártókörnyezetbe: darálók kihordószalagokkal, big-bag töltéssel és porelszívó rendszerrel.'],
       ['Kiemelt', 'ISVE négytengelyes (NT 60/80S) és egytengelyes (MS2260) daráló egy rendszerben — az eltérő anyagokhoz illesztett aprítással.'],
@@ -29,14 +45,28 @@ const cases = [
   {
     company: 'Diósjenő Község Önkormányzata',
     tag: 'Brikettáló kisüzem · 2021',
+    media: { type: 'photo', src: '/referenciak/diosjeno-640.webp', srcset: '/referenciak/diosjeno-640.webp 640w, /referenciak/diosjeno-1280.webp 1280w', alt: 'Ciklonos porleválasztó és csőrendszer a diósjenői brikettáló kisüzemben' },
+    badge: { type: 'logo', src: '/referenciak/logok/diosjeno-cimer.png', alt: 'Diósjenő címere' },
     rows: [
       ['Rendszer', 'Brikettáló kisüzem faipari melléktermék feldolgozására: daráló, dobszárító, kalapácsos daráló, elszívás-porleválasztás, hidraulikus brikettálás (HB E80V), zsákos csomagolás.'],
       ['Kiemelt', 'Régi épületbe terveztük, a felújítást végző építész és szakági (pl. elektromos) tervezőkkel és kivitelezőkkel párhuzamosan dolgozva — a faipari melléktermék helyben válik fűthető, csomagolt brikettté.'],
     ],
   },
   {
-    company: 'Biztonsági papír (pénz- és okmánypapír) gyártó üzem',
+    company: 'Faragó Kft.',
+    tag: 'Ipari darálás · vaskiválasztás',
+    media: { type: 'photo', src: '/referenciak/farago-640.webp', srcset: '/referenciak/farago-640.webp 640w, /referenciak/farago-1280.webp 1280w', alt: 'Nagyméretű négytengelyes daráló egyedi tartószerkezeten' },
+    badge: { type: 'logo', src: '/referenciak/logok/farago.png', alt: 'Faragó Kft.' },
+    rows: [
+      ['Rendszer', 'Nagykapacitású négytengelyes darálórendszer olajjal és vegyszerrel szennyezett műanyag hulladékhoz: fémketreces IBC tartályok és folyadékmaradványokat tartalmazó kannák aprítása, vaskiválasztással és kihordószalaggal.'],
+      ['Kiemelt', 'A könnyű, terjedelmes anyaghoz egyedi tartószerkezetet és terhelésfüggő hidraulikus leszorító kart terveztünk; a darálékból mágneses keresztszalag választja le a vasat.'],
+    ],
+  },
+  {
+    company: 'Biztonsági papírtermék gyártó üzem',
     tag: 'Speciális telepítés · zárt anyaglánc',
+    media: { type: 'photo', src: '/referenciak/dipa-640.webp', srcset: '/referenciak/dipa-640.webp 640w, /referenciak/dipa-1280.webp 1280w', alt: 'Szállítószalag a zárt anyagláncban, anonimizált üzemrészlet' },
+    badge: { type: 'icon', icon: 'shield' },
     rows: [
       ['Rendszer', 'A gyártási szabási melléktermék és hulladék zárt láncú feldolgozása: szállítószalagos beadagolás, darálás, elszívás és leválasztás (ciklon, cellás adagoló, porszűrő állomás), hidraulikus brikettálás bővített silóval.'],
       ['Kiemelt', 'Egy régi gyár zegzugos pincéjébe terveztük, ahová targonca sem fért be — a technológiát a nehezen megközelíthető, több helyiségre tagolt térhez illesztettük (hosszú csővezeték, megnövelt elszívókapacitás), biztonságos szemcseméret mellett.'],
@@ -45,6 +75,8 @@ const cases = [
   {
     company: 'Food for Future (F4F)',
     tag: 'Szárítás · Chile · nemzetközi projekt',
+    media: { type: 'photo', src: '/referenciak/f4f-640.webp', srcset: '/referenciak/f4f-640.webp 640w, /referenciak/f4f-1280.webp 1280w', alt: 'Átalakított biomassza-dobszárító, szállításra előkészítve' },
+    badge: { type: 'logo', src: '/referenciak/logok/f4f.png', alt: 'Food for Future (F4F)' },
     rows: [
       ['Rendszer', 'Biomassza-dobszárító átalakítása rovarfehérje-feldolgozáshoz: gázfűtésre váltás a biomasszakazán helyett, hozzá illő vezérléssel és biztonsági elemekkel, speciális nyomáscsökkentő ürítőkamrával, kiadagolócsigával.'],
       ['Kiemelt', 'A teljes projektet Magyarországról, távolról vittük végig — személyes találkozó nélkül, videós mérnöki konzultációval; tengeri konténeres szállítás teljes rakományrögzítéssel és dokumentációval, távoli beüzemelés-támogatással.'],
@@ -62,20 +94,42 @@ const partners = COMPANY.corePartners.map((p) => p.name);
     lead="A bizalom nem szlogeneken múlik, hanem azon, hogy a partner ért-e a hasonló anyagokhoz és üzemekhez. Néhány megvalósult rendszerünk — az önkormányzati kisüzemtől a tengerentúli mérnöki projektig."
   />
 
-  <div class="refs">
-    {cases.map((c) => (
-      <article class="ref">
-        <div class="chead">
-          <h3>{c.company}</h3>
-          <p class="tag">{c.tag}</p>
-        </div>
-        <dl>
-          {c.rows.map(([k, v]) => (
-            <div class="row"><dt>{k}</dt><dd>{v}</dd></div>
-          ))}
-        </dl>
-      </article>
-    ))}
+  <div class="carousel" data-proof-carousel>
+    <button class="nav prev" type="button" aria-label="Előző referenciák"><Icon name="chevron-right" size={22} /></button>
+    <div class="track" tabindex="0" role="group" aria-label="Megvalósult referenciák">
+      {cases.map((c) => (
+        <article class="ref">
+          <div class={`media ${c.media.type}`}>
+            {c.media.type === 'photo' ? (
+              <>
+                <img src={c.media.src} srcset={c.media.srcset} sizes="(max-width: 680px) 85vw, 33vw" alt={c.media.alt} loading="lazy" decoding="async" width="640" height="360" />
+                {c.badge?.type === 'logo' && <span class="badge badge-logo"><img src={c.badge.src} alt={c.badge.alt} loading="lazy" decoding="async" style={c.badge.scale ? `--bscale:${c.badge.scale}` : undefined} /></span>}
+                {c.badge?.type === 'icon' && <span class="badge badge-icon" aria-hidden="true"><Icon name={c.badge.icon} size={20} /></span>}
+              </>
+            ) : (
+              <img class="logo-img" src={c.media.src} alt={c.media.alt} loading="lazy" decoding="async" />
+            )}
+          </div>
+          <div class="body">
+            <div class="chead">
+              <h3>{c.company}</h3>
+              <p class="tag">{c.tag}</p>
+            </div>
+            <dl>
+              {c.rows.map(([k, v]) => (
+                <div class="row"><dt>{k}</dt><dd>{v}</dd></div>
+              ))}
+            </dl>
+          </div>
+        </article>
+      ))}
+    </div>
+    <button class="nav next" type="button" aria-label="További referenciák"><Icon name="chevron-right" size={22} /></button>
+    <div class="dots" role="tablist" aria-label="Referencia lapozó">
+      {cases.map((c, i) => (
+        <button class="dot" type="button" role="tab" aria-label={`${i + 1}. referencia`} aria-current={i === 0 ? 'true' : 'false'} data-i={i}></button>
+      ))}
+    </div>
   </div>
 
   <div class="partners">
@@ -90,17 +144,104 @@ const partners = COMPANY.corePartners.map((p) => p.name);
 </Section>
 
 <style>
-  .refs { margin-top: var(--space-7); display: grid; gap: var(--space-5); grid-template-columns: 1fr; }
-  @media (min-width: 760px) { .refs { grid-template-columns: repeat(3, 1fr); } }
+  .carousel { position: relative; margin-top: var(--space-7); }
 
-  .ref { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); padding: var(--space-6); }
-  .chead { margin: 0 0 var(--space-4); padding-bottom: var(--space-4); border-bottom: 1px solid var(--color-border); }
+  .track {
+    display: flex;
+    gap: var(--space-5);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 4px 2px var(--space-3);
+  }
+  .track::-webkit-scrollbar { display: none; }
+  .track:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; border-radius: var(--radius-md); }
+
+  .ref {
+    flex: 0 0 calc((100% - 2 * var(--space-5)) / 3);
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+  }
+  @media (max-width: 980px) { .ref { flex-basis: calc((100% - var(--space-5)) / 2); } }
+  @media (max-width: 680px) { .ref { flex-basis: 85%; } }
+
+  .media { position: relative; aspect-ratio: 16 / 9; border-bottom: 1px solid var(--color-border); background: var(--color-bg-subtle); }
+  .media.photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .media.logo { display: grid; place-items: center; padding: var(--space-5); }
+  .media.logo .logo-img { max-height: 100%; max-width: 78%; object-fit: contain; }
+
+  /* Partner badge a fotó jobb felső sarkában */
+  .badge {
+    position: absolute; top: 10px; right: 10px; z-index: 1;
+    display: grid; place-items: center;
+    box-shadow: var(--shadow-sm);
+  }
+  .badge-logo {
+    height: 40px; padding: 0 12px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: var(--radius-pill, 999px);
+    backdrop-filter: blur(2px);
+  }
+  .badge-logo img { max-height: calc(26px * var(--bscale, 1)); max-width: calc(124px * var(--bscale, 1)); width: auto; height: auto; object-fit: contain; display: block; }
+  .badge-icon {
+    width: 38px; height: 38px;
+    background: var(--ecoteq-navy);
+    color: var(--ecoteq-white);
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.85);
+  }
+
+  .body { padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-4); }
+  .chead { padding-bottom: var(--space-4); border-bottom: 1px solid var(--color-border); }
   .ref h3 { margin: 0; font-size: var(--fs-h4); font-weight: var(--fw-bold); color: var(--color-text); line-height: var(--lh-snug); }
   .tag { margin: var(--space-2) 0 0; font-size: var(--fs-xs); font-weight: var(--fw-bold); letter-spacing: var(--ls-overline); text-transform: uppercase; color: var(--color-accent-text); }
   dl { margin: 0; display: flex; flex-direction: column; gap: var(--space-3); }
   .row { display: flex; flex-direction: column; gap: 2px; }
   dt { font-size: var(--fs-xs); font-weight: var(--fw-bold); letter-spacing: var(--ls-overline); text-transform: uppercase; color: var(--color-text-muted); }
   dd { margin: 0; font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: var(--lh-snug); }
+
+  /* Nyílgombok — asztali nézet */
+  .nav {
+    position: absolute;
+    top: 28%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 44px; height: 44px;
+    display: grid; place-items: center;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--ecoteq-navy);
+    box-shadow: var(--shadow-md);
+    cursor: pointer;
+    transition: background var(--dur-base) var(--ease-standard), opacity var(--dur-base) var(--ease-standard);
+  }
+  .nav:hover { background: var(--color-bg-subtle); }
+  .nav.prev { left: -10px; }
+  .nav.prev :global(svg) { transform: rotate(180deg); }
+  .nav.next { right: -10px; }
+  .nav:disabled { opacity: 0; pointer-events: none; }
+  @media (max-width: 680px) { .nav { display: none; } }
+
+  /* Pöttyök */
+  .dots { display: flex; justify-content: center; gap: var(--space-3); margin-top: var(--space-5); }
+  .dot {
+    width: 9px; height: 9px; padding: 0;
+    border-radius: 50%;
+    border: none;
+    background: var(--gray-400);
+    cursor: pointer;
+    transition: background var(--dur-base) var(--ease-standard), width var(--dur-base) var(--ease-standard);
+  }
+  .dot[aria-current="true"] { background: var(--ecoteq-green); width: 22px; border-radius: 5px; }
 
   .partners { margin-top: var(--space-8); padding-top: var(--space-6); border-top: 1px solid var(--color-border); }
   .plabel { margin: 0 0 var(--space-2); font-size: var(--fs-xs); font-weight: var(--fw-bold); letter-spacing: var(--ls-overline); text-transform: uppercase; color: var(--color-text-muted); }
@@ -111,5 +252,49 @@ const partners = COMPANY.corePartners.map((p) => p.name);
 
   .cta-wrap { margin-top: var(--space-7); }
 
-  @media (prefers-reduced-motion: reduce) { .plist li { transition: none; } }
+  @media (prefers-reduced-motion: reduce) {
+    .track { scroll-behavior: auto; }
+    .plist li, .nav, .dot { transition: none; }
+  }
 </style>
+
+<script>
+  document.querySelectorAll('[data-proof-carousel]').forEach((root) => {
+    const track = root.querySelector('.track');
+    const prev = root.querySelector('.nav.prev');
+    const next = root.querySelector('.nav.next');
+    const dots = Array.from(root.querySelectorAll('.dot'));
+    const cards = Array.from(track.children);
+    if (!cards.length) return;
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const behavior = reduce ? 'auto' : 'smooth';
+
+    const step = () => {
+      const gap = parseFloat(getComputedStyle(track).columnGap || '0') || 0;
+      return cards[0].getBoundingClientRect().width + gap;
+    };
+    const maxScroll = () => track.scrollWidth - track.clientWidth;
+
+    const update = () => {
+      const atEnd = track.scrollLeft >= maxScroll() - 4;
+      const i = atEnd ? cards.length - 1 : Math.round(track.scrollLeft / step());
+      dots.forEach((d, k) => d.setAttribute('aria-current', k === i ? 'true' : 'false'));
+      if (prev) prev.disabled = track.scrollLeft < 4;
+      if (next) next.disabled = atEnd;
+    };
+
+    prev && prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior }));
+    next && next.addEventListener('click', () => track.scrollBy({ left: step(), behavior }));
+    dots.forEach((d, k) =>
+      d.addEventListener('click', () => track.scrollTo({ left: Math.min(step() * k, maxScroll()), behavior }))
+    );
+
+    let raf = 0;
+    track.addEventListener('scroll', () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => { raf = 0; update(); });
+    }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  });
+</script>
