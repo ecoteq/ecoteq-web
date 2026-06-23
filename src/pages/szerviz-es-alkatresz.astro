@@ -41,10 +41,10 @@ const services = [
 ];
 
 const requestPoints = [
-  'a berendezés típusa és (ha ismert) a gyári azonosítója,',
-  'az üzem és a felhasználás jellege (mit, milyen mennyiségben dolgoz fel),',
-  'a tapasztalt hibajelenség vagy az igényelt szolgáltatás rövid leírása,',
-  'kapcsolattartó és elérhetőség a visszajelzéshez.',
+  'a berendezés típusa és (ha ismert) a gyári azonosítója',
+  'az üzem és a felhasználás jellege (mit, milyen mennyiségben dolgoz fel)',
+  'a tapasztalt hibajelenség vagy az igényelt szolgáltatás rövid leírása',
+  'kapcsolattartó és elérhetőség a visszajelzéshez',
 ];
 ---
 <SiteLayout
@@ -60,7 +60,7 @@ const requestPoints = [
     crumb={[{ label: 'Főoldal', href: '/' }, { label: 'Szerviz és alkatrész' }]}
   >
     <Button href={quoteHref(undefined, 'szerviz')}>Leírom az anyagot és a célt</Button>
-    <Button href="/kapcsolat/" variant="ghost">Kapcsolatfelvétel</Button>
+    <Button href="/kapcsolat/" variant="outline-light">Kapcsolatfelvétel</Button>
   </PageHero>
 
   <Section surface="white">
@@ -90,7 +90,7 @@ const requestPoints = [
         />
         <div class="how-cta">
           <Button href="/kapcsolat/">Kapcsolatfelvétel</Button>
-          <Button href={quoteHref(undefined, 'szerviz')} variant="ghost">Leírom az anyagot és a célt</Button>
+          <Button href={quoteHref(undefined, 'szerviz')} variant="outline">Leírom az anyagot és a célt</Button>
         </div>
       </div>
       <aside class="panel" aria-label="Mit érdemes megadni">
@@ -98,13 +98,12 @@ const requestPoints = [
         <ul class="panel-list" role="list">
           {requestPoints.map((p) => (
             <li>
-              <span class="panel-ic" aria-hidden="true"><Icon name="check" size={18} /></span>
+              <span class="panel-ic" aria-hidden="true"></span>
               <span>{p}</span>
             </li>
           ))}
         </ul>
         <p class="panel-note">
-          {/* TODO: confirm preferred service contact channel / hours before publishing */}
           A beérkező megkereséseket munkatársaink a megadott elérhetőségen veszik fel Önnel.
         </p>
       </aside>
@@ -139,8 +138,10 @@ const requestPoints = [
   .grid{
     list-style:none;margin:var(--space-7) 0 0;padding:0;
     display:grid;gap:var(--space-4);
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    grid-template-columns:1fr;
   }
+  @media (min-width:600px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:980px){.grid{grid-template-columns:repeat(3,1fr)}}
   .card{
     background:var(--color-surface);
     border:var(--border-width) solid var(--color-border);
@@ -183,7 +184,7 @@ const requestPoints = [
   }
   .panel-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--space-3)}
   .panel-list li{display:flex;gap:var(--space-3);align-items:flex-start;font-size:var(--fs-base);line-height:var(--lh-body);color:var(--color-text-secondary)}
-  .panel-ic{display:inline-flex;flex:none;color:var(--color-accent);margin-top:2px}
+  .panel-ic{flex:none;width:7px;height:7px;margin-top:9px;border-radius:2px;background:var(--color-accent)}
   .panel-note{
     margin:var(--space-5) 0 0;padding-top:var(--space-4);
     border-top:var(--border-width) solid var(--color-border);
