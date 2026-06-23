@@ -63,7 +63,7 @@ export const TECHNOLOGIES: Technology[] = [
     task: 'Térfogatcsökkentés és anyag-előkészítés',
     blurb:
       'Fa, raklap, műanyag, csomagolóanyag vagy vegyes ipari hulladék térfogatcsökkentésére és további feldolgozásra való előkészítésére.',
-    image: '/heroes/hero-ipari-daralas.jpg',
+    image: '/tech/ipari-daralas.jpg',
   },
   {
     slug: 'brikettalas',
@@ -71,7 +71,7 @@ export const TECHNOLOGIES: Technology[] = [
     task: 'Mellékanyagból tömör, értékesíthető brikett',
     blurb:
       'Forgács, por, apríték és más száraz mellékanyag tömörítése kezelhető, tárolható vagy értékesíthető briketté.',
-    image: '/heroes/hero-brikettalas.jpg',
+    image: '/tech/brikettalas.jpg',
   },
   {
     slug: 'pelletalas',
@@ -87,7 +87,7 @@ export const TECHNOLOGIES: Technology[] = [
     task: 'Nedves anyag kezelhető állapotba hozása',
     blurb:
       'Nedves apríték, biomassza vagy mellékanyag nedvességtartalmának csökkentése további feldolgozáshoz vagy energetikai felhasználáshoz.',
-    image: '/heroes/hero-biomassza-szaritas.jpg',
+    image: '/tech/biomassza-szaritas.jpg',
   },
   {
     slug: 'vakuumszaritas',
@@ -103,7 +103,7 @@ export const TECHNOLOGIES: Technology[] = [
     task: 'Faanyag védelme és ipari kezelése',
     blurb:
       'Faanyag védelme, kezelése és impregnálása ipari felhasználásra, kontrollált technológiai környezetben.',
-    image: '/heroes/hero-vakuumimpregnalas.jpg',
+    image: '/tech/vakuumimpregnalas.jpg',
   },
   {
     slug: 'elszivas-porlevalasztas',
@@ -119,7 +119,7 @@ export const TECHNOLOGIES: Technology[] = [
     task: 'Stabil anyagáram és rendszerelemek',
     blurb:
       'Felhordók, szállítószalagok, adagolók, mágnesek, szeparátorok és kiegészítő rendszerelemek a stabil anyagáramhoz.',
-    image: '/heroes/hero-komplett.jpg',
+    image: '/tech/anyagmozgas-rendszerelemek.jpg',
   },
 ];
 
