@@ -70,9 +70,13 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     return json({ ok: false, error: 'missing_fields' }, 400);
   }
 
+  // A vakuumszarito projekt env-konvenciójához igazítva (LEAD_*), CONTACT_* fallbackkel.
   const apiKey = process.env.RESEND_API_KEY;
-  const to = process.env.CONTACT_TO_EMAIL || 'sales@ecoteq.hu';
-  const from = process.env.CONTACT_FROM_EMAIL;
+  const to = process.env.LEAD_NOTIFY_EMAIL || process.env.CONTACT_TO_EMAIL || 'sales@ecoteq.hu';
+  const leadFromEmail = process.env.LEAD_FROM_EMAIL;
+  const from = leadFromEmail
+    ? `${process.env.LEAD_FROM_NAME || 'ECOTEQ'} <${leadFromEmail}>`
+    : process.env.CONTACT_FROM_EMAIL;
 
   // Email backend not configured yet → tell the client to fall back gracefully.
   if (!apiKey || !from) {
