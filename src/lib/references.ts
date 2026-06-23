@@ -314,12 +314,80 @@ export const references: Reference[] = [
     cats: ['komplett', 'brikettalas', 'szaritas'],
     machines: 'Kisüzemi brikettáló gépsor gyümölcsösből származó faaprítékhoz, fűrészporszárítóval',
   },
+
+  // — Feltöltött kiemelt referenciák (a főoldali karusszelből) —
+  {
+    company: 'Hilti Kft.',
+    marquee: true,
+    city: 'Kecskemét',
+    cats: ['ipari-daralas'],
+    machines:
+      'Daráló a márkavédelmi okból megsemmisítendő, selejtezett termékekhez: a nagyméretű gépházakat és koffereket is egyben befogadja, egyedi adagológarat akadályozza a kemény műanyag kipattogását, a darálék átlátszó oldalfalú gyűjtőkocsiba hull (követhető folyamat)',
+  },
+  {
+    company: 'AWF Kft.',
+    marquee: true,
+    city: 'Sárvár',
+    cats: ['ipari-daralas'],
+    machines:
+      'Négytengelyes daráló hidraulikus leszorítóval, egyedi magas tartószerkezeten, széles szállítószalaggal és emelő-ürítővel a tömörítő konténerbe — merev, üvegszálas autókárpit-gyártási hulladékhoz (a szállítási költség kb. ötödére csökkent)',
+  },
+  {
+    company: 'Faragó Kft.',
+    marquee: true,
+    city: 'Kakucs',
+    cats: ['ipari-daralas', 'elszivas'],
+    machines:
+      'Nagykapacitású négytengelyes darálórendszer olajjal-vegyszerrel szennyezett műanyag hulladékhoz (fémketreces IBC tartályok, kannák), vaskiválasztással (mágneses keresztszalag) és kihordószalaggal',
+  },
+  {
+    company: 'Biztonsági papírtermék gyártó üzem',
+    marquee: true,
+    cats: ['ipari-daralas', 'elszivas', 'brikettalas'],
+    machines:
+      'Zárt láncú daráló-brikettáló rendszer biztonsági papírtermék gyártási mellékterméhez: szállítószalagos beadagolás, darálás, elszívás-leválasztás (ciklon, cellás adagoló, porszűrő), hidraulikus brikettálás bővített silóval (a megrendelő kérésére anonim)',
+  },
 ];
 
-/** Marquee referenciák elöl, a többi utána (eredeti sorrend megtartásával). */
-export const referencesSorted: Reference[] = [
-  ...references.filter((r) => r.marquee),
-  ...references.filter((r) => !r.marquee),
+/** A főoldali karusszelben szereplő referenciák — pontosan ebben a sorrendben elöl. */
+const FEATURED_ORDER = [
+  'K és B Bioenergia Kft.',
+  'Hilti Kft.',
+  'AWF Kft.',
+  'Richter Gedeon Nyrt.',
+  'Diósjenő Község Önkormányzata',
+  'Faragó Kft.',
+  'Biztonsági papírtermék gyártó üzem',
+  'Food For Future',
 ];
+
+/** Közismertségi / márkaismertségi sorrend a többi kiemelt (marquee) referenciához. */
+const BRAND_RANK = [
+  'BAT', 'IKEA', 'Swedwood', 'Veolia', 'BorsodChem', 'Coloplast', 'Inno-Comp',
+  'Carbon Composites', 'Ferrit', 'Probio', 'Marostech', 'Nyír-Flop', 'NEW ENERGY',
+  'Debreceni Egyetem', 'Bay Zoltán', 'Profikomp', 'Parkland', 'Soltvadkert',
+  'Magyar Máltai', 'Codex', 'Jákófa', 'Sovereign',
+];
+
+const featuredIdx = (r: Reference) => FEATURED_ORDER.indexOf(r.company);
+const brandIdx = (r: Reference) => {
+  const i = BRAND_RANK.findIndex((b) => r.company.includes(b));
+  return i === -1 ? BRAND_RANK.length : i;
+};
+
+/** Sorrend: a főoldali 7 elöl (karusszel-sorrend), utána a többi márkaismertség
+ *  szerint (marquee előbb), végül a maradék az eredeti sorrendben. */
+export const referencesSorted: Reference[] = [...references].sort((a, b) => {
+  const fa = featuredIdx(a);
+  const fb = featuredIdx(b);
+  if (fa !== -1 || fb !== -1) {
+    if (fa === -1) return 1;
+    if (fb === -1) return -1;
+    return fa - fb;
+  }
+  if (a.marquee !== b.marquee) return a.marquee ? -1 : 1;
+  if (a.marquee && b.marquee) return brandIdx(a) - brandIdx(b);
+  return 0;
+});
 
 export const REFERENCE_COUNT = references.length;

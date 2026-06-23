@@ -6,12 +6,12 @@ import PageHero from '../components/site/PageHero.astro';
 import Button from '../components/core/Button.astro';
 import Icon from '../components/Icon.astro';
 import { quoteHref } from '../lib/site-v2';
-import { referencesSorted, CATEGORY_LABELS, CATEGORY_ORDER, REFERENCE_COUNT } from '../lib/references';
+import { referencesSorted, CATEGORY_LABELS, CATEGORY_ORDER } from '../lib/references';
 ---
 
 <SiteLayout
   title="Referenciák"
-  description="Megvalósult magyar ipari rendszereink technológia és iparág szerint: brikettálás, darálás, pelletálás, elszívás, szárítás és komplett gépsorok, megnevezett ügyfelekkel."
+  description="Megvalósult hazai és nemzetközi ipari rendszereink technológia és iparág szerint: brikettálás, darálás, pelletálás, elszívás, szárítás és komplett gépsorok, megnevezett ügyfelekkel."
 >
   <PageHero
     eyebrow="Referenciák"
@@ -20,12 +20,15 @@ import { referencesSorted, CATEGORY_LABELS, CATEGORY_ORDER, REFERENCE_COUNT } fr
     image="/heroes/hero-referenciak.jpg"
     imageAlt="Telepített négytengelyes daráló rendszer rozsdamentes adagolóval"
     crumb={[{ label: 'Főoldal', href: '/' }, { label: 'Referenciák' }]}
-  />
+  >
+    <Button href={quoteHref(undefined, 'referenciak')}>Leírom az anyagot és a célt</Button>
+    <Button variant="secondary" href="/megoldasok/">Megnézem a megoldásokat</Button>
+  </PageHero>
 
   <Section surface="white">
     <SectionHeading
       overline="Megvalósult projektek"
-      title={`Több mint ${REFERENCE_COUNT} megvalósult magyar ipari projekt`}
+      title="Számos megvalósult hazai és nemzetközi projekt, amelyekre büszkék vagyunk"
       lead="Szűrjön technológia szerint. Minden projekt valós szállítás; a kiemelt nevek ismert ipari megrendelők. A géptípusok és kapacitások a megvalósult rendszerek dokumentált adatai."
     />
 
