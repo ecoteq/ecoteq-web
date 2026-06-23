@@ -2,6 +2,13 @@
 // Nyitás-archetípus: rendszer / döntési-villa · Vezető pillér: Végig ott vagyunk + Függetlenség
 import SolutionPage from '../../components/site/SolutionPage.astro';
 
+const trust = [
+  { value: 'egy rendszer', label: 'fogadástól a végtermékig' },
+  { value: '6', label: 'európai gyártó, egy kézből' },
+  { value: '1', label: 'felelős a teljes anyagáramra' },
+  { value: '2008', label: 'óta a piacon' },
+];
+
 const situations = [
   { icon: 'layers', title: 'Több, egymásra épülő technológiai lépés', text: 'A feladat nem egyetlen géppel oldható meg: az anyag a fogadástól a végtermékig több lépésen halad át, amelyeket egymáshoz kell illeszteni.' },
   { icon: 'route', title: 'A gépek között akad meg az anyag útja', text: 'A fő gépek külön-külön működnek, de az adagolás, a kihordás és a továbbítás nincs összehangolva, ezért a folyamat egyenetlen.' },
@@ -34,8 +41,9 @@ const faq = [
   heroImage="/heroes/hero-komplett.jpg"
   heroImageAlt="Faapríték- és fűrészpor-tároló és -szárító üzem alkonyatkor"
   source="megoldas-komplett-anyagaram"
-  situationsTitle="Mikor beszélünk rendszerről?"
-  situationsLead="Az alábbi helyzetekben éri meg az anyag útját rendszerként átgondolni, nem gépenként."
+  situationsTitle="Mikor kevés egyetlen gép, és kell a rendszer?"
+  situationsLead="Az alábbi helyzetekben érdemes az anyag teljes útját rendszerként átgondolni, nem gépenként."
+  trust={trust}
   situations={situations}
   directionsTitle="Milyen elemekből áll össze?"
   directionsLead="A komplett anyagáram nem gépek listája, hanem egy összehangolt rendszer. A fő technológiák köré az előkészítés, az elszívás és az anyagmozgatás illeszkedik, egy közös logika szerint. Ezt egy helyről, több vezető európai gyártó kínálatából tervezzük, egy felelőssel a fogadástól a végtermékig."

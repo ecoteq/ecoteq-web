@@ -2,6 +2,13 @@
 // Nyitás-archetípus: tünet · Vezető pillér: Anyag-először + Függetlenség
 import SolutionPage from '../../components/site/SolutionPage.astro';
 
+const trust = [
+  { value: 'tisztább', label: 'levegő a munkatérben' },
+  { value: 'méretezett', label: 'a tényleges légmennyiséghez' },
+  { value: '6', label: 'európai gyártó, egy kézből' },
+  { value: '2008', label: 'óta a piacon' },
+];
+
 const situations = [
   { icon: 'wind', title: 'Por és forgács a munkatérben', text: 'A megmunkálás során folyamatosan keletkező por és forgács terheli a munkateret és a gépek környezetét. A rendszeres takarítás visszatérő munka.' },
   { icon: 'settings', title: 'Lerakódó por a gépeken', text: 'A berendezésekre rakódó por nehezíti a gépkiszolgálást és a karbantartást, és idővel a meghibásodás kockázatát is növeli.' },
@@ -30,7 +37,9 @@ const faq = [
   heroImage="/heroes/hero-elszivas.jpg"
   heroImageAlt="Ipari elszívó- és csővezeték-rendszer üzemcsarnokban"
   source="megoldas-ipari-por-elszivas"
-  situationsLead="Az alábbi helyzetekben érdemes átgondolni az elszívást és a porleválasztást."
+  situationsTitle="Mikor válik kockázattá a por a műhelyben?"
+  situationsLead="Az alábbi helyzetekben érdemes átgondolni az üzem elszívását és porleválasztását."
+  trust={trust}
   situations={situations}
   directionsLead="A porprobléma ritkán egyetlen gép kérdése. A tartós eredményhez az elszívás, a leválasztás és a leválasztott anyag kezelése együtt működik. Mindezt egy helyről, több vezető európai gyártó kínálatából méretezzük a tényleges légmennyiséghez és az üzem elrendezéséhez."
   directions={directions}

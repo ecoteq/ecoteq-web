@@ -2,6 +2,13 @@
 // Nyitás-archetípus: tévhit · Vezető pillér: Anyag-először
 import SolutionPage from '../../components/site/SolutionPage.astro';
 
+const trust = [
+  { value: 'jobb fűtőérték', label: 'szárítás után' },
+  { value: 'stabil', label: 'tárolás penész nélkül' },
+  { value: '6', label: 'európai gyártó, egy kézből' },
+  { value: '2008', label: 'óta a piacon' },
+];
+
 const situations = [
   { icon: 'droplets', title: 'Magas a bemeneti nedvességtartalom', text: 'A frissen keletkező faipari, mezőgazdasági vagy zöldhulladék gyakran túl nedves ahhoz, hogy stabilan tárolható vagy energetikailag hasznosítható legyen.' },
   { icon: 'flame', title: 'Gyenge a fűtőérték', text: 'A nedvesség elpárologtatása energiát von el az égéstől, ezért a nedves alapanyag fűtőértéke és égési hatásfoka alacsony marad.' },
@@ -30,7 +37,9 @@ const faq = [
   heroImage="/heroes/hero-biomassza-szaritas.jpg"
   heroImageAlt="Telepített szalagos biomassza-szárító üzemi környezetben"
   source="megoldas-nedves-biomassza"
-  situationsLead="Az alábbi helyzetekben érdemes átgondolni a nedves biomassza előkészítését."
+  situationsTitle="Mikor kockázat tovább tárolni a nedves biomasszát?"
+  situationsLead="Az alábbi helyzetekben érdemes átgondolni a keletkező nedves biomassza előkészítését."
+  trust={trust}
   situations={situations}
   directionsLead="A nedves biomassza ritkán egyetlen géptől függ. Sokszor előbb a frakciót kell rendbe tenni, és csak utána éri meg szárítani. A szárítást és a darálást egy helyről, több vezető európai gyártó kínálatából hangoljuk össze, az anyaghoz és a célhoz méretezve."
   directions={directions}

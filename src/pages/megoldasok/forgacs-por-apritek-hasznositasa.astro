@@ -2,6 +2,13 @@
 // Nyitás-archetípus: lehetőség-reframe · Vezető pillér: Anyag-először
 import SolutionPage from '../../components/site/SolutionPage.astro';
 
+const trust = [
+  { value: 'brikett / pellet', label: 'eladható végtermék lesz' },
+  { value: 'bevétel', label: 'a költséghely helyén' },
+  { value: '6', label: 'európai gyártó, egy kézből' },
+  { value: '2008', label: 'óta a piacon' },
+];
+
 const situations = [
   { icon: 'package', title: 'A laza melléktermék sok helyet foglal', text: 'A forgács, a por és az apríték nagy térfogatú és nehezen tárolható. Feleslegesen köti le a raktárterületet és a belső logisztikát.' },
   { icon: 'wind', title: 'A por és a forgács szétszóródik az üzemben', text: 'A finom por és forgács összegyűjtése és leválasztása külön feladat, amíg nincs rá célzott megoldás. Addig a tisztán tartás folyamatos munka.' },
@@ -29,8 +36,9 @@ const faq = [
   heroImage="/heroes/hero-forgacs-por.jpg"
   heroImageAlt="Telepített hidraulikus brikettáló prés kész fabrikettekkel"
   source="megoldas-forgacs-por-apritek"
-  situationsTitle="Mit jelent ma, és mi lehetne belőle?"
-  situationsLead="Az alábbi helyzetekben érdemes átgondolni a forgács, a por és az apríték hasznosítását."
+  situationsTitle="Mikor megy veszendőbe a forgácsban rejlő érték?"
+  situationsLead="Az alábbi helyzetekben érdemes átgondolni a keletkező forgács, por és apríték sorsát."
+  trust={trust}
   situations={situations}
   directionsLead="Az, hogy mi lesz a mellékanyagból, az anyagtól függ. A száraz frakcióból tömörítéssel lesz termék, a port és a forgácsot előbb össze kell gyűjteni. Mindezt egy helyről, több vezető európai gyártó kínálatából állítjuk össze, a nedvességhez és a célhoz igazítva."
   directions={directions}

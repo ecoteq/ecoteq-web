@@ -2,6 +2,13 @@
 // Nyitás-archetípus: döntési-villa · Vezető pillér: Anyag-először
 import SolutionPage from '../../components/site/SolutionPage.astro';
 
+const trust = [
+  { value: 'kevesebb', label: 'repedés és vetemedés' },
+  { value: 'ISVE', label: 'vákuumtechnológiai háttér' },
+  { value: 'tervezhető', label: 'szárítási ciklus' },
+  { value: '2008', label: 'óta a piacon' },
+];
+
 const situations = [
   { icon: 'clock', title: 'Hosszú, nehezen tervezhető szárítási ciklus', text: 'A hagyományos szárítás ciklusideje lassítja a gyártást, és nehezen tervezhetővé teszi az átfutást. A kontrollált szárítás rövidíti és kiszámíthatóbbá teszi ezt.' },
   { icon: 'thermometer', title: 'Repedés és vetemedés a szárítás után', text: 'A nem kellően kontrollált szárítás repedéseket, vetemedést és minőségi ingadozást okoz. Minden hibás darab anyag- és időveszteség.' },
@@ -30,7 +37,9 @@ const faq = [
   heroImage="/heroes/hero-vakuumszaritas.jpg"
   heroImageAlt="ISVE vákuumszárító kamra az ECOTEQ üzemcsarnokában"
   source="megoldas-faanyag-szaritas"
-  situationsLead="Az alábbi helyzetekben érdemes átgondolni a faanyag szárítását és kezelését."
+  situationsTitle="Mikor szűk keresztmetszet a faanyag szárítása?"
+  situationsLead="Az alábbi helyzetekben érdemes átgondolni a keletkező faanyag szárítását és kezelését."
+  trust={trust}
   situations={situations}
   directionsLead="A faanyag szárítása és kezelése ritkán egyetlen lépés. A kontrollált szárítás és az impregnálás összehangolva ad tervezhető, tartós eredményt. A technológiát egy helyről, az ISVE hátterére építve méretezzük a fafajhoz, a mérethez és a célhoz."
   directions={directions}

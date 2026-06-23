@@ -2,6 +2,13 @@
 // Nyitás-archetípus: konkrét-anyag · Vezető pillér: Anyag-először
 import SolutionPage from '../../components/site/SolutionPage.astro';
 
+const trust = [
+  { value: 'fémmentes', label: 'szeg- és kapocsleválasztás' },
+  { value: 'töredékére', label: 'csökkenő tárolt térfogat' },
+  { value: '6', label: 'európai gyártó, egy kézből' },
+  { value: '2008', label: 'óta a piacon' },
+];
+
 const situations = [
   { icon: 'package', title: 'Helyhiány a sérült és selejt raklapokból', text: 'A használhatatlan raklapok, ládák és csomagolóanyagok terjedelmesen állnak az udvaron, és értékes tárhelyet foglalnak. A felgyűlt mennyiség a napi mozgást is akadályozza.' },
   { icon: 'truck', title: 'Drága és gyakori elszállítás', text: 'A laza, nagy térfogatú hulladék miatt sok a részben üres fuvar, ami feleslegesen növeli a szállítási és a kezelési költségeket.' },
@@ -30,7 +37,9 @@ const faq = [
   heroImage="/heroes/hero-raklap.jpg"
   heroImageAlt="ECOTEQ raklap- és csomagolóanyag-daráló üzemi környezetben"
   source="megoldas-raklap-csomagoloanyag"
-  situationsLead="Az alábbi helyzetekben érdemes átgondolni a raklap és a csomagolóanyag darálását."
+  situationsTitle="Mikor válik teherré a selejt raklap és csomagolóanyag?"
+  situationsLead="Az alábbi helyzetekben érdemes átgondolni a felgyűlő raklap és csomagolóanyag sorsát."
+  trust={trust}
   situations={situations}
   directionsLead="A raklap és a csomagolóanyag darálása ritkán csak egy gép. A tartós eredményhez az aprítás, a fémleválasztás és az anyag kihordása összehangoltan működik. Ezt egy helyről, több vezető gyártó kínálatából állítjuk össze, a benne lévő szennyeződésekhez és a kívánt frakcióhoz igazítva."
   directions={directions}

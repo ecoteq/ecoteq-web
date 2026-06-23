@@ -14,6 +14,8 @@ import PageHero from './PageHero.astro';
 import Button from '../core/Button.astro';
 import Icon from '../Icon.astro';
 import Schema from '../seo/Schema.astro';
+import HeroStats from './HeroStats.astro';
+import Breadcrumb from './Breadcrumb.astro';
 import { quoteHref, CTA } from '../../lib/site-v2';
 
 interface Situation { icon: string; title: string; text: string; }
@@ -28,6 +30,7 @@ interface Props {
   heroImageAlt: string;
   /** analytics source slug, e.g. "megoldas-faipari" */
   source: string;
+  trust: { value: string; suffix?: string; label: string }[];
   situationsTitle?: string;
   situationsLead?: string;
   situations: Situation[];
@@ -47,6 +50,7 @@ const {
   heroImage,
   heroImageAlt,
   source,
+  trust,
   situationsTitle = 'Mikor merül fel?',
   situationsLead,
   situations,
@@ -76,11 +80,14 @@ const crumb = [
     lead={heroLead}
     image={heroImage}
     imageAlt={heroImageAlt}
-    crumb={crumb}
   >
     <Button href={quoteUrl}>{CTA.uncertain.label}</Button>
     <Button href="#iranyok" variant="outline-light">{CTA.secondary.label}</Button>
   </PageHero>
+
+  <HeroStats stats={trust} />
+
+  <Breadcrumb items={crumb} />
 
   <Section surface="white">
     <SectionHeading overline="Helyzetkép" title={situationsTitle} lead={situationsLead} />

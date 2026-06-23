@@ -2,6 +2,13 @@
 // Nyitás-archetípus: tünet · Vezető pillér: Anyag-először + Függetlenség
 import SolutionPage from '../../components/site/SolutionPage.astro';
 
+const trust = [
+  { value: '3 az 1-ben', label: 'darálás · elszívás · brikettálás' },
+  { value: '6', label: 'európai gyártó, egy kézből' },
+  { value: '1', label: 'felelős a teljes anyagútra' },
+  { value: '2008', label: 'óta a faiparban' },
+];
+
 const situations = [
   { icon: 'wind', title: 'Mindennap visszatér a por és a forgács', text: 'A gépek körül folyamatosan gyűlik az anyag, és a műszak végén külön takarítani kell. Ez minden nap visszatérő munkaóra, amit másra is lehetne fordítani.' },
   { icon: 'maximize', title: 'Fogy a hely a laza anyagtól', text: 'A laza apríték és fahulladék gyorsan megtölti a konténert és a sarkokat. Előbb-utóbb a tárolóhely szab határt a termelésnek.' },
@@ -31,7 +38,9 @@ const faq = [
   heroImage="/heroes/hero-faipari-hulladek.jpg"
   heroImageAlt="Négytengelyes ipari hulladékdaráló gépsor üzemi környezetben"
   source="megoldas-faipari-hulladek"
-  situationsLead="Az alábbi üzemi helyzetekben érdemes átgondolni a faipari hulladék útját."
+  situationsTitle="Mikor nem halasztható a fahulladék kezelése?"
+  situationsLead="Az alábbi helyzetekben érdemes átgondolni a keletkező faüzemi hulladék sorsát."
+  trust={trust}
   situations={situations}
   directionsLead="A faipari hulladék ritkán egyetlen géptől függ. A legtöbb üzemben a darálás, az elszívás és a brikettálás összehangolása vezet rendezett anyaghoz. Mindhárom irányt egy helyről, több vezető európai gyártó kínálatából állítjuk össze, így a megoldás a feladathoz igazodik, nem egyetlen márka katalógusához."
   directions={directions}
