@@ -63,8 +63,10 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
   const email = get('email');
   const anyag = get('anyag');
   const cel = get('cel');
+  const telefon = get('telefon');
 
-  if (!nev || !email || !anyag || !cel || !/.+@.+\..+/.test(email)) {
+  // Legalább egy elérhetőség (e-mail VAGY telefon) kell; ha e-mail van, formátum-ellenőrzés.
+  if (!nev || !anyag || !cel || (!email && !telefon) || (email && !/.+@.+\..+/.test(email))) {
     return json({ ok: false, error: 'missing_fields' }, 400);
   }
 
@@ -92,22 +94,24 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     await resend.emails.send({
       from,
       to,
-      replyTo: email,
+      replyTo: email || undefined,
       subject: oneLine(`Új előminősítés: ${nev}${anyag ? ` (${anyag})` : ''}`),
       text: `Új projekt-előminősítés érkezett az ecoteq.hu űrlapról.\n\n${summary}`,
     });
 
-    await resend.emails.send({
-      from,
-      to: email,
-      subject: 'Köszönjük a megkeresést — ECOTEQ',
-      text:
-        `Kedves ${nev}!\n\n` +
-        `Köszönjük, hogy elküldte a projekt alapadatait. Munkanapokon előszűrjük a ` +
-        `feladatot, és jellemzően 24 órán belül visszajelzünk a következő lépésről.\n\n` +
-        `A megadott adatok:\n${summary}\n\n` +
-        `Üdvözlettel,\nECOTEQ`,
-    });
+    if (email) {
+      await resend.emails.send({
+        from,
+        to: email,
+        subject: 'Köszönjük a megkeresést — ECOTEQ',
+        text:
+          `Kedves ${nev}!\n\n` +
+          `Köszönjük, hogy elküldte a projekt alapadatait. Munkanapokon előszűrjük a ` +
+          `feladatot, és jellemzően 24 órán belül visszajelzünk a következő lépésről.\n\n` +
+          `A megadott adatok:\n${summary}\n\n` +
+          `Üdvözlettel,\nECOTEQ`,
+      });
+    }
 
     return json({ ok: true });
   } catch {

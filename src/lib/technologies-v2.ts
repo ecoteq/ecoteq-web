@@ -13,7 +13,7 @@ const brikettalas: TechnologyGateway = {
   name: 'Brikettálás',
   metaTitle: 'Brikettáló rendszerek faipari és biomassza alapanyaghoz',
   metaDescription:
-    'Brikettálás forgácsból, porból, fűrészporból és aprítékból. Az ECOTEQ a megtérülés felől nézi: az anyagmennyiség, az üzemóra, az energia és a cél alapján mondja meg, milyen hidraulikus vagy mechanikus brikettáló rendszer reális.',
+    'Brikettálás forgácsból, porból és aprítékból. Anyagmennyiség, üzemóra és cél alapján javaslunk hidraulikus vagy mechanikus brikettáló rendszert.',
   hero: {
     eyebrow: 'ECOTEQ technológiák · Brikettálás',
     h1: 'Brikettáló rendszerek faipari és biomassza alapanyaghoz',
@@ -260,7 +260,7 @@ const ipariDaralas: TechnologyGateway = {
   name: 'Ipari darálás',
   metaTitle: 'Ipari darálók és darálási rendszerek hulladék-előkészítésre',
   metaDescription:
-    'Ipari darálás fa, raklap, műanyag, biomassza és vegyes hulladék előkészítésére. Az ECOTEQ az anyagból indul ki: egy- vagy kéttengelyes daráló, frakció és rendszerfelépítés az anyag és a cél alapján.',
+    'Ipari darálás fa, raklap, műanyag, biomassza és vegyes hulladék előkészítésére. Egy- vagy kéttengelyes daráló és frakció az anyag és a cél alapján.',
   hero: {
     eyebrow: 'ECOTEQ technológiák · Ipari darálás',
     h1: 'Ipari darálók hulladék és mellékanyag előkészítésére',
@@ -390,7 +390,7 @@ const pelletalas: TechnologyGateway = {
   name: 'Pelletálás',
   metaTitle: 'Pelletáló rendszerek biomassza és faipari alapanyaghoz',
   metaDescription:
-    'Pelletálás biomasszából és faipari mellékanyagból. Az ECOTEQ független módon, több gyártó közül a feladathoz illő pelletáló rendszert javasolja, az alapanyag-előkészítéstől a hűtésig.',
+    'Pelletálás biomasszából és faipari mellékanyagból. Az ECOTEQ független módon, több gyártó közül a feladathoz illő pelletáló rendszert javasolja.',
   hero: {
     eyebrow: 'ECOTEQ technológiák · Pelletálás',
     h1: 'Pelletáló rendszerek biomassza és faipari alapanyaghoz',
@@ -519,7 +519,7 @@ const biomasszaSzaritas: TechnologyGateway = {
   name: 'Biomassza-szárítás',
   metaTitle: 'Biomassza-szárítás ipari feldolgozáshoz és energetikához',
   metaDescription:
-    'Biomassza-szárítás nedves apríték, fűrészpor és mezőgazdasági mellékanyag előkészítésére. Az ECOTEQ a vízelvonási feladatból indul ki: hőforrás, anyagáram és cél nedvesség alapján.',
+    'Biomassza-szárítás nedves apríték, fűrészpor és mezőgazdasági mellékanyag előkészítésére, a hőforrás, az anyagáram és a célnedvesség alapján.',
   hero: {
     eyebrow: 'ECOTEQ technológiák · Biomassza-szárítás',
     h1: 'Biomassza-szárítás feldolgozáshoz és energetikai felhasználáshoz',
@@ -648,7 +648,7 @@ const vakuumszaritas: TechnologyGateway = {
   name: 'Vákuumszárítás',
   metaTitle: 'Vákuumszárító faipari üzemeknek',
   metaDescription:
-    'Vákuumszárítás faanyag kontrollált, gyorsabb és kiszámíthatóbb szárítására. Az ECOTEQ az ISVE vákuumtechnológiai háttérrel, magyar szervizzel segít a fafaj, a vastagság és a cél alapján.',
+    'Vákuumszárítás faanyag kontrollált, gyorsabb és kiszámíthatóbb szárítására. ISVE vákuumtechnológiai háttér, magyar szerviz, a fafaj és a cél alapján.',
   hero: {
     eyebrow: 'ECOTEQ technológiák · Vákuumszárítás',
     h1: 'Vákuumszárító faipari üzemeknek, ahol a minőség és az idő számít',
@@ -777,7 +777,7 @@ const vakuumimpregnalas: TechnologyGateway = {
   name: 'Vákuumimpregnálás',
   metaTitle: 'Vákuumimpregnálás faanyag kezelésére és védelmére',
   metaDescription:
-    'Vákuumimpregnálás faanyag ipari kezelésére, védelmére és speciális felhasználásra. Az ECOTEQ a kezelési célból indul ki, és a feladathoz illő vákuumtechnológiai irányt javasolja.',
+    'Vákuumimpregnálás faanyag ipari kezelésére, védelmére és speciális felhasználásra. Az ECOTEQ a kezelési célból indul ki, és a feladathoz illő irányt javasol.',
   hero: {
     eyebrow: 'ECOTEQ technológiák · Vákuumimpregnálás',
     h1: 'Vákuumimpregnálás faanyag kezelésére és ipari felhasználásra',
@@ -905,7 +905,7 @@ const elszivasPorlevalasztas: TechnologyGateway = {
   name: 'Elszívás és porleválasztás',
   metaTitle: 'Elszívás- és szűrőtechnológia: ipari por-, forgács- és füstelszívás',
   metaDescription:
-    'Ipari por-, forgács- és hegesztésifüst-elszívás és -leválasztás faipari és fémipari üzemeknek. Gyári AL-KO technológia, W3 és ATEX kivitel, magyarországi tervezés, telepítés és szerviz.',
+    'Ipari por-, forgács- és hegesztésifüst-elszívás és -leválasztás faiparnak és fémiparnak. Gyári AL-KO technológia, W3 és ATEX kivitel, magyar szerviz.',
   hero: {
     eyebrow: 'ECOTEQ technológiák · Elszívás és porleválasztás',
     h1: 'Ipari por-, forgács- és füstelszívás kulcsrakészen',
@@ -1037,7 +1037,7 @@ const anyagmozgasRendszerelemek: TechnologyGateway = {
   name: 'Anyagmozgatás és rendszerelemek',
   metaTitle: 'Anyagmozgatás és rendszerelemek ipari feldolgozó rendszerekhez',
   metaDescription:
-    'Anyagmozgató, adagoló, kihordó, siló, mágnes és szeparátor rendszerelemek daráláshoz, brikettáláshoz, pelletáláshoz, szárításhoz és elszíváshoz. ECOTEQ rendszerintegráció.',
+    'Anyagmozgató, adagoló, kihordó, siló, mágnes és szeparátor rendszerelemek darálás, brikettálás, pelletálás és elszívás köré, ECOTEQ rendszerintegrációval.',
   hero: {
     eyebrow: 'ECOTEQ technológiák · Anyagmozgatás és rendszerelemek',
     image: '/heroes/hero-komplett.jpg',

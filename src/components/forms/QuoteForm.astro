@@ -49,20 +49,19 @@ const ph = {
   )}
 
   <div class="fields">
+    <Input label="Név" name="nev" required autocomplete="name" />
     <div class="row2">
-      <Input label="Név" name="nev" required autocomplete="name" />
-      <Input label="E-mail" name="email" type="email" required autocomplete="email" />
+      <Input label="E-mail" name="email" type="email" autocomplete="email" />
+      <Input label="Telefonszám" name="telefon" type="tel" autocomplete="tel" />
     </div>
+    <p class="contact-hint">Adja meg az e-mailt vagy a telefonszámot, hogy vissza tudjunk jelezni.</p>
     <Input label="Milyen anyagot kell kezelni?" name="anyag" required placeholder={ph.anyag} />
     <Input label="Mi a cél?" name="cel" required placeholder={ph.cel} />
 
     <div class="optional" data-optional>
       <div class="optional-inner">
         <p class="optional-label">További részletek <span>(opcionális)</span></p>
-        <div class="row2">
-          <Input label="Cégnév" name="ceg" autocomplete="organization" />
-          <Input label="Telefonszám" name="telefon" type="tel" autocomplete="tel" />
-        </div>
+        <Input label="Cégnév" name="ceg" autocomplete="organization" />
         <Input label="Körülbelüli mennyiség" name="mennyiseg" placeholder={ph.mennyiseg} />
         <div class="field">
           <label class="field-label" for="qf-megjegyzes">Üzenet</label>
@@ -114,7 +113,7 @@ const ph = {
 
     // Mező-szintű validáció + a11y: aria-invalid + piros keret (data-error), fókusz az
     // első hibás mezőre, e-mail formátum kliensoldalon, hibatörlés gépeléskor.
-    const REQUIRED = ['nev', 'email', 'anyag', 'cel'];
+    const REQUIRED = ['nev', 'anyag', 'cel'];
     const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const fieldEl = (name: string) => form.querySelector<HTMLElement>(`[name="${name}"]`);
@@ -142,13 +141,20 @@ const ph = {
         if (!ok && el) invalid.push(el);
       });
       const emailEl = fieldEl('email');
+      const telEl = fieldEl('telefon');
       const emailVal = String(payload.email ?? '').trim();
-      if (emailVal && !emailRe.test(emailVal)) {
+      const telVal = String(payload.telefon ?? '').trim();
+      if (!emailVal && !telVal) {
+        markError(emailEl, true);
+        markError(telEl, true);
+        if (emailEl) invalid.push(emailEl);
+        if (telEl) invalid.push(telEl);
+      } else if (emailVal && !emailRe.test(emailVal)) {
         markError(emailEl, true);
         if (emailEl && !invalid.includes(emailEl)) invalid.push(emailEl);
       }
       if (invalid.length) {
-        setMsg('Kérjük, ellenőrizze a pirossal jelölt kötelező mezőket (név, e-mail, anyag, cél).', 'error');
+        setMsg('Kérjük, ellenőrizze a pirossal jelölt mezőket: a név, az anyag és a cél kötelező, és adjon meg e-mailt vagy telefont.', 'error');
         invalid[0].focus();
         invalid[0].scrollIntoView({ block: 'center', behavior: reduceMotion ? 'auto' : 'smooth' });
         return;
@@ -219,6 +225,7 @@ const ph = {
   .qf-hint .req { color: var(--color-accent-text); font-weight: var(--fw-bold); }
 
   .fields { display: flex; flex-direction: column; gap: var(--space-4); }
+  .contact-hint { margin: calc(-1 * var(--space-2)) 0 0; font-size: var(--fs-sm); color: var(--color-text-secondary); }
   .row2 { display: grid; gap: var(--space-4); grid-template-columns: 1fr; }
   @media (min-width: 540px) { .row2 { grid-template-columns: 1fr 1fr; } }
 
