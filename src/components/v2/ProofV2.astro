@@ -2,9 +2,11 @@
 /* Referenciák / bizonyíték blokk — megnevezett, megvalósult rendszerek (P0-01).
    Karusszel: 3 kártya látszik asztali nézetben, nyílgombokkal + pöttyökkel lapozható,
    mobilon natív swipe (scroll-snap). Egységes 16:9 kártyakép, minden kártyán valós fotó,
-   a partner logó/címer/ikon a fotó jobb felső sarkában badge-ként (per-badge --bscale
-   skálázható). A "Biztonsági papírtermék" üzem a megrendelő kérésére NEM nevesíthető
-   (anonim fotó + pajzs ikon). Assetek: public/referenciak/. TODO: fotós esettanulmányok /referenciak. */
+   a partner logó/címer/ikon a fotó jobb felső sarkában badge-ként (per-badge --bscale).
+   Kártyatest: zöld CAPS kategória → cégnév+hely → elválasztó (azonos magasságban) →
+   6 soros rendszerleírás (line-clamp) → diszkrét kiemelt blokk (felirat nélkül).
+   A "Biztonsági papírtermék" üzem a megrendelő kérésére NEM nevesíthető (anonim fotó +
+   pajzs ikon). Assetek: public/referenciak/. TODO: fotós esettanulmányok /referenciak. */
 import Section from '../layout/Section.astro';
 import SectionHeading from '../brand/SectionHeading.astro';
 import Button from '../core/Button.astro';
@@ -13,74 +15,60 @@ import { COMPANY } from '../../lib/site-v2';
 
 const cases = [
   {
-    company: 'K és B Bioenergia Kft.',
-    tag: 'Komplett rendszer · Szombathely',
+    category: 'Komplett brikettáló rendszer',
+    org: 'K és B Bioenergia Kft., Szombathely',
     media: { type: 'photo', src: '/referenciak/kesb-640.webp', srcset: '/referenciak/kesb-640.webp 640w, /referenciak/kesb-1280.webp 1280w', alt: 'Zsugorfóliázott kész brikett a csomagoló görgőssorán' },
     badge: { type: 'logo', src: '/referenciak/logok/kesb.png', alt: 'K és B Bioenergia' },
-    rows: [
-      ['Rendszer', 'Komplett, ipari mechanikus brikettgyártó üzem — darálás, szárítás, brikettálás, fűrészelés és csomagolás egy gépsorban.'],
-      ['Kiemelt', 'CF Nielsen mechanikus brikettálás max. 1600 kg/h, automata faapríték-dobszárító rendszerrel — a melléktermék helyben válik kész, csomagolt brikettté.'],
-    ],
+    system: 'Komplett, nagyüzemi mechanikus brikettgyártó rendszer egy gépsorban: a melléktermék darálása, automata dobszárítása, brikettálása, majd a kész brikett fűrészelése és csomagolása — a beérkező anyagtól a csomagolt végtermékig, egy kézből.',
+    highlight: 'CF Nielsen mechanikus brikettálás max. 1600 kg/h, automata faapríték-dobszárítóval — a melléktermék helyben válik kész, csomagolt fűtőbrikettté.',
   },
   {
-    company: 'AWF Kft.',
-    tag: 'Ipari darálás · Sárvár',
+    category: 'Ipari darálás és tömörítés',
+    org: 'AWF Kft., Sárvár',
     media: { type: 'photo', src: '/referenciak/awf-640.webp', srcset: '/referenciak/awf-640.webp 640w, /referenciak/awf-1280.webp 1280w', alt: 'Négytengelyes daráló késtengelyei hidraulikus leszorítóval' },
     badge: { type: 'logo', src: '/referenciak/logok/awf.png', alt: 'AWF Kft.', scale: 0.9 },
-    rows: [
-      ['Rendszer', 'Merev, üvegszálas autókárpit-gyártási hulladék darálása és tömörítése. A könnyű, terjedelmes anyaghoz négytengelyes daráló, hidraulikus leszorítóval, egyedi magas tartószerkezeten; a kárpitdarabokat széles szállítószalag hordja fel, a darálékot emelő-ürítő berendezés juttatja a tömörítő konténerbe.'],
-      ['Kiemelt', 'A nagyméretű, merev hulladék korábban alig volt tömöríthető, ezért a konténeres elszállítás költséges volt. Gazdaságossági számítás után a darálásra váltottak — a szállítási gyakoriság és költség így körülbelül az ötödére csökkent.'],
-    ],
+    system: 'Merev, üvegszálas autókárpit-gyártási hulladék darálása és tömörítése. A könnyű, terjedelmes anyaghoz négytengelyes darálót terveztünk hidraulikus leszorítóval; a darálékot széles szállítószalag viszi a tömörítő konténerbe.',
+    highlight: 'A merev hulladék korábban alig volt tömöríthető. Darálás után a konténeres szállítás gyakorisága és költsége körülbelül az ötödére csökkent.',
   },
   {
-    company: 'Richter Gedeon Nyrt.',
-    tag: 'Ipari darálás · gyógyszeripar',
+    category: 'Ipari darálórendszer',
+    org: 'Richter Gedeon Nyrt., Budapest',
     media: { type: 'photo', src: '/referenciak/richter-640.webp', srcset: '/referenciak/richter-640.webp 640w, /referenciak/richter-1280.webp 1280w', alt: 'Daráló kihordószalaggal és porelszívással, szabályozott gyártókörnyezetben' },
     badge: { type: 'logo', src: '/referenciak/logok/richter.png', alt: 'Richter Gedeon', scale: 1.1 },
-    rows: [
-      ['Rendszer', 'Ipari darálórendszer szabályozott gyártókörnyezetbe: darálók kihordószalagokkal, big-bag töltéssel és porelszívó rendszerrel.'],
-      ['Kiemelt', 'ISVE négytengelyes (NT 60/80S) és egytengelyes (MS2260) daráló egy rendszerben — az eltérő anyagokhoz illesztett aprítással.'],
-    ],
+    system: 'Ipari darálórendszer szabályozott, gyógyszeripari gyártókörnyezetbe. A darálók kihordószalagokkal, big-bag töltéssel és integrált porelszívással működnek, így az anyag tisztán és üzembiztosan kezelhető.',
+    highlight: 'Négytengelyes aprító és egytengelyes daráló egy üzemben. Az eltérő karakterisztikájú papíranyagokhoz eltérő működési elvű daráló szükséges.',
   },
   {
-    company: 'Diósjenő Község Önkormányzata',
-    tag: 'Brikettáló kisüzem · 2021',
+    category: 'Komplett brikettáló kisüzem',
+    org: 'Diósjenő Község Önkormányzata',
     media: { type: 'photo', src: '/referenciak/diosjeno-640.webp', srcset: '/referenciak/diosjeno-640.webp 640w, /referenciak/diosjeno-1280.webp 1280w', alt: 'Ciklonos porleválasztó és csőrendszer a diósjenői brikettáló kisüzemben' },
     badge: { type: 'logo', src: '/referenciak/logok/diosjeno-cimer.png', alt: 'Diósjenő címere' },
-    rows: [
-      ['Rendszer', 'Brikettáló kisüzem faipari melléktermék feldolgozására: daráló, dobszárító, kalapácsos daráló, elszívás-porleválasztás, hidraulikus brikettálás (HB E80V), zsákos csomagolás.'],
-      ['Kiemelt', 'Régi épületbe terveztük, a felújítást végző építész és szakági (pl. elektromos) tervezőkkel és kivitelezőkkel párhuzamosan dolgozva — a faipari melléktermék helyben válik fűthető, csomagolt brikettté.'],
-    ],
+    system: 'Önellátó biomassza brikettáló kisüzem faipari mellékterméknek: daráló, dobszárító, kalapácsos daráló, ciklonos elszívás-porleválasztás, hidraulikus brikettálás, zsákos csomagolás. A gépsort régi épületbe terveztük, a felújító tervezőkkel együtt.',
+    highlight: 'A faipari melléktermék helyben válik fűthető, csomagolt brikettté — vásárolt tüzelő helyett a település saját alapanyagából.',
   },
   {
-    company: 'Faragó Kft.',
-    tag: 'Ipari darálás · vaskiválasztás',
-    media: { type: 'photo', src: '/referenciak/farago-640.webp', srcset: '/referenciak/farago-640.webp 640w, /referenciak/farago-1280.webp 1280w', alt: 'Nagyméretű négytengelyes daráló egyedi tartószerkezeten' },
+    category: 'IBC tartály darálás',
+    org: 'Faragó Kft., Kakucs',
+    media: { type: 'photo', src: '/referenciak/farago-640.webp', srcset: '/referenciak/farago-640.webp 640w, /referenciak/farago-1280.webp 1280w', alt: 'Fémketreces IBC tartály a négytengelyes daráló garatjában' },
     badge: { type: 'logo', src: '/referenciak/logok/farago.png', alt: 'Faragó Kft.' },
-    rows: [
-      ['Rendszer', 'Nagykapacitású négytengelyes darálórendszer olajjal és vegyszerrel szennyezett műanyag hulladékhoz: fémketreces IBC tartályok és folyadékmaradványokat tartalmazó kannák aprítása, vaskiválasztással és kihordószalaggal.'],
-      ['Kiemelt', 'A könnyű, terjedelmes anyaghoz egyedi tartószerkezetet és terhelésfüggő hidraulikus leszorító kart terveztünk; a darálékból mágneses keresztszalag választja le a vasat.'],
-    ],
+    system: 'Nagykapacitású négytengelyes darálórendszer olajjal-vegyszerrel szennyezett műanyaghoz: fémketreces IBC tartályok és folyadékmaradványos kannák aprítása, vaskiválasztással és kihordószalaggal — egyedi tartószerkezeten, hidraulikus leszorítóval.',
+    highlight: 'A vegyes műanyagdarálékból mágneses keresztszalag választja le a vasat, így tisztább, jobban hasznosítható frakció keletkezik.',
   },
   {
-    company: 'Biztonsági papírtermék gyártó üzem',
-    tag: 'Speciális telepítés · zárt anyaglánc',
+    category: 'Zárt anyaglánc, brikettálás',
+    org: 'Biztonsági papírtermék gyártó üzem',
     media: { type: 'photo', src: '/referenciak/dipa-640.webp', srcset: '/referenciak/dipa-640.webp 640w, /referenciak/dipa-1280.webp 1280w', alt: 'Szállítószalag a zárt anyagláncban, anonimizált üzemrészlet' },
     badge: { type: 'icon', icon: 'shield' },
-    rows: [
-      ['Rendszer', 'A gyártási szabási melléktermék és hulladék zárt láncú feldolgozása: szállítószalagos beadagolás, darálás, elszívás és leválasztás (ciklon, cellás adagoló, porszűrő állomás), hidraulikus brikettálás bővített silóval.'],
-      ['Kiemelt', 'Egy régi gyár zegzugos pincéjébe terveztük, ahová targonca sem fért be — a technológiát a nehezen megközelíthető, több helyiségre tagolt térhez illesztettük (hosszú csővezeték, megnövelt elszívókapacitás), biztonságos szemcseméret mellett.'],
-    ],
+    system: 'A gyártási szabási melléktermék és hulladék zárt láncú feldolgozása: szállítószalagos beadagolás, darálás, elszívás és leválasztás (ciklon, cellás adagoló, porszűrő), majd hidraulikus brikettálás bővített silóval — régi gyár pincéjében.',
+    highlight: 'Tagolt üzemi területhez terveztük a brikettáló rendszert. Kacskaringós csővezetékek, megnövelt elszívókapacitás és garantált szemcseméret.',
   },
   {
-    company: 'Food for Future (F4F)',
-    tag: 'Szárítás · Chile · nemzetközi projekt',
+    category: 'Szárító rovarfehérjéhez',
+    org: 'Food for Future (F4F), Chile',
     media: { type: 'photo', src: '/referenciak/f4f-640.webp', srcset: '/referenciak/f4f-640.webp 640w, /referenciak/f4f-1280.webp 1280w', alt: 'Átalakított biomassza-dobszárító, szállításra előkészítve' },
     badge: { type: 'logo', src: '/referenciak/logok/f4f.png', alt: 'Food for Future (F4F)' },
-    rows: [
-      ['Rendszer', 'Biomassza-dobszárító átalakítása rovarfehérje-feldolgozáshoz: gázfűtésre váltás a biomasszakazán helyett, hozzá illő vezérléssel és biztonsági elemekkel, speciális nyomáscsökkentő ürítőkamrával, kiadagolócsigával.'],
-      ['Kiemelt', 'A teljes projektet Magyarországról, távolról vittük végig — személyes találkozó nélkül, videós mérnöki konzultációval; tengeri konténeres szállítás teljes rakományrögzítéssel és dokumentációval, távoli beüzemelés-támogatással.'],
-    ],
+    system: 'Biomassza-dobszárító átalakítása rovarfehérje-feldolgozáshoz: a biomasszakazán helyett gázfűtésre váltás a megfelelő vezérléssel és biztonsági elemekkel, plusz nyomáscsökkentő ürítőkamra kiadagolócsigával. A projektet távolról terveztük és kísértük.',
+    highlight: 'Egyetlen személyes találkozó nélkül, videós konzultációkkal lebonyolított projekt tengeri szállítással és távoli beüzemelés-támogatással. Hiba nélkül.',
   },
 ];
 
@@ -112,14 +100,11 @@ const partners = COMPANY.corePartners.map((p) => p.name);
           </div>
           <div class="body">
             <div class="chead">
-              <h3>{c.company}</h3>
-              <p class="tag">{c.tag}</p>
+              <p class="cat">{c.category}</p>
+              <p class="org">{c.org}</p>
             </div>
-            <dl>
-              {c.rows.map(([k, v]) => (
-                <div class="row"><dt>{k}</dt><dd>{v}</dd></div>
-              ))}
-            </dl>
+            <p class="system">{c.system}</p>
+            <div class="highlight"><p>{c.highlight}</p></div>
           </div>
         </article>
       ))}
@@ -179,11 +164,7 @@ const partners = COMPANY.corePartners.map((p) => p.name);
   .media.logo .logo-img { max-height: 100%; max-width: 78%; object-fit: contain; }
 
   /* Partner badge a fotó jobb felső sarkában */
-  .badge {
-    position: absolute; top: 10px; right: 10px; z-index: 1;
-    display: grid; place-items: center;
-    box-shadow: var(--shadow-sm);
-  }
+  .badge { position: absolute; top: 10px; right: 10px; z-index: 1; display: grid; place-items: center; box-shadow: var(--shadow-sm); }
   .badge-logo {
     height: 40px; padding: 0 12px;
     background: rgba(255, 255, 255, 0.95);
@@ -199,14 +180,36 @@ const partners = COMPANY.corePartners.map((p) => p.name);
     border: 2px solid rgba(255, 255, 255, 0.85);
   }
 
-  .body { padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-4); }
-  .chead { padding-bottom: var(--space-4); border-bottom: 1px solid var(--color-border); }
-  .ref h3 { margin: 0; font-size: var(--fs-h4); font-weight: var(--fw-bold); color: var(--color-text); line-height: var(--lh-snug); }
-  .tag { margin: var(--space-2) 0 0; font-size: var(--fs-xs); font-weight: var(--fw-bold); letter-spacing: var(--ls-overline); text-transform: uppercase; color: var(--color-accent-text); }
-  dl { margin: 0; display: flex; flex-direction: column; gap: var(--space-3); }
-  .row { display: flex; flex-direction: column; gap: 2px; }
-  dt { font-size: var(--fs-xs); font-weight: var(--fw-bold); letter-spacing: var(--ls-overline); text-transform: uppercase; color: var(--color-text-muted); }
-  dd { margin: 0; font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: var(--lh-snug); }
+  .body { padding: var(--space-6); display: flex; flex-direction: column; flex: 1; }
+
+  /* Fejléc: zöld CAPS kategória + cégnév; az elválasztó minden kártyán egy magasságban */
+  .chead { min-height: 3.4em; padding-bottom: var(--space-4); margin-bottom: var(--space-4); border-bottom: 1px solid var(--color-border); }
+  .cat { margin: 0; font-size: var(--fs-sm); font-weight: var(--fw-bold); letter-spacing: var(--ls-overline); text-transform: uppercase; color: var(--color-accent-text); line-height: var(--lh-snug); }
+  .org { margin: var(--space-2) 0 0; font-size: var(--fs-sm); font-weight: var(--fw-semibold, 600); color: var(--color-text); line-height: var(--lh-snug); }
+
+  /* Rendszerleírás: egységes ~6 sor */
+  .system {
+    margin: 0;
+    font-size: var(--fs-sm);
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+    line-clamp: 6;
+    overflow: hidden;
+    min-height: calc(6 * 1.5 * var(--fs-sm));
+  }
+
+  /* Diszkrét kiemelt blokk (felirat nélkül), a kártya aljához igazítva */
+  .highlight {
+    margin-top: auto;
+    padding: var(--space-4) var(--space-4);
+    background: color-mix(in srgb, var(--ecoteq-green) 8%, transparent);
+    border-left: 3px solid var(--ecoteq-green);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  }
+  .highlight p { margin: 0; font-size: var(--fs-sm); line-height: var(--lh-snug); color: var(--color-text); }
 
   /* Nyílgombok — asztali nézet */
   .nav {
