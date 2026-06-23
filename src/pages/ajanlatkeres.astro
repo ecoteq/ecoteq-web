@@ -11,8 +11,15 @@ export const prerender = false;
 
 const params = Astro.url.searchParams;
 const techSlug = params.get('tech') ?? undefined;
-const source = params.get('source') ?? 'ajanlatkeres';
+const sourceParam = params.get('source') ?? undefined;
+const need = params.get('need') ?? undefined;
+const source = sourceParam ?? 'ajanlatkeres';
 const tech = techSlug ? TECHNOLOGIES.find((t) => t.slug === techSlug) : undefined;
+const ksParams = new URLSearchParams();
+if (techSlug) ksParams.set('tech', techSlug);
+if (sourceParam) ksParams.set('source', sourceParam);
+if (need) ksParams.set('need', need);
+const koszonjukHref = ksParams.toString() ? `/koszonjuk/?${ksParams.toString()}` : '/koszonjuk/';
 
 const steps = [
   {
@@ -90,7 +97,7 @@ const checklist = [
 
       <div class="formwrap">
         <QuoteForm
-          redirect="/koszonjuk/"
+          redirect={koszonjukHref}
           source={source}
           tech={tech?.slug}
           techLabel={tech?.name}

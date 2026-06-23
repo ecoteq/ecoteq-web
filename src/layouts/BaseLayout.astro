@@ -154,6 +154,23 @@ const ogImage = new URL('/og.jpg', Astro.site ?? 'https://ecoteq.hu').toString()
       </>
     )}
 
+    {GA_ID && (
+      <script is:inline>
+        document.addEventListener('click', function (e) {
+          var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+          if (!a || typeof window.gtag !== 'function') return;
+          var href = a.getAttribute('href') || '';
+          if (href.indexOf('/ajanlatkeres') === -1 && href.indexOf('#ajanlatkeres') === -1) return;
+          var loc = a.getAttribute('data-cta') || '';
+          var tech = '';
+          try { var u = new URL(href, location.origin); if (!loc) loc = u.searchParams.get('source') || ''; tech = u.searchParams.get('tech') || ''; } catch (err) {}
+          var p = { cta_location: (loc || 'egyeb').slice(0, 100), cta_text: (a.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 100), link_url: href.slice(0, 100), transport_type: 'beacon' };
+          if (tech) p.technologia = tech.slice(0, 100);
+          gtag('event', 'cta_click', p);
+        }, true);
+      </script>
+    )}
+
     <style is:global>
       /* App-level radius reduction (DS tokens stay untouched): squarer cards + CTAs globally. */
       :root { --radius-lg: 8px; }

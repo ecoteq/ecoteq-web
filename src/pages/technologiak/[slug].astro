@@ -92,7 +92,7 @@ function factorIcon(title: string): string {
       </div>
       <div class="hero-foot">
         <div class="ctas">
-          <Button href={QUOTE.href}>{QUOTE.label}</Button>
+          <Button href={QUOTE.href} data-cta="kapuoldal">{QUOTE.label}</Button>
           {t.hero.secondaryCta && <Button variant="outline-light" href={t.hero.secondaryCta.href}>{t.hero.secondaryCta.label}</Button>}
         </div>
         {t.hero.microcopy && <p class="hero-micro">{t.hero.microcopy}</p>}
@@ -248,7 +248,7 @@ function factorIcon(title: string): string {
       <h2 class="closing-h2">{t.finalCta.h2}</h2>
       <div class="closing-left">
         {t.finalCta.body.map((p) => <p>{p}</p>)}
-        <Button class="closing-cta" href={QUOTE.href}>{t.finalCta.cta ?? QUOTE.label}</Button>
+        <Button class="closing-cta" href={QUOTE.href} data-cta="zaro_cta">{t.finalCta.cta ?? QUOTE.label}</Button>
         {t.finalCta.microcopy && <p class="micro">{t.finalCta.microcopy}</p>}
       </div>
       {t.finalCta.checklist && (
