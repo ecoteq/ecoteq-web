@@ -1,3 +1,5 @@
 # Site is in development — no indexing until launch (see src/config.ts ALLOW_INDEXING).
 User-agent: *
 Disallow: /
+
+Sitemap: https://ecoteq.hu/sitemap-index.xml
