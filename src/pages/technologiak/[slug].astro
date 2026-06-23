@@ -9,6 +9,7 @@ import HeroStats from '../../components/site/HeroStats.astro';
 import { gatewaySlugs, getGateway } from '../../lib/technologies-v2';
 import { quoteHref } from '../../lib/site-v2';
 import Schema from '../../components/seo/Schema.astro';
+import Breadcrumb from '../../components/site/Breadcrumb.astro';
 
 export function getStaticPaths() {
   return gatewaySlugs().map((slug) => ({ params: { slug } }));
@@ -64,7 +65,6 @@ function factorIcon(title: string): string {
 
 <SiteLayout title={t.metaTitle} description={t.metaDescription} headerCta={{ label: 'Leírom az anyagot és a célt', href: quoteHref(slug, 'header') }}>
   <Schema
-    breadcrumbs={[{ name: 'Főoldal', href: '/' }, { name: 'Technológiák', href: '/#technologiak' }, { name: t.name }]}
     faq={t.faq.items}
     howto={{ name: t.process.h2, steps: t.process.steps }}
   />
@@ -100,11 +100,10 @@ function factorIcon(title: string): string {
 
   <HeroStats stats={t.heroStats} />
 
+  <Breadcrumb items={[{ label: 'Főoldal', href: '/' }, { label: 'Technológiák', href: '/#technologiak' }, { label: t.name }]} />
+
   <!-- 2. PROBLÉMA -->
   <Section surface="white">
-    <nav class="crumb" aria-label="Útvonal">
-      <a href="/">Főoldal</a><span aria-hidden="true">|</span><a href="/#technologiak">Technológiák</a><span aria-hidden="true">|</span><span class="here">{t.name}</span>
-    </nav>
     <SectionHeading overline="Üzemi probléma" title={t.problems.h2} lead={t.problems.intro} />
     <div class="grid cards2">
       {t.problems.cards.map((c) => (
@@ -381,11 +380,6 @@ function factorIcon(title: string): string {
   .ctas { display: flex; flex-wrap: wrap; gap: var(--space-4); }
   .hero-micro { margin: 0; max-width: 60ch; font-size: var(--fs-sm); color: rgba(255, 255, 255, 0.66); }
 
-  /* Breadcrumb (light surface) */
-  .crumb { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: var(--space-5); font-size: var(--fs-sm); color: var(--color-text-muted); }
-  .crumb a { color: var(--color-text-secondary); text-decoration: none; }
-  .crumb a:hover { color: var(--color-accent); }
-  .crumb .here { color: var(--ecoteq-navy); }
 
   /* Shared grids */
   .grid { margin-top: var(--space-7); display: grid; gap: var(--space-4); }

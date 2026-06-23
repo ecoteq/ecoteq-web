@@ -3,7 +3,7 @@
     (same fade in light + dark, driven by --color-surface-dark) and a title block.
     Optional breadcrumb + a default slot for CTAs below the lead. */
 import Overline from '../brand/Overline.astro';
-import Schema from '../seo/Schema.astro';
+import Breadcrumb from './Breadcrumb.astro';
 
 interface CrumbItem { label: string; href?: string; }
 interface Props {
@@ -31,22 +31,7 @@ const { title, lead, eyebrow, image, imageAlt = '', crumb } = Astro.props;
   </div>
 </section>
 
-{crumb && crumb.length > 0 && (
-  <div class="crumb-bar">
-    <nav class="crumb" aria-label="Útvonal">
-      {crumb.map((c, i) => (
-        <>
-          {c.href ? <a href={c.href}>{c.label}</a> : <span class="here">{c.label}</span>}
-          {i < crumb.length - 1 && <span aria-hidden="true">|</span>}
-        </>
-      ))}
-    </nav>
-  </div>
-)}
-
-{crumb && crumb.length > 0 && (
-  <Schema breadcrumbs={crumb.map((c) => ({ name: c.label, href: c.href }))} />
-)}
+{crumb && crumb.length > 0 && <Breadcrumb items={crumb} />}
 
 <style>
   .phero {
@@ -85,24 +70,6 @@ const { title, lead, eyebrow, image, imageAlt = '', crumb } = Astro.props;
     margin-inline: auto;
     padding: calc(var(--header-h) + var(--space-7)) clamp(16px, 4vw, 40px) var(--space-7);
   }
-
-  /* Breadcrumb now lives in the first content band below the hero (per the
-     site breadcrumb rule), on a light surface. */
-  .crumb-bar { background: var(--color-bg); }
-  .crumb-bar .crumb {
-    max-width: var(--container-max);
-    margin-inline: auto;
-    padding: clamp(var(--space-6), 5vw, var(--space-8)) clamp(16px, 4vw, 40px) 0;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px;
-    font-size: var(--fs-sm);
-    color: var(--color-text-muted);
-  }
-  .crumb-bar .crumb a { color: var(--color-text-secondary); text-decoration: none; }
-  .crumb-bar .crumb a:hover { color: var(--color-accent); }
-  .crumb-bar .crumb .here { color: var(--color-text); }
 
   .eyebrow { color: var(--ecoteq-green); margin-bottom: var(--space-4); }
 
