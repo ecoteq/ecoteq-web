@@ -91,16 +91,21 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     const { Resend } = await import('resend');
     const resend = new Resend(apiKey);
 
-    await resend.emails.send({
+    // A Resend SDK NEM dob API-hibára — { data, error }-t ad vissza, ezt ellenőrizni kell.
+    const { error: notifyErr } = await resend.emails.send({
       from,
       to,
       replyTo: email || undefined,
       subject: oneLine(`Új előminősítés: ${nev}${anyag ? ` (${anyag})` : ''}`),
       text: `Új projekt-előminősítés érkezett az ecoteq.hu űrlapról.\n\n${summary}`,
     });
+    if (notifyErr) {
+      console.error('[contact] Resend notify error:', JSON.stringify(notifyErr));
+      return json({ ok: false, error: 'send_failed' }, 502);
+    }
 
     if (email) {
-      await resend.emails.send({
+      const { error: confErr } = await resend.emails.send({
         from,
         to: email,
         subject: 'Köszönjük a megkeresést — ECOTEQ',
@@ -111,10 +116,12 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
           `A megadott adatok:\n${summary}\n\n` +
           `Üdvözlettel,\nECOTEQ`,
       });
+      if (confErr) console.error('[contact] Resend confirmation error:', JSON.stringify(confErr));
     }
 
     return json({ ok: true });
-  } catch {
+  } catch (e) {
+    console.error('[contact] Resend threw:', e);
     return json({ ok: false, error: 'send_failed' }, 502);
   }
 };
