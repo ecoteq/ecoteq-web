@@ -40,9 +40,14 @@ Lumago, Cormall, Pettini, Strojplast, Italsime. Megj.: a `CLAUDE.md` elavult —
 
 ---
 
-## ⚠️ EGYETLEN NYITOTT BLOKKOLÓ: a Vercel deploy
+## ✅ Vercel deploy — MEGOLDVA (2026-06-23)
 
-A repo **nincs Vercel-projekthez kötve**, és a Vercel CLI **nincs bejelentkezve** ezen a gépen (a CLI telepítve van: 51.7.0). A kód kész és felpusholva, csak az élesítés van hátra. Az irodai gépen két út:
+A repo **Vercel GitHub-integrációval él**: minden `main`-push **automatikusan deployol**.
+Az indexelés a deploy után is KIKAPCSOLVA marad (`ALLOW_INDEXING=false` + robots disallow),
+amíg kifejezetten nem kéred a launchot. *(Lentebb a régi, kézi élesítési útmutató — már nem kell,
+csak referenciaként marad.)*
+
+<details><summary>Korábbi kézi deploy-útmutató (elavult)</summary>
 
 **A) CLI (gyors):**
 ```bash
@@ -55,6 +60,8 @@ vercel --prod --yes  # éles deploy
 **B) GitHub-integráció (tartós, mint a többi projektnél):** importáld a `ecoteq/ecoteq-web` repót a **vercel.com/new** alatt. Onnantól minden `main`-push automatikusan deployol.
 
 A build parancs `npm run build` (előbb lefuttatja a `sync:ds`-t). A DESIGN SYSTEM forrásmappa **be van commitolva**, így a Vercel build önállóan lefut. Az indexelés a deploy után is KIKAPCSOLVA marad, amíg kifejezetten nem kéred a launchot (akkor: `ALLOW_INDEXING=true` + `public/robots.txt` engedés).
+
+</details>
 
 ---
 
