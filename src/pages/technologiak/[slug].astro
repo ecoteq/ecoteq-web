@@ -326,7 +326,7 @@ function factorIcon(title: string): string {
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduce) {
       tl.style.setProperty('--t-fill', '100%');
-      dots.forEach((d) => d.classList.add('is-active'));
+      dots.forEach((d) => { d.classList.add('is-active'); d.closest('.t-item')?.classList.add('is-active'); });
     } else {
       let raf = null;
       const update = () => {
@@ -338,7 +338,9 @@ function factorIcon(title: string): string {
         for (const d of dots) {
           const dr = d.getBoundingClientRect();
           const center = dr.top + dr.height / 2 - r.top;
-          d.classList.toggle('is-active', center <= prog);
+          const on = center <= prog;
+          d.classList.toggle('is-active', on);
+          d.closest('.t-item')?.classList.toggle('is-active', on);
         }
       };
       const onScroll = () => { if (!raf) raf = requestAnimationFrame(update); };
@@ -440,7 +442,12 @@ function factorIcon(title: string): string {
     .t-item[data-side="left"] .t-ghost { grid-column: 2; justify-self: start; padding-left: var(--space-7); }
     .t-ghost { margin: 0; align-self: center; }
     .t-dot { left: 50%; top: 50%; transform: translate(-50%, -50%); width: 18px; height: 18px; }
-    .t-ghost { display: block; font-family: var(--font-display); font-weight: var(--fw-extrabold); font-size: clamp(3rem, 5vw, 5rem); line-height: 1; letter-spacing: var(--ls-display); color: var(--color-border); }
+    .t-ghost { display: block; font-family: var(--font-display); font-weight: var(--fw-extrabold); font-size: clamp(3rem, 5vw, 5rem); line-height: 1; letter-spacing: var(--ls-display); color: var(--color-border); transition: color 240ms var(--ease-standard); }
+    .t-item.is-active .t-ghost { color: var(--color-accent); }
+    /* Bal oldali blokkok tükrözve: szöveg jobbra, sorszám balra */
+    .t-item[data-side="left"] .t-card { text-align: right; }
+    .t-item[data-side="left"] .t-num { left: var(--space-5); right: auto; }
+    .t-item[data-side="left"] .t-card h3 { padding-left: 2.5rem; padding-right: 0; }
   }
 
   /* Decision factors */
@@ -525,7 +532,7 @@ function factorIcon(title: string): string {
   @media (prefers-reduced-motion: reduce) {
     .rel, .rel h3 :global(.icon), summary :global(.icon) { transition: none; }
     .rel:hover, .rel:hover h3 :global(.icon) { transform: none; }
-    .t-card, .t-dot { transition: none; }
+    .t-card, .t-dot, .t-ghost { transition: none; }
     .t-card:hover { transform: none; }
   }
 </style>
