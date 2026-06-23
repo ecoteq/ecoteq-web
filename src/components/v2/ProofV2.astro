@@ -60,7 +60,7 @@ const cases = [
     media: { type: 'photo', src: '/referenciak/dipa-640.webp', srcset: '/referenciak/dipa-640.webp 640w, /referenciak/dipa-1280.webp 1280w', alt: 'Szállítószalag a zárt anyagláncban, anonimizált üzemrészlet' },
     badge: { type: 'icon', icon: 'shield' },
     system: 'A gyártási szabási melléktermék és hulladék zárt láncú feldolgozása: szállítószalagos beadagolás, darálás, elszívás és leválasztás (ciklon, cellás adagoló, porszűrő), majd hidraulikus brikettálás bővített silóval — régi gyár pincéjében.',
-    highlight: 'Tagolt üzemi területhez terveztük a brikettáló rendszert. Kacskaringós csővezetékek, megnövelt elszívókapacitás és garantált szemcseméret.',
+    highlight: 'Megerősített biztonsági papír darálás, több helyiségre tagolt üzemi terület, kacskaringós csővezeték és zárt rendszerű brikettálás.',
   },
   {
     category: 'Szárító rovarfehérjéhez',
@@ -103,6 +103,7 @@ const partners = COMPANY.corePartners.map((p) => p.name);
               <p class="cat">{c.category}</p>
               <p class="org">{c.org}</p>
             </div>
+            <p class="slabel">Rendszer</p>
             <p class="system">{c.system}</p>
             <div class="highlight"><p>{c.highlight}</p></div>
           </div>
@@ -187,9 +188,12 @@ const partners = COMPANY.corePartners.map((p) => p.name);
   .cat { margin: 0; font-size: var(--fs-sm); font-weight: var(--fw-bold); letter-spacing: var(--ls-overline); text-transform: uppercase; color: var(--color-accent-text); line-height: var(--lh-snug); }
   .org { margin: var(--space-2) 0 0; font-size: var(--fs-sm); font-weight: var(--fw-semibold, 600); color: var(--color-text); line-height: var(--lh-snug); }
 
+  /* "RENDSZER" felirat (szürke CAPS) a leírás fölött */
+  .slabel { margin: 0 0 var(--space-2); font-size: var(--fs-xs); font-weight: var(--fw-bold); letter-spacing: var(--ls-overline); text-transform: uppercase; color: var(--color-text-muted); }
+
   /* Rendszerleírás: egységes ~6 sor */
   .system {
-    margin: 0;
+    margin: 0 0 var(--space-4);
     font-size: var(--fs-sm);
     line-height: 1.5;
     color: var(--color-text-secondary);
