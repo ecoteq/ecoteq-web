@@ -17,7 +17,10 @@ import { TECHNOLOGIES } from '../../lib/site';
       <a class="tcard" href={`/technologiak/${t.slug}/`}>
         <div class="media">
           {t.image ? (
-            <img src={t.image} alt={t.name} loading="lazy" decoding="async" />
+            <picture>
+              <source type="image/webp" srcset={`${t.image.replace(/\.jpe?g$/i, '')}-640.webp 640w, ${t.image.replace(/\.jpe?g$/i, '')}-1280.webp 1280w`} sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 90vw" />
+              <img src={t.image} alt={t.name} loading="lazy" decoding="async" />
+            </picture>
           ) : (
             <div class="placeholder" aria-hidden="true"></div>
           )}
@@ -52,6 +55,7 @@ import { TECHNOLOGIES } from '../../lib/site';
   .tcard:hover { box-shadow: var(--shadow-md); border-color: var(--color-accent); transform: translateY(-3px); }
 
   .media { position: relative; aspect-ratio: 4 / 3; overflow: hidden; }
+  .media picture { display: contents; }
   .media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-slow) var(--ease-out); }
   .placeholder { position: absolute; inset: 0; background: repeating-linear-gradient(115deg, #2a3a4a 0 22px, #243341 22px 44px); }
   .tcard:hover .media img { transform: scale(1.05); }
