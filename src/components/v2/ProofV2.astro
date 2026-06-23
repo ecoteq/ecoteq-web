@@ -1,38 +1,53 @@
 ---
-/* Referenciák / bizonyíték blokk.
-   Changes: cím enyhítve (a tartalom jelenleg tipikus feladat-sablon, nem megnevezett
-   megvalósult referencia → ne ígérjen többet); a partnerblokk kap egy függetlenség-
-   mondatot (Pillér 1). [VALIDÁLANDÓ]: 3–5 valós, megnevezett referencia (fotó + idézet
-   + 1 mérhető üzemi tény); a gyártói partnerek pontos köre (a stratégia RP Engineeringet
-   is említ). A "Megvalósított ipari rendszerek" cím csak valós referenciákkal állítható vissza. */
+/* Referenciák / bizonyíték blokk — megnevezett, megvalósult rendszerek (P0-01).
+   5 valós referencia, mindegyikhez 1 mérhető üzemi tény vagy jellegzetes mérnöki
+   kihívás. A "Biztonsági papír" üzem a megrendelő kérésére NEM nevesíthető (anonim
+   leíró megnevezés). TODO: ezekre fotós kiemelt esettanulmány készül a /referenciak-on
+   (van hozzájuk kép + story) — akkor a kártyák a case study oldalra linkelnek. */
 import Section from '../layout/Section.astro';
 import SectionHeading from '../brand/SectionHeading.astro';
 import Button from '../core/Button.astro';
 import { COMPANY } from '../../lib/site-v2';
 
-const refs = [
+const cases = [
   {
-    title: 'Faipari mellékanyag kezelése',
+    company: 'K és B Bioenergia Kft.',
+    tag: 'Komplett rendszer · Szombathely',
     rows: [
-      ['Anyag', 'forgács, por, apríték'],
-      ['Technológia', 'darálás, elszívás, brikettálás'],
-      ['Eredmény', 'rendezettebb anyagkezelés, jobb tárolhatóság'],
+      ['Rendszer', 'Komplett, ipari mechanikus brikettgyártó üzem — darálás, szárítás, brikettálás, fűrészelés és csomagolás egy gépsorban.'],
+      ['Kiemelt', 'CF Nielsen mechanikus brikettálás max. 1600 kg/h, automata faapríték-dobszárító rendszerrel — a melléktermék helyben válik kész, csomagolt brikettté.'],
     ],
   },
   {
-    title: 'Biomassza előkészítése',
+    company: 'Richter Gedeon Nyrt.',
+    tag: 'Ipari darálás · gyógyszeripar',
     rows: [
-      ['Anyag', 'apríték, fűrészpor, biomassza'],
-      ['Technológia', 'szárítás, darálás, brikettálás vagy pelletálás'],
-      ['Eredmény', 'kezelhetőbb, jobban tervezhető alapanyag'],
+      ['Rendszer', 'Ipari darálórendszer szabályozott gyártókörnyezetbe: darálók kihordószalagokkal, big-bag töltéssel és porelszívó rendszerrel.'],
+      ['Kiemelt', 'ISVE négytengelyes (NT 60/80S) és egytengelyes (MS2260) daráló egy rendszerben — az eltérő anyagokhoz illesztett aprítással.'],
     ],
   },
   {
-    title: 'Ipari hulladék térfogatcsökkentése',
+    company: 'Diósjenő Község Önkormányzata',
+    tag: 'Brikettáló kisüzem · 2021',
     rows: [
-      ['Anyag', 'raklap, csomagolóanyag, vegyes ipari hulladék'],
-      ['Technológia', 'ipari darálás, szeparálás, anyagmozgatás'],
-      ['Eredmény', 'kisebb térfogat, jobb üzemi rend'],
+      ['Rendszer', 'Brikettáló kisüzem faipari melléktermék feldolgozására: daráló, dobszárító, kalapácsos daráló, elszívás-porleválasztás, hidraulikus brikettálás (HB E80V), zsákos csomagolás.'],
+      ['Kiemelt', 'Régi épületbe terveztük, a felújítást végző építész és szakági (pl. elektromos) tervezőkkel és kivitelezőkkel párhuzamosan dolgozva — a faipari melléktermék helyben válik fűthető, csomagolt brikettté.'],
+    ],
+  },
+  {
+    company: 'Biztonsági papír (pénz- és okmánypapír) gyártó üzem',
+    tag: 'Speciális telepítés · zárt anyaglánc',
+    rows: [
+      ['Rendszer', 'A gyártási szabási melléktermék és hulladék zárt láncú feldolgozása: szállítószalagos beadagolás, darálás, elszívás és leválasztás (ciklon, cellás adagoló, porszűrő állomás), hidraulikus brikettálás bővített silóval.'],
+      ['Kiemelt', 'Egy régi gyár zegzugos pincéjébe terveztük, ahová targonca sem fért be — a technológiát a nehezen megközelíthető, több helyiségre tagolt térhez illesztettük (hosszú csővezeték, megnövelt elszívókapacitás), biztonságos szemcseméret mellett.'],
+    ],
+  },
+  {
+    company: 'Food for Future (F4F)',
+    tag: 'Szárítás · Chile · nemzetközi projekt',
+    rows: [
+      ['Rendszer', 'Biomassza-dobszárító átalakítása rovarfehérje-feldolgozáshoz: gázfűtésre váltás a biomasszakazán helyett, hozzá illő vezérléssel és biztonsági elemekkel, speciális nyomáscsökkentő ürítőkamrával, kiadagolócsigával.'],
+      ['Kiemelt', 'A teljes projektet Magyarországról, távolról vittük végig — személyes találkozó nélkül, videós mérnöki konzultációval; tengeri konténeres szállítás teljes rakományrögzítéssel és dokumentációval, távoli beüzemelés-támogatással.'],
     ],
   },
 ];
@@ -42,17 +57,20 @@ const partners = COMPANY.corePartners.map((p) => p.name);
 
 <Section id="referenciak" surface="subtle">
   <SectionHeading
-    overline="Tipikus feladatok"
-    title="Tipikus üzemi feladatok, és a hozzájuk illő technológiai irány"
-    lead="Az ipari technológiai döntésnél a bizalom nem szlogeneken múlik, hanem azon, hogy a partner ért-e hasonló anyagokhoz és üzemekhez. Néhány visszatérő feladat, és az, milyen irányba szoktuk vinni."
+    overline="Megvalósult rendszerek"
+    title="Megvalósult rendszerek — kisüzemtől a nemzetközi projektig"
+    lead="A bizalom nem szlogeneken múlik, hanem azon, hogy a partner ért-e a hasonló anyagokhoz és üzemekhez. Néhány megvalósult rendszerünk — az önkormányzati kisüzemtől a tengerentúli mérnöki projektig."
   />
 
   <div class="refs">
-    {refs.map((r) => (
+    {cases.map((c) => (
       <article class="ref">
-        <h3>{r.title}</h3>
+        <div class="chead">
+          <h3>{c.company}</h3>
+          <p class="tag">{c.tag}</p>
+        </div>
         <dl>
-          {r.rows.map(([k, v]) => (
+          {c.rows.map(([k, v]) => (
             <div class="row"><dt>{k}</dt><dd>{v}</dd></div>
           ))}
         </dl>
@@ -76,10 +94,12 @@ const partners = COMPANY.corePartners.map((p) => p.name);
   @media (min-width: 760px) { .refs { grid-template-columns: repeat(3, 1fr); } }
 
   .ref { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); padding: var(--space-6); }
-  .ref h3 { margin: 0 0 var(--space-4); padding-bottom: var(--space-4); border-bottom: 1px solid var(--color-border); font-size: var(--fs-h4); font-weight: var(--fw-bold); color: var(--color-text); }
+  .chead { margin: 0 0 var(--space-4); padding-bottom: var(--space-4); border-bottom: 1px solid var(--color-border); }
+  .ref h3 { margin: 0; font-size: var(--fs-h4); font-weight: var(--fw-bold); color: var(--color-text); line-height: var(--lh-snug); }
+  .tag { margin: var(--space-2) 0 0; font-size: var(--fs-xs); font-weight: var(--fw-bold); letter-spacing: var(--ls-overline); text-transform: uppercase; color: var(--color-accent-text); }
   dl { margin: 0; display: flex; flex-direction: column; gap: var(--space-3); }
   .row { display: flex; flex-direction: column; gap: 2px; }
-  dt { font-size: var(--fs-xs); font-weight: var(--fw-bold); letter-spacing: var(--ls-overline); text-transform: uppercase; color: var(--color-accent-text); }
+  dt { font-size: var(--fs-xs); font-weight: var(--fw-bold); letter-spacing: var(--ls-overline); text-transform: uppercase; color: var(--color-text-muted); }
   dd { margin: 0; font-size: var(--fs-sm); color: var(--color-text-secondary); line-height: var(--lh-snug); }
 
   .partners { margin-top: var(--space-8); padding-top: var(--space-6); border-top: 1px solid var(--color-border); }

@@ -23,6 +23,8 @@ Thumbs.db
 .shots/
 hero-candidates/
 
-# Bizalmas referencia-forrás PDF-ek (ügyfél-PII-t tartalmaznak — ne kerüljön gitbe).
+# Bizalmas referencia-forrás PDF-ek + nyers ügyfél-fotók/videók (PII — ne kerüljön gitbe).
 # A PII-mentes kivonat: project docs/referenciák/referenciafal_adatok_DRAFT.md + src/lib/references.ts
-project docs/referenciák/*.pdf
+# A weboldalra a feldolgozott (vágott, anonimizált, webp) változatok kerülnek a public/ alá.
+project docs/referenciák/*
+!project docs/referenciák/*.md

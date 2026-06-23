@@ -125,7 +125,7 @@ export const references: Reference[] = [
     city: 'Szombathely',
     cats: ['brikettalas', 'szaritas'],
     machines:
-      'CF Nielsen BPU 3200 mechanikus brikettáló (600 kg/h), BS350 brikettfűrész és csomagolósor, BPU 65010HD (max. 2000 kg/h), faapríték dobszárító (1 t/h) a brikettáló gépsorhoz',
+      'Nagyüzemi CF Nielsen BPU 3200 és BPU 6510HD mechanikus brikettáló gépsor, BS350 brikettfűrésszel és csomagolósorral, automata dobszárító rendszer faapríték-hőgenerátorral',
   },
   {
     company: 'Bay Zoltán Közalapítvány',
