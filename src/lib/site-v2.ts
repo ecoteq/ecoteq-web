@@ -14,6 +14,23 @@ export {
 } from './site';
 export type { NavItem, Solution, Technology, FormHints, Spoke } from './site';
 
+/** Egyetlen forrás a cégadatra (P0-05). Alapítás: 2008. Teljes gyártói kör 11
+ *  (ezt a "10+" címke kommunikálja); a site-on csak a 6 magpartnert nevezzük meg,
+ *  mert ezekhez van validált szakterület. A maradék 4 (Lumago, Cormall, Pettini,
+ *  Italsime) a "10+"-ban benne van, de szakterületük még validálandó. */
+export const COMPANY = {
+  foundingYear: 2008,
+  partnerCountLabel: '10+',
+  corePartners: [
+    { name: 'ISVE',           focus: 'ipari darálás, aprítás és vákuumtechnológia' },
+    { name: 'CF Nielsen',     focus: 'mechanikus brikettálás' },
+    { name: 'Prodeco',        focus: 'hidraulikus brikettálás' },
+    { name: 'Nova Pellet',    focus: 'pelletálás' },
+    { name: 'RP Engineering', focus: 'szárítás, silók és anyagmozgatás' },
+    { name: 'AL-KO',          focus: 'elszívás és porleválasztás' },
+  ],
+} as const;
+
 /** Reconciled CTA system (replaces "Technológiai irányt/javaslatot kérek"). */
 export const CTA = {
   primary: { label: 'Leírom, mit kell megoldani', href: '#ajanlatkeres' },

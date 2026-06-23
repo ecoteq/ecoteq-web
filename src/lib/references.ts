@@ -194,6 +194,13 @@ export const references: Reference[] = [
 
   // — Ipari darálás / aprítás —
   {
+    company: 'Coloplast Hungary Kft.',
+    marquee: true,
+    cats: ['ipari-daralas'],
+    machines:
+      '3 db négytengelyes daráló gépsor konténer emelő-ürítő berendezéssel, gyártási hulladék előkészítéséhez',
+  },
+  {
     company: 'Richter Gedeon Nyrt.',
     marquee: true,
     cats: ['ipari-daralas'],

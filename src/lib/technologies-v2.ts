@@ -25,14 +25,13 @@ const brikettalas: TechnologyGateway = {
     image: '/heroes/hero-brikettalas.jpg',
     imageAlt: 'Ipari brikettáló gépsor üzem közben: présgépek és szállítószalagokon mozgó brikett (CF Nielsen)',
   },
-  // Brikettálás-specifikus trust sor. A hidraulikus/mechanikus típusszám [VALIDÁLANDÓ]
-  // (most a user által adott példaérték). A „6 gyártó" validált: CF Nielsen, Prodeco
-  // (brikettálók) + ISVE (darálók), RP Engineering (szárítás/silók/anyagmozgatás),
-  // AL-KO (porleválasztás), STROJPLAST (csomagolás). „2008 óta" validált.
+  // Brikettálás-specifikus trust sor. Típusszámok a gyártói katalógusokból (2026-06):
+  // Prodeco hidraulikus = 15 típus (7 Standard + 2 Nano + 6 Vertical); CF Nielsen
+  // mechanikus = 20 típus (11 BP alapgép + 9 BPU briquetting unit). „2008 óta" validált.
   heroStats: [
-    { value: '24', suffix: '', label: 'típus hidraulikus brikettáló gép' },
-    { value: '15', suffix: '', label: 'típus mechanikus brikettáló gép' },
-    { value: '6', suffix: '', label: 'európai gyártó egy rendszerben' },
+    { value: '15', suffix: '', label: 'típus hidraulikus brikettáló gép' },
+    { value: '20', suffix: '', label: 'típus mechanikus brikettáló gép' },
+    { value: 'Több', suffix: '', label: 'európai gyártó egy rendszerben' },
     { value: '2008', suffix: '', label: 'óta a piacon' },
   ],
   fit: {
@@ -273,9 +272,9 @@ const ipariDaralas: TechnologyGateway = {
     imageAlt: 'Ipari daráló gép működés közben',
   },
   heroStats: [
-    { value: '20', suffix: '+', label: 'típus ipari daráló gép' }, // [VALIDÁLANDÓ]
-    { value: '2', suffix: '', label: 'darálási elv: egy- és kéttengelyes' },
-    { value: '6', suffix: '', label: 'európai gyártó egy rendszerben' },
+    { value: '34', suffix: '', label: 'típus ipari daráló gép' },
+    { value: '5', suffix: '', label: 'darálócsalád: egy-, két-, négytengelyes, granulátor, kombinált' },
+    { value: 'Több', suffix: '', label: 'európai gyártó egy rendszerben' },
     { value: '2008', suffix: '', label: 'óta a piacon' },
   ],
   fit: {
@@ -403,9 +402,9 @@ const pelletalas: TechnologyGateway = {
     imageAlt: 'Pellet gyártó gépsor működés közben',
   },
   heroStats: [
-    { value: '10', suffix: '+', label: 'típus pelletáló prés' }, // [VALIDÁLANDÓ]
-    { value: '1–6', suffix: ' t/h', label: 'pelletálási kapacitás' }, // [VALIDÁLANDÓ]
-    { value: '6', suffix: '', label: 'európai gyártó egy rendszerben' },
+    { value: '16', suffix: '', label: 'típus pelletáló prés' },
+    { value: '20–2500', suffix: ' kg/h', label: 'pelletálási kapacitás' },
+    { value: 'Több', suffix: '', label: 'európai gyártó egy rendszerben' },
     { value: '2008', suffix: '', label: 'óta a piacon' },
   ],
   fit: {
@@ -533,8 +532,8 @@ const biomasszaSzaritas: TechnologyGateway = {
   },
   heroStats: [
     { value: 'dob- és szalagos', suffix: '', label: 'szárító technológia' },
-    { value: '1–10', suffix: ' t/h', label: 'szárítási kapacitás' }, // [VALIDÁLANDÓ]
-    { value: '6', suffix: '', label: 'európai gyártó egy rendszerben' },
+    { value: '200–4000', suffix: ' kg/h', label: 'szárítási kapacitás' },
+    { value: 'Több', suffix: '', label: 'európai gyártó egy rendszerben' },
     { value: '2008', suffix: '', label: 'óta a piacon' },
   ],
   fit: {
@@ -1051,7 +1050,7 @@ const anyagmozgasRendszerelemek: TechnologyGateway = {
   heroStats: [
     { value: 'szalag · csiga · siló', suffix: '', label: 'rendszerelemek' },
     { value: 'mágnes · szeparátor', suffix: '', label: 'gépvédelem' },
-    { value: '6', suffix: '', label: 'európai gyártó egy rendszerben' },
+    { value: 'Több', suffix: '', label: 'európai gyártó egy rendszerben' },
     { value: '2008', suffix: '', label: 'óta a piacon' },
   ],
   fit: {

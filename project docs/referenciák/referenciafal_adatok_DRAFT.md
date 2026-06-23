@@ -53,6 +53,7 @@ Dunaszentbenedek, Felsőtárkány).
 ### Ipari darálás / aprítás (ISVE + ECOTEQ daráló-családok)
 | Ügyfél | Géptípus | Hely |
 |---|---|---|
+| COLOPLAST HUNGARY Kft. | 3 db négytengelyes daráló gépsor konténer emelő-ürítő berendezéssel, gyártási hulladék előkészítéséhez (user-megadott, 2026-06-23) | — |
 | RICHTER GEDEON Nyrt. | NT 60/80S négytengelyes + MS2260 egytengelyes darálórendszer | — |
 | BORSODCHEM Zrt. | NT 40/80 S daráló | Kazincbarcika |
 | FERRIT Kft. (TKI Ferrit) | KT 46/40 D kéttengelyes daráló | — |

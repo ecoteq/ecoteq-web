@@ -16,8 +16,9 @@ industrial waste-recovery equipment). Built on the in-repo design system.
 3. **Brand fidelity.** Fustat font, navy `#1c3449` + green `#43ad4d` on neutral gray;
    pill CTAs; short green accent rule; fixed left navy brand rail; **no stock photos,
    no emoji**; Hungarian-first with full diacritics (á é í ó ö ő ú ü ű); formal "Ön".
-   Primary green CTA: **"Technológiai javaslatot kérek"** → pre-qualification form
-   (`/ajanlatkeres`). Respect `prefers-reduced-motion`; quiet 120–200ms transitions.
+   Primary green CTA (locked, from `src/lib/site-v2.ts` `CTA`):
+   **"Leírom, mit kell megoldani"** → pre-qualification form (`/ajanlatkeres`).
+   Respect `prefers-reduced-motion`; quiet 120–200ms transitions.
 
 4. **Strategy is the source of truth for content.** `project docs/` holds the
    approved spec: `00_ecoteq.hu masterspec 1.0.md` (positioning, HUB-SPOKE, nav,
@@ -54,13 +55,18 @@ routes visitors to the right technology gateway / pre-qualification path. Deep c
 (iparidaralo.hu, brikettalo.hu, vakuumszarito.hu, raklapdaralo.hu …). The primary conversion goal is not immediate purchase, but expert pre-qualification
 ("technológiai irány").
 
-**Top nav (7):** Megoldások · Technológiák · Referenciák · Szerviz és alkatrész ·
-Rólunk · Tudástár · Kapcsolat. Primary CTA "Technológiai javaslatot kérek"; secondary
-"Megnézem a megoldásokat"; form CTA "Elküldöm a projekt adatait".
+**Top nav (6):** Megoldások · Technológiák · Referenciák · Szerviz és alkatrész ·
+Rólunk · Tudástár. (Kapcsolat is footer-only, not in the top nav.) Locked CTA system
+(`src/lib/site-v2.ts` `CTA`): primary "Leírom, mit kell megoldani"; secondary
+"Megnézem a technológiákat"; form "Elküldöm az alapadatokat"; problem-aware pages
+use "Nem tudom, mi kell — segítsenek választani".
 
 **8 technologies:** ipari darálás · brikettálás · pelletálás · biomassza-szárítás ·
 vákuumszárítás · vákuumimpregnálás · elszívás/porleválasztás · anyagmozgatás.
-**Manufacturer partners:** ISVE, Prodeco, CF Nielsen, AL-KO.
+**Manufacturer partners:** 11 reps total, communicated as "10+ gyártói képviselet".
+6 named on-site (validated focus, single source `src/lib/site-v2.ts` `COMPANY`): ISVE,
+CF Nielsen, Prodeco, Nova Pellet, RP Engineering, AL-KO. Remaining 4 (Lumago, Cormall,
+Pettini, Italsime) are in the "10+" but their focus is still [VALIDÁLANDÓ].
 
 **Homepage sections** (see `project docs/01_…főoldal.md` for full copy): Hero →
 technology selector → problem-based entry → systems-thinking → technology gateways →

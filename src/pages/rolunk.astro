@@ -5,7 +5,7 @@ import SectionHeading from '../components/brand/SectionHeading.astro';
 import PageHero from '../components/site/PageHero.astro';
 import Button from '../components/core/Button.astro';
 import Icon from '../components/Icon.astro';
-import { quoteHref } from '../lib/site-v2';
+import { quoteHref, COMPANY } from '../lib/site-v2';
 
 const pillars = [
   {
@@ -25,12 +25,7 @@ const pillars = [
   },
 ];
 
-const partners = [
-  { name: 'ISVE', focus: 'ipari darálás és aprítás' },
-  { name: 'Prodeco', focus: 'pelletálási technológia' },
-  { name: 'CF Nielsen', focus: 'brikettáló rendszerek' },
-  { name: 'AL-KO', focus: 'elszívás és porelszívás' },
-];
+const partners = COMPANY.corePartners;
 ---
 
 <SiteLayout

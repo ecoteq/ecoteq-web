@@ -3,7 +3,7 @@
    ("2008 óta" + 10+ partner, named) per the reconciled spec. Kapcsolat stays here. */
 import Logo from '../brand/Logo.astro';
 import Icon from '../Icon.astro';
-import { CONTACT, TECHNOLOGIES, SOLUTIONS, SPOKES, quoteHref } from '../../lib/site-v2';
+import { CONTACT, TECHNOLOGIES, SOLUTIONS, SPOKES, quoteHref, COMPANY } from '../../lib/site-v2';
 
 const company = [
   { label: 'Rólunk', href: '/rolunk/' },
@@ -19,7 +19,7 @@ const legal = [
   { label: 'Felhasználási feltételek', href: '/felhasznalasi-feltetelek/' },
   { label: 'Impresszum', href: '/impresszum/' },
 ];
-const partners = ['ISVE', 'Prodeco', 'CF Nielsen', 'Nova Pellet', 'RP Engineering', 'AL-KO'];
+const partners = COMPANY.corePartners.map((p) => p.name);
 ---
 
 <footer class="footer" id="kapcsolat">
