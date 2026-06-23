@@ -33,13 +33,14 @@ const links = [
     <div class="confirm">
       <span class="badge" aria-hidden="true"><Icon name="mail" size={30} /></span>
       <p class="eyebrow">Megkeresés rögzítve</p>
-      <h1 class="title">Köszönjük — megkaptuk a megkeresését</h1>
+      <h1 class="title">Köszönjük! Megkeresését megkaptuk.</h1>
       <p class="topic" id="topic" data-names={JSON.stringify(techNames)} hidden>
         Érdeklődési irány: <span id="topic-name"></span>
       </p>
+      <span class="flake" aria-hidden="true"></span>
       <p class="lead">
-        Munkanapokon előszűrjük a feladatot, és jellemzően <strong>24 órán belül</strong>
-        visszajelzünk a következő lépésről. A megadott e-mail-címre visszaigazolást is küldtünk.
+        A küldött információt munkanapokon dolgozzuk fel. Jellemzően <strong>24 órán belül</strong>
+        visszajelzünk a következő lépésről.<br />A megadott e-mail-címre visszaigazolást is küldtünk.
       </p>
       <div class="actions">
         <Button href="/">Vissza a főoldalra</Button>
@@ -122,7 +123,7 @@ const links = [
   }
   .title {
     font-family: var(--font-display);
-    font-size: clamp(2.25rem, 1.4rem + 3.4vw, 3.6rem);
+    font-size: clamp(2.2rem, 1.3rem + 3vw, 3.2rem);
     font-weight: var(--fw-extrabold);
     color: var(--ecoteq-white);
     line-height: 1.15; letter-spacing: var(--ls-display);
@@ -138,6 +139,8 @@ const links = [
     margin: 0 0 var(--space-4);
   }
   .topic span { color: var(--color-accent-on-dark); }
+  /* "flake" — rövid zöld accent-vonal a cím és a törzsszöveg között, ~24px térközzel */
+  .flake { display: block; width: 48px; height: 4px; border-radius: 2px; background: var(--color-accent-on-dark); margin: var(--space-6) auto; }
   .lead { font-size: var(--fs-lg); color: rgba(255, 255, 255, 0.84); line-height: var(--lh-body); margin: 0 auto var(--space-6); max-width: 54ch; }
   .lead strong { color: var(--ecoteq-white); font-weight: var(--fw-bold); }
   .actions { display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: center; margin-bottom: var(--space-6); }
