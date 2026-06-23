@@ -5,6 +5,35 @@
 
 ---
 
+## ▶️ 2026-06-23 (este) — v0.9, LAUNCH-READINESS AUDIT kész — ITT FOLYTASD
+
+**Folytatás:** `git pull` → `npm install` → `npm run dev`.
+
+A site **v0.9**, élesítés (ecoteq.hu domain ráirányítása) előtt. Lefutott egy teljes,
+több-ügynökös **launch-readiness + CRO audit** (6 dimenzió, 44 finding). A priorizált
+teendőlista (P0/P1/P2) itt: **`project docs/AUDIT_launch_readiness_2026-06-23.md`** —
+ezt visszük fentről lefelé. A site ~85-90%-ban kész.
+
+**Ami már kész azóta (commitolva):** a főoldali „ECOTEQ technológiai irányok" kártyák
+közül 5 valós fotót kapott (`public/tech/`): ipari darálás, brikettálás, biomassza-szárítás,
+vákuumimpregnálás, anyagmozgatás. A forrásképek: `Downloads\főoldal fotók\`.
+
+**Tőled várt döntés/adat a P0-hoz** (e nélkül nem zárható a launch):
+- **P0-1** analytics-irány: A) GA4 + valódi consent-banner, vagy B) sütimentes Vercel Analytics
+  (+ a jogi oldalak szövegét a valósághoz igazítom — most nem létező GA4/Zoho/cookie-sávot említenek).
+- **P0-4** Resend: API kulcs + ecoteq.hu DKIM/SPF verifikáció + Vercel Production env.
+- **P0-5** végleges lead- és jogi e-mail cím (info@ vs sales@).
+- **P0-6** explicit „go" a noindex feloldásához (utolsó lépés a domain ráirányítása előtt).
+- **P1-1/P1-5/P1-9** OG-kártya + elsődleges CTA-felirat + meta-leírás jóváhagyás.
+
+**Amit önállóan, kódból elkezdhetek** (jóváhagyásra): P0-2 favicon/manifest, P0-3 mobil sticky CTA,
+P1-2 hero-preload, P1-3 font-preload, P1-4 kontraszt-csomag, P1-7 skip-link, P1-8 inline űrlap-validáció.
+
+**Maradék korábbról:** 3 tech-kártya fotó (pelletálás, vákuumszárítás, elszívás) · valós SOCIAL URL-ek ·
+fotós esettanulmányok a `/referenciak`-on (Diósjenő story megvan, Jákófa story jön).
+
+---
+
 ## 🆕 2026-06-23 — Benchmark audit + referenciafal (folytatás a másik gépen)
 
 **Folytatás:** `git pull` → `npm install` → `npm run dev` (→ http://localhost:4321) → a fal a `/referenciak`-on.
