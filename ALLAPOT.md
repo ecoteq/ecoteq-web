@@ -31,8 +31,10 @@ P1-3 font-preload, P1-4 kontraszt-csomag, P1-6 tiltott-CTA maradványok, P1-7 sk
 **Következő, szintén kódból:** P1-1 OG-kép (kell egy 1200×630 jóváhagyás), P1-5 CTA-felirat egységesítés
 (felirat jóváhagyás), P1-9 meta-leírások ≤160, P1-10 e-mail-VAGY-telefon, majd a P2 kódos tételei.
 
-**Maradék korábbról:** 3 tech-kártya fotó (pelletálás, vákuumszárítás, elszívás) · valós SOCIAL URL-ek ·
+**Maradék korábbról:** valós SOCIAL URL-ek ·
 fotós esettanulmányok a `/referenciak`-on (Diósjenő story megvan, Jákófa story jön).
+*(LEZÁRVA — döntés szerint nem módosítjuk: a 3 tech-kártya fotó (pelletálás, vákuumszárítás, elszívás)
+a mostani hero-fotókon marad, az jó.)*
 
 ---
 
