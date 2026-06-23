@@ -10,8 +10,9 @@ interface Props {
   brand?: string;
   solidHeader?: boolean;
   headerCta?: { label: string; href: string };
+  noindex?: boolean;
 }
-const { title, description, brand, solidHeader = false, headerCta } = Astro.props;
+const { title, description, brand, solidHeader = false, headerCta, noindex } = Astro.props;
 ---
 
 <SiteLayoutV2
@@ -20,6 +21,7 @@ const { title, description, brand, solidHeader = false, headerCta } = Astro.prop
   brand={brand}
   solidHeader={solidHeader}
   headerCta={headerCta}
+  noindex={noindex}
 >
   <slot />
 </SiteLayoutV2>

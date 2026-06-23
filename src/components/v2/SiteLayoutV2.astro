@@ -15,11 +15,12 @@ interface Props {
   headerCta?: { label: string; href: string };
   /** LCP hero image base (e.g. "/heroes/hero-home") — forwarded to BaseLayout preload. */
   heroImage?: string;
+  noindex?: boolean;
 }
-const { title, description, brand, solidHeader = false, headerCta, heroImage } = Astro.props;
+const { title, description, brand, solidHeader = false, headerCta, heroImage, noindex } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description} brand={brand} heroImage={heroImage}>
+<BaseLayout title={title} description={description} brand={brand} heroImage={heroImage} noindex={noindex}>
   <a class="skip-link" href="#fooldal-tartalom">Ugrás a tartalomra</a>
   <BrandRail />
   <div class="shell">

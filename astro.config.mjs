@@ -6,5 +6,5 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://ecoteq.hu',
   adapter: vercel(),
-  integrations: [sitemap({ filter: (page) => !page.includes('/styleguide') })],
+  integrations: [sitemap({ filter: (page) => !page.includes('/styleguide') && !page.includes('/koszonjuk') })],
 });

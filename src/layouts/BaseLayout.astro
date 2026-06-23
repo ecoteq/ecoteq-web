@@ -13,9 +13,11 @@ interface Props {
   /** Optional LCP hero image base (e.g. "/heroes/hero-home") → emits a responsive
    *  <link rel=preload as=image>. Pages with an above-the-fold hero pass this. */
   heroImage?: string;
+  /** Per-page noindex (utility/conversion pages, pl. /koszonjuk/). */
+  noindex?: boolean;
 }
 
-const { title, description, brand, heroImage } = Astro.props;
+const { title, description, brand, heroImage, noindex } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://ecoteq.hu').toString();
 const ogImage = new URL('/og.jpg', Astro.site ?? 'https://ecoteq.hu').toString();
 ---
@@ -27,7 +29,7 @@ const ogImage = new URL('/og.jpg', Astro.site ?? 'https://ecoteq.hu').toString()
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title} · {SITE_NAME}</title>
     {description && <meta name="description" content={description} />}
-    {!ALLOW_INDEXING && <meta name="robots" content="noindex, nofollow" />}
+    {(!ALLOW_INDEXING || noindex) && <meta name="robots" content="noindex, nofollow" />}
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
     <link rel="icon" href="/ds/logo-mark-green.svg" type="image/svg+xml" />
