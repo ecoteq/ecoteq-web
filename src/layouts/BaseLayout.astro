@@ -69,7 +69,9 @@ const ogImage = new URL('/og.jpg', Astro.site ?? 'https://ecoteq.hu').toString()
     {GA_ID && (
       <>
         <script is:inline set:html={`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}window.gtag=gtag;gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});try{if(localStorage.getItem('cookie-consent')==='granted'){gtag('consent','update',{analytics_storage:'granted'})}}catch(e){}gtag('js',new Date());gtag('config','${GA_ID}',{anonymize_ip:true});`} />
-        <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
+        {/* gtag.js betöltése a load után / első interakcióra — kikerül az LCP-ablakból.
+            A dataLayer addig sorba gyűjt, így nincs mérési veszteség. */}
+        <script is:inline set:html={`(function(){var l=false;function g(){if(l)return;l=true;var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=${GA_ID}';document.head.appendChild(s)}if(document.readyState==='complete'){setTimeout(g,1500)}else{addEventListener('load',function(){setTimeout(g,1500)})}['pointerdown','keydown','scroll','touchstart'].forEach(function(e){addEventListener(e,g,{once:true,passive:true})})})();`} />
       </>
     )}
     {/* Theme: follow the OS setting by default; honour an explicit choice once made.
