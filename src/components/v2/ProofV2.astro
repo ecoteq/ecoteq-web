@@ -247,16 +247,21 @@ const partners = COMPANY.corePartners.map((p) => p.name);
   @media (max-width: 680px) { .nav { display: none; } }
 
   /* Pöttyök */
-  .dots { display: flex; justify-content: center; gap: var(--space-3); margin-top: var(--space-5); }
+  .dots { display: flex; justify-content: center; gap: var(--space-1); margin-top: var(--space-5); }
+  /* 24×24px érintési cél (WCAG target-size), a látható pötty 9px marad a ::before-on. */
   .dot {
-    width: 9px; height: 9px; padding: 0;
-    border-radius: 50%;
-    border: none;
-    background: var(--gray-400);
+    width: 24px; height: 24px; padding: 0;
+    display: grid; place-items: center;
+    border: none; background: none;
     cursor: pointer;
+  }
+  .dot::before {
+    content: ""; display: block;
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--gray-400);
     transition: background var(--dur-base) var(--ease-standard), width var(--dur-base) var(--ease-standard);
   }
-  .dot[aria-current="true"] { background: var(--ecoteq-green); width: 22px; border-radius: 5px; }
+  .dot[aria-current="true"]::before { background: var(--ecoteq-green); width: 22px; border-radius: 5px; }
 
   .partners { margin-top: var(--space-8); padding-top: var(--space-6); border-top: 1px solid var(--color-border); }
   .plabel { margin: 0 0 var(--space-2); font-size: var(--fs-xs); font-weight: var(--fw-bold); letter-spacing: var(--ls-overline); text-transform: uppercase; color: var(--color-text-muted-on-dark); }
@@ -269,7 +274,7 @@ const partners = COMPANY.corePartners.map((p) => p.name);
 
   @media (prefers-reduced-motion: reduce) {
     .track { scroll-behavior: auto; }
-    .plist li, .nav, .dot { transition: none; }
+    .plist li, .nav, .dot::before { transition: none; }
   }
 </style>
 
