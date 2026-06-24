@@ -240,6 +240,9 @@ const ogImage = new URL('/og.jpg', Astro.site ?? 'https://ecoteq.hu').toString()
          - in dark mode the accent-text token resolved to the deep green (~3.2:1) →
            route it to the lighter on-dark green so small green text/labels pass AA. */
       :root { --color-text-muted: var(--gray-600); }
+      /* Muted labels on dark navy surfaces: #6c6c6e fails AA there (~3:1) → lighter
+         gray that clears AA (~6.7:1 even on the darkest section bg). */
+      :root { --color-text-muted-on-dark: #9aa0a6; }
       html[data-mode="dark"] { --color-accent-text: var(--color-accent-on-dark); }
 
       /* Quiet, premium scroll-reveal. Content is fully visible without JS / with reduced motion. */
