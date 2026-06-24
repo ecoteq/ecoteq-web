@@ -243,6 +243,9 @@ const ogImage = new URL('/og.jpg', Astro.site ?? 'https://ecoteq.hu').toString()
       /* Muted labels on dark navy surfaces: #6c6c6e fails AA there (~3:1) → lighter
          gray that clears AA (~6.7:1 even on the darkest section bg). */
       :root { --color-text-muted-on-dark: #9aa0a6; }
+      /* Zöld accent-szöveg világos/subtle háttéren: az app-zöld #2b8437 csak ~4,3:1
+         (kis félkövér overline → 4,5 kell) → mélyebb zöld, ami subtle-ön is AA (~5,3:1). */
+      :root { --color-accent-text: #25702f; }
       html[data-mode="dark"] { --color-accent-text: var(--color-accent-on-dark); }
 
       /* Quiet, premium scroll-reveal. Content is fully visible without JS / with reduced motion. */
