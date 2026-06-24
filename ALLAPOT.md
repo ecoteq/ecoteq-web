@@ -1,7 +1,23 @@
 # ECOTEQ.hu — állapot és folytatás (handoff)
 
-**Utolsó frissítés:** 2026-06-23 · **Branch:** `main` · **Minden commit felpusholva** a `github.com/ecoteq/ecoteq-web`-re.
-**Indexelés:** KIKAPCSOLVA (`ALLOW_INDEXING=false` a `src/config.ts`-ben + `public/robots.txt` disallow). Szándékos, a launchig marad.
+**Utolsó frissítés:** 2026-06-24 · **Branch:** `main` · **Minden commit felpusholva** a `github.com/ecoteq/ecoteq-web`-re.
+**Indexelés:** ✅ BEKAPCSOLVA — **az oldal ÉLES** (`ALLOW_INDEXING=true`, `robots.txt` Allow, sitemap nyitva). A köszönőoldal `noindex` + sitemapból kivéve.
+
+---
+
+## ▶️ 2026-06-24 — LAUNCH + PERFORMANCE + A11Y kör (legutóbbi munka) — ITT FOLYTASD
+
+**Folytatás:** `git pull` → `npm install` → `npm run dev`. Utolsó commit: **`2872dad`**.
+
+Az oldal **éles** (noindex kikapcsolva). Mai munka röviden:
+
+1. **Launch:** `ALLOW_INDEXING=true`, `robots.txt` Allow + sitemap, canonical az apexre. GA4 mérés (`GA_ID = G-3QGMK9EDLN`) Consent Mode v2 + cookie-sávval; lead-mailek külön (sales/info); köszönőoldal `noindex` + sitemapból kivéve.
+2. **Űrlap (Resend) javítva:** a `{error}` visszatérést nem ellenőriztük → most igen; a hitelesített küldő-domain **`send.ecoteq.hu`** (a `LEAD_FROM_EMAIL=noreply@send.ecoteq.hu` a Vercel env-ben). Működik.
+3. **Trailing-slash dedup:** `astro.config.mjs` `trailingSlash: 'always'` → a `/X` 308-cal a `/X/`-re; form fetch `/api/contact/`, mobil CTA `/ajanlatkeres/`.
+4. **PageSpeed 100/100 (mobil+asztal):** a GA `gtag.js` betöltése a `load`/első-interakció utánra halasztva (kikerült az LCP-ablakból); hero LCP-kép `decoding=async` levéve. **CSP-fix:** a `vercel.json`-ban a `script-src`/`connect-src` kiegészítve a GA4-domainekkel (eddig a CSP blokkolta a gtag.js-t).
+5. **Akadálymentesség 100-felé:** új tokenek a sötét/világos kontrasztra — `--color-text-muted-on-dark: #9aa0a6` (sötét szekciók halvány feliratai), világos módban `--color-accent-text: #25702f` (zöld overline), `.num`/`.suf` zöld → `--color-accent-on-dark #54c35e`. Karusszel-pöttyök 24×24px érintési cél (`::before`-os vizuál). **Megj.:** a lokális Lighthouse 0 kontraszt-bukót ad, de a **PSI mobil szigorúbb** (kisebb betűméret → 4,5:1 küszöb) — a fenti javítások matematikailag AA-margósak; a deploy utáni **friss PSI-futás** a mérvadó (ne a mentett analysis-linket nyisd újra, hanem `?fresh=1`-gyel új elemzést).
+
+**A11Y verifikáció trükk:** a `data-reveal` elemek betöltéskor `opacity:0` → az axe kihagyja őket, ezért a sima Lighthouse félre-mér. Mérvadó: friss PSI a deploy után.
 
 ---
 
