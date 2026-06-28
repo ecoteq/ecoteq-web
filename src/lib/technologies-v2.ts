@@ -272,9 +272,9 @@ const ipariDaralas: TechnologyGateway = {
     imageAlt: 'Ipari daráló gép működés közben',
   },
   heroStats: [
-    { value: '34', suffix: '', label: 'típus ipari daráló gép' },
-    { value: '5', suffix: '', label: 'darálócsalád: egy-, két-, négytengelyes, granulátor, kombinált' },
-    { value: 'Több', suffix: '', label: 'európai gyártó egy rendszerben' },
+    { value: '34', suffix: '', label: 'ipari daráló típus' },
+    { value: '5', suffix: '', label: 'darálócsalád' },
+    { value: 'több', suffix: '', label: 'európai gyártó' },
     { value: '2008', suffix: '', label: 'óta a piacon' },
   ],
   fit: {
